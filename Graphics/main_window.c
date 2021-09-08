@@ -399,11 +399,19 @@ void DrawLeftPress(uint16_t val, uint16_t color){
 	double sin_val = 0;
 	double cos_val = 0;
 	uint16_t this_color;
-
+	
 	if(color == MAIN_BGND) this_color = MAIN_BGND; else this_color = RED_COLOR;
+	
+	
+	
+  //non-linearity poperdolenost
+	//val_nl = A_ALFA * log(A_PRESS * val + B_PRESS) + B_ALFA;
 	
 	if(val <= ALFA_MAX) alfa = ALFA_MAX - val; else alfa = ALFA_MIN;
 	if(alfa <= ALFA_MIN) alfa = ALFA_MIN;
+	
+	alfa = ALFA_MAX - (A_ALFA * log(A_PRESS * (ALFA_MAX - alfa) + B_PRESS) + B_ALFA) + ALFA_MIN;
+	
 	alfa_rad = DEG_RAD * (double) alfa;
 	sin_val = sin(alfa_rad);
 	cos_val = cos(alfa_rad);

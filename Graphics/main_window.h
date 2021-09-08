@@ -12,6 +12,13 @@
 #define GRAY_COLOR	0x7bef
 
 
+//log scale parameters
+#define A_ALFA 	(double)67.5
+#define B_ALFA 	(double)180.0
+#define A_PRESS (double)0.0363
+#define B_PRESS (double)0.135
+
+
 #define DISPLAY_MAX_X 479
 #define DISPLAY_MAX_Y 319
 #define DISPLAY_WIDTH 480
