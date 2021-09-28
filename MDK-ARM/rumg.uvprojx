@@ -728,11 +728,6 @@
               <FileType>1</FileType>
               <FilePath>..\WizneLib\Ethernet\W5500\w5500.c</FilePath>
             </File>
-            <File>
-              <FileName>loopback.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\WizneLib\Application\loopback\loopback.c</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
