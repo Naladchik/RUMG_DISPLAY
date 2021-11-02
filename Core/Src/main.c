@@ -53,7 +53,6 @@ osThreadId myTaskADCHandle;
 osThreadId myTaskLogicHandle;
 osThreadId myTaskLoRaHandle;
 osThreadId myTaskDisplayHandle;
-osThreadId myTaskTouchHandle;
 osMessageQId myQueueTouchHandle;
 osMutexId myMutexSPIHandle;
 /* USER CODE BEGIN PV */
@@ -99,7 +98,6 @@ void StartTaskADC(void const * argument);
 void StartTaskLogic(void const * argument);
 void StartTaskLoRa(void const * argument);
 void StartTaskDisplay(void const * argument);
-void StartTaskTouch(void const * argument);
 
 /* USER CODE BEGIN PFP */
 
@@ -143,6 +141,7 @@ int main(void)
   MX_SPI2_Init();
   /* USER CODE BEGIN 2 */
 	__HAL_SPI_ENABLE(&hspi1);
+	__HAL_SPI_ENABLE(&hspi2);
 	
 	HAL_TIM_Base_Start_IT(&htim3);
 	HAL_ADC_Start (&hadc1);
@@ -237,10 +236,6 @@ int main(void)
   /* definition and creation of myTaskDisplay */
   osThreadDef(myTaskDisplay, StartTaskDisplay, osPriorityIdle, 0, 256);
   myTaskDisplayHandle = osThreadCreate(osThread(myTaskDisplay), NULL);
-
-  /* definition and creation of myTaskTouch */
-  osThreadDef(myTaskTouch, StartTaskTouch, osPriorityIdle, 0, 128);
-  myTaskTouchHandle = osThreadCreate(osThread(myTaskTouch), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -398,10 +393,10 @@ static void MX_SPI2_Init(void)
   hspi2.Init.Mode = SPI_MODE_MASTER;
   hspi2.Init.Direction = SPI_DIRECTION_2LINES;
   hspi2.Init.DataSize = SPI_DATASIZE_8BIT;
-  hspi2.Init.CLKPolarity = SPI_POLARITY_LOW;
-  hspi2.Init.CLKPhase = SPI_PHASE_1EDGE;
+  hspi2.Init.CLKPolarity = SPI_POLARITY_HIGH;
+  hspi2.Init.CLKPhase = SPI_PHASE_2EDGE;
   hspi2.Init.NSS = SPI_NSS_SOFT;
-  hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_128;
+  hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
   hspi2.Init.FirstBit = SPI_FIRSTBIT_MSB;
   hspi2.Init.TIMode = SPI_TIMODE_DISABLE;
   hspi2.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
@@ -477,6 +472,9 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_5, GPIO_PIN_SET);
+
+  /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_2|GPIO_PIN_11|GPIO_PIN_9, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
@@ -495,6 +493,13 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
+  /*Configure GPIO pins : PC5 PC8 PC9 PC10 */
+  GPIO_InitStruct.Pin = GPIO_PIN_5|GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
   /*Configure GPIO pins : PB2 PB11 PB8 PB9 */
   GPIO_InitStruct.Pin = GPIO_PIN_2|GPIO_PIN_11|GPIO_PIN_8|GPIO_PIN_9;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
@@ -507,13 +512,6 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
-
-  /*Configure GPIO pins : PC8 PC9 PC10 */
-  GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
-  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
   /*Configure GPIO pins : PA8 PA15 */
   GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_15;
@@ -634,32 +632,6 @@ void StartTaskDisplay(void const * argument)
     osDelay(1);
   }
   /* USER CODE END StartTaskDisplay */
-}
-
-/* USER CODE BEGIN Header_StartTaskTouch */
-/**
-* @brief Function implementing the myTaskTouch thread.
-* @param argument: Not used
-* @retval None
-*/
-/* USER CODE END Header_StartTaskTouch */
-void StartTaskTouch(void const * argument)
-{
-  /* USER CODE BEGIN StartTaskTouch */
-
-  /* Infinite loop */
-  for(;;)
-  {
-		if(HAL_GPIO_ReadPin(T_IRQ_PORT, T_IRQ)) t_irq = 0; else t_irq = 1;
-		if((t_irq == 1) && (t_irq_old == 0) && T_struct.Unprocessed == 0){
-			Buzzer(1);		
-			T_ReadTouch(&T_struct);
-		}		
-		t_irq_old = t_irq;
-		
-    osDelay(1);
-  }
-  /* USER CODE END StartTaskTouch */
 }
 
 /**

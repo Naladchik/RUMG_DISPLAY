@@ -10,7 +10,7 @@
 /* SPI select (0, 1, 2, 3)
    - 0: software SPI driver (the pins assign are full free)
    - 1..3: hardware SPI driver (the LCD_SCK, LCD_MOSI, LCD_MISO pins are lock to hardware) */
-#define LCD_SPI           1
+#define LCD_SPI           2
 
 /* SPI mode
    - 0: only TX (only to write on the display, LCD_MISO is not used)
@@ -34,9 +34,9 @@
 #define LCD_RS            B, 9
 
 #define LCD_CS            B, 2
-#define LCD_SCK           A, 5
-#define LCD_MOSI          A, 7
-#define LCD_MISO          A, 6  /* If not used leave it that way */
+#define LCD_SCK           B, 13
+#define LCD_MOSI          B, 15
+#define LCD_MISO          B, 14  /* If not used leave it that way */
 
 /* Backlight control
    - BL: A..K, 0..15 (if not used -> X, 0)
