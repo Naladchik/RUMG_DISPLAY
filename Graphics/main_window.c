@@ -325,11 +325,8 @@ const uint8_t battery[BAT_W * BAT_H / 8] = {// 'Battery', 56x25px
 
 void DrawFlowVal(uint16_t val, uint16_t color){
 	#define DIG_INTERVAL 30
-	T_Read_ifIRQ(&T_struct);
-	if(val > 999) DrawDigitB(FLOW_REF_X, FLOW_REF_Y, (val / 1000) % 10, color); else DrawDigitB(FLOW_REF_X, FLOW_REF_Y, 99, color);
-	T_Read_ifIRQ(&T_struct);
+	if(val > 999) DrawDigitB(FLOW_REF_X, FLOW_REF_Y, (val / 1000) % 10, color); else DrawDigitB(FLOW_REF_X, FLOW_REF_Y, 99, color);	
 	if(val > 99) DrawDigitB(FLOW_REF_X + DIG_INTERVAL, FLOW_REF_Y, (val / 100) % 10, color);  else DrawDigitB(FLOW_REF_X + DIG_INTERVAL, FLOW_REF_Y, 99, color);
-	T_Read_ifIRQ(&T_struct);
 	if(val > 9) DrawDigitB(FLOW_REF_X + 2 * DIG_INTERVAL, FLOW_REF_Y, (val / 10) % 10, color);  else DrawDigitB(FLOW_REF_X + 2 * DIG_INTERVAL, FLOW_REF_Y, 99, color);
 	DrawDigitB(FLOW_REF_X + 3 * DIG_INTERVAL, FLOW_REF_Y,  val % 10, color);
 }
@@ -339,12 +336,9 @@ void DrawLinePress(float fval, uint16_t color){
 	#define OP_REF_Y 48
 	#define COMMA_INT 10
 	uint16_t val = (uint16_t)(fval * 100);
-	DrawDigitB(OP_REF_X, OP_REF_Y, (val / 100) % 10, color);
-	
+	DrawDigitB(OP_REF_X, OP_REF_Y, (val / 100) % 10, color);	
 	DrawDigitB(OP_REF_X + DIG_INTERVAL + COMMA_INT, OP_REF_Y, (val / 10) % 10, color);
-	T_Read_ifIRQ(&T_struct);
 	DrawDigitB(OP_REF_X + 2 * DIG_INTERVAL + COMMA_INT, OP_REF_Y,  val % 10, color);
-	T_Read_ifIRQ(&T_struct);
 	DrawCommaB(OP_REF_X + 30, OP_REF_Y + 35, color);
 }
 
@@ -355,18 +349,13 @@ void DrawConcPress(float fval, uint16_t color){
 	#define SCOMMA_INT 6
 	uint16_t val = (uint16_t)(fval * 100);
 	DrawDigitS(CP_REF_X, CP_REF_Y, (val / 100) % 10, color);
-	T_Read_ifIRQ(&T_struct);
 	DrawDigitS(CP_REF_X + SDIG_INTERVAL + SCOMMA_INT, CP_REF_Y, (val / 10) % 10, color);
-	T_Read_ifIRQ(&T_struct);
 	DrawDigitS(CP_REF_X + 2 * SDIG_INTERVAL + SCOMMA_INT, CP_REF_Y,  val % 10, color);
-	T_Read_ifIRQ(&T_struct);
 	DrawCommaS(CP_REF_X + 15, CP_REF_Y + 19, color);
-	T_Read_ifIRQ(&T_struct);
 }
 
 void DrawTheLine(uint16_t hight, uint16_t width){
 	ili9488_DrawHLine(WHITE_COLOR, (DISPLAY_WIDTH - width)/2, DISPLAY_HIGHT - hight, width);
-	T_Read_ifIRQ(&T_struct);
 	ili9488_DrawHLine(WHITE_COLOR, (DISPLAY_WIDTH - width)/2, DISPLAY_HIGHT - hight + 1, width);
 }
 
@@ -436,7 +425,6 @@ void DrawLeftPress(uint16_t val, uint16_t color){
 				}
 			}
 		}
-		T_Read_ifIRQ(&T_struct);
 	//Number part
 	if (val > 300) val = 300;	
 	if(val > 99) DrawDigitS_no_bgn(LP_REF_X + HP_DIG_INTERVAL, HP_REF_Y, (val / 100) % 10, color);  
@@ -471,7 +459,6 @@ void DrawRightPress(uint16_t val, uint16_t color){
 				}
 			}
 		}
-		T_Read_ifIRQ(&T_struct);
 	//Number part
 	if (val > 300) val = 300;	
 	if(val > 99) DrawDigitS_no_bgn(RP_REF_X + HP_DIG_INTERVAL, HP_REF_Y, (val / 100) % 10, color);
@@ -495,7 +482,6 @@ void DrawConsumption(uint8_t A_G){
 						ili9488_WritePixel(xx + x, yy + y, MAIN_BGND);
 				}
 			}
-			T_Read_ifIRQ(&T_struct);
 			xx = UI_RIGHT_GAS_X;
 			yy = UI_GAS_Y;
 			for(uint16_t x = 0; x < ROUND_W; x++){
@@ -508,7 +494,6 @@ void DrawConsumption(uint8_t A_G){
 			}
 			DrawImage(potr_conc, PC_W, PC_H, MAIN_BGND, PC_X, PC_Y);
 		}
-		T_Read_ifIRQ(&T_struct);
 			if (A_G == RIGHT){
 			xx = UI_RIGHT_GAS_X;
 			yy = UI_GAS_Y;
@@ -520,7 +505,6 @@ void DrawConsumption(uint8_t A_G){
 						ili9488_WritePixel(xx + x, yy + y, MAIN_BGND);
 				}
 			}
-			T_Read_ifIRQ(&T_struct);
 			xx = UI_LEFT_GAS_X;
 			yy = UI_GAS_Y;
 			for(uint16_t x = 0; x < ROUND_W; x++){
@@ -534,7 +518,6 @@ void DrawConsumption(uint8_t A_G){
 			DrawImage(potr_conc, PC_W, PC_H, MAIN_BGND, PC_X, PC_Y);			
 		}
 			
-		T_Read_ifIRQ(&T_struct);
 			if (A_G == CONCENTRATOR){
 			xx = UI_RIGHT_GAS_X;
 			yy = UI_GAS_Y;
@@ -546,7 +529,6 @@ void DrawConsumption(uint8_t A_G){
 						ili9488_WritePixel(xx + x, yy + y, MAIN_BGND);
 				}
 			}
-			T_Read_ifIRQ(&T_struct);
 			xx = UI_LEFT_GAS_X;
 			yy = UI_GAS_Y;
 			for(uint16_t x = 0; x < ROUND_W; x++){
@@ -575,9 +557,7 @@ void EraseAlarmSmall(uint16_t X, uint16_t Y){
 
 void DrawAlarmBig(uint16_t X, uint16_t Y){
 	DrawImage(alarm_b_t, ALARM_B_W, ALARM_B_H, RED_COLOR, X, Y);
-	T_Read_ifIRQ(&T_struct);
 	DrawImage(alarm_b_b, ALARM_B_W, ALARM_B_H, WHITE_COLOR, X, Y);
-	T_Read_ifIRQ(&T_struct);
 	DrawImage(alarm_b_m, ALARM_B_W, ALARM_B_H, BLACK_COLOR, X, Y);
 }
 
@@ -697,7 +677,6 @@ void DrawMainWindow(void){
 		static float RightPressure;
 		
 		DrawFlowVal(PhValues_output.Flow, WHITE_COLOR);
-		T_Read_ifIRQ(&T_struct);
 		if(DisplaySet.LinePressAlarm)DrawLinePress(PhValues_output.PressLine, RED_COLOR); 
 				else DrawLinePress(PhValues_output.PressLine, WHITE_COLOR);
 		if(DisplaySet.ConcPressAlarm)DrawConcPress(PhValues_output.PressConc, RED_COLOR); 

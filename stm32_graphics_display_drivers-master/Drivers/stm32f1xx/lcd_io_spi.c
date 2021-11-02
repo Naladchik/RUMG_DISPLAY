@@ -12,6 +12,8 @@
 #include "lcd.h"
 #include "lcd_io_spi.h"
 
+extern struct TouchStructType T_struct;
+
 #define DMA_MAXSIZE           0xFFFE
 
 //=============================================================================
@@ -1137,6 +1139,7 @@ void LCD_IO_WriteCmd8(uint8_t Cmd)
   LCD_CS_ON;
   LcdCmdWrite8(Cmd);
   LCD_CS_OFF;
+	//T_Read_ifIRQ(&T_struct);
 }
 
 //-----------------------------------------------------------------------------

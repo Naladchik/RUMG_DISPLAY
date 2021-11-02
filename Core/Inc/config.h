@@ -8,7 +8,7 @@
 /*INDIVIDUAL PARAMETERS!!!*/
 #define TX_DEV_NUM				   		0x01
 #define RX_DEV_NUM				   		0x02
-#define ROLE 					 					NOLORA//SENDER, RECEIVER, NOLORA
+#define COMMUNICATION	 					NOLORA//SENDER, RECEIVER, NOLORA
 #define LORA_FREQ   						434500000  //Frequeny in Hz, was 434500000, was 859500000
 #define BARANKI           			1 // 1 - do not take into account LineMin, 0 - do take into account (baranovichi_style)
 #define CONC_DELAY            	10  //Delay for concentrator again-on

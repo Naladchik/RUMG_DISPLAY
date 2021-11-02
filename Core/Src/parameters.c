@@ -7,7 +7,7 @@ void InitParam(TypeParameters* Param){
 	Param->LR_FREQ = LORA_FREQ;
 	Param->tx_device_num = TX_DEV_NUM;
 	Param->rx_device_num = RX_DEV_NUM;
-	Param->LoRa = ROLE;
+	Param->LoRa = COMMUNICATION;
 	Param->Baranki = BARANKI;
 	Param->ConcDelay = CONC_DELAY;
 	Param->HPressSwitch = SWTCH_THRESHOLD;

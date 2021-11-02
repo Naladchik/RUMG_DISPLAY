@@ -18,6 +18,7 @@ struct TouchStructType{ //Last unprocessed touch data
 };
 
 void T_ReadTouch(struct TouchStructType* T_s);
+void T_SetWatch(void);
 void T_Read_ifIRQ(struct TouchStructType* T_s);
 void SPI_switch_touch(void);
 void SPI_switch_display(void);

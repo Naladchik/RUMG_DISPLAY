@@ -51,11 +51,10 @@ TIM_HandleTypeDef htim3;
 osThreadId defaultTaskHandle;
 osThreadId myTaskADCHandle;
 osThreadId myTaskLogicHandle;
-osThreadId myTaskLoRaHandle;
 osThreadId myTaskDisplayHandle;
 osMessageQId myQueueTouchHandle;
-osMutexId myMutexSPIHandle;
 /* USER CODE BEGIN PV */
+osThreadId myTaskLoRaHandle;
 QueueHandle_t myQueueADCHandle;
 QueueHandle_t myQueueLORAHandle;
 
@@ -68,8 +67,8 @@ uint8_t buzz_on;
 //uint8_t ButtSwCounter;
 //uint8_t ButtAlCounter;
 
-uint8_t t_irq = 0;
-uint8_t t_irq_old = 0;
+//uint8_t t_irq = 0;
+//uint8_t t_irq_old = 0;
 
 SX1278_hw_t SX1278_hw;
 SX1278_t SX1278;
@@ -96,11 +95,10 @@ static void MX_SPI2_Init(void);
 void StartDefaultTask(void const * argument);
 void StartTaskADC(void const * argument);
 void StartTaskLogic(void const * argument);
-void StartTaskLoRa(void const * argument);
 void StartTaskDisplay(void const * argument);
 
 /* USER CODE BEGIN PFP */
-
+void StartTaskLoRa(void const * argument);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -184,14 +182,10 @@ int main(void)
 		}
 	}
 	
+	T_SetWatch();
 	ili9488_Init();
 	DrawTheBase();
   /* USER CODE END 2 */
-
-  /* Create the mutex(es) */
-  /* definition and creation of myMutexSPI */
-  osMutexDef(myMutexSPI);
-  myMutexSPIHandle = osMutexCreate(osMutex(myMutexSPI));
 
   /* USER CODE BEGIN RTOS_MUTEX */
   /* add mutexes, ... */
@@ -229,16 +223,14 @@ int main(void)
   osThreadDef(myTaskLogic, StartTaskLogic, osPriorityIdle, 0, 128);
   myTaskLogicHandle = osThreadCreate(osThread(myTaskLogic), NULL);
 
-  /* definition and creation of myTaskLoRa */
-  osThreadDef(myTaskLoRa, StartTaskLoRa, osPriorityIdle, 0, 128);
-  myTaskLoRaHandle = osThreadCreate(osThread(myTaskLoRa), NULL);
-
   /* definition and creation of myTaskDisplay */
   osThreadDef(myTaskDisplay, StartTaskDisplay, osPriorityIdle, 0, 256);
   myTaskDisplayHandle = osThreadCreate(osThread(myTaskDisplay), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
-  /* add threads, ... */
+  /* definition and creation of myTaskLoRa */
+  osThreadDef(myTaskLoRa, StartTaskLoRa, osPriorityIdle, 0, 128);
+  myTaskLoRaHandle = osThreadCreate(osThread(myTaskLoRa), NULL);
   /* USER CODE END RTOS_THREADS */
 
   /* Start scheduler */
@@ -530,7 +522,15 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-
+void StartTaskLoRa(void const * argument)
+{
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+		if(DeviceParam.LoRa != NOLORA) process_lora();
+  }
+}
 /* USER CODE END 4 */
 
 /* USER CODE BEGIN Header_StartDefaultTask */
@@ -596,25 +596,6 @@ void StartTaskLogic(void const * argument)
   /* USER CODE END StartTaskLogic */
 }
 
-/* USER CODE BEGIN Header_StartTaskLoRa */
-/**
-* @brief Function implementing the myTaskLoRa thread.
-* @param argument: Not used
-* @retval None
-*/
-/* USER CODE END Header_StartTaskLoRa */
-void StartTaskLoRa(void const * argument)
-{
-  /* USER CODE BEGIN StartTaskLoRa */
-  /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-		if(DeviceParam.LoRa != NOLORA) process_lora();
-  }
-  /* USER CODE END StartTaskLoRa */
-}
-
 /* USER CODE BEGIN Header_StartTaskDisplay */
 /**
 * @brief Function implementing the myTaskDisplay thread.
@@ -629,6 +610,7 @@ void StartTaskDisplay(void const * argument)
   for(;;)
   {
 		UI_logic();
+		T_Read_ifIRQ(&T_struct);
     osDelay(1);
   }
   /* USER CODE END StartTaskDisplay */

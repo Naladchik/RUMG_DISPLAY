@@ -47,8 +47,6 @@ void UI_logic(void){
 			default: break;
 		}
 		
-		T_Read_ifIRQ(&T_struct);
-		
 		if(T_struct.Unprocessed){//touch processing
 		switch(UI_item){		
 			case(MAIN_WIND):
