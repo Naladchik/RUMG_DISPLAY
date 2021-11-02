@@ -19,6 +19,7 @@ uint8_t sc_nr = 0;
 uint16_t port = TCP_PORT;
 
 extern SPI_HandleTypeDef hspi1;
+extern TypeVolt PhValues_output;
 
 uint8_t WizCheckLink(void);
 void W5500_Select(void);
@@ -50,7 +51,13 @@ void TCP_IP(void){
 				if(connect(sc_nr, srv_ip, port) == SOCK_OK)
 				break;
 			case(CONNECTED):
-				tx_buff[0] = 'b'; tx_buff[1] = 'a'; tx_buff[2] = 'r'; tx_buff[3] = 'e'; tx_buff[4] = 'b'; tx_buff[5] = 'u';  tx_buff[6] = 'h';
+				tx_buff[0] = (uint8_t) PhValues_output.PressLeft;
+				tx_buff[1] = (uint8_t) PhValues_output.PressRight;
+				tx_buff[2] = (uint8_t) PhValues_output.PressLine;
+				tx_buff[3] = (uint8_t) PhValues_output.PressConc;
+				tx_buff[4] = 0x00;
+				tx_buff[5] = 0x00;
+				tx_buff[6] = 0x00;
 				send(sc_nr, tx_buff, PDU_SIZE);
 				vTaskDelay(2000);
 				break;
