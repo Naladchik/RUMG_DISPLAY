@@ -55,6 +55,7 @@ osThreadId myTaskDisplayHandle;
 osMessageQId myQueueTouchHandle;
 /* USER CODE BEGIN PV */
 osThreadId myTaskLoRaHandle;
+osThreadId myTaskTCPIPHandle;
 QueueHandle_t myQueueADCHandle;
 QueueHandle_t myQueueLORAHandle;
 
@@ -99,6 +100,7 @@ void StartTaskDisplay(void const * argument);
 
 /* USER CODE BEGIN PFP */
 void StartTaskLoRa(void const * argument);
+void StartTaskTCPIP(void const * argument);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -159,7 +161,7 @@ int main(void)
 	}
 	
 	
-	if(DeviceParam.LoRa != NOLORA){
+	if(DeviceParam.CommDevice == LORA){
 		//initialize LoRa module
 		SX1278_hw.dio0.port = DIO0_GPIO_Port;
 		SX1278_hw.dio0.pin = DIO0_Pin;
@@ -174,10 +176,10 @@ int main(void)
 	
 		SX1278_init(&SX1278, DeviceParam.LR_FREQ, SX1278_POWER_17DBM, SX1278_LORA_SF_12,	SX1278_LORA_BW_125KHZ, SX1278_LORA_CR_4_5, SX1278_LORA_CRC_EN, 10);		
 				
-		if(DeviceParam.LoRa == SENDER){			
+		if((DeviceParam.Role == CONTROLER) || (DeviceParam.CommDevice == LORA)){			
 			SX1278_LoRaEntryTx(&SX1278, MESS_LEN, LoRa_TIMEOUT);	
 		}else 
-		if(DeviceParam.LoRa == RECEIVER){			
+		if((DeviceParam.Role == REPEATER) || (DeviceParam.CommDevice == LORA)){			
 			SX1278_LoRaEntryRx(&SX1278, MESS_LEN, LoRa_TIMEOUT);	
 		}
 	}
@@ -228,9 +230,18 @@ int main(void)
   myTaskDisplayHandle = osThreadCreate(osThread(myTaskDisplay), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
+	
   /* definition and creation of myTaskLoRa */
-  osThreadDef(myTaskLoRa, StartTaskLoRa, osPriorityIdle, 0, 128);
-  myTaskLoRaHandle = osThreadCreate(osThread(myTaskLoRa), NULL);
+	if(COMM_DEV == LORA){
+		osThreadDef(myTaskLoRa, StartTaskLoRa, osPriorityIdle, 0, 128);
+		myTaskLoRaHandle = osThreadCreate(osThread(myTaskLoRa), NULL);
+	}
+	
+	if(COMM_DEV == ETHERNET){
+		osThreadDef(myTaskTCPIP, StartTaskTCPIP, osPriorityIdle, 0, 256);
+		myTaskTCPIPHandle = osThreadCreate(osThread(myTaskTCPIP), NULL);
+	}
+	
   /* USER CODE END RTOS_THREADS */
 
   /* Start scheduler */
@@ -347,8 +358,8 @@ static void MX_SPI1_Init(void)
   hspi1.Init.Mode = SPI_MODE_MASTER;
   hspi1.Init.Direction = SPI_DIRECTION_2LINES;
   hspi1.Init.DataSize = SPI_DATASIZE_8BIT;
-  hspi1.Init.CLKPolarity = SPI_POLARITY_HIGH;
-  hspi1.Init.CLKPhase = SPI_PHASE_2EDGE;
+  hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
+  hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
   hspi1.Init.NSS = SPI_NSS_SOFT;
   hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_4;
   hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
@@ -526,11 +537,23 @@ void StartTaskLoRa(void const * argument)
 {
   /* Infinite loop */
   for(;;)
-  {
-    osDelay(1);
-		if(DeviceParam.LoRa != NOLORA) process_lora();
+  {    
+		if(DeviceParam.CommDevice == LORA) process_lora();
+		osDelay(1);
   }
 }
+
+
+void StartTaskTCPIP(void const * argument)
+{
+  /* Infinite loop */
+  for(;;)
+  {    
+		if(DeviceParam.CommDevice == ETHERNET) TCP_IP();
+		osDelay(1);
+  }
+}
+
 /* USER CODE END 4 */
 
 /* USER CODE BEGIN Header_StartDefaultTask */

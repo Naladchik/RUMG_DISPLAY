@@ -49,6 +49,7 @@ extern "C" {
 #include "UI_plot.h"
 #include "xpt2046.h"
 #include "time_lib.h"
+#include "tcp_ip.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/

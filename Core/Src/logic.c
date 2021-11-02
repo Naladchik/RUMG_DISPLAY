@@ -45,7 +45,7 @@ extern int16_t LR_RSSI;
 void make_action(const TypeVolt* Volt){
 //	static uint8_t ActiveGas = LEFT;
 	
-	if(DeviceParam.LoRa == RECEIVER){
+	if(DeviceParam.Role == REPEATER){
 			if(xQueueReceive(myQueueLORAHandle, &logic_q_buff, 0) == pdTRUE){
 				if(UnPackPacket(&Alarm, logic_q_buff, &LEDvalueL, &LEDvalueR, &ActiveGas) == 0){
 					LEDvalueL = 0;
@@ -60,7 +60,7 @@ void make_action(const TypeVolt* Volt){
 					ActiveGas = CONCENTRATOR;
 				}
 			}
-	}else{
+	}else{ //if it is CONTROLLER
       LEDvalueL = (uint8_t)(1 + Volt->PressLeft /  Pquant);
       if(LEDvalueL < 1) LEDvalueL = 1;
       if(LEDvalueL > 20) LEDvalueL = 20;
@@ -71,7 +71,7 @@ void make_action(const TypeVolt* Volt){
 		/* ---------------------------------------------------------------------- */
     /*           GAS SOURCE SENSITIVE LOGIC                                   */
     /* ---------------------------------------------------------------------- */
-	if((DeviceParam.LoRa == SENDER)||(DeviceParam.LoRa == NOLORA)){
+	if(DeviceParam.Role == CONTROLER){
 		//User control section
 		if(SwitchGasRequest){
 			if((Volt->PressRight >= DeviceParam.HPressSwitch) && 
@@ -155,7 +155,7 @@ void make_action(const TypeVolt* Volt){
     }
 		}
 	
-		if(DeviceParam.LoRa == RECEIVER){			
+		if(DeviceParam.Role == REPEATER){			
 			if((OldActiveGas == CONCENTRATOR) && (ActiveGas != CONCENTRATOR)) ConcSIGCounter = CONC_SIG_DUR;			
 			
 			if(LoraLinkOK){ //there is succesfull radiolink
@@ -204,7 +204,7 @@ void make_action(const TypeVolt* Volt){
 		OneSeconTick = 0;
     TickForward = 1;
 			
-		if((DeviceParam.LoRa == SENDER) && (LORA_busy == 0)){
+		if((DeviceParam.Role == CONTROLER) && (DeviceParam.CommDevice == LORA) && (LORA_busy == 0)){
 			PackPacket(&Alarm, logic_q_buff, &LEDvalueL, &LEDvalueR, &ActiveGas);
 			if(xQueueSend(myQueueLORAHandle, &logic_q_buff, 0) != pdTRUE){
 				while(1){}
@@ -214,7 +214,7 @@ void make_action(const TypeVolt* Volt){
 		/* ---------------------------------------------------------------------- */
 	  /*           ALARM GENERATION                                             */
     /* ---------------------------------------------------------------------- */
-		if((DeviceParam.LoRa == SENDER) || (DeviceParam.LoRa == NOLORA)){
+		if(DeviceParam.Role == CONTROLER){
     //one cylinder < 10 bar, second cylinder < 40 bar
     if(((Volt->PressLeft <= DeviceParam.HPressSwitch)&&(Volt->PressRight <= DeviceParam.HPressAlarm))
        ||((Volt->PressRight <= DeviceParam.HPressSwitch)&&(Volt->PressLeft <= DeviceParam.HPressAlarm))){
@@ -291,7 +291,7 @@ void make_action(const TypeVolt* Volt){
     /* ---------------------------------------------------------------------- */
     /*           ALARM SOUNDS AND LEDs PROCESSING                             */
     /* ---------------------------------------------------------------------- */
-		if(LoraLinkOK || (DeviceParam.LoRa == SENDER)||(DeviceParam.LoRa == NOLORA)){
+		if(DeviceParam.Role == CONTROLER){
     if(Alarm.BatteryOut){
      //Highest priority alarm. Out of battery. Sound can not be off.
 			Buzzer(1);      

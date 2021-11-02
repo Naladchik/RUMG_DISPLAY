@@ -49,10 +49,13 @@
 #define RESET_Pin GPIO_PIN_0
 #define RESET_GPIO_Port GPIOA
 /* ---------------------------------------------------------------------------*/
-
-#define SENDER 	 1
-#define RECEIVER 2
-#define NOLORA   3
+//Roles
+#define CONTROLER		0x88
+#define REPEATER 			0x44
+//Communication devices
+#define NO_COMM  			0x00
+#define LORA  				0x22
+#define ETHERNET		  0x11
 
 #define LoRa_TIMEOUT 2000 //2000
 

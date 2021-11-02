@@ -8,7 +8,8 @@
 /*INDIVIDUAL PARAMETERS!!!*/
 #define TX_DEV_NUM				   		0x01
 #define RX_DEV_NUM				   		0x02
-#define COMMUNICATION	 					NOLORA//SENDER, RECEIVER, NOLORA
+#define ROLE	 									CONTROLER
+#define COMM_DEV								ETHERNET
 #define LORA_FREQ   						434500000  //Frequeny in Hz, was 434500000, was 859500000
 #define BARANKI           			1 // 1 - do not take into account LineMin, 0 - do take into account (baranovichi_style)
 #define CONC_DELAY            	10  //Delay for concentrator again-on
@@ -55,7 +56,8 @@
 typedef struct{
 	uint8_t tx_device_num;
 	uint8_t rx_device_num;
-	uint8_t LoRa:2;
+	uint8_t Role;
+	uint8_t CommDevice;
 	uint32_t LR_FREQ;
 	uint8_t Baranki:1;
 	uint16_t ConcDelay;
