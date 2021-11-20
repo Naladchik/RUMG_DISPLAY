@@ -3,11 +3,11 @@
 <title>Static Call Graph - [rumg\rumg.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image rumg\rumg.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Tue Nov 02 23:27:46 2021
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Sat Nov 20 17:01:30 2021
 <BR><P>
 <H3>Maximum Stack Usage =        552 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-main &rArr; DrawTheBase &rArr; DrawRoundScale &rArr; sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
+main &rArr; DrawTheBase &rArr; DrawRoundScale &rArr; sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 <P>
 <H3>
 Mutually Recursive functions
@@ -89,34 +89,34 @@ Function Pointers
  <LI><a href="#[51]">W5500_WriteByte</a> from tcp_ip.o(i.W5500_WriteByte) referenced from tcp_ip.o(i.init_w5500)
  <LI><a href="#[21]">WWDG_IRQHandler</a> from startup_stm32f103xb.o(.text) referenced from startup_stm32f103xb.o(RESET)
  <LI><a href="#[4e]">__main</a> from entry.o(.ARM.Collect$$$$00000000) referenced from startup_stm32f103xb.o(.text)
- <LI><a href="#[3]">ili9488_DisplayOff</a> from ili9488.o(i.ili9488_DisplayOff) referenced 2 times from ili9488.o(.data)
- <LI><a href="#[2]">ili9488_DisplayOn</a> from ili9488.o(i.ili9488_DisplayOn) referenced 2 times from ili9488.o(.data)
- <LI><a href="#[c]">ili9488_DrawBitmap</a> from ili9488.o(i.ili9488_DrawBitmap) referenced 2 times from ili9488.o(.data)
- <LI><a href="#[8]">ili9488_DrawHLine</a> from ili9488.o(i.ili9488_DrawHLine) referenced 2 times from ili9488.o(.data)
- <LI><a href="#[d]">ili9488_DrawRGBImage</a> from ili9488.o(i.ili9488_DrawRGBImage) referenced 2 times from ili9488.o(.data)
- <LI><a href="#[9]">ili9488_DrawVLine</a> from ili9488.o(i.ili9488_DrawVLine) referenced 2 times from ili9488.o(.data)
- <LI><a href="#[e]">ili9488_FillRect</a> from ili9488.o(i.ili9488_FillRect) referenced 2 times from ili9488.o(.data)
- <LI><a href="#[b]">ili9488_GetLcdPixelHeight</a> from ili9488.o(i.ili9488_GetLcdPixelHeight) referenced 2 times from ili9488.o(.data)
- <LI><a href="#[a]">ili9488_GetLcdPixelWidth</a> from ili9488.o(i.ili9488_GetLcdPixelWidth) referenced 2 times from ili9488.o(.data)
- <LI><a href="#[0]">ili9488_Init</a> from ili9488.o(i.ili9488_Init) referenced 2 times from ili9488.o(.data)
- <LI><a href="#[1]">ili9488_ReadID</a> from ili9488.o(i.ili9488_ReadID) referenced 2 times from ili9488.o(.data)
- <LI><a href="#[6]">ili9488_ReadPixel</a> from ili9488.o(i.ili9488_ReadPixel) referenced 2 times from ili9488.o(.data)
- <LI><a href="#[f]">ili9488_ReadRGBImage</a> from ili9488.o(i.ili9488_ReadRGBImage) referenced 2 times from ili9488.o(.data)
- <LI><a href="#[10]">ili9488_Scroll</a> from ili9488.o(i.ili9488_Scroll) referenced 2 times from ili9488.o(.data)
- <LI><a href="#[4]">ili9488_SetCursor</a> from ili9488.o(i.ili9488_SetCursor) referenced 2 times from ili9488.o(.data)
- <LI><a href="#[7]">ili9488_SetDisplayWindow</a> from ili9488.o(i.ili9488_SetDisplayWindow) referenced 2 times from ili9488.o(.data)
- <LI><a href="#[5]">ili9488_WritePixel</a> from ili9488.o(i.ili9488_WritePixel) referenced 2 times from ili9488.o(.data)
+ <LI><a href="#[9]">ili9488_DisplayOff</a> from ili9488.o(i.ili9488_DisplayOff) referenced 2 times from ili9488.o(.data)
+ <LI><a href="#[8]">ili9488_DisplayOn</a> from ili9488.o(i.ili9488_DisplayOn) referenced 2 times from ili9488.o(.data)
+ <LI><a href="#[12]">ili9488_DrawBitmap</a> from ili9488.o(i.ili9488_DrawBitmap) referenced 2 times from ili9488.o(.data)
+ <LI><a href="#[e]">ili9488_DrawHLine</a> from ili9488.o(i.ili9488_DrawHLine) referenced 2 times from ili9488.o(.data)
+ <LI><a href="#[13]">ili9488_DrawRGBImage</a> from ili9488.o(i.ili9488_DrawRGBImage) referenced 2 times from ili9488.o(.data)
+ <LI><a href="#[f]">ili9488_DrawVLine</a> from ili9488.o(i.ili9488_DrawVLine) referenced 2 times from ili9488.o(.data)
+ <LI><a href="#[14]">ili9488_FillRect</a> from ili9488.o(i.ili9488_FillRect) referenced 2 times from ili9488.o(.data)
+ <LI><a href="#[11]">ili9488_GetLcdPixelHeight</a> from ili9488.o(i.ili9488_GetLcdPixelHeight) referenced 2 times from ili9488.o(.data)
+ <LI><a href="#[10]">ili9488_GetLcdPixelWidth</a> from ili9488.o(i.ili9488_GetLcdPixelWidth) referenced 2 times from ili9488.o(.data)
+ <LI><a href="#[6]">ili9488_Init</a> from ili9488.o(i.ili9488_Init) referenced 2 times from ili9488.o(.data)
+ <LI><a href="#[7]">ili9488_ReadID</a> from ili9488.o(i.ili9488_ReadID) referenced 2 times from ili9488.o(.data)
+ <LI><a href="#[c]">ili9488_ReadPixel</a> from ili9488.o(i.ili9488_ReadPixel) referenced 2 times from ili9488.o(.data)
+ <LI><a href="#[15]">ili9488_ReadRGBImage</a> from ili9488.o(i.ili9488_ReadRGBImage) referenced 2 times from ili9488.o(.data)
+ <LI><a href="#[16]">ili9488_Scroll</a> from ili9488.o(i.ili9488_Scroll) referenced 2 times from ili9488.o(.data)
+ <LI><a href="#[a]">ili9488_SetCursor</a> from ili9488.o(i.ili9488_SetCursor) referenced 2 times from ili9488.o(.data)
+ <LI><a href="#[d]">ili9488_SetDisplayWindow</a> from ili9488.o(i.ili9488_SetDisplayWindow) referenced 2 times from ili9488.o(.data)
+ <LI><a href="#[b]">ili9488_WritePixel</a> from ili9488.o(i.ili9488_WritePixel) referenced 2 times from ili9488.o(.data)
  <LI><a href="#[4c]">main</a> from main.o(i.main) referenced from entry9a.o(.ARM.Collect$$$$0000000B)
  <LI><a href="#[5a]">prvIdleTask</a> from tasks.o(i.prvIdleTask) referenced from tasks.o(i.vTaskStartScheduler)
  <LI><a href="#[55]">prvTaskExitError</a> from port.o(i.prvTaskExitError) referenced from port.o(i.pxPortInitialiseStack)
- <LI><a href="#[15]">wizchip_bus_readdata</a> from wizchip_conf.o(i.wizchip_bus_readdata) referenced 2 times from wizchip_conf.o(.data)
- <LI><a href="#[16]">wizchip_bus_writedata</a> from wizchip_conf.o(i.wizchip_bus_writedata) referenced 2 times from wizchip_conf.o(.data)
- <LI><a href="#[11]">wizchip_cris_enter</a> from wizchip_conf.o(i.wizchip_cris_enter) referenced 2 times from wizchip_conf.o(.data)
- <LI><a href="#[12]">wizchip_cris_exit</a> from wizchip_conf.o(i.wizchip_cris_exit) referenced 2 times from wizchip_conf.o(.data)
- <LI><a href="#[14]">wizchip_cs_deselect</a> from wizchip_conf.o(i.wizchip_cs_deselect) referenced 2 times from wizchip_conf.o(.data)
- <LI><a href="#[14]">wizchip_cs_deselect</a> from wizchip_conf.o(i.wizchip_cs_deselect) referenced from wizchip_conf.o(i.reg_wizchip_cs_cbfunc)
- <LI><a href="#[13]">wizchip_cs_select</a> from wizchip_conf.o(i.wizchip_cs_select) referenced 2 times from wizchip_conf.o(.data)
- <LI><a href="#[13]">wizchip_cs_select</a> from wizchip_conf.o(i.wizchip_cs_select) referenced from wizchip_conf.o(i.reg_wizchip_cs_cbfunc)
+ <LI><a href="#[4]">wizchip_bus_readdata</a> from wizchip_conf.o(i.wizchip_bus_readdata) referenced 2 times from wizchip_conf.o(.data)
+ <LI><a href="#[5]">wizchip_bus_writedata</a> from wizchip_conf.o(i.wizchip_bus_writedata) referenced 2 times from wizchip_conf.o(.data)
+ <LI><a href="#[0]">wizchip_cris_enter</a> from wizchip_conf.o(i.wizchip_cris_enter) referenced 2 times from wizchip_conf.o(.data)
+ <LI><a href="#[1]">wizchip_cris_exit</a> from wizchip_conf.o(i.wizchip_cris_exit) referenced 2 times from wizchip_conf.o(.data)
+ <LI><a href="#[3]">wizchip_cs_deselect</a> from wizchip_conf.o(i.wizchip_cs_deselect) referenced 2 times from wizchip_conf.o(.data)
+ <LI><a href="#[3]">wizchip_cs_deselect</a> from wizchip_conf.o(i.wizchip_cs_deselect) referenced from wizchip_conf.o(i.reg_wizchip_cs_cbfunc)
+ <LI><a href="#[2]">wizchip_cs_select</a> from wizchip_conf.o(i.wizchip_cs_select) referenced 2 times from wizchip_conf.o(.data)
+ <LI><a href="#[2]">wizchip_cs_select</a> from wizchip_conf.o(i.wizchip_cs_select) referenced from wizchip_conf.o(i.reg_wizchip_cs_cbfunc)
  <LI><a href="#[58]">wizchip_spi_readburst</a> from wizchip_conf.o(i.wizchip_spi_readburst) referenced from wizchip_conf.o(i.reg_wizchip_spiburst_cbfunc)
  <LI><a href="#[56]">wizchip_spi_readbyte</a> from wizchip_conf.o(i.wizchip_spi_readbyte) referenced from wizchip_conf.o(i.reg_wizchip_spi_cbfunc)
  <LI><a href="#[59]">wizchip_spi_writeburst</a> from wizchip_conf.o(i.wizchip_spi_writeburst) referenced from wizchip_conf.o(i.reg_wizchip_spiburst_cbfunc)
@@ -298,8 +298,8 @@ Global Symbols
 <P><STRONG><a name="[63]"></a>__aeabi_uldivmod</STRONG> (Thumb, 98 bytes, Stack size 40 bytes, uldiv.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = __aeabi_uldivmod
 </UL>
-<BR>[Calls]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsr
-<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsl
+<BR>[Calls]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsl
+<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsr
 </UL>
 <BR>[Called By]<UL><LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SX1278_config
 </UL>
@@ -307,8 +307,8 @@ Global Symbols
 <P><STRONG><a name="[64]"></a>__aeabi_llsr</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, llushr.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2uiz
 <LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2iz
-<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uldivmod
 <LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_epilogue
+<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uldivmod
 </UL>
 
 <P><STRONG><a name="[179]"></a>_ll_ushift_r</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llushr.o(.text), UNUSED)
@@ -519,9 +519,9 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[92]"></a>__aeabi_f2uiz</STRONG> (Thumb, 40 bytes, Stack size 0 bytes, ffixui.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TCP_IP
-<LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;make_action
+<BR><BR>[Called By]<UL><LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;make_action
 <LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;measure_volt
+<LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TCP_IP
 <LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawPlot
 <LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawRoundScale
 <LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawMainWindow
@@ -586,8 +586,8 @@ Global Symbols
 
 <P><STRONG><a name="[65]"></a>__aeabi_llsl</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, llshl.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
-<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uldivmod
 <LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_epilogue
+<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uldivmod
 </UL>
 
 <P><STRONG><a name="[180]"></a>_ll_shift_l</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llshl.o(.text), UNUSED)
@@ -625,14 +625,14 @@ Global Symbols
 <P><STRONG><a name="[71]"></a>_double_epilogue</STRONG> (Thumb, 156 bytes, Stack size 32 bytes, depilogue.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = _double_epilogue &rArr; _double_round
 </UL>
-<BR>[Calls]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsr
-<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsl
+<BR>[Calls]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsl
 <LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_round
+<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsr
 </UL>
-<BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
-<LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2d
+<BR>[Called By]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2d
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
 <LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
+<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 </UL>
 
 <P><STRONG><a name="[120]"></a>__ARM_scalbn</STRONG> (Thumb, 46 bytes, Stack size 16 bytes, dscalb.o(.text))
@@ -719,8 +719,8 @@ Global Symbols
 <P><STRONG><a name="[88]"></a>Buzzer</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, user_libs.o(i.Buzzer))
 <BR><BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 </UL>
-<BR>[Called By]<UL><LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T_Read_ifIRQ
-<LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;make_action
+<BR>[Called By]<UL><LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;make_action
+<LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T_Read_ifIRQ
 </UL>
 
 <P><STRONG><a name="[1e]"></a>DebugMon_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f1xx_it.o(i.DebugMon_Handler))
@@ -746,7 +746,7 @@ Global Symbols
 <P><STRONG><a name="[8d]"></a>DrawBattery</STRONG> (Thumb, 186 bytes, Stack size 48 bytes, main_window.o(i.DrawBattery))
 <BR><BR>[Stack]<UL><LI>Max Depth = 124<LI>Call Chain = DrawBattery &rArr; DrawImage &rArr; ili9488_WritePixel &rArr; LCD_IO_WriteData8 &rArr; LcdWrite8
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_DrawVLine
+<BR>[Calls]<UL><LI><a href="#[f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_DrawVLine
 <LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawImage
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawMainWindow
@@ -755,7 +755,7 @@ Global Symbols
 <P><STRONG><a name="[8e]"></a>DrawCommaB</STRONG> (Thumb, 86 bytes, Stack size 40 bytes, graphlib.o(i.DrawCommaB))
 <BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = DrawCommaB &rArr; ili9488_WritePixel &rArr; LCD_IO_WriteData8 &rArr; LcdWrite8
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_WritePixel
+<BR>[Calls]<UL><LI><a href="#[b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_WritePixel
 </UL>
 <BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawLinePress
 </UL>
@@ -763,7 +763,7 @@ Global Symbols
 <P><STRONG><a name="[8f]"></a>DrawCommaS</STRONG> (Thumb, 86 bytes, Stack size 40 bytes, graphlib.o(i.DrawCommaS))
 <BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = DrawCommaS &rArr; ili9488_WritePixel &rArr; LCD_IO_WriteData8 &rArr; LcdWrite8
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_WritePixel
+<BR>[Calls]<UL><LI><a href="#[b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_WritePixel
 </UL>
 <BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawConcPress
 </UL>
@@ -782,7 +782,7 @@ Global Symbols
 <P><STRONG><a name="[94]"></a>DrawConsumption</STRONG> (Thumb, 590 bytes, Stack size 48 bytes, main_window.o(i.DrawConsumption))
 <BR><BR>[Stack]<UL><LI>Max Depth = 124<LI>Call Chain = DrawConsumption &rArr; DrawImage &rArr; ili9488_WritePixel &rArr; LCD_IO_WriteData8 &rArr; LcdWrite8
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_WritePixel
+<BR>[Calls]<UL><LI><a href="#[b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_WritePixel
 <LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawImage
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawMainWindow
@@ -791,7 +791,7 @@ Global Symbols
 <P><STRONG><a name="[95]"></a>DrawDigitB</STRONG> (Thumb, 140 bytes, Stack size 56 bytes, graphlib.o(i.DrawDigitB))
 <BR><BR>[Stack]<UL><LI>Max Depth = 92<LI>Call Chain = DrawDigitB &rArr; ili9488_WritePixel &rArr; LCD_IO_WriteData8 &rArr; LcdWrite8
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_WritePixel
+<BR>[Calls]<UL><LI><a href="#[b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_WritePixel
 </UL>
 <BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawLinePress
 <LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawFlowVal
@@ -800,7 +800,7 @@ Global Symbols
 <P><STRONG><a name="[93]"></a>DrawDigitS</STRONG> (Thumb, 144 bytes, Stack size 56 bytes, graphlib.o(i.DrawDigitS))
 <BR><BR>[Stack]<UL><LI>Max Depth = 92<LI>Call Chain = DrawDigitS &rArr; ili9488_WritePixel &rArr; LCD_IO_WriteData8 &rArr; LcdWrite8
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_WritePixel
+<BR>[Calls]<UL><LI><a href="#[b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_WritePixel
 </UL>
 <BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawConcPress
 </UL>
@@ -808,7 +808,7 @@ Global Symbols
 <P><STRONG><a name="[96]"></a>DrawDigitS_no_bgn</STRONG> (Thumb, 94 bytes, Stack size 56 bytes, graphlib.o(i.DrawDigitS_no_bgn))
 <BR><BR>[Stack]<UL><LI>Max Depth = 92<LI>Call Chain = DrawDigitS_no_bgn &rArr; ili9488_WritePixel &rArr; LCD_IO_WriteData8 &rArr; LcdWrite8
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_WritePixel
+<BR>[Calls]<UL><LI><a href="#[b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_WritePixel
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawRightPress
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawLeftPress
@@ -825,7 +825,7 @@ Global Symbols
 <P><STRONG><a name="[8b]"></a>DrawImage</STRONG> (Thumb, 92 bytes, Stack size 40 bytes, graphlib.o(i.DrawImage))
 <BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = DrawImage &rArr; ili9488_WritePixel &rArr; LCD_IO_WriteData8 &rArr; LcdWrite8
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_WritePixel
+<BR>[Calls]<UL><LI><a href="#[b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_WritePixel
 </UL>
 <BR>[Called By]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawTheBase
 <LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EraseAlarmSmall
@@ -837,10 +837,9 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[98]"></a>DrawLeftPress</STRONG> (Thumb, 374 bytes, Stack size 64 bytes, main_window.o(i.DrawLeftPress))
-<BR><BR>[Stack]<UL><LI>Max Depth = 312<LI>Call Chain = DrawLeftPress &rArr; sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
+<BR><BR>[Stack]<UL><LI>Max Depth = 312<LI>Call Chain = DrawLeftPress &rArr; sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
-<BR>[Calls]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
-<LI><a href="#[5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_WritePixel
+<BR>[Calls]<UL><LI><a href="#[b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_WritePixel
 <LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2d
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
 <LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
@@ -849,6 +848,7 @@ Global Symbols
 <LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2iz
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdcmple
 <LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawDigitS_no_bgn
+<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 <LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sin
 <LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;log
 <LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cos
@@ -878,11 +878,9 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[a2]"></a>DrawMainWindow</STRONG> (Thumb, 448 bytes, Stack size 32 bytes, main_window.o(i.DrawMainWindow))
-<BR><BR>[Stack]<UL><LI>Max Depth = 344<LI>Call Chain = DrawMainWindow &rArr; DrawRightPress &rArr; sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
+<BR><BR>[Stack]<UL><LI>Max Depth = 344<LI>Call Chain = DrawMainWindow &rArr; DrawRightPress &rArr; sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2uiz
-<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
-<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
 <LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
 <LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2uiz
@@ -901,6 +899,8 @@ Global Symbols
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawBattery
 <LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawAlarmSmall
 <LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawAlarmBig
+<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
+<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 </UL>
 <BR>[Called By]<UL><LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UI_logic
 </UL>
@@ -908,7 +908,7 @@ Global Symbols
 <P><STRONG><a name="[a8]"></a>DrawMenuDots</STRONG> (Thumb, 304 bytes, Stack size 32 bytes, main_window.o(i.DrawMenuDots))
 <BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = DrawMenuDots &rArr; ili9488_WritePixel &rArr; LCD_IO_WriteData8 &rArr; LcdWrite8
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_WritePixel
+<BR>[Calls]<UL><LI><a href="#[b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_WritePixel
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawMainWindow
 </UL>
@@ -921,21 +921,21 @@ Global Symbols
 <LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2uiz
 <LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_frsub
-<LI><a href="#[9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_DrawVLine
+<LI><a href="#[f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_DrawVLine
 </UL>
 <BR>[Called By]<UL><LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UI_logic
 </UL>
 
 <P><STRONG><a name="[a6]"></a>DrawRightPress</STRONG> (Thumb, 318 bytes, Stack size 64 bytes, main_window.o(i.DrawRightPress))
-<BR><BR>[Stack]<UL><LI>Max Depth = 312<LI>Call Chain = DrawRightPress &rArr; sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
+<BR><BR>[Stack]<UL><LI>Max Depth = 312<LI>Call Chain = DrawRightPress &rArr; sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
-<BR>[Calls]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
-<LI><a href="#[5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_WritePixel
+<BR>[Calls]<UL><LI><a href="#[b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_WritePixel
 <LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2d
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
 <LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2iz
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdcmple
 <LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawDigitS_no_bgn
+<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 <LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sin
 <LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cos
 </UL>
@@ -943,19 +943,19 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[aa]"></a>DrawRoundScale</STRONG> (Thumb, 320 bytes, Stack size 112 bytes, main_window.o(i.DrawRoundScale))
-<BR><BR>[Stack]<UL><LI>Max Depth = 360<LI>Call Chain = DrawRoundScale &rArr; sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
+<BR><BR>[Stack]<UL><LI>Max Depth = 360<LI>Call Chain = DrawRoundScale &rArr; sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 <LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2uiz
-<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
-<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
-<LI><a href="#[5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_WritePixel
+<LI><a href="#[b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_WritePixel
 <LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2d
 <LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
 <LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 <LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2iz
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdcmple
+<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
+<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
 <LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sin
 <LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cos
 </UL>
@@ -983,7 +983,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[ad]"></a>DrawTheBase</STRONG> (Thumb, 328 bytes, Stack size 32 bytes, main_window.o(i.DrawTheBase))
-<BR><BR>[Stack]<UL><LI>Max Depth = 392<LI>Call Chain = DrawTheBase &rArr; DrawRoundScale &rArr; sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
+<BR><BR>[Stack]<UL><LI>Max Depth = 392<LI>Call Chain = DrawTheBase &rArr; DrawRoundScale &rArr; sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FillBackground
 <LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawImage
@@ -998,7 +998,7 @@ Global Symbols
 <P><STRONG><a name="[ae]"></a>DrawTheLine</STRONG> (Thumb, 62 bytes, Stack size 24 bytes, main_window.o(i.DrawTheLine))
 <BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = DrawTheLine &rArr; ili9488_DrawHLine &rArr; ili9488_FillRect &rArr; ili9488_SetDisplayWindow &rArr; LCD_IO_WriteData8 &rArr; LcdWrite8
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_DrawHLine
+<BR>[Calls]<UL><LI><a href="#[e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_DrawHLine
 </UL>
 <BR>[Called By]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawTheBase
 </UL>
@@ -1027,7 +1027,7 @@ Global Symbols
 <P><STRONG><a name="[9f]"></a>FillBackground</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, graphlib.o(i.FillBackground))
 <BR><BR>[Stack]<UL><LI>Max Depth = 60<LI>Call Chain = FillBackground &rArr; ili9488_FillRect &rArr; ili9488_SetDisplayWindow &rArr; LCD_IO_WriteData8 &rArr; LcdWrite8
 </UL>
-<BR>[Calls]<UL><LI><a href="#[e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_FillRect
+<BR>[Calls]<UL><LI><a href="#[14]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_FillRect
 </UL>
 <BR>[Called By]<UL><LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UI_logic
 <LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawTheBase
@@ -1077,8 +1077,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Enable
 </UL>
-<BR>[Called By]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;measure_volt
+<BR>[Called By]<UL><LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;measure_volt
+<LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[b5]"></a>HAL_Delay</STRONG> (Thumb, 32 bytes, Stack size 16 bytes, stm32f1xx_hal.o(i.HAL_Delay))
@@ -1086,8 +1086,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 </UL>
-<BR>[Called By]<UL><LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SX1278_hw_DelayMs
-<LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Delay
+<BR>[Called By]<UL><LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Delay
+<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SX1278_hw_DelayMs
 </UL>
 
 <P><STRONG><a name="[b1]"></a>HAL_GPIO_Init</STRONG> (Thumb, 446 bytes, Stack size 40 bytes, stm32f1xx_hal_gpio.o(i.HAL_GPIO_Init))
@@ -1103,11 +1103,11 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[89]"></a>HAL_GPIO_WritePin</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32f1xx_hal_gpio.o(i.HAL_GPIO_WritePin))
-<BR><BR>[Called By]<UL><LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_IRQHandler
-<LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T_SetWatch
-<LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
+<BR><BR>[Called By]<UL><LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
 <LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzzer
 <LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;make_action
+<LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_IRQHandler
+<LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T_SetWatch
 <LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SX1278_hw_init
 <LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SX1278_hw_SetNSS
 <LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SX1278_hw_Reset
@@ -1120,17 +1120,17 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[80]"></a>HAL_GetTick</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f1xx_hal.o(i.HAL_GetTick))
-<BR><BR>[Called By]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_OscConfig
-<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_ClockConfig
-<LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCCEx_PeriphCLKConfig
-<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_PollForConversion
+<BR><BR>[Called By]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_PollForConversion
 <LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Enable
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_ConversionStop_Disable
-<LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_WaitFlagStateUntilTimeout
+<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_OscConfig
+<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_ClockConfig
+<LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCCEx_PeriphCLKConfig
 <LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SPI_TransmitReceive
 <LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SPI_Transmit
 <LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SPI_Receive
+<LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_WaitFlagStateUntilTimeout
 </UL>
 
 <P><STRONG><a name="[db]"></a>HAL_IncTick</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, stm32f1xx_hal.o(i.HAL_IncTick))
@@ -1150,12 +1150,12 @@ Global Symbols
 <P><STRONG><a name="[b8]"></a>HAL_InitTick</STRONG> (Thumb, 98 bytes, Stack size 32 bytes, stm32f1xx_hal_timebase_tim.o(i.HAL_InitTick))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = HAL_InitTick &rArr; HAL_TIM_Base_Init &rArr; HAL_TIM_Base_MspInit &rArr; HAL_NVIC_SetPriority
 </UL>
-<BR>[Calls]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Start_IT
-<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Init
-<LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetPCLK2Freq
+<BR>[Calls]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetPCLK2Freq
 <LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetClockConfig
 <LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_NVIC_SetPriority
 <LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_NVIC_EnableIRQ
+<LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Start_IT
+<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_ClockConfig
 <LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Init
@@ -1204,9 +1204,9 @@ Global Symbols
 <P><STRONG><a name="[c2]"></a>HAL_RCC_ClockConfig</STRONG> (Thumb, 280 bytes, Stack size 32 bytes, stm32f1xx_hal_rcc.o(i.HAL_RCC_ClockConfig))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = HAL_RCC_ClockConfig &rArr; HAL_InitTick &rArr; HAL_TIM_Base_Init &rArr; HAL_TIM_Base_MspInit &rArr; HAL_NVIC_SetPriority
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetSysClockFreq
-<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
+<BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 <LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_InitTick
+<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetSysClockFreq
 </UL>
 <BR>[Called By]<UL><LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
 </UL>
@@ -1264,8 +1264,8 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = HAL_SPI_Receive &rArr; HAL_SPI_TransmitReceive &rArr; SPI_EndRxTxTransaction &rArr; SPI_WaitFlagStateUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
-<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_EndRxTransaction
 <LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SPI_TransmitReceive
+<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_EndRxTransaction
 </UL>
 <BR>[Called By]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;W5500_ReadBuff
 </UL>
@@ -1327,17 +1327,17 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[bf]"></a>HAL_TIM_Base_Start_IT</STRONG> (Thumb, 76 bytes, Stack size 0 bytes, stm32f1xx_hal_tim.o(i.HAL_TIM_Base_Start_IT))
-<BR><BR>[Called By]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_InitTick
+<BR><BR>[Called By]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_InitTick
+<LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[ce]"></a>HAL_TIM_ConfigClockSource</STRONG> (Thumb, 214 bytes, Stack size 16 bytes, stm32f1xx_hal_tim.o(i.HAL_TIM_ConfigClockSource))
-<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = HAL_TIM_ConfigClockSource &rArr; TIM_ETR_SetConfig
+<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = HAL_TIM_ConfigClockSource &rArr; TIM_TI2_ConfigInputStage
 </UL>
-<BR>[Calls]<UL><LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ETR_SetConfig
-<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TI2_ConfigInputStage
+<BR>[Calls]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TI2_ConfigInputStage
 <LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TI1_ConfigInputStage
 <LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ITRx_SetConfig
+<LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ETR_SetConfig
 </UL>
 <BR>[Called By]<UL><LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM3_Init
 </UL>
@@ -1395,19 +1395,19 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
 </UL>
-<BR>[Called By]<UL><LI><a href="#[0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_Init
+<BR>[Called By]<UL><LI><a href="#[6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_Init
 </UL>
 
 <P><STRONG><a name="[12f]"></a>LCD_IO_Bl_OnOff</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, lcd_io_spi.o(i.LCD_IO_Bl_OnOff))
-<BR><BR>[Called By]<UL><LI><a href="#[2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_DisplayOn
-<LI><a href="#[3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_DisplayOff
+<BR><BR>[Called By]<UL><LI><a href="#[8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_DisplayOn
+<LI><a href="#[9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_DisplayOff
 </UL>
 
 <P><STRONG><a name="[ee]"></a>LCD_IO_Delay</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, lcd_io_spi.o(i.LCD_IO_Delay))
-<BR><BR>[Called By]<UL><LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdDirWrite
-<LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdCmdWrite8
-<LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdWrite8
+<BR><BR>[Called By]<UL><LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdWrite8
 <LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdWrite16
+<LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdDirWrite
+<LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdCmdWrite8
 </UL>
 
 <P><STRONG><a name="[dd]"></a>LCD_IO_ReadCmd8MultipleData24to16</STRONG> (Thumb, 42 bytes, Stack size 16 bytes, lcd_io_spi.o(i.LCD_IO_ReadCmd8MultipleData24to16))
@@ -1417,8 +1417,8 @@ Global Symbols
 <LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdCmdWrite8
 <LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_IO_ReadMultiData16to24
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_ReadRGBImage
-<LI><a href="#[6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_ReadPixel
+<BR>[Called By]<UL><LI><a href="#[15]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_ReadRGBImage
+<LI><a href="#[c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_ReadPixel
 </UL>
 
 <P><STRONG><a name="[e1]"></a>LCD_IO_ReadCmd8MultipleData8</STRONG> (Thumb, 42 bytes, Stack size 16 bytes, lcd_io_spi.o(i.LCD_IO_ReadCmd8MultipleData8))
@@ -1428,14 +1428,14 @@ Global Symbols
 <LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdCmdWrite8
 <LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_IO_ReadMultiData8
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_ReadID
+<BR>[Called By]<UL><LI><a href="#[7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_ReadID
 </UL>
 
 <P><STRONG><a name="[e0]"></a>LCD_IO_ReadMultiData16to24</STRONG> (Thumb, 70 bytes, Stack size 24 bytes, lcd_io_spi.o(i.LCD_IO_ReadMultiData16to24))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = LCD_IO_ReadMultiData16to24 &rArr; LcdDirWrite
 </UL>
-<BR>[Calls]<UL><LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdDirWrite
-<LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdRead8
+<BR>[Calls]<UL><LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdRead8
+<LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdDirWrite
 </UL>
 <BR>[Called By]<UL><LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_IO_ReadCmd8MultipleData24to16
 </UL>
@@ -1443,8 +1443,8 @@ Global Symbols
 <P><STRONG><a name="[e2]"></a>LCD_IO_ReadMultiData8</STRONG> (Thumb, 36 bytes, Stack size 16 bytes, lcd_io_spi.o(i.LCD_IO_ReadMultiData8))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = LCD_IO_ReadMultiData8 &rArr; LcdDirWrite
 </UL>
-<BR>[Calls]<UL><LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdDirWrite
-<LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdRead8
+<BR>[Calls]<UL><LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdRead8
+<LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdDirWrite
 </UL>
 <BR>[Called By]<UL><LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_IO_ReadCmd8MultipleData8
 </UL>
@@ -1454,16 +1454,16 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdCmdWrite8
 </UL>
-<BR>[Called By]<UL><LI><a href="#[0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_Init
-<LI><a href="#[7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_SetDisplayWindow
-<LI><a href="#[4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_SetCursor
-<LI><a href="#[6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_ReadPixel
-<LI><a href="#[d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_DrawRGBImage
-<LI><a href="#[c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_DrawBitmap
-<LI><a href="#[2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_DisplayOn
-<LI><a href="#[3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_DisplayOff
-<LI><a href="#[e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_FillRect
-<LI><a href="#[5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_WritePixel
+<BR>[Called By]<UL><LI><a href="#[6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_Init
+<LI><a href="#[d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_SetDisplayWindow
+<LI><a href="#[a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_SetCursor
+<LI><a href="#[c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_ReadPixel
+<LI><a href="#[13]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_DrawRGBImage
+<LI><a href="#[12]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_DrawBitmap
+<LI><a href="#[8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_DisplayOn
+<LI><a href="#[9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_DisplayOff
+<LI><a href="#[14]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_FillRect
+<LI><a href="#[b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_WritePixel
 </UL>
 
 <P><STRONG><a name="[e6]"></a>LCD_IO_WriteCmd8DataFill16</STRONG> (Thumb, 36 bytes, Stack size 24 bytes, lcd_io_spi.o(i.LCD_IO_WriteCmd8DataFill16))
@@ -1472,7 +1472,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdCmdWrite8
 <LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_IO_WriteMultiData16
 </UL>
-<BR>[Called By]<UL><LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_Scroll
+<BR>[Called By]<UL><LI><a href="#[16]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_Scroll
 </UL>
 
 <P><STRONG><a name="[e8]"></a>LCD_IO_WriteCmd8MultipleData16</STRONG> (Thumb, 40 bytes, Stack size 16 bytes, lcd_io_spi.o(i.LCD_IO_WriteCmd8MultipleData16))
@@ -1481,7 +1481,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdCmdWrite8
 <LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_IO_WriteMultiData16
 </UL>
-<BR>[Called By]<UL><LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_Scroll
+<BR>[Called By]<UL><LI><a href="#[16]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_Scroll
 </UL>
 
 <P><STRONG><a name="[e9]"></a>LCD_IO_WriteCmd8MultipleData8</STRONG> (Thumb, 36 bytes, Stack size 16 bytes, lcd_io_spi.o(i.LCD_IO_WriteCmd8MultipleData8))
@@ -1490,7 +1490,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdCmdWrite8
 <LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_IO_WriteMultiData8
 </UL>
-<BR>[Called By]<UL><LI><a href="#[0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_Init
+<BR>[Called By]<UL><LI><a href="#[6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_Init
 </UL>
 
 <P><STRONG><a name="[eb]"></a>LCD_IO_WriteData8</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, lcd_io_spi.o(i.LCD_IO_WriteData8))
@@ -1498,13 +1498,13 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdWrite8
 </UL>
-<BR>[Called By]<UL><LI><a href="#[0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_Init
+<BR>[Called By]<UL><LI><a href="#[6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_Init
 <LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_write16to24
-<LI><a href="#[7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_SetDisplayWindow
-<LI><a href="#[4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_SetCursor
-<LI><a href="#[6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_ReadPixel
-<LI><a href="#[c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_DrawBitmap
-<LI><a href="#[5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_WritePixel
+<LI><a href="#[d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_SetDisplayWindow
+<LI><a href="#[a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_SetCursor
+<LI><a href="#[c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_ReadPixel
+<LI><a href="#[12]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_DrawBitmap
+<LI><a href="#[b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_WritePixel
 </UL>
 
 <P><STRONG><a name="[e7]"></a>LCD_IO_WriteMultiData16</STRONG> (Thumb, 34 bytes, Stack size 16 bytes, lcd_io_spi.o(i.LCD_IO_WriteMultiData16))
@@ -1571,8 +1571,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_IO_Delay
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_IO_WriteMultiData8
-<LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_IO_WriteData8
+<BR>[Called By]<UL><LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_IO_WriteData8
+<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_IO_WriteMultiData8
 </UL>
 
 <P><STRONG><a name="[1a]"></a>MemManage_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f1xx_it.o(i.MemManage_Handler))
@@ -1614,9 +1614,9 @@ Global Symbols
 <P><STRONG><a name="[f5]"></a>SPI_switch_display</STRONG> (Thumb, 102 bytes, Stack size 8 bytes, xpt2046.o(i.SPI_switch_display))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = SPI_switch_display &rArr; HAL_SPI_Init &rArr; HAL_SPI_MspInit &rArr; HAL_GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SPI_Init
+<BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
+<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SPI_Init
 <LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Error_Handler
-<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 </UL>
 <BR>[Called By]<UL><LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T_SetWatch
 <LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T_ReadTouch
@@ -1625,9 +1625,9 @@ Global Symbols
 <P><STRONG><a name="[f7]"></a>SPI_switch_touch</STRONG> (Thumb, 100 bytes, Stack size 8 bytes, xpt2046.o(i.SPI_switch_touch))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = SPI_switch_touch &rArr; HAL_SPI_Init &rArr; HAL_SPI_MspInit &rArr; HAL_GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SPI_Init
+<BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
+<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SPI_Init
 <LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Error_Handler
-<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 </UL>
 <BR>[Called By]<UL><LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T_SetWatch
 <LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T_ReadTouch
@@ -1821,8 +1821,8 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 72 + In Cycle
 <LI>Call Chain = StartDefaultTask &rArr;  StartDefaultTask (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartDefaultTask
-<LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osDelay
+<BR>[Calls]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osDelay
+<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartDefaultTask
 </UL>
 <BR>[Called By]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartDefaultTask
 </UL>
@@ -1840,10 +1840,10 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 424 + In Cycle
 <LI>Call Chain = StartTaskDisplay &rArr;  StartTaskDisplay (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UI_logic
+<BR>[Calls]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osDelay
+<LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UI_logic
 <LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T_Read_ifIRQ
 <LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartTaskDisplay
-<LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osDelay
 </UL>
 <BR>[Called By]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartTaskDisplay
 </UL>
@@ -1858,10 +1858,10 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> main.o(.constdata)
 </UL>
 <P><STRONG><a name="[5f]"></a>StartTaskTCPIP</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, main.o(i.StartTaskTCPIP))
-<BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = StartTaskTCPIP &rArr; TCP_IP &rArr; init_w5500 &rArr; wizchip_init &rArr; wizchip_sw_reset &rArr; WIZCHIP_READ_BUF
+<BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = StartTaskTCPIP &rArr; TCP_IP &rArr; init_w5500 &rArr; wizchip_init &rArr; wizchip_sw_reset &rArr; WIZCHIP_READ_BUF
 </UL>
-<BR>[Calls]<UL><LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TCP_IP
-<LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osDelay
+<BR>[Calls]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osDelay
+<LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TCP_IP
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(.constdata)
 </UL>
@@ -1887,7 +1887,7 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f103xb.o(.text)
 </UL>
 <P><STRONG><a name="[111]"></a>TCP_IP</STRONG> (Thumb, 142 bytes, Stack size 16 bytes, tcp_ip.o(i.TCP_IP))
-<BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = TCP_IP &rArr; init_w5500 &rArr; wizchip_init &rArr; wizchip_sw_reset &rArr; WIZCHIP_READ_BUF
+<BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = TCP_IP &rArr; init_w5500 &rArr; wizchip_init &rArr; wizchip_sw_reset &rArr; WIZCHIP_READ_BUF
 </UL>
 <BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2uiz
 <LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
@@ -1910,8 +1910,8 @@ Global Symbols
 <P><STRONG><a name="[3e]"></a>TIM3_IRQHandler</STRONG> (Thumb, 86 bytes, Stack size 16 bytes, stm32f1xx_it.o(i.TIM3_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = TIM3_IRQHandler &rArr; HAL_TIM_IRQHandler
 </UL>
-<BR>[Calls]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_IRQHandler
-<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
+<BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
+<LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_IRQHandler
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f103xb.o(RESET)
 </UL>
@@ -1930,16 +1930,16 @@ Global Symbols
 <P><STRONG><a name="[11b]"></a>T_ReadTouch</STRONG> (Thumb, 268 bytes, Stack size 32 bytes, xpt2046.o(i.T_ReadTouch))
 <BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = T_ReadTouch &rArr; T_SetWatch &rArr; SPI_switch_touch &rArr; HAL_SPI_Init &rArr; HAL_SPI_MspInit &rArr; HAL_GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T_SetWatch
-<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
+<BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 <LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2f
 <LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2uiz
+<LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T_SetWatch
 <LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SPI_TransmitReceive
 <LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SPI_GetState
+<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
 <LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
 <LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
-<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
 <LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T_delay
 <LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_switch_touch
 <LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_switch_display
@@ -1977,7 +1977,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[10d]"></a>UI_logic</STRONG> (Thumb, 286 bytes, Stack size 32 bytes, ui_tree.o(i.UI_logic))
-<BR><BR>[Stack]<UL><LI>Max Depth = 424<LI>Call Chain = UI_logic &rArr; DrawTheBase &rArr; DrawRoundScale &rArr; sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
+<BR><BR>[Stack]<UL><LI>Max Depth = 424<LI>Call Chain = UI_logic &rArr; DrawTheBase &rArr; DrawRoundScale &rArr; sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawTheBase
 <LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawSettings
@@ -2079,8 +2079,8 @@ Global Symbols
 <P><STRONG><a name="[12c]"></a>WIZCHIP_WRITE_BUF</STRONG> (Thumb, 108 bytes, Stack size 24 bytes, w5500.o(i.WIZCHIP_WRITE_BUF))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = WIZCHIP_WRITE_BUF
 </UL>
-<BR>[Called By]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_w5500
-<LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wizchip_sw_reset
+<BR>[Called By]<UL><LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wizchip_sw_reset
+<LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_w5500
 <LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wiz_send_data
 <LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;connect
 </UL>
@@ -2098,15 +2098,15 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[11f]"></a>__ieee754_rem_pio2</STRONG> (Thumb, 828 bytes, Stack size 128 bytes, rred.o(i.__ieee754_rem_pio2))
-<BR><BR>[Stack]<UL><LI>Max Depth = 216<LI>Call Chain = __ieee754_rem_pio2 &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
+<BR><BR>[Stack]<UL><LI>Max Depth = 216<LI>Call Chain = __ieee754_rem_pio2 &rArr; __aeabi_dsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
-<BR>[Calls]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
-<LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2d
+<BR>[Calls]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2d
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
 <LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
 <LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
 <LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 <LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2iz
+<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 <LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_scalbn
 </UL>
 <BR>[Called By]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sin
@@ -2114,12 +2114,12 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[121]"></a>__kernel_cos</STRONG> (Thumb, 230 bytes, Stack size 48 bytes, cos_i.o(i.__kernel_cos))
-<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = __kernel_cos &rArr; __kernel_poly &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
+<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = __kernel_cos &rArr; __kernel_poly &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
-<BR>[Calls]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
-<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
+<BR>[Calls]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
 <LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
 <LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2iz
+<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 <LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_scalbn
 <LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_poly
 </UL>
@@ -2128,10 +2128,10 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[122]"></a>__kernel_poly</STRONG> (Thumb, 170 bytes, Stack size 24 bytes, poly.o(i.__kernel_poly))
-<BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = __kernel_poly &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
+<BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = __kernel_poly &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
-<BR>[Calls]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
-<LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
+<BR>[Calls]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
+<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 </UL>
 <BR>[Called By]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;log
 <LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_sin
@@ -2139,12 +2139,12 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[123]"></a>__kernel_sin</STRONG> (Thumb, 224 bytes, Stack size 64 bytes, sin_i.o(i.__kernel_sin))
-<BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = __kernel_sin &rArr; __kernel_poly &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
+<BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = __kernel_sin &rArr; __kernel_poly &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
-<BR>[Calls]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
-<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
+<BR>[Calls]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
 <LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
 <LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
+<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 <LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_scalbn
 <LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_fpclassify
 <LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_poly
@@ -2223,7 +2223,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[9c]"></a>cos</STRONG> (Thumb, 148 bytes, Stack size 32 bytes, cos.o(i.cos))
-<BR><BR>[Stack]<UL><LI>Max Depth = 248<LI>Call Chain = cos &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
+<BR><BR>[Stack]<UL><LI>Max Depth = 248<LI>Call Chain = cos &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__set_errno
 <LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_sin
@@ -2245,7 +2245,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send
 </UL>
 
-<P><STRONG><a name="[3]"></a>ili9488_DisplayOff</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, ili9488.o(i.ili9488_DisplayOff))
+<P><STRONG><a name="[9]"></a>ili9488_DisplayOff</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, ili9488.o(i.ili9488_DisplayOff))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = ili9488_DisplayOff &rArr; LCD_IO_WriteCmd8 &rArr; LcdCmdWrite8
 </UL>
 <BR>[Calls]<UL><LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_IO_WriteCmd8
@@ -2253,7 +2253,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> ili9488.o(.data)
 </UL>
-<P><STRONG><a name="[2]"></a>ili9488_DisplayOn</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, ili9488.o(i.ili9488_DisplayOn))
+<P><STRONG><a name="[8]"></a>ili9488_DisplayOn</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, ili9488.o(i.ili9488_DisplayOn))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = ili9488_DisplayOn &rArr; LCD_IO_WriteCmd8 &rArr; LcdCmdWrite8
 </UL>
 <BR>[Calls]<UL><LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_IO_WriteCmd8
@@ -2261,7 +2261,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> ili9488.o(.data)
 </UL>
-<P><STRONG><a name="[c]"></a>ili9488_DrawBitmap</STRONG> (Thumb, 140 bytes, Stack size 16 bytes, ili9488.o(i.ili9488_DrawBitmap))
+<P><STRONG><a name="[12]"></a>ili9488_DrawBitmap</STRONG> (Thumb, 140 bytes, Stack size 16 bytes, ili9488.o(i.ili9488_DrawBitmap))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = ili9488_DrawBitmap &rArr; ili9488_write16to24 &rArr; LCD_IO_WriteData8 &rArr; LcdWrite8
 </UL>
 <BR>[Calls]<UL><LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_IO_WriteData8
@@ -2270,54 +2270,54 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> ili9488.o(.data)
 </UL>
-<P><STRONG><a name="[8]"></a>ili9488_DrawHLine</STRONG> (Thumb, 24 bytes, Stack size 24 bytes, ili9488.o(i.ili9488_DrawHLine))
+<P><STRONG><a name="[e]"></a>ili9488_DrawHLine</STRONG> (Thumb, 24 bytes, Stack size 24 bytes, ili9488.o(i.ili9488_DrawHLine))
 <BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = ili9488_DrawHLine &rArr; ili9488_FillRect &rArr; ili9488_SetDisplayWindow &rArr; LCD_IO_WriteData8 &rArr; LcdWrite8
 </UL>
-<BR>[Calls]<UL><LI><a href="#[e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_FillRect
+<BR>[Calls]<UL><LI><a href="#[14]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_FillRect
 </UL>
 <BR>[Called By]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawTheLine
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> ili9488.o(.data)
 </UL>
-<P><STRONG><a name="[d]"></a>ili9488_DrawRGBImage</STRONG> (Thumb, 34 bytes, Stack size 16 bytes, ili9488.o(i.ili9488_DrawRGBImage))
+<P><STRONG><a name="[13]"></a>ili9488_DrawRGBImage</STRONG> (Thumb, 34 bytes, Stack size 16 bytes, ili9488.o(i.ili9488_DrawRGBImage))
 <BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = ili9488_DrawRGBImage &rArr; ili9488_SetDisplayWindow &rArr; LCD_IO_WriteData8 &rArr; LcdWrite8
 </UL>
 <BR>[Calls]<UL><LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_IO_WriteCmd8
 <LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_write16to24
-<LI><a href="#[7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_SetDisplayWindow
+<LI><a href="#[d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_SetDisplayWindow
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> ili9488.o(.data)
 </UL>
-<P><STRONG><a name="[9]"></a>ili9488_DrawVLine</STRONG> (Thumb, 20 bytes, Stack size 16 bytes, ili9488.o(i.ili9488_DrawVLine))
+<P><STRONG><a name="[f]"></a>ili9488_DrawVLine</STRONG> (Thumb, 20 bytes, Stack size 16 bytes, ili9488.o(i.ili9488_DrawVLine))
 <BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = ili9488_DrawVLine &rArr; ili9488_FillRect &rArr; ili9488_SetDisplayWindow &rArr; LCD_IO_WriteData8 &rArr; LcdWrite8
 </UL>
-<BR>[Calls]<UL><LI><a href="#[e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_FillRect
+<BR>[Calls]<UL><LI><a href="#[14]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_FillRect
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawPlot
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawBattery
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> ili9488.o(.data)
 </UL>
-<P><STRONG><a name="[e]"></a>ili9488_FillRect</STRONG> (Thumb, 34 bytes, Stack size 16 bytes, ili9488.o(i.ili9488_FillRect))
+<P><STRONG><a name="[14]"></a>ili9488_FillRect</STRONG> (Thumb, 34 bytes, Stack size 16 bytes, ili9488.o(i.ili9488_FillRect))
 <BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = ili9488_FillRect &rArr; ili9488_SetDisplayWindow &rArr; LCD_IO_WriteData8 &rArr; LcdWrite8
 </UL>
 <BR>[Calls]<UL><LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_IO_WriteCmd8
 <LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_write16to24
-<LI><a href="#[7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_SetDisplayWindow
+<LI><a href="#[d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_SetDisplayWindow
 </UL>
-<BR>[Called By]<UL><LI><a href="#[9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_DrawVLine
-<LI><a href="#[8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_DrawHLine
+<BR>[Called By]<UL><LI><a href="#[f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_DrawVLine
+<LI><a href="#[e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_DrawHLine
 <LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FillBackground
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> ili9488.o(.data)
 </UL>
-<P><STRONG><a name="[b]"></a>ili9488_GetLcdPixelHeight</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, ili9488.o(i.ili9488_GetLcdPixelHeight))
+<P><STRONG><a name="[11]"></a>ili9488_GetLcdPixelHeight</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, ili9488.o(i.ili9488_GetLcdPixelHeight))
 <BR>[Address Reference Count : 1]<UL><LI> ili9488.o(.data)
 </UL>
-<P><STRONG><a name="[a]"></a>ili9488_GetLcdPixelWidth</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, ili9488.o(i.ili9488_GetLcdPixelWidth))
+<P><STRONG><a name="[10]"></a>ili9488_GetLcdPixelWidth</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, ili9488.o(i.ili9488_GetLcdPixelWidth))
 <BR>[Address Reference Count : 1]<UL><LI> ili9488.o(.data)
 </UL>
-<P><STRONG><a name="[0]"></a>ili9488_Init</STRONG> (Thumb, 240 bytes, Stack size 8 bytes, ili9488.o(i.ili9488_Init))
+<P><STRONG><a name="[6]"></a>ili9488_Init</STRONG> (Thumb, 240 bytes, Stack size 8 bytes, ili9488.o(i.ili9488_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = ili9488_Init &rArr; LCD_IO_WriteCmd8MultipleData8 &rArr; LCD_IO_WriteMultiData8 &rArr; LcdWrite8
 </UL>
 <BR>[Calls]<UL><LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_IO_WriteData8
@@ -2326,19 +2326,19 @@ Global Symbols
 <LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Delay
 </UL>
 <BR>[Called By]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_ReadID
+<LI><a href="#[7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_ReadID
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> ili9488.o(.data)
 </UL>
-<P><STRONG><a name="[1]"></a>ili9488_ReadID</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, ili9488.o(i.ili9488_ReadID))
+<P><STRONG><a name="[7]"></a>ili9488_ReadID</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, ili9488.o(i.ili9488_ReadID))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = ili9488_ReadID &rArr; LCD_IO_ReadCmd8MultipleData8 &rArr; LCD_IO_ReadMultiData8 &rArr; LcdDirWrite
 </UL>
-<BR>[Calls]<UL><LI><a href="#[0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_Init
+<BR>[Calls]<UL><LI><a href="#[6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_Init
 <LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_IO_ReadCmd8MultipleData8
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> ili9488.o(.data)
 </UL>
-<P><STRONG><a name="[6]"></a>ili9488_ReadPixel</STRONG> (Thumb, 88 bytes, Stack size 24 bytes, ili9488.o(i.ili9488_ReadPixel))
+<P><STRONG><a name="[c]"></a>ili9488_ReadPixel</STRONG> (Thumb, 88 bytes, Stack size 24 bytes, ili9488.o(i.ili9488_ReadPixel))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = ili9488_ReadPixel &rArr; LCD_IO_ReadCmd8MultipleData24to16 &rArr; LCD_IO_ReadMultiData16to24 &rArr; LcdDirWrite
 </UL>
 <BR>[Calls]<UL><LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_IO_WriteData8
@@ -2347,15 +2347,15 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> ili9488.o(.data)
 </UL>
-<P><STRONG><a name="[f]"></a>ili9488_ReadRGBImage</STRONG> (Thumb, 28 bytes, Stack size 16 bytes, ili9488.o(i.ili9488_ReadRGBImage))
+<P><STRONG><a name="[15]"></a>ili9488_ReadRGBImage</STRONG> (Thumb, 28 bytes, Stack size 16 bytes, ili9488.o(i.ili9488_ReadRGBImage))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = ili9488_ReadRGBImage &rArr; LCD_IO_ReadCmd8MultipleData24to16 &rArr; LCD_IO_ReadMultiData16to24 &rArr; LcdDirWrite
 </UL>
 <BR>[Calls]<UL><LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_IO_ReadCmd8MultipleData24to16
-<LI><a href="#[7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_SetDisplayWindow
+<LI><a href="#[d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_SetDisplayWindow
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> ili9488.o(.data)
 </UL>
-<P><STRONG><a name="[10]"></a>ili9488_Scroll</STRONG> (Thumb, 92 bytes, Stack size 16 bytes, ili9488.o(i.ili9488_Scroll))
+<P><STRONG><a name="[16]"></a>ili9488_Scroll</STRONG> (Thumb, 92 bytes, Stack size 16 bytes, ili9488.o(i.ili9488_Scroll))
 <BR><BR>[Stack]<UL><LI>Max Depth = 60<LI>Call Chain = ili9488_Scroll &rArr; LCD_IO_WriteCmd8DataFill16 &rArr; LCD_IO_WriteMultiData16 &rArr; LcdWrite16
 </UL>
 <BR>[Calls]<UL><LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_IO_WriteCmd8MultipleData16
@@ -2363,7 +2363,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> ili9488.o(.data)
 </UL>
-<P><STRONG><a name="[4]"></a>ili9488_SetCursor</STRONG> (Thumb, 74 bytes, Stack size 16 bytes, ili9488.o(i.ili9488_SetCursor))
+<P><STRONG><a name="[a]"></a>ili9488_SetCursor</STRONG> (Thumb, 74 bytes, Stack size 16 bytes, ili9488.o(i.ili9488_SetCursor))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = ili9488_SetCursor &rArr; LCD_IO_WriteData8 &rArr; LcdWrite8
 </UL>
 <BR>[Calls]<UL><LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_IO_WriteData8
@@ -2371,19 +2371,19 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> ili9488.o(.data)
 </UL>
-<P><STRONG><a name="[7]"></a>ili9488_SetDisplayWindow</STRONG> (Thumb, 92 bytes, Stack size 24 bytes, ili9488.o(i.ili9488_SetDisplayWindow))
+<P><STRONG><a name="[d]"></a>ili9488_SetDisplayWindow</STRONG> (Thumb, 92 bytes, Stack size 24 bytes, ili9488.o(i.ili9488_SetDisplayWindow))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = ili9488_SetDisplayWindow &rArr; LCD_IO_WriteData8 &rArr; LcdWrite8
 </UL>
 <BR>[Calls]<UL><LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_IO_WriteData8
 <LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_IO_WriteCmd8
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_ReadRGBImage
-<LI><a href="#[d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_DrawRGBImage
-<LI><a href="#[e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_FillRect
+<BR>[Called By]<UL><LI><a href="#[15]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_ReadRGBImage
+<LI><a href="#[13]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_DrawRGBImage
+<LI><a href="#[14]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_FillRect
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> ili9488.o(.data)
 </UL>
-<P><STRONG><a name="[5]"></a>ili9488_WritePixel</STRONG> (Thumb, 90 bytes, Stack size 24 bytes, ili9488.o(i.ili9488_WritePixel))
+<P><STRONG><a name="[b]"></a>ili9488_WritePixel</STRONG> (Thumb, 90 bytes, Stack size 24 bytes, ili9488.o(i.ili9488_WritePixel))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = ili9488_WritePixel &rArr; LCD_IO_WriteData8 &rArr; LcdWrite8
 </UL>
 <BR>[Calls]<UL><LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_IO_WriteData8
@@ -2408,34 +2408,34 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_IO_WriteData8
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_DrawRGBImage
-<LI><a href="#[c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_DrawBitmap
-<LI><a href="#[e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_FillRect
+<BR>[Called By]<UL><LI><a href="#[13]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_DrawRGBImage
+<LI><a href="#[12]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_DrawBitmap
+<LI><a href="#[14]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_FillRect
 </UL>
 
-<P><STRONG><a name="[115]"></a>init_w5500</STRONG> (Thumb, 126 bytes, Stack size 16 bytes, tcp_ip.o(i.init_w5500))
-<BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = init_w5500 &rArr; wizchip_init &rArr; wizchip_sw_reset &rArr; WIZCHIP_READ_BUF
+<P><STRONG><a name="[115]"></a>init_w5500</STRONG> (Thumb, 130 bytes, Stack size 24 bytes, tcp_ip.o(i.init_w5500))
+<BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = init_w5500 &rArr; wizchip_init &rArr; wizchip_sw_reset &rArr; WIZCHIP_READ_BUF
 </UL>
 <BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
-<LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
+<LI><a href="#[12c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIZCHIP_WRITE_BUF
 <LI><a href="#[134]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wizchip_init
 <LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;reg_wizchip_spiburst_cbfunc
 <LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;reg_wizchip_spi_cbfunc
 <LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;reg_wizchip_cs_cbfunc
-<LI><a href="#[12c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIZCHIP_WRITE_BUF
+<LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
 </UL>
 <BR>[Called By]<UL><LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TCP_IP
 </UL>
 
 <P><STRONG><a name="[9a]"></a>log</STRONG> (Thumb, 808 bytes, Stack size 96 bytes, log.o(i.log))
-<BR><BR>[Stack]<UL><LI>Max Depth = 208<LI>Call Chain = log &rArr; __kernel_poly &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
+<BR><BR>[Stack]<UL><LI>Max Depth = 208<LI>Call Chain = log &rArr; __kernel_poly &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
-<BR>[Calls]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
-<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
+<BR>[Calls]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
 <LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
 <LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
 <LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
 <LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
+<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 <LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdcmpeq
 <LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_scalbn
 <LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__set_errno
@@ -2448,20 +2448,9 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[4c]"></a>main</STRONG> (Thumb, 444 bytes, Stack size 160 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 552<LI>Call Chain = main &rArr; DrawTheBase &rArr; DrawRoundScale &rArr; sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
+<BR><BR>[Stack]<UL><LI>Max Depth = 552<LI>Call Chain = main &rArr; DrawTheBase &rArr; DrawRoundScale &rArr; sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
-<BR>[Calls]<UL><LI><a href="#[138]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericCreate
-<LI><a href="#[13a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osThreadCreate
-<LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageCreate
-<LI><a href="#[13b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osKernelStart
-<LI><a href="#[0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_Init
-<LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T_SetWatch
-<LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Start_IT
-<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Init
-<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_Init
-<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawTheBase
-<LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
-<LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM3_Init
+<BR>[Calls]<UL><LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM3_Init
 <LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_SPI2_Init
 <LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_SPI1_Init
 <LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
@@ -2470,6 +2459,17 @@ Global Symbols
 <LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SX1278_LoRaEntryTx
 <LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SX1278_LoRaEntryRx
 <LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_Start
+<LI><a href="#[138]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericCreate
+<LI><a href="#[13a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osThreadCreate
+<LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageCreate
+<LI><a href="#[13b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osKernelStart
+<LI><a href="#[6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_Init
+<LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T_SetWatch
+<LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Start_IT
+<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Init
+<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_Init
+<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawTheBase
+<LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
 <LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
@@ -2517,10 +2517,10 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartTaskTCPIP
+<BR>[Called By]<UL><LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;make_action
+<LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartTaskTCPIP
 <LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartTaskDisplay
 <LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartDefaultTask
-<LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;make_action
 </UL>
 
 <P><STRONG><a name="[13b]"></a>osKernelStart</STRONG> (Thumb, 10 bytes, Stack size 8 bytes, cmsis_os.o(i.osKernelStart))
@@ -2553,10 +2553,10 @@ Global Symbols
 <P><STRONG><a name="[160]"></a>pvPortMalloc</STRONG> (Thumb, 210 bytes, Stack size 24 bytes, heap_4.o(i.pvPortMalloc))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = pvPortMalloc &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
-<BR>[Calls]<UL><LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskResumeAll
-<LI><a href="#[161]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskSuspendAll
-<LI><a href="#[163]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvInsertBlockIntoFreeList
+<BR>[Calls]<UL><LI><a href="#[163]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvInsertBlockIntoFreeList
 <LI><a href="#[162]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvHeapInit
+<LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskResumeAll
+<LI><a href="#[161]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskSuspendAll
 </UL>
 <BR>[Called By]<UL><LI><a href="#[138]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericCreate
 <LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskCreate
@@ -2587,17 +2587,17 @@ Global Symbols
 <P><STRONG><a name="[119]"></a>send</STRONG> (Thumb, 278 bytes, Stack size 40 bytes, socket.o(i.send))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = send &rArr; wiz_send_data &rArr; WIZCHIP_WRITE_BUF
 </UL>
-<BR>[Calls]<UL><LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wiz_send_data
-<LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSn_TX_FSR
-<LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIZCHIP_WRITE
+<BR>[Calls]<UL><LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIZCHIP_WRITE
 <LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIZCHIP_READ
+<LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wiz_send_data
+<LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSn_TX_FSR
 <LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;close
 </UL>
 <BR>[Called By]<UL><LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TCP_IP
 </UL>
 
 <P><STRONG><a name="[9b]"></a>sin</STRONG> (Thumb, 150 bytes, Stack size 32 bytes, sin.o(i.sin))
-<BR><BR>[Stack]<UL><LI>Max Depth = 248<LI>Call Chain = sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
+<BR><BR>[Stack]<UL><LI>Max Depth = 248<LI>Call Chain = sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__set_errno
 <LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_sin
@@ -2623,12 +2623,12 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[14a]"></a>uxListRemove</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, list.o(i.uxListRemove))
-<BR><BR>[Called By]<UL><LI><a href="#[15e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskRemoveFromEventList
-<LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskPriorityDisinherit
-<LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskResumeAll
-<LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskIncrementTick
+<BR><BR>[Called By]<UL><LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskIncrementTick
 <LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvIdleTask
 <LI><a href="#[149]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvAddCurrentTaskToDelayedList
+<LI><a href="#[15e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskRemoveFromEventList
+<LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskPriorityDisinherit
+<LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskResumeAll
 </UL>
 
 <P><STRONG><a name="[168]"></a>vApplicationGetIdleTaskMemory</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, freertos.o(i.vApplicationGetIdleTaskMemory))
@@ -2636,8 +2636,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[14f]"></a>vListInitialise</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, list.o(i.vListInitialise))
-<BR><BR>[Called By]<UL><LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericReset
-<LI><a href="#[14d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvAddNewTaskToReadyList
+<BR><BR>[Called By]<UL><LI><a href="#[14d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvAddNewTaskToReadyList
+<LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericReset
 </UL>
 
 <P><STRONG><a name="[15a]"></a>vListInitialiseItem</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, list.o(i.vListInitialiseItem))
@@ -2647,49 +2647,49 @@ Global Symbols
 <P><STRONG><a name="[14c]"></a>vListInsert</STRONG> (Thumb, 48 bytes, Stack size 12 bytes, list.o(i.vListInsert))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = vListInsert
 </UL>
-<BR>[Called By]<UL><LI><a href="#[167]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskPlaceOnEventList
-<LI><a href="#[149]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvAddCurrentTaskToDelayedList
+<BR>[Called By]<UL><LI><a href="#[149]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvAddCurrentTaskToDelayedList
+<LI><a href="#[167]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskPlaceOnEventList
 </UL>
 
 <P><STRONG><a name="[14b]"></a>vListInsertEnd</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, list.o(i.vListInsertEnd))
-<BR><BR>[Called By]<UL><LI><a href="#[15e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskRemoveFromEventList
-<LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskPriorityDisinherit
-<LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskResumeAll
-<LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskIncrementTick
+<BR><BR>[Called By]<UL><LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskIncrementTick
 <LI><a href="#[14d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvAddNewTaskToReadyList
 <LI><a href="#[149]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvAddCurrentTaskToDelayedList
+<LI><a href="#[15e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskRemoveFromEventList
+<LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskPriorityDisinherit
+<LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskResumeAll
 </UL>
 
 <P><STRONG><a name="[14e]"></a>vPortEnterCritical</STRONG> (Thumb, 54 bytes, Stack size 0 bytes, port.o(i.vPortEnterCritical))
 <BR><BR>[Called By]<UL><LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueReceive
 <LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericSend
+<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvIdleTask
+<LI><a href="#[14d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvAddNewTaskToReadyList
 <LI><a href="#[16f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskCheckForTimeOut
 <LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericReset
 <LI><a href="#[15d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvUnlockQueue
 <LI><a href="#[15c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvIsQueueEmpty
 <LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskResumeAll
-<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvIdleTask
-<LI><a href="#[14d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvAddNewTaskToReadyList
 </UL>
 
 <P><STRONG><a name="[150]"></a>vPortExitCritical</STRONG> (Thumb, 34 bytes, Stack size 0 bytes, port.o(i.vPortExitCritical))
 <BR><BR>[Called By]<UL><LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueReceive
 <LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericSend
+<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvIdleTask
+<LI><a href="#[14d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvAddNewTaskToReadyList
 <LI><a href="#[16f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskCheckForTimeOut
 <LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericReset
 <LI><a href="#[15d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvUnlockQueue
 <LI><a href="#[15c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvIsQueueEmpty
 <LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskResumeAll
-<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvIdleTask
-<LI><a href="#[14d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvAddNewTaskToReadyList
 </UL>
 
 <P><STRONG><a name="[156]"></a>vPortFree</STRONG> (Thumb, 88 bytes, Stack size 16 bytes, heap_4.o(i.vPortFree))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = vPortFree &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
-<BR>[Calls]<UL><LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskResumeAll
+<BR>[Calls]<UL><LI><a href="#[163]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvInsertBlockIntoFreeList
+<LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskResumeAll
 <LI><a href="#[161]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskSuspendAll
-<LI><a href="#[163]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvInsertBlockIntoFreeList
 </UL>
 <BR>[Called By]<UL><LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskCreate
 <LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvDeleteTCB
@@ -2702,12 +2702,12 @@ Global Symbols
 <P><STRONG><a name="[11a]"></a>vTaskDelay</STRONG> (Thumb, 66 bytes, Stack size 8 bytes, tasks.o(i.vTaskDelay))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = vTaskDelay &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
-<BR>[Calls]<UL><LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskResumeAll
+<BR>[Calls]<UL><LI><a href="#[149]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvAddCurrentTaskToDelayedList
+<LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskResumeAll
 <LI><a href="#[161]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskSuspendAll
-<LI><a href="#[149]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvAddCurrentTaskToDelayedList
 </UL>
-<BR>[Called By]<UL><LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TCP_IP
-<LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osDelay
+<BR>[Called By]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osDelay
+<LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TCP_IP
 <LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_w5500
 </UL>
 
@@ -2724,8 +2724,8 @@ Global Symbols
 <P><STRONG><a name="[167]"></a>vTaskPlaceOnEventList</STRONG> (Thumb, 44 bytes, Stack size 8 bytes, tasks.o(i.vTaskPlaceOnEventList))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = vTaskPlaceOnEventList &rArr; prvAddCurrentTaskToDelayedList &rArr; vListInsert
 </UL>
-<BR>[Calls]<UL><LI><a href="#[14c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vListInsert
-<LI><a href="#[149]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvAddCurrentTaskToDelayedList
+<BR>[Calls]<UL><LI><a href="#[149]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvAddCurrentTaskToDelayedList
+<LI><a href="#[14c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vListInsert
 </UL>
 <BR>[Called By]<UL><LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueReceive
 <LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericSend
@@ -2744,9 +2744,9 @@ Global Symbols
 <P><STRONG><a name="[161]"></a>vTaskSuspendAll</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, tasks.o(i.vTaskSuspendAll))
 <BR><BR>[Called By]<UL><LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueReceive
 <LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericSend
+<LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
 <LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortFree
 <LI><a href="#[160]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pvPortMalloc
-<LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
 </UL>
 
 <P><STRONG><a name="[62]"></a>vTaskSwitchContext</STRONG> (Thumb, 82 bytes, Stack size 0 bytes, tasks.o(i.vTaskSwitchContext))
@@ -2763,31 +2763,31 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send
 </UL>
 
-<P><STRONG><a name="[15]"></a>wizchip_bus_readdata</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, wizchip_conf.o(i.wizchip_bus_readdata))
+<P><STRONG><a name="[4]"></a>wizchip_bus_readdata</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, wizchip_conf.o(i.wizchip_bus_readdata))
 <BR>[Address Reference Count : 1]<UL><LI> wizchip_conf.o(.data)
 </UL>
-<P><STRONG><a name="[16]"></a>wizchip_bus_writedata</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, wizchip_conf.o(i.wizchip_bus_writedata))
+<P><STRONG><a name="[5]"></a>wizchip_bus_writedata</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, wizchip_conf.o(i.wizchip_bus_writedata))
 <BR>[Address Reference Count : 1]<UL><LI> wizchip_conf.o(.data)
 </UL>
-<P><STRONG><a name="[11]"></a>wizchip_cris_enter</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, wizchip_conf.o(i.wizchip_cris_enter))
+<P><STRONG><a name="[0]"></a>wizchip_cris_enter</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, wizchip_conf.o(i.wizchip_cris_enter))
 <BR>[Address Reference Count : 1]<UL><LI> wizchip_conf.o(.data)
 </UL>
-<P><STRONG><a name="[12]"></a>wizchip_cris_exit</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, wizchip_conf.o(i.wizchip_cris_exit))
+<P><STRONG><a name="[1]"></a>wizchip_cris_exit</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, wizchip_conf.o(i.wizchip_cris_exit))
 <BR>[Address Reference Count : 1]<UL><LI> wizchip_conf.o(.data)
 </UL>
-<P><STRONG><a name="[14]"></a>wizchip_cs_deselect</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, wizchip_conf.o(i.wizchip_cs_deselect))
+<P><STRONG><a name="[3]"></a>wizchip_cs_deselect</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, wizchip_conf.o(i.wizchip_cs_deselect))
 <BR>[Address Reference Count : 2]<UL><LI> wizchip_conf.o(i.reg_wizchip_cs_cbfunc)
 <LI> wizchip_conf.o(.data)
 </UL>
-<P><STRONG><a name="[13]"></a>wizchip_cs_select</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, wizchip_conf.o(i.wizchip_cs_select))
+<P><STRONG><a name="[2]"></a>wizchip_cs_select</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, wizchip_conf.o(i.wizchip_cs_select))
 <BR>[Address Reference Count : 2]<UL><LI> wizchip_conf.o(i.reg_wizchip_cs_cbfunc)
 <LI> wizchip_conf.o(.data)
 </UL>
 <P><STRONG><a name="[134]"></a>wizchip_init</STRONG> (Thumb, 122 bytes, Stack size 24 bytes, wizchip_conf.o(i.wizchip_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = wizchip_init &rArr; wizchip_sw_reset &rArr; WIZCHIP_READ_BUF
 </UL>
-<BR>[Calls]<UL><LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wizchip_sw_reset
-<LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIZCHIP_WRITE
+<BR>[Calls]<UL><LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIZCHIP_WRITE
+<LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wizchip_sw_reset
 </UL>
 <BR>[Called By]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_w5500
 </UL>
@@ -2868,8 +2868,8 @@ Global Symbols
 <LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortExitCritical
 <LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortEnterCritical
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartTaskADC
-<LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;make_action
+<BR>[Called By]<UL><LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;make_action
+<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartTaskADC
 </UL>
 
 <P><STRONG><a name="[110]"></a>xQueueReceive</STRONG> (Thumb, 308 bytes, Stack size 56 bytes, queue.o(i.xQueueReceive))
@@ -2888,8 +2888,8 @@ Global Symbols
 <LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortExitCritical
 <LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortEnterCritical
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartTaskLogic
-<LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;make_action
+<BR>[Called By]<UL><LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;make_action
+<LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartTaskLogic
 </UL>
 
 <P><STRONG><a name="[16f]"></a>xTaskCheckForTimeOut</STRONG> (Thumb, 112 bytes, Stack size 24 bytes, tasks.o(i.xTaskCheckForTimeOut))
@@ -2906,10 +2906,10 @@ Global Symbols
 <P><STRONG><a name="[148]"></a>xTaskCreate</STRONG> (Thumb, 90 bytes, Stack size 56 bytes, tasks.o(i.xTaskCreate))
 <BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = xTaskCreate &rArr; pvPortMalloc &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
-<BR>[Calls]<UL><LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortFree
-<LI><a href="#[160]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pvPortMalloc
-<LI><a href="#[159]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvInitialiseNewTask
+<BR>[Calls]<UL><LI><a href="#[159]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvInitialiseNewTask
 <LI><a href="#[14d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvAddNewTaskToReadyList
+<LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortFree
+<LI><a href="#[160]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pvPortMalloc
 </UL>
 <BR>[Called By]<UL><LI><a href="#[13a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osThreadCreate
 </UL>
@@ -2932,12 +2932,12 @@ Global Symbols
 <P><STRONG><a name="[112]"></a>xTaskIncrementTick</STRONG> (Thumb, 192 bytes, Stack size 24 bytes, tasks.o(i.xTaskIncrementTick))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = xTaskIncrementTick
 </UL>
-<BR>[Calls]<UL><LI><a href="#[14b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vListInsertEnd
+<BR>[Calls]<UL><LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvResetNextTaskUnblockTime
+<LI><a href="#[14b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vListInsertEnd
 <LI><a href="#[14a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uxListRemove
-<LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvResetNextTaskUnblockTime
 </UL>
-<BR>[Called By]<UL><LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskResumeAll
-<LI><a href="#[20]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Handler
+<BR>[Called By]<UL><LI><a href="#[20]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Handler
+<LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskResumeAll
 </UL>
 
 <P><STRONG><a name="[154]"></a>xTaskPriorityDisinherit</STRONG> (Thumb, 144 bytes, Stack size 16 bytes, tasks.o(i.xTaskPriorityDisinherit))
@@ -2964,28 +2964,28 @@ Global Symbols
 <P><STRONG><a name="[164]"></a>xTaskResumeAll</STRONG> (Thumb, 182 bytes, Stack size 32 bytes, tasks.o(i.xTaskResumeAll))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
-<BR>[Calls]<UL><LI><a href="#[14b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vListInsertEnd
+<BR>[Calls]<UL><LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskIncrementTick
+<LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvResetNextTaskUnblockTime
+<LI><a href="#[14b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vListInsertEnd
 <LI><a href="#[14a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uxListRemove
 <LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortExitCritical
 <LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortEnterCritical
-<LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskIncrementTick
-<LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvResetNextTaskUnblockTime
 </UL>
 <BR>[Called By]<UL><LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueReceive
 <LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericSend
+<LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
 <LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortFree
 <LI><a href="#[160]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pvPortMalloc
-<LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
 </UL>
 <P>
 <H3>
 Local Symbols
 </H3>
-<P><STRONG><a name="[ef]"></a>MX_GPIO_Init</STRONG> (Thumb, 272 bytes, Stack size 56 bytes, main.o(i.MX_GPIO_Init))
+<P><STRONG><a name="[ef]"></a>MX_GPIO_Init</STRONG> (Thumb, 262 bytes, Stack size 56 bytes, main.o(i.MX_GPIO_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = MX_GPIO_Init &rArr; HAL_GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_Init
-<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
+<BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
+<LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -3116,8 +3116,8 @@ Local Symbols
 <LI><a href="#[14c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vListInsert
 <LI><a href="#[14a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uxListRemove
 </UL>
-<BR>[Called By]<UL><LI><a href="#[167]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskPlaceOnEventList
-<LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
+<BR>[Called By]<UL><LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
+<LI><a href="#[167]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskPlaceOnEventList
 </UL>
 
 <P><STRONG><a name="[14d]"></a>prvAddNewTaskToReadyList</STRONG> (Thumb, 194 bytes, Stack size 24 bytes, tasks.o(i.prvAddNewTaskToReadyList))
@@ -3143,26 +3143,26 @@ Local Symbols
 <P><STRONG><a name="[5a]"></a>prvIdleTask</STRONG> (Thumb, 82 bytes, Stack size 0 bytes, tasks.o(i.prvIdleTask))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = prvIdleTask &rArr; prvDeleteTCB &rArr; vPortFree &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
-<BR>[Calls]<UL><LI><a href="#[14a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uxListRemove
+<BR>[Calls]<UL><LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvDeleteTCB
+<LI><a href="#[14a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uxListRemove
 <LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortExitCritical
 <LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortEnterCritical
-<LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvDeleteTCB
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> tasks.o(i.vTaskStartScheduler)
 </UL>
 <P><STRONG><a name="[159]"></a>prvInitialiseNewTask</STRONG> (Thumb, 142 bytes, Stack size 32 bytes, tasks.o(i.prvInitialiseNewTask))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = prvInitialiseNewTask &rArr; pxPortInitialiseStack
 </UL>
-<BR>[Calls]<UL><LI><a href="#[15a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vListInitialiseItem
-<LI><a href="#[15b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pxPortInitialiseStack
+<BR>[Calls]<UL><LI><a href="#[15b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pxPortInitialiseStack
+<LI><a href="#[15a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vListInitialiseItem
 </UL>
 <BR>[Called By]<UL><LI><a href="#[147]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskCreateStatic
 <LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskCreate
 </UL>
 
 <P><STRONG><a name="[170]"></a>prvResetNextTaskUnblockTime</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, tasks.o(i.prvResetNextTaskUnblockTime))
-<BR><BR>[Called By]<UL><LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskResumeAll
-<LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskIncrementTick
+<BR><BR>[Called By]<UL><LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskIncrementTick
+<LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskResumeAll
 </UL>
 
 <P><STRONG><a name="[146]"></a>makeFreeRtosPriority</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, cmsis_os.o(i.makeFreeRtosPriority))

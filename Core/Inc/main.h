@@ -50,6 +50,7 @@ extern "C" {
 #include "xpt2046.h"
 #include "time_lib.h"
 #include "tcp_ip.h"
+#include "modbus.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/

@@ -112,9 +112,9 @@ void W5500_WriteByte(uint8_t byte) {
 
 
 void init_w5500(void) {
-		HAL_GPIO_WritePin(PORT_WIZ_RS, WIZ_RS, GPIO_PIN_SET);
-		vTaskDelay(100);
 		HAL_GPIO_WritePin(PORT_WIZ_RS, WIZ_RS, GPIO_PIN_RESET);
+		vTaskDelay(100);
+		HAL_GPIO_WritePin(PORT_WIZ_RS, WIZ_RS, GPIO_PIN_SET);
     reg_wizchip_cs_cbfunc(W5500_Select, W5500_Unselect);
     reg_wizchip_spi_cbfunc(W5500_ReadByte, W5500_WriteByte);
     reg_wizchip_spiburst_cbfunc(W5500_ReadBuff, W5500_WriteBuff);

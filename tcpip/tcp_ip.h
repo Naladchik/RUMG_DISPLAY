@@ -44,7 +44,8 @@ statuses of network
 #define CONNECTED				0x04
 
 //GPIO definitions
-#define PORT_LED0 			GPIOC
+//legacy R&D board
+/*#define PORT_LED0 			GPIOC
 #define LED0 						GPIO_PIN_0
 #define PORT_LED1 			GPIOC
 #define LED1 						GPIO_PIN_1
@@ -55,7 +56,15 @@ statuses of network
 #define PORT_WIZ_RS 		GPIOB
 #define WIZ_RS 					GPIO_PIN_5
 #define PORT_WIZ_IN 		GPIOB
-#define WIZ_IN 					GPIO_PIN_5
+#define WIZ_IN 					GPIO_PIN_5*/
+
+//V3 board
+#define PORT_WIZ_CS 		GPIOB
+#define WIZ_CS 					GPIO_PIN_3
+#define PORT_WIZ_RS 		GPIOA
+#define WIZ_RS 					GPIO_PIN_10
+#define PORT_WIZ_IN 		GPIOB
+#define WIZ_IN 					GPIO_PIN_6
 
 #define SPI_FRAME_SIZE 	7
 #define SPI_TIME_OUT 		1000
