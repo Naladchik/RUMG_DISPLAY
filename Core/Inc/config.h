@@ -8,7 +8,7 @@
 /*INDIVIDUAL PARAMETERS!!!*/
 #define TX_DEV_NUM				   		0x01
 #define RX_DEV_NUM				   		0x02
-#define ROLE	 									CONTROLER
+#define ROLE	 												REPEATER
 #define COMM_DEV								ETHERNET
 #define LORA_FREQ   						434500000  //Frequeny in Hz, was 434500000, was 859500000
 #define BARANKI           			1 // 1 - do not take into account LineMin, 0 - do take into account (baranovichi_style)

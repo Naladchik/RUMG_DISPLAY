@@ -3,10 +3,13 @@
 #include "main.h"
 
 //network parameters
-#define IP_ADDR0 			192
-#define IP_ADDR1 			168
-#define IP_ADDR2 			100
-#define IP_ADDR3 			104
+#define IP_ADDR0						192
+#define IP_ADDR1 					168
+#define IP_ADDR2 					100
+#define IP_ADDR3_CL			104 //client address
+#define IP_ADDR3_SR			50  //server address
+
+
 
 #define GW0 					192
 #define GW1 					168
@@ -37,11 +40,15 @@
 /*
 statuses of network
 */
-#define NOT_INIT				0x00
-#define NOT_ACTIVE  		0x01
-#define LINK_DETECTED 	0x02
-#define SOCKET_CREATED	0x03
-#define CONNECTED				0x04
+#define NOT_INIT															0x00
+#define NOT_ACTIVE  											0x01
+#define LINK_DETECTED 								0x02
+#define SOCKET_CREATED						0x03
+#define CONNECTED_SEND						0x04
+#define CONNECTED_RECEIVE				0x05
+#define DISCONNECT_TEST						0x06
+#define CLOSE_SC_TEST								0x07
+#define WAIT_DATA												0x08
 
 //GPIO definitions
 //legacy R&D board
@@ -67,6 +74,7 @@ statuses of network
 #define WIZ_IN 					GPIO_PIN_6
 
 #define SPI_FRAME_SIZE 	7
+#define RX_SIZE							30
 #define SPI_TIME_OUT 		1000
 
 #define PDU_SIZE				7
