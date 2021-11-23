@@ -7,7 +7,7 @@
 #define IP_ADDR1 					168
 #define IP_ADDR2 					100
 #define IP_ADDR3_CL			104 //client address
-#define IP_ADDR3_SR			50  //server address
+#define IP_ADDR3_SR			103  //server address
 
 
 
@@ -20,19 +20,6 @@
 #define SN1 					255
 #define SN2 					255
 #define SN3 					0
-
-#define MAC0					0xa4
-#define MAC1					0x03
-#define MAC2					0x26
-#define MAC3					0xa7
-#define MAC4					0x44
-#define MAC5					0x01
-
-//Server IP
-#define SER_IP_ADDR0 			192
-#define SER_IP_ADDR1 			168
-#define SER_IP_ADDR2 			100
-#define SER_IP_ADDR3 			50
 
 //Port
 #define TCP_PORT			502
@@ -48,7 +35,8 @@ statuses of network
 #define CONNECTED_RECEIVE				0x05
 #define DISCONNECT_TEST						0x06
 #define CLOSE_SC_TEST								0x07
-#define WAIT_DATA												0x08
+#define CONNECTION_ISTD							0x08
+#define DATA_RECEIVED							  0x09
 
 //GPIO definitions
 //legacy R&D board
@@ -74,7 +62,7 @@ statuses of network
 #define WIZ_IN 					GPIO_PIN_6
 
 #define SPI_FRAME_SIZE 	7
-#define RX_SIZE							30
+#define RX_SIZE							100
 #define SPI_TIME_OUT 		1000
 
 #define PDU_SIZE				7

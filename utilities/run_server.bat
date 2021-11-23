@@ -1,3 +1,4 @@
 @echo off
-"C:/Python/python.exe" "D:/DE/Project/TCP_IP_STM32/testserver.py"
+"C:/Python/python.exe" "D:/DE/Project/GasManagement/RUMG_DISPLAY_TOUCH_FREERTOS/utilities/testserver.py"
 pause
+

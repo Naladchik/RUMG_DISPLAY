@@ -153,27 +153,27 @@
         <Ww>
           <count>0</count>
           <WinNumber>1</WinNumber>
-          <ItemText>NETWORK_STATUS</ItemText>
+          <ItemText>Sn_SR_buf</ItemText>
         </Ww>
         <Ww>
           <count>1</count>
           <WinNumber>1</WinNumber>
-          <ItemText>rx_buff,0x0A</ItemText>
+          <ItemText>Sn_IR_buf</ItemText>
         </Ww>
         <Ww>
           <count>2</count>
           <WinNumber>1</WinNumber>
-          <ItemText>rx2_buff,0x0A</ItemText>
+          <ItemText>NETWORK_STATUS</ItemText>
         </Ww>
         <Ww>
           <count>3</count>
           <WinNumber>1</WinNumber>
-          <ItemText>buf_byte</ItemText>
+          <ItemText>rx2_buff</ItemText>
         </Ww>
         <Ww>
           <count>4</count>
           <WinNumber>1</WinNumber>
-          <ItemText>buf_sock,0x0A</ItemText>
+          <ItemText>buf32_sock</ItemText>
         </Ww>
       </WatchWindow1>
       <Tracepoint>
@@ -262,7 +262,7 @@
 
   <Group>
     <GroupName>Application/User/Core</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -342,7 +342,7 @@
       <GroupNumber>2</GroupNumber>
       <FileNumber>9</FileNumber>
       <FileType>1</FileType>
-      <tvExp>1</tvExp>
+      <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>../Core/Src/main.c</PathWithFileName>
@@ -1018,7 +1018,7 @@
       <GroupNumber>10</GroupNumber>
       <FileNumber>60</FileNumber>
       <FileType>1</FileType>
-      <tvExp>0</tvExp>
+      <tvExp>1</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\WizneLib\Ethernet\W5500\w5500.c</PathWithFileName>

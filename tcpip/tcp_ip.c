@@ -17,7 +17,6 @@ uint8_t tx_buff[SPI_FRAME_SIZE] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 uint8_t rx_buff[SPI_FRAME_SIZE] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 uint8_t rx2_buff[RX_SIZE] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 
-uint8_t 	srv_ip[4] = {SER_IP_ADDR0, SER_IP_ADDR1, SER_IP_ADDR2, SER_IP_ADDR3};
 uint8_t sc_nr = 0;
 uint16_t port = TCP_PORT;
 
@@ -34,12 +33,11 @@ uint8_t W5500_ReadByte(void);
 void W5500_WriteByte(uint8_t byte);
 void init_w5500(void);
 
-//debug vars
+//debug vars (put them local in the end)
 int8_t buf_sock;
 int32_t buf32_sock;
 uint8_t buf_byte;
-
-
+uint8_t Sn_SR_buf, Sn_IR_buf;
 
 /*
 		The main function
@@ -64,7 +62,7 @@ void TCP_IP(void){
 				NETWORK_STATUS = SOCKET_CREATED;
 				break;
 			case(SOCKET_CREATED):
-				buf_sock = connect(sc_nr, srv_ip, port);
+				buf_sock = connect(sc_nr, sip_sr, port);
 				if(buf_sock == SOCK_OK) {
 					vTaskDelay(1000);
 					NETWORK_STATUS = CONNECTED_SEND; 
@@ -123,14 +121,37 @@ void TCP_IP(void){
 				break;
 			case(LINK_DETECTED):
 				buf_byte = socket(sc_nr, Sn_MR_TCP, port, SF_TCP_NODELAY);
-				NETWORK_STATUS = SOCKET_CREATED;
+				Sn_SR_buf = getSn_SR(sc_nr);
+				if(Sn_SR_buf == SOCK_INIT) 	NETWORK_STATUS = SOCKET_CREATED; else NETWORK_STATUS = NOT_INIT;
 				break;
 			case(SOCKET_CREATED):
 				buf_sock = listen(sc_nr);
-				NETWORK_STATUS = WAIT_DATA;
+				Sn_SR_buf = getSn_SR(sc_nr);
+				if(Sn_SR_buf == SOCK_ESTABLISHED){
+					setSn_IR(sc_nr, Sn_IR_CON);
+					NETWORK_STATUS = CONNECTION_ISTD;
+				}
 				break;
-			case(WAIT_DATA):
-				buf_sock = recv(sc_nr, rx2_buff, RX_SIZE);
+			case(CONNECTION_ISTD):
+				Sn_IR_buf = getSn_IR(sc_nr);
+			  Sn_SR_buf = getSn_SR(sc_nr);
+				if(Sn_IR_buf & Sn_IR_RECV) {
+					NETWORK_STATUS = DATA_RECEIVED;
+				}
+				if(Sn_SR_buf != SOCK_ESTABLISHED)  NETWORK_STATUS = NOT_ACTIVE;
+				break;
+			case(DATA_RECEIVED):
+				buf32_sock = getSn_RX_RSR(sc_nr);
+				if(buf32_sock > RX_SIZE)  buf32_sock = RX_SIZE;
+				buf_sock = recv(sc_nr, rx2_buff, buf32_sock);
+			  Sn_SR_buf = getSn_SR(sc_nr);
+			  setSn_IR(sc_nr, Sn_IR_RECV);
+			  Sn_IR_buf = getSn_IR(sc_nr);
+				if(Sn_IR_buf != 0) {
+					close(sc_nr);
+				  NETWORK_STATUS = LINK_DETECTED;
+				}
+			  NETWORK_STATUS = CONNECTION_ISTD;
 				break;
 			default: NETWORK_STATUS = NOT_ACTIVE; break;
 		}
