@@ -22,4 +22,5 @@ typedef struct VoltStruct{
 } TypeVolt;
 
 void measure_volt(TypeVolt* Volt);
+void fake_volt(TypeVolt* Volt);
 #endif

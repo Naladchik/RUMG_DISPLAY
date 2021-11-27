@@ -359,6 +359,12 @@ void DrawTheLine(uint16_t hight, uint16_t width){
 	ili9488_DrawHLine(WHITE_COLOR, (DISPLAY_WIDTH - width)/2, DISPLAY_HIGHT - hight + 1, width);
 }
 
+/*
+*
+*Round colorfull scale 
+*@param uint16_t xx, uint16_t yy, uint16_t rr - coordinates and radius in pixels
+*
+*/
 void DrawRoundScale(uint16_t xx, uint16_t yy, uint16_t rr){
 	double alfa;
 	double alfa_rad = 0;
@@ -392,6 +398,12 @@ void DrawRoundScale(uint16_t xx, uint16_t yy, uint16_t rr){
 	}
 }
 
+/*
+*
+*Round colorfull scale with arrow and nuber inside
+*@param uint16_t val - ,  uint16_t color   - color of number in the middle white or red
+*
+*/
 void DrawLeftPress(uint16_t val, uint16_t color){
 	#define LP_REF_X 31
 	double alfa;
@@ -400,9 +412,7 @@ void DrawLeftPress(uint16_t val, uint16_t color){
 	double cos_val = 0;
 	uint16_t this_color;
 	
-	if(color == MAIN_BGND) this_color = MAIN_BGND; else this_color = RED_COLOR;
-	
-	
+	if(color == MAIN_BGND) this_color = MAIN_BGND; else this_color = RED_COLOR;	
 	
   //non-linearity poperdolenost
 	//val_nl = A_ALFA * log(A_PRESS * val + B_PRESS) + B_ALFA;
@@ -434,6 +444,12 @@ void DrawLeftPress(uint16_t val, uint16_t color){
 	DrawDigitS_no_bgn(LP_REF_X + 3 * HP_DIG_INTERVAL, HP_REF_Y,  val % 10, color);
 }
 
+/*
+*
+*Round colorfull scale with arrow and nuber inside
+*@param uint16_t val - ,  uint16_t color   - color of number in the middle white or red
+*
+*/
 void DrawRightPress(uint16_t val, uint16_t color){
 	#define RP_REF_X 360
 	double alfa;
@@ -468,6 +484,12 @@ void DrawRightPress(uint16_t val, uint16_t color){
 	DrawDigitS_no_bgn(RP_REF_X + 3 * HP_DIG_INTERVAL, HP_REF_Y,  val % 10, color);
 }
 
+/*
+*
+*Right or left shoulder drawing
+*@param A_G @ref  LEFT  RIGHT  CONCENTRATOR
+*
+*/
 void DrawConsumption(uint8_t A_G){
 	uint16_t xx, yy;
 		
@@ -543,30 +565,42 @@ void DrawConsumption(uint8_t A_G){
 		}
 }
 
+/*
+Pair of functions for triangle alarm drawing-erasing
+*/
 void DrawAlarmSmall(uint16_t X, uint16_t Y){
 	DrawImage(alarm_s_t, ALARM_S_W, ALARM_S_H, RED_COLOR, X, Y);
 	DrawImage(alarm_s_b, ALARM_S_W, ALARM_S_H, WHITE_COLOR, X, Y);
 	DrawImage(alarm_s_m, ALARM_S_W, ALARM_S_H, BLACK_COLOR, X, Y);
 }
-
 void EraseAlarmSmall(uint16_t X, uint16_t Y){
 	DrawImage(alarm_s_t, ALARM_S_W, ALARM_S_H, MAIN_BGND, X, Y);
 	DrawImage(alarm_s_b, ALARM_S_W, ALARM_S_H, MAIN_BGND, X, Y);
 	DrawImage(alarm_s_m, ALARM_S_W, ALARM_S_H, MAIN_BGND, X, Y);
 }
 
+/*
+
+Pair of functions for triangle alarm drawing-erasing
+
+*/
 void DrawAlarmBig(uint16_t X, uint16_t Y){
 	DrawImage(alarm_b_t, ALARM_B_W, ALARM_B_H, RED_COLOR, X, Y);
 	DrawImage(alarm_b_b, ALARM_B_W, ALARM_B_H, WHITE_COLOR, X, Y);
 	DrawImage(alarm_b_m, ALARM_B_W, ALARM_B_H, BLACK_COLOR, X, Y);
 }
-
 void EraseAlarmBig(uint16_t X, uint16_t Y){
 	DrawImage(alarm_b_t, ALARM_B_W, ALARM_B_H, MAIN_BGND, X, Y);
 	DrawImage(alarm_b_b, ALARM_B_W, ALARM_B_H, MAIN_BGND, X, Y);
 	DrawImage(alarm_b_m, ALARM_B_W, ALARM_B_H, MAIN_BGND, X, Y);
 }
 
+
+/*
+
+Draws battery with charge level
+
+*/
 void DrawBattery(uint16_t percent, uint16_t xx, uint16_t yy){
 	uint8_t pcnt, p_length;
 	uint16_t color;	
@@ -595,6 +629,13 @@ void DrawBattery(uint16_t percent, uint16_t xx, uint16_t yy){
 	}
 }
 
+
+
+/*
+
+Draws three dots lol
+
+*/
 void DrawMenuDots(uint16_t xx, uint16_t yy){
 	ili9488_WritePixel(0 + xx, 0 + yy,  WHITE_COLOR); 
 	ili9488_WritePixel(1 + xx, 0 + yy, WHITE_COLOR);
@@ -627,27 +668,6 @@ void DrawMenuDots(uint16_t xx, uint16_t yy){
 	ili9488_WritePixel(2 + xx, 18 + yy, WHITE_COLOR);
 }
 
-void PrintNum(uint16_t Xpos, uint16_t Ypos, uint16_t num){
-	uint16_t buf_num;
-	buf_num = num;
-	char ch[2];
-	if(buf_num > 9999) buf_num = 9999;	
-	ch[1] = '\0';
-	if(buf_num > 999){
-		ch[0] = 0x30 + (buf_num / 1000) % 10;
-		Print(Xpos, Ypos,  ch , &Font24);
-	}
-	if(buf_num > 99){
-		ch[0] = 0x30 + (buf_num / 100) % 10;
-		Print(Xpos  + 17, Ypos,  ch , &Font24);
-	}
-	if(buf_num > 9){
-		ch[0] = 0x30 + (buf_num / 10) % 10;
-		Print(Xpos  + 17 * 2, Ypos,  ch , &Font24);
-	}
-	ch[0] = 0x30 + buf_num % 10;
-	Print(Xpos  + 17 * 3, Ypos,  ch , &Font24);
-}
 
 /*
 

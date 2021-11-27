@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F103xB</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;              ../Drivers/STM32F1xx_HAL_Driver/Inc;              ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;              ../Middlewares/Third_Party/FreeRTOS/Source/include;              ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS;              ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM3;              ../Drivers/CMSIS/Device/ST/STM32F1xx/Include;              ../Drivers/CMSIS/Include;              ..\SX1278;              ..\stm32_graphics_display_drivers-master\Drivers\lcd\ili9488;              ..\stm32_graphics_display_drivers-master\Drivers\stm32f1xx;              ..\stm32_graphics_display_drivers-master\Drivers;              ..\Graphics;              ..\WizneLib\Ethernet\W5500;              ..\WizneLib\Ethernet;              ..\tcpip</IncludePath>
+              <IncludePath>../Core/Inc;               ../Drivers/STM32F1xx_HAL_Driver/Inc;               ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;               ../Middlewares/Third_Party/FreeRTOS/Source/include;               ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS;               ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM3;               ../Drivers/CMSIS/Device/ST/STM32F1xx/Include;               ../Drivers/CMSIS/Include;               ..\SX1278;               ..\stm32_graphics_display_drivers-master\Drivers\lcd\ili9488;               ..\stm32_graphics_display_drivers-master\Drivers\stm32f1xx;               ..\stm32_graphics_display_drivers-master\Drivers;               ..\Graphics;               ..\WizneLib\Ethernet\W5500;               ..\WizneLib\Ethernet;               ..\tcpip</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -657,11 +657,6 @@
               <FileName>GraphLib.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Graphics\GraphLib.c</FilePath>
-            </File>
-            <File>
-              <FileName>universal_lib.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Graphics\universal_lib.c</FilePath>
             </File>
           </Files>
         </Group>

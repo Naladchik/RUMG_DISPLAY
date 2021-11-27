@@ -6,6 +6,7 @@ uint8_t OldActiveGas = LEFT;
 uint8_t ConcOldOK = 0;
 uint8_t ActiveCylinder = LEFT;
 extern uint8_t OneSeconTick; //needed for transmitting ticks from timer every second
+extern uint32_t EpochTime;
 uint8_t flagLEDodd = 0; //flip-flop var. for led on-off
 
 extern TypeParameters DeviceParam;
@@ -190,6 +191,7 @@ void make_action(const TypeVolt* Volt){
     /*           EVERY ONE SECOND ROUTINE                                     */
     /* ---------------------------------------------------------------------- */
     if(OneSeconTick){
+			EpochTime++;
 			/*if(ButtAlCounter == BUTT_TRIM){
 				//If Alarm Button is holded
 				ALRM_BYTE = make_byte(&Alarm);

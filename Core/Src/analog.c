@@ -4,6 +4,7 @@
 #define adc_timeout 500
 
 //uint16_t global_adc;
+extern uint32_t EpochTime;
 
 ADC_ChannelConfTypeDef ADC_CONF;
 extern ADC_HandleTypeDef hadc1;
@@ -168,4 +169,16 @@ void measure_volt(TypeVolt* Volt){
 			else
 				PredictedTime = 0xffff;
     }
+}
+
+void fake_volt(TypeVolt* Volt){
+			vTaskDelay(300);
+			Volt->PressLeft = EpochTime % 150;
+			Volt->PressRight = 150 - EpochTime % 150;
+			Volt->BatVolt = 12.1;
+			Volt->PSUVolt = 13.4;
+			Volt->PressConc = 0.20;
+			if((EpochTime % 120)  < 4) Volt->PressLine = 0.7; else Volt->PressLine = 4.8;
+			Volt->Flow = 799;
+			Volt->new_data = 1;
 }

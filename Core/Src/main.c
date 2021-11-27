@@ -62,6 +62,8 @@ QueueHandle_t myQueueLORAHandle;
 uint32_t UserTimer;
 uint8_t UserTimerFlag;
 uint8_t OneSeconTick;
+uint32_t EpochTime = 1638015094;
+
 uint8_t buzz_on;
 //uint8_t ButtSw;
 //uint8_t ButtAl;
@@ -482,7 +484,7 @@ static void MX_GPIO_Init(void)
                           |GPIO_PIN_12, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_10|GPIO_PIN_15, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8|GPIO_PIN_10|GPIO_PIN_15, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET);
@@ -515,8 +517,8 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : PA10 PA15 */
-  GPIO_InitStruct.Pin = GPIO_PIN_10|GPIO_PIN_15;
+  /*Configure GPIO pins : PA8 PA10 PA15 */
+  GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_10|GPIO_PIN_15;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
@@ -587,7 +589,8 @@ void StartTaskADC(void const * argument)
   for(;;)
   {
     //osDelay(1);
-		measure_volt(&PhValues_input);
+		if(FAKE_SENSORS) fake_volt(&PhValues_input);	else measure_volt(&PhValues_input);
+	
 		if(PhValues_input.new_data){
 		  if(xQueueSend(myQueueADCHandle, &PhValues_input, 0) != pdTRUE){
 				while(1){}

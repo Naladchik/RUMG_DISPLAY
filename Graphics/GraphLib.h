@@ -20,5 +20,5 @@ void DrawCommaB(uint16_t xx, uint16_t yy, uint16_t color);
 void DrawDigitS(uint16_t xx, uint16_t yy, uint8_t dig, uint16_t color);
 void DrawDigitS_no_bgn(uint16_t xx, uint16_t yy, uint8_t dig, uint16_t color);
 void DrawCommaS(uint16_t xx, uint16_t yy, uint16_t color);
-
+void PrintNum(uint16_t Xpos, uint16_t Ypos, uint16_t num);
 #endif

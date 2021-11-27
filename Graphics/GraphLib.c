@@ -292,3 +292,26 @@ void DrawCommaS(uint16_t xx, uint16_t yy, uint16_t color){
 			}
 		}
 }
+
+void PrintNum(uint16_t Xpos, uint16_t Ypos, uint16_t num){
+	uint16_t buf_num;
+	buf_num = num;
+	char ch[2];
+	if(buf_num > 9999) buf_num = 9999;	
+	ch[1] = '\0';
+	if(buf_num > 999){
+		ch[0] = 0x30 + (buf_num / 1000) % 10;
+		Print(Xpos, Ypos,  ch , &Font24);
+	}
+	if(buf_num > 99){
+		ch[0] = 0x30 + (buf_num / 100) % 10;
+		Print(Xpos  + 17, Ypos,  ch , &Font24);
+	}
+	if(buf_num > 9){
+		ch[0] = 0x30 + (buf_num / 10) % 10;
+		Print(Xpos  + 17 * 2, Ypos,  ch , &Font24);
+	}
+	ch[0] = 0x30 + buf_num % 10;
+	Print(Xpos  + 17 * 3, Ypos,  ch , &Font24);
+}
+
