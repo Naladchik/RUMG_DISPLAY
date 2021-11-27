@@ -998,7 +998,7 @@
 
   <Group>
     <GroupName>WizNet</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -1018,7 +1018,7 @@
       <GroupNumber>10</GroupNumber>
       <FileNumber>60</FileNumber>
       <FileType>1</FileType>
-      <tvExp>1</tvExp>
+      <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\WizneLib\Ethernet\W5500\w5500.c</PathWithFileName>
@@ -1030,7 +1030,7 @@
 
   <Group>
     <GroupName>TCPIP</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -1038,7 +1038,7 @@
       <GroupNumber>11</GroupNumber>
       <FileNumber>61</FileNumber>
       <FileType>1</FileType>
-      <tvExp>1</tvExp>
+      <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\tcpip\tcp_ip.c</PathWithFileName>
@@ -1050,7 +1050,7 @@
 
   <Group>
     <GroupName>MODBUS</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>

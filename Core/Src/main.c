@@ -632,7 +632,6 @@ void StartTaskDisplay(void const * argument)
   for(;;)
   {
 		UI_logic();
-		T_Read_ifIRQ(&T_struct);
     osDelay(1);
   }
   /* USER CODE END StartTaskDisplay */

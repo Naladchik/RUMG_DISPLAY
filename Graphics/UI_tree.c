@@ -107,4 +107,5 @@ void UI_logic(void){
 			default: break;}			
 			T_struct.Unprocessed = 0;			
 		}
+		T_Read_ifIRQ(&T_struct);
 }
