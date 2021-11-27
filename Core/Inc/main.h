@@ -43,6 +43,7 @@ extern "C" {
 #include "lcd_io_spi.h"
 #include "GraphLib.h"
 #include "main_window.h"
+#incllude "universal_lib.h"
 #include "UI_tree.h"
 #include "UI_settings.h"
 #include "UI_log.h"

@@ -649,6 +649,11 @@ void PrintNum(uint16_t Xpos, uint16_t Ypos, uint16_t num){
 	Print(Xpos  + 17 * 3, Ypos,  ch , &Font24);
 }
 
+/*
+
+Main window lines, constatn writings and so on
+
+*/
 void DrawTheBase(void){
 	FillBackground(MAIN_BGND);
 	DrawTheLine(220, 460);
@@ -670,6 +675,12 @@ void DrawTheBase(void){
 	DrawImage(lora_signal_pict, LORA_SIGNAL_W, LORA_SIGNAL_H, WHITE_COLOR, 345, 5);
 }
 
+
+/*
+
+All the values displaed here
+
+*/
 void DrawMainWindow(void){
 		static float OldLeftPressure;
 		static float OldRightPressure;
