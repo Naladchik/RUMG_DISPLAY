@@ -15,7 +15,8 @@ uint8_t sip_sr[4] = {IP_ADDR0, IP_ADDR1, IP_ADDR2, IP_ADDR3_SR};
 
 uint8_t tx_buff[SPI_FRAME_SIZE] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 uint8_t rx_buff[SPI_FRAME_SIZE] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
-uint8_t rx2_buff[RX_SIZE] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+
+TypeTCP_excange tcp_exchange;
 
 uint8_t sc_nr = 0;
 uint16_t port = TCP_PORT;
@@ -48,7 +49,7 @@ void TCP_IP(void){
 	If our device is CONTROLLER it works as a TCP client, creates connection and sends data to a server
 	*********************************************************************************************************************
 	*/
-	if(DeviceParam.Role == CONTROLER){
+	if((DeviceParam.Role == CONTROLER) && (DeviceParam.CommDevice == ETHERNET)){
 		switch(NETWORK_STATUS){
 			case(NOT_INIT): 
 				init_w5500();
@@ -98,7 +99,7 @@ void TCP_IP(void){
 			NETWORK_STATUS = LINK_DETECTED;
 				break;
 			case(CONNECTED_RECEIVE):
-				buf_sock = recv(sc_nr, rx2_buff, RX_SIZE);
+				buf_sock = recv(sc_nr, tcp_exchange.rx_tx_buff, TCP_SIZE);
 				NETWORK_STATUS = CONNECTED_SEND;
 				break;
 			default: NETWORK_STATUS = NOT_ACTIVE; break;
@@ -110,7 +111,7 @@ void TCP_IP(void){
 	If our device is REPEATER it works as a TCP server, waits for connection reveives data and shows them on its diaplay
 	*********************************************************************************************************************
 	*/
-	if(DeviceParam.Role == REPEATER){
+	if((DeviceParam.Role == REPEATER) && (DeviceParam.CommDevice == ETHERNET)){
 		switch(NETWORK_STATUS){
 			case(NOT_INIT): 
 				init_w5500();
@@ -142,8 +143,8 @@ void TCP_IP(void){
 				break;
 			case(DATA_RECEIVED):
 				buf32_sock = getSn_RX_RSR(sc_nr);
-				if(buf32_sock > RX_SIZE)  buf32_sock = RX_SIZE;
-				buf_sock = recv(sc_nr, rx2_buff, buf32_sock);
+				if(buf32_sock > TCP_SIZE)  buf32_sock = TCP_SIZE;
+				buf_sock = recv(sc_nr, tcp_exchange.rx_tx_buff, buf32_sock);
 			  Sn_SR_buf = getSn_SR(sc_nr);
 			  setSn_IR(sc_nr, Sn_IR_RECV);
 			  Sn_IR_buf = getSn_IR(sc_nr);

@@ -47,8 +47,10 @@ void make_action(const TypeVolt* Volt){
 //	static uint8_t ActiveGas = LEFT;
 	
 	if(DeviceParam.Role == REPEATER){
+		if(DeviceParam.CommDevice == LORA){
+			//LoRa received data applying is here
 			if(xQueueReceive(myQueueLORAHandle, &logic_q_buff, 0) == pdTRUE){
-				if(UnPackPacket(&Alarm, logic_q_buff, &LEDvalueL, &LEDvalueR, &ActiveGas) == 0){
+				if(UnPackLoRa(&Alarm, logic_q_buff, &LEDvalueL, &LEDvalueR, &ActiveGas) == 0){
 					LEDvalueL = 0;
 					LEDvalueR = 0;
 					Alarm.BatteryOut = 0;
@@ -61,13 +63,17 @@ void make_action(const TypeVolt* Volt){
 					ActiveGas = CONCENTRATOR;
 				}
 			}
+		}
+		if(DeviceParam.CommDevice == ETHERNET){
+			
+		}
 	}else{ //if it is CONTROLLER
       LEDvalueL = (uint8_t)(1 + Volt->PressLeft /  Pquant);
       if(LEDvalueL < 1) LEDvalueL = 1;
       if(LEDvalueL > 20) LEDvalueL = 20;
       LEDvalueR = (uint8_t)(1 + Volt->PressRight /  Pquant);
       if(LEDvalueR < 1) LEDvalueR = 1;
-      if(LEDvalueR > 20) LEDvalueR = 20;	
+      if(LEDvalueR > 20) LEDvalueR = 20;
 	}
 		/* ---------------------------------------------------------------------- */
     /*           GAS SOURCE SENSITIVE LOGIC                                   */
@@ -156,7 +162,7 @@ void make_action(const TypeVolt* Volt){
     }
 		}
 	
-		if(DeviceParam.Role == REPEATER){			
+		if(DeviceParam.Role == REPEATER){
 			if((OldActiveGas == CONCENTRATOR) && (ActiveGas != CONCENTRATOR)) ConcSIGCounter = CONC_SIG_DUR;			
 			
 			if(LoraLinkOK){ //there is succesfull radiolink
@@ -206,11 +212,17 @@ void make_action(const TypeVolt* Volt){
 		OneSeconTick = 0;
     TickForward = 1;
 			
-		if((DeviceParam.Role == CONTROLER) && (DeviceParam.CommDevice == LORA) && (LORA_busy == 0)){
-			PackPacket(&Alarm, logic_q_buff, &LEDvalueL, &LEDvalueR, &ActiveGas);
-			if(xQueueSend(myQueueLORAHandle, &logic_q_buff, 0) != pdTRUE){
-				while(1){}
-			}
+		if(DeviceParam.Role == CONTROLER) {
+			//filling in outgoung data
+			if((DeviceParam.CommDevice == LORA) && (LORA_busy == 0)){
+				PackLoRa(&Alarm, logic_q_buff, &LEDvalueL, &LEDvalueR, &ActiveGas);
+				if(xQueueSend(myQueueLORAHandle, &logic_q_buff, 0) != pdTRUE){
+					while(1){}
+				}
+			}			
+		}
+		if(DeviceParam.CommDevice == ETHERNET){
+		
 		}
 	}
 		/* ---------------------------------------------------------------------- */

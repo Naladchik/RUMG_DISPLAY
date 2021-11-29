@@ -24,7 +24,7 @@ void Buzzer(uint8_t st){
 }
 
 //---------------------------------------------------------
-void PackPacket(TypeAlarm* alrm, uint8_t* out_buf, uint8_t* led_v_left, uint8_t* led_v_right, uint8_t* activ_gas)
+void PackLoRa(TypeAlarm* alrm, uint8_t* out_buf, uint8_t* led_v_left, uint8_t* led_v_right, uint8_t* activ_gas)
 {
 	uint8_t buff = 0x00;	
 	
@@ -52,7 +52,7 @@ void PackPacket(TypeAlarm* alrm, uint8_t* out_buf, uint8_t* led_v_left, uint8_t*
 }
 
 
-uint8_t UnPackPacket(TypeAlarm* alrm, uint8_t* in_buf, uint8_t* led_v_left, uint8_t* led_v_right, uint8_t* activ_gas){
+uint8_t UnPackLoRa(TypeAlarm* alrm, uint8_t* in_buf, uint8_t* led_v_left, uint8_t* led_v_right, uint8_t* activ_gas){
   uint8_t tx_num = 0;
 	uint8_t rx_num = 0;
 	uint8_t buff;

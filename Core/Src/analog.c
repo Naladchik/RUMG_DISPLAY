@@ -178,7 +178,7 @@ void fake_volt(TypeVolt* Volt){
 			Volt->BatVolt = 12.1;
 			Volt->PSUVolt = 13.4;
 			Volt->PressConc = 0.20;
-			if((EpochTime % 120)  < 4) Volt->PressLine = 0.7; else Volt->PressLine = 4.8;
+			if((EpochTime % 900)  < 1) Volt->PressLine = 0.7; else Volt->PressLine = 4.8;
 			Volt->Flow = 799;
 			Volt->new_data = 1;
 }

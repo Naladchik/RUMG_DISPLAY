@@ -462,6 +462,9 @@ void DrawRightPress(uint16_t val, uint16_t color){
 	
 	if(val <= ALFA_MAX) alfa = ALFA_MAX - val; else alfa = ALFA_MIN;
 	if(alfa <= ALFA_MIN) alfa = ALFA_MIN;
+	
+	alfa = ALFA_MAX - (A_ALFA * log(A_PRESS * (ALFA_MAX - alfa) + B_PRESS) + B_ALFA) + ALFA_MIN;
+	
 	alfa_rad = DEG_RAD * (double) alfa;
 	sin_val = sin(alfa_rad);
 	cos_val = cos(alfa_rad);
@@ -735,8 +738,8 @@ void DrawMainWindow(void){
 	
 		LeftPressure = PhValues_output.PressLeft;
 		RightPressure = PhValues_output.PressRight;
-		if((uint16_t)LeftPressure != (uint16_t)OldLeftPressure)DrawLeftPress(OldLeftPressure, MAIN_BGND);
-		if((uint16_t)RightPressure != (uint16_t)OldRightPressure)DrawRightPress(OldRightPressure, MAIN_BGND);
+		if((uint16_t) LeftPressure != (uint16_t) OldLeftPressure) DrawLeftPress(OldLeftPressure, MAIN_BGND);
+		if((uint16_t) RightPressure != (uint16_t) OldRightPressure) DrawRightPress(OldRightPressure, MAIN_BGND);
 		OldLeftPressure = LeftPressure;
 		OldRightPressure = RightPressure;
 		if(DisplaySet.LeftPressAlarm) DrawLeftPress(LeftPressure, RED_COLOR); else  DrawLeftPress(LeftPressure, WHITE_COLOR); 

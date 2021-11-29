@@ -62,10 +62,16 @@ statuses of network
 #define WIZ_IN 					GPIO_PIN_6
 
 #define SPI_FRAME_SIZE 	7
-#define RX_SIZE							100
+#define TCP_SIZE							100
 #define SPI_TIME_OUT 		1000
 
 #define PDU_SIZE				7
+
+typedef struct{
+	uint8_t modification;
+	uint8_t needs_send;
+  uint8_t rx_tx_buff[TCP_SIZE];  //receiving or transmitting buffer
+} TypeTCP_excange;
 
 void TCP_IP(void);
 #endif

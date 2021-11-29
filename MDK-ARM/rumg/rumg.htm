@@ -3,7 +3,7 @@
 <title>Static Call Graph - [rumg\rumg.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image rumg\rumg.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Sat Nov 27 15:43:09 2021
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Mon Nov 29 12:13:49 2021
 <BR><P>
 <H3>Maximum Stack Usage =        552 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -408,6 +408,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
 <LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
 <LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawRoundScale
+<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawRightPress
 <LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawLeftPress
 <LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;log
 <LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_sin
@@ -421,6 +422,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawRoundScale
+<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawRightPress
 <LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawLeftPress
 <LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;log
 <LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_sin
@@ -433,7 +435,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawLeftPress
+<BR>[Called By]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawRightPress
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawLeftPress
 <LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;log
 <LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_sin
 <LI><a href="#[126]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ieee754_rem_pio2
@@ -915,17 +918,21 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UI_logic
 </UL>
 
-<P><STRONG><a name="[a8]"></a>DrawRightPress</STRONG> (Thumb, 318 bytes, Stack size 64 bytes, main_window.o(i.DrawRightPress))
+<P><STRONG><a name="[a8]"></a>DrawRightPress</STRONG> (Thumb, 382 bytes, Stack size 64 bytes, main_window.o(i.DrawRightPress))
 <BR><BR>[Stack]<UL><LI>Max Depth = 312<LI>Call Chain = DrawRightPress &rArr; sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_WritePixel
 <LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2d
 <LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
+<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
+<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
+<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 <LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2iz
 <LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdcmple
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawDigitS_no_bgn
 <LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 <LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sin
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;log
 <LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cos
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawMainWindow
@@ -1544,8 +1551,8 @@ Global Symbols
 <P><STRONG><a name="[18]"></a>NMI_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f1xx_it.o(i.NMI_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f103xb.o(RESET)
 </UL>
-<P><STRONG><a name="[144]"></a>PackPacket</STRONG> (Thumb, 112 bytes, Stack size 16 bytes, user_libs.o(i.PackPacket))
-<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = PackPacket
+<P><STRONG><a name="[144]"></a>PackLoRa</STRONG> (Thumb, 112 bytes, Stack size 16 bytes, user_libs.o(i.PackLoRa))
+<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = PackLoRa
 </UL>
 <BR>[Called By]<UL><LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;make_action
 </UL>
@@ -1844,7 +1851,7 @@ Global Symbols
 <P><STRONG><a name="[4d]"></a>SystemInit</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, system_stm32f1xx.o(i.SystemInit))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f103xb.o(.text)
 </UL>
-<P><STRONG><a name="[110]"></a>TCP_IP</STRONG> (Thumb, 572 bytes, Stack size 40 bytes, tcp_ip.o(i.TCP_IP))
+<P><STRONG><a name="[110]"></a>TCP_IP</STRONG> (Thumb, 590 bytes, Stack size 40 bytes, tcp_ip.o(i.TCP_IP))
 <BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = TCP_IP &rArr; init_w5500 &rArr; wizchip_init &rArr; wizchip_sw_reset &rArr; WIZCHIP_READ_BUF
 </UL>
 <BR>[Calls]<UL><LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
@@ -1956,8 +1963,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartTaskDisplay
 </UL>
 
-<P><STRONG><a name="[141]"></a>UnPackPacket</STRONG> (Thumb, 196 bytes, Stack size 20 bytes, user_libs.o(i.UnPackPacket))
-<BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = UnPackPacket
+<P><STRONG><a name="[141]"></a>UnPackLoRa</STRONG> (Thumb, 196 bytes, Stack size 20 bytes, user_libs.o(i.UnPackLoRa))
+<BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = UnPackLoRa
 </UL>
 <BR>[Called By]<UL><LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;make_action
 </UL>
@@ -2480,10 +2487,11 @@ Global Symbols
 <LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_infnan
 <LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_divzero
 </UL>
-<BR>[Called By]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawLeftPress
+<BR>[Called By]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawRightPress
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawLeftPress
 </UL>
 
-<P><STRONG><a name="[4c]"></a>main</STRONG> (Thumb, 444 bytes, Stack size 160 bytes, main.o(i.main))
+<P><STRONG><a name="[4c]"></a>main</STRONG> (Thumb, 438 bytes, Stack size 160 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 552<LI>Call Chain = main &rArr; DrawTheBase &rArr; DrawRoundScale &rArr; sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM3_Init
@@ -2510,15 +2518,15 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
 </UL>
-<P><STRONG><a name="[10e]"></a>make_action</STRONG> (Thumb, 1296 bytes, Stack size 40 bytes, logic.o(i.make_action))
+<P><STRONG><a name="[10e]"></a>make_action</STRONG> (Thumb, 1250 bytes, Stack size 40 bytes, logic.o(i.make_action))
 <BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = make_action &rArr; xQueueReceive &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
 <BR>[Calls]<UL><LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueReceive
 <LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericSend
 <LI><a href="#[142]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
 <LI><a href="#[143]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmple
-<LI><a href="#[141]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UnPackPacket
-<LI><a href="#[144]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PackPacket
+<LI><a href="#[141]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UnPackLoRa
+<LI><a href="#[144]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PackLoRa
 <LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 <LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzzer
 <LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv

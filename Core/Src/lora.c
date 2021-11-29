@@ -35,7 +35,7 @@ void process_lora(void){
   	//===========================================================================
 		//======================= SENDER ============================================
 		//===========================================================================
-	if((DeviceParam.Role == CONTROLER) || (DeviceParam.CommDevice == LORA)){
+	if((DeviceParam.Role == CONTROLER) && (DeviceParam.CommDevice == LORA)){
 		if(xQueueReceive(myQueueLORAHandle, &lora_q_buff, 0) == pdTRUE){
 					for(uint8_t i = 0; i < MESS_LEN; i++){
 						packet_data[i] = lora_q_buff[i];
@@ -53,7 +53,7 @@ void process_lora(void){
 		//===========================================================================
 		//======================= RECEIVER ==========================================
 		//===========================================================================
-	if((DeviceParam.Role == REPEATER) || (DeviceParam.CommDevice == LORA)){
+	if((DeviceParam.Role == REPEATER) && (DeviceParam.CommDevice == LORA)){
 		if((ret = SX1278_LoRaRxPacket(&SX1278)) > 0){
  				SX1278_read(&SX1278, (uint8_t*) buffer, ret);				
 				//get RSSI

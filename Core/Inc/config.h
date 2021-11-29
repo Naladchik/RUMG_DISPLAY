@@ -78,39 +78,39 @@
 #endif
 
 #ifdef DEV2
-#define MAC0					0x00
-#define MAC1					0x00
-#define MAC2					0x00
-#define MAC3					0x00
-#define MAC4					0x00
-#define MAC5					0x00
+#define MAC0					0xbb
+#define MAC1					0xe3
+#define MAC2					0x25
+#define MAC3					0x8f
+#define MAC4					0x42
+#define MAC5					0xf2
 #endif
 
 #ifdef DEV3
-#define MAC0					0x00
-#define MAC1					0x00
-#define MAC2					0x00
-#define MAC3					0x00
-#define MAC4					0x00
-#define MAC5					0x00
+#define MAC0					0xd6
+#define MAC1					0x79
+#define MAC2					0x54
+#define MAC3					0x5c
+#define MAC4					0xa1
+#define MAC5					0x18
 #endif
 
 #ifdef DEV4
-#define MAC0					0x00
-#define MAC1					0x00
-#define MAC2					0x00
-#define MAC3					0x00
-#define MAC4					0x00
-#define MAC5					0x00
+#define MAC0					0xcd
+#define MAC1					0x77
+#define MAC2					0x93
+#define MAC3					0x48
+#define MAC4					0xb9
+#define MAC5					0x6b
 #endif
 
 #ifdef DEV5
-#define MAC0					0x00
-#define MAC1					0x00
-#define MAC2					0x00
-#define MAC3					0x00
-#define MAC4					0x00
-#define MAC5					0x00
+#define MAC0					0xf9
+#define MAC1					0xb3
+#define MAC2					0xf5
+#define MAC3					0x2b
+#define MAC4					0x80
+#define MAC5					0x84
 #endif
 
 typedef struct{

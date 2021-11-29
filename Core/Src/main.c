@@ -178,10 +178,10 @@ int main(void)
 	
 		SX1278_init(&SX1278, DeviceParam.LR_FREQ, SX1278_POWER_17DBM, SX1278_LORA_SF_12,	SX1278_LORA_BW_125KHZ, SX1278_LORA_CR_4_5, SX1278_LORA_CRC_EN, 10);		
 				
-		if((DeviceParam.Role == CONTROLER) || (DeviceParam.CommDevice == LORA)){			
+		if(DeviceParam.Role == CONTROLER){			
 			SX1278_LoRaEntryTx(&SX1278, MESS_LEN, LoRa_TIMEOUT);	
 		}else 
-		if((DeviceParam.Role == REPEATER) || (DeviceParam.CommDevice == LORA)){			
+		if(DeviceParam.Role == REPEATER){			
 			SX1278_LoRaEntryRx(&SX1278, MESS_LEN, LoRa_TIMEOUT);	
 		}
 	}
