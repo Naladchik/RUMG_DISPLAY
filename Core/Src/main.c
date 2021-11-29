@@ -82,7 +82,6 @@ TypeVolt PhValues_output;
 extern struct TouchStructType T_struct;
 extern TypeParameters DeviceParam;
 extern ADC_ChannelConfTypeDef ADC_CONF;
-extern TypeParameters DeviceParam;
 extern int16_t FlowArray[F_ARR_SIZE];
 extern uint16_t flow_prediction_arr[FLOW_30AVG];
 
@@ -591,11 +590,13 @@ void StartTaskADC(void const * argument)
     //osDelay(1);
 		if(FAKE_SENSORS) fake_volt(&PhValues_input);	else measure_volt(&PhValues_input);
 	
-		if(PhValues_input.new_data){
-		  if(xQueueSend(myQueueADCHandle, &PhValues_input, 0) != pdTRUE){
-				while(1){}
+		if(DeviceParam.Role == CONTROLER){
+			if(PhValues_input.new_data){
+				if(xQueueSend(myQueueADCHandle, &PhValues_input, 0) != pdTRUE){
+					while(1){}
+				}
+				PhValues_input.new_data = 0;
 			}
-			PhValues_input.new_data = 0;
 		}
   }
   /* USER CODE END StartTaskADC */

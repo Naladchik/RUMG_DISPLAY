@@ -2,6 +2,7 @@
 #include "cmsis_os.h"
 #include "task.h"
 #include <stdbool.h>
+#include <string.h>
 #include "wizchip_conf.h"
 #include "socket.h"
 
@@ -53,6 +54,7 @@ void TCP_IP(void){
 		switch(NETWORK_STATUS){
 			case(NOT_INIT): 
 				init_w5500();
+				tcp_exchange.needs_send = 0;
 				NETWORK_STATUS = NOT_ACTIVE;
 				break;
 			case(NOT_ACTIVE):	
@@ -74,18 +76,12 @@ void TCP_IP(void){
 				}
 				break;
 			case(CONNECTED_SEND):
-				tx_buff[0] = (uint8_t) PhValues_output.PressLeft;
-				tx_buff[1] = (uint8_t) PhValues_output.PressRight;
-				tx_buff[2] = (uint8_t) PhValues_output.PressLine;
-				tx_buff[3] = (uint8_t) PhValues_output.PressConc;
-				tx_buff[4] = 0x00;
-				tx_buff[5] = 0x00;
-				tx_buff[6] = 0x00;
-				buf_sock = send(sc_nr, tx_buff, PDU_SIZE);
-				if(buf_sock == PDU_SIZE) {
-					vTaskDelay(2000);
-				}else{
-					vTaskDelay(10000);
+				if((tcp_exchange.needs_send == 1) && (tcp_exchange.modification == 0)){
+					buf_sock = send(sc_nr, tcp_exchange.rx_tx_buff, sizeof(PhValues_output));
+				}
+				if(buf_sock == sizeof(PhValues_output)) {
+				tcp_exchange.needs_send = 0;}
+				else{
 					NETWORK_STATUS = NOT_ACTIVE;
 				}				
 				break;
@@ -115,6 +111,7 @@ void TCP_IP(void){
 		switch(NETWORK_STATUS){
 			case(NOT_INIT): 
 				init_w5500();
+				tcp_exchange.needs_send = 0;
 				NETWORK_STATUS = NOT_ACTIVE;
 				break;
 			case(NOT_ACTIVE):	
@@ -145,6 +142,7 @@ void TCP_IP(void){
 				buf32_sock = getSn_RX_RSR(sc_nr);
 				if(buf32_sock > TCP_SIZE)  buf32_sock = TCP_SIZE;
 				buf_sock = recv(sc_nr, tcp_exchange.rx_tx_buff, buf32_sock);
+				memcpy(&PhValues_output, &tcp_exchange.rx_tx_buff, sizeof(PhValues_output));
 			  Sn_SR_buf = getSn_SR(sc_nr);
 			  setSn_IR(sc_nr, Sn_IR_RECV);
 			  Sn_IR_buf = getSn_IR(sc_nr);

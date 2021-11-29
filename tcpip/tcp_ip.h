@@ -7,7 +7,7 @@
 #define IP_ADDR1 					168
 #define IP_ADDR2 					100
 #define IP_ADDR3_CL			104 //client address
-#define IP_ADDR3_SR			103  //server address
+#define IP_ADDR3_SR			50  //server address
 
 
 
@@ -65,7 +65,7 @@ statuses of network
 #define TCP_SIZE							100
 #define SPI_TIME_OUT 		1000
 
-#define PDU_SIZE				7
+#define PDU_SIZE				10
 
 typedef struct{
 	uint8_t modification;

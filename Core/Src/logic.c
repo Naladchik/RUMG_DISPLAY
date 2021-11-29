@@ -1,5 +1,6 @@
 #include "main.h"
 #include "cmsis_os.h"
+#include <string.h>
 
 uint8_t ActiveGas = LEFT;
 uint8_t OldActiveGas = LEFT;
@@ -12,6 +13,10 @@ uint8_t flagLEDodd = 0; //flip-flop var. for led on-off
 extern TypeParameters DeviceParam;
 extern uint8_t SwitchGasRequest;
 extern uint8_t ActiveGasRequested;
+
+extern TypeVolt PhValues_output;
+
+extern TypeTCP_excange tcp_exchange;
 
 uint8_t SilentTimer = 0;
 uint8_t ConcNORMCounter = 0; //Counter for delay when conc. was off but now is on
@@ -212,6 +217,7 @@ void make_action(const TypeVolt* Volt){
 		OneSeconTick = 0;
     TickForward = 1;
 			
+																								//*******SENDING DATA*****************************
 		if(DeviceParam.Role == CONTROLER) {
 			//filling in outgoung data
 			if((DeviceParam.CommDevice == LORA) && (LORA_busy == 0)){
@@ -221,8 +227,11 @@ void make_action(const TypeVolt* Volt){
 				}
 			}			
 		}
-		if(DeviceParam.CommDevice == ETHERNET){
-		
+		if((DeviceParam.CommDevice == ETHERNET) && (tcp_exchange.needs_send == 0)){
+			tcp_exchange.modification = 1;      //kind of "critical section"
+			memcpy(&tcp_exchange.rx_tx_buff , &PhValues_output, sizeof(PhValues_output));
+			tcp_exchange.modification = 0;      //end of "critical section"
+			tcp_exchange.needs_send = 1;    //data must be sent
 		}
 	}
 		/* ---------------------------------------------------------------------- */
@@ -305,7 +314,7 @@ void make_action(const TypeVolt* Volt){
     /* ---------------------------------------------------------------------- */
     /*           ALARM SOUNDS AND LEDs PROCESSING                             */
     /* ---------------------------------------------------------------------- */
-		if(DeviceParam.Role == CONTROLER){
+		//if(DeviceParam.Role == CONTROLER){
     if(Alarm.BatteryOut){
      //Highest priority alarm. Out of battery. Sound can not be off.
 			Buzzer(1);      
@@ -335,7 +344,7 @@ void make_action(const TypeVolt* Volt){
         }
       }
     }
-		}else Buzzer(1);
+		//}else Buzzer(1);
 		/* ---------------------------------------------------------------------- */
 	  /*           SLOW TIMERS                                                  */
     /* ---------------------------------------------------------------------- */		
