@@ -51,7 +51,7 @@ void T_ReadTouch(struct TouchStructType* T_s){
 			buff /= T_Y_COEFF;
 			T_s->Y = (uint16_t)buff;
 			
-			T_SetWatch();
+			//T_SetWatch();
 			
 			T_s->Unprocessed = 1;
 			SPI_switch_display();
@@ -127,7 +127,7 @@ void SPI_switch_display(void){
 }
 
 void T_delay(void){
-	for(uint16_t i = 0; i < 3; i++){
+	for(uint16_t i = 0; i < 1000; i++){
 		__nop();
 	}
 }

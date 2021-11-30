@@ -3,7 +3,7 @@
 <title>Static Call Graph - [rumg\rumg.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image rumg\rumg.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Mon Nov 29 16:16:30 2021
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Tue Nov 30 13:44:54 2021
 <BR><P>
 <H3>Maximum Stack Usage =        552 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -713,7 +713,7 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 </UL>
 <BR>[Called By]<UL><LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;make_action
-<LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T_Read_ifIRQ
+<LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T_Read_ifIRQ
 </UL>
 
 <P><STRONG><a name="[1e]"></a>DebugMon_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f1xx_it.o(i.DebugMon_Handler))
@@ -1075,8 +1075,8 @@ Global Symbols
 <LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_MspInit
 </UL>
 
-<P><STRONG><a name="[126]"></a>HAL_GPIO_ReadPin</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32f1xx_hal_gpio.o(i.HAL_GPIO_ReadPin))
-<BR><BR>[Called By]<UL><LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T_Read_ifIRQ
+<P><STRONG><a name="[125]"></a>HAL_GPIO_ReadPin</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32f1xx_hal_gpio.o(i.HAL_GPIO_ReadPin))
+<BR><BR>[Called By]<UL><LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T_Read_ifIRQ
 </UL>
 
 <P><STRONG><a name="[8b]"></a>HAL_GPIO_WritePin</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32f1xx_hal_gpio.o(i.HAL_GPIO_WritePin))
@@ -1084,7 +1084,7 @@ Global Symbols
 <LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzzer
 <LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;make_action
 <LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_IRQHandler
-<LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T_SetWatch
+<LI><a href="#[126]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T_SetWatch
 <LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SX1278_hw_init
 <LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SX1278_hw_SetNSS
 <LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SX1278_hw_Reset
@@ -1202,7 +1202,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[107]"></a>HAL_SPI_GetState</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f1xx_hal_spi.o(i.HAL_SPI_GetState))
-<BR><BR>[Called By]<UL><LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T_SetWatch
+<BR><BR>[Called By]<UL><LI><a href="#[126]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T_SetWatch
 <LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SX1278_hw_SPIReadByte
 <LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SX1278_hw_SPICommand
 <LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T_ReadTouch
@@ -1253,7 +1253,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 <LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_EndRxTxTransaction
 </UL>
-<BR>[Called By]<UL><LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T_SetWatch
+<BR>[Called By]<UL><LI><a href="#[126]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T_SetWatch
 <LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SPI_Receive
 <LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SX1278_hw_SPIReadByte
 <LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WizCheckLink
@@ -1585,7 +1585,7 @@ Global Symbols
 <LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SPI_Init
 <LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Error_Handler
 </UL>
-<BR>[Called By]<UL><LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T_SetWatch
+<BR>[Called By]<UL><LI><a href="#[126]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T_SetWatch
 <LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T_ReadTouch
 </UL>
 
@@ -1596,7 +1596,7 @@ Global Symbols
 <LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SPI_Init
 <LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Error_Handler
 </UL>
-<BR>[Called By]<UL><LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T_SetWatch
+<BR>[Called By]<UL><LI><a href="#[126]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T_SetWatch
 <LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T_ReadTouch
 </UL>
 
@@ -1900,14 +1900,13 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_ConfigClockSource
 </UL>
 
-<P><STRONG><a name="[122]"></a>T_ReadTouch</STRONG> (Thumb, 268 bytes, Stack size 32 bytes, xpt2046.o(i.T_ReadTouch))
-<BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = T_ReadTouch &rArr; T_SetWatch &rArr; SPI_switch_touch &rArr; HAL_SPI_Init &rArr; HAL_SPI_MspInit &rArr; HAL_GPIO_Init
+<P><STRONG><a name="[122]"></a>T_ReadTouch</STRONG> (Thumb, 264 bytes, Stack size 32 bytes, xpt2046.o(i.T_ReadTouch))
+<BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = T_ReadTouch &rArr; SPI_switch_touch &rArr; HAL_SPI_Init &rArr; HAL_SPI_MspInit &rArr; HAL_GPIO_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 <LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2f
 <LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2uiz
-<LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T_SetWatch
 <LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SPI_TransmitReceive
 <LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SPI_GetState
 <LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
@@ -1917,20 +1916,20 @@ Global Symbols
 <LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_switch_touch
 <LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_switch_display
 </UL>
-<BR>[Called By]<UL><LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T_Read_ifIRQ
+<BR>[Called By]<UL><LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T_Read_ifIRQ
 </UL>
 
-<P><STRONG><a name="[125]"></a>T_Read_ifIRQ</STRONG> (Thumb, 50 bytes, Stack size 16 bytes, xpt2046.o(i.T_Read_ifIRQ))
-<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = T_Read_ifIRQ &rArr; T_ReadTouch &rArr; T_SetWatch &rArr; SPI_switch_touch &rArr; HAL_SPI_Init &rArr; HAL_SPI_MspInit &rArr; HAL_GPIO_Init
+<P><STRONG><a name="[124]"></a>T_Read_ifIRQ</STRONG> (Thumb, 50 bytes, Stack size 16 bytes, xpt2046.o(i.T_Read_ifIRQ))
+<BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = T_Read_ifIRQ &rArr; T_ReadTouch &rArr; SPI_switch_touch &rArr; HAL_SPI_Init &rArr; HAL_SPI_MspInit &rArr; HAL_GPIO_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzzer
-<LI><a href="#[126]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_ReadPin
+<LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_ReadPin
 <LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T_ReadTouch
 </UL>
 <BR>[Called By]<UL><LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UI_logic
 </UL>
 
-<P><STRONG><a name="[124]"></a>T_SetWatch</STRONG> (Thumb, 80 bytes, Stack size 16 bytes, xpt2046.o(i.T_SetWatch))
+<P><STRONG><a name="[126]"></a>T_SetWatch</STRONG> (Thumb, 80 bytes, Stack size 16 bytes, xpt2046.o(i.T_SetWatch))
 <BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = T_SetWatch &rArr; SPI_switch_touch &rArr; HAL_SPI_Init &rArr; HAL_SPI_MspInit &rArr; HAL_GPIO_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
@@ -1941,11 +1940,10 @@ Global Symbols
 <LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_switch_display
 </UL>
 <BR>[Called By]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T_ReadTouch
 </UL>
 
-<P><STRONG><a name="[123]"></a>T_delay</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, xpt2046.o(i.T_delay))
-<BR><BR>[Called By]<UL><LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T_SetWatch
+<P><STRONG><a name="[123]"></a>T_delay</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, xpt2046.o(i.T_delay))
+<BR><BR>[Called By]<UL><LI><a href="#[126]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T_SetWatch
 <LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T_ReadTouch
 </UL>
 
@@ -1953,7 +1951,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 424<LI>Call Chain = UI_logic &rArr; DrawTheBase &rArr; DrawRoundScale &rArr; sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawTheBase
-<LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T_Read_ifIRQ
+<LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T_Read_ifIRQ
 <LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawSettings
 <LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawPlot
 <LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawLog
@@ -2507,7 +2505,7 @@ Global Symbols
 <LI><a href="#[13d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageCreate
 <LI><a href="#[141]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osKernelStart
 <LI><a href="#[6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_Init
-<LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T_SetWatch
+<LI><a href="#[126]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T_SetWatch
 <LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Start_IT
 <LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Init
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_Init

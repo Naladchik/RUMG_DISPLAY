@@ -4,7 +4,7 @@
 #include "stm32f1xx_hal.h"
 
 
-#define DEV1
+#define DEV0
 /* DEVICE CONFIGURATION */
 
 #define FAKE_SENSORS        1  // can be 0 or 1
@@ -12,7 +12,7 @@
 /*INDIVIDUAL PARAMETERS!!!*/
 #define TX_DEV_NUM				   		0x01
 #define RX_DEV_NUM				   		0x02
-#define ROLE	 												REPEATER //CONTROLER or REPEATER
+#define ROLE	 												CONTROLER //CONTROLER or REPEATER
 #define COMM_DEV								ETHERNET //ETHERNET or LORA or NOTHING
 #define LORA_FREQ   						434500000  //Frequeny in Hz, was 434500000, was 859500000
 #define BARANKI           			1 // 1 - do not take into account LineMin, 0 - do take into account (baranovichi_style)
@@ -57,6 +57,8 @@
 
 #define Pquant          (float)((PressMAX - PressMIN)/(LED_NUM - 2))
 	
+#define LOG_OFFSET			 		0x08010000
+#define PARAM_OFFSET  	0x0801FC00
 
 //All MAC addresses list
 #ifdef DEV0     //controler (client)

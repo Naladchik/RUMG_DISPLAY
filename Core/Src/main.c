@@ -161,6 +161,11 @@ int main(void)
 			flow_prediction_arr[i] = 0;
 	}
 	
+	//FLASH TEST
+	/*HAL_FLASH_Unlock();
+	HAL_FLASH_Program(FLASH_TYPEPROGRAM_DOUBLEWORD, 0x0801FC00, 0x0123456789ABCDEF);
+	HAL_FLASH_Lock();*/
+	
 	
 	if(DeviceParam.CommDevice == LORA){
 		//initialize LoRa module

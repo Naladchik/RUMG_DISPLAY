@@ -12,8 +12,6 @@ typedef struct {
 	uint8_t freq_adjusted:1;
 } IMT_link_t;*/
 
-#define LOG_OFFSET 0x0801FC00
-
 void PackLoRa(TypeAlarm* alrm, uint8_t* out_buf, uint8_t* led_v_left, uint8_t* led_v_right, uint8_t* activ_gas);
 uint8_t UnPackLoRa(TypeAlarm* alrm, uint8_t* in_buf, uint8_t* led_v_left, uint8_t* led_v_right, uint8_t* activ_gas);
 uint8_t make_byte(TypeAlarm* alrm);
