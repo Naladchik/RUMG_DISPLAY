@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F103xB</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;               ../Drivers/STM32F1xx_HAL_Driver/Inc;               ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;               ../Middlewares/Third_Party/FreeRTOS/Source/include;               ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS;               ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM3;               ../Drivers/CMSIS/Device/ST/STM32F1xx/Include;               ../Drivers/CMSIS/Include;               ..\SX1278;               ..\stm32_graphics_display_drivers-master\Drivers\lcd\ili9488;               ..\stm32_graphics_display_drivers-master\Drivers\stm32f1xx;               ..\stm32_graphics_display_drivers-master\Drivers;               ..\Graphics;               ..\WizneLib\Ethernet\W5500;               ..\WizneLib\Ethernet;               ..\tcpip</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Middlewares/Third_Party/FreeRTOS/Source/include;../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS;../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM3;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;..\SX1278;..\WizneLib\Ethernet\W5500;..\WizneLib\Ethernet;..\tcpip</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -622,96 +622,6 @@
               <FileName>SX1278_hw.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\SX1278\SX1278_hw.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>Graphics</GroupName>
-          <Files>
-            <File>
-              <FileName>main_window.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Graphics\main_window.c</FilePath>
-            </File>
-            <File>
-              <FileName>UI_tree.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Graphics\UI_tree.c</FilePath>
-            </File>
-            <File>
-              <FileName>UI_settings.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Graphics\UI_settings.c</FilePath>
-            </File>
-            <File>
-              <FileName>UI_log.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Graphics\UI_log.c</FilePath>
-            </File>
-            <File>
-              <FileName>UI_plot.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Graphics\UI_plot.c</FilePath>
-            </File>
-            <File>
-              <FileName>GraphLib.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Graphics\GraphLib.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>Display</GroupName>
-          <Files>
-            <File>
-              <FileName>ili9488.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\stm32_graphics_display_drivers-master\Drivers\lcd\ili9488\ili9488.c</FilePath>
-            </File>
-            <File>
-              <FileName>font8.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\stm32_graphics_display_drivers-master\Drivers\Fonts\font8.c</FilePath>
-            </File>
-            <File>
-              <FileName>font12.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\stm32_graphics_display_drivers-master\Drivers\Fonts\font12.c</FilePath>
-            </File>
-            <File>
-              <FileName>font16.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\stm32_graphics_display_drivers-master\Drivers\Fonts\font16.c</FilePath>
-            </File>
-            <File>
-              <FileName>font20.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\stm32_graphics_display_drivers-master\Drivers\Fonts\font20.c</FilePath>
-            </File>
-            <File>
-              <FileName>font24.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\stm32_graphics_display_drivers-master\Drivers\Fonts\font24.c</FilePath>
-            </File>
-            <File>
-              <FileName>lcd_io_spi.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\stm32_graphics_display_drivers-master\Drivers\stm32f1xx\lcd_io_spi.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32_adafruit_lcd.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\stm32_graphics_display_drivers-master\Drivers\stm32_adafruit_lcd.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>Touch</GroupName>
-          <Files>
-            <File>
-              <FileName>xpt2046.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Graphics\xpt2046.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -85,6 +85,9 @@ extern ADC_ChannelConfTypeDef ADC_CONF;
 extern int16_t FlowArray[F_ARR_SIZE];
 extern uint16_t flow_prediction_arr[FLOW_30AVG];
 
+uint8_t SwitchGasRequest = 0;
+uint8_t ActiveGasRequested = LEFT;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -190,9 +193,10 @@ int main(void)
 		}
 	}
 	
-	T_SetWatch();
-	ili9488_Init();
-	DrawTheBase();
+	//T_SetWatch();
+	//ili9488_Init();
+	//DrawTheBase();
+	HAL_Delay(500);
   /* USER CODE END 2 */
 
   /* USER CODE BEGIN RTOS_MUTEX */
@@ -640,7 +644,7 @@ void StartTaskDisplay(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-		UI_logic();
+		//UI_logic();
     osDelay(1);
   }
   /* USER CODE END StartTaskDisplay */

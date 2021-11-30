@@ -12,9 +12,34 @@
 #include "lcd.h"
 #include "lcd_io_spi.h"
 
-extern struct TouchStructType T_struct;
-
 #define DMA_MAXSIZE           0xFFFE
+
+//-----------------------------------------------------------------------------
+/* Link function for LCD peripheral */
+void  LCD_Delay (uint32_t delay);
+void  LCD_IO_Init(void);
+void  LCD_IO_Bl_OnOff(uint8_t Bl);
+
+void  LCD_IO_WriteCmd8(uint8_t Cmd);
+void  LCD_IO_WriteCmd16(uint16_t Cmd);
+void  LCD_IO_WriteData8(uint8_t Data);
+void  LCD_IO_WriteData16(uint16_t Data);
+
+void  LCD_IO_WriteCmd8DataFill16(uint8_t Cmd, uint16_t Data, uint32_t Size);
+void  LCD_IO_WriteCmd8MultipleData8(uint8_t Cmd, uint8_t *pData, uint32_t Size);
+void  LCD_IO_WriteCmd8MultipleData16(uint8_t Cmd, uint16_t *pData, uint32_t Size);
+void  LCD_IO_WriteCmd16DataFill16(uint16_t Cmd, uint16_t Data, uint32_t Size);
+void  LCD_IO_WriteCmd16MultipleData8(uint16_t Cmd, uint8_t *pData, uint32_t Size);
+void  LCD_IO_WriteCmd16MultipleData16(uint16_t Cmd, uint16_t *pData, uint32_t Size);
+
+void  LCD_IO_ReadCmd8MultipleData8(uint8_t Cmd, uint8_t *pData, uint32_t Size, uint32_t DummySize);
+void  LCD_IO_ReadCmd8MultipleData16(uint8_t Cmd, uint16_t *pData, uint32_t Size, uint32_t DummySize);
+void  LCD_IO_ReadCmd8MultipleData24to16(uint8_t Cmd, uint16_t *pData, uint32_t Size, uint32_t DummySize);
+void  LCD_IO_ReadCmd16MultipleData8(uint16_t Cmd, uint8_t *pData, uint32_t Size, uint32_t DummySize);
+void  LCD_IO_ReadCmd16MultipleData16(uint16_t Cmd, uint16_t *pData, uint32_t Size, uint32_t DummySize);
+void  LCD_IO_ReadCmd16MultipleData24to16(uint16_t Cmd, uint16_t *pData, uint32_t Size, uint32_t DummySize);
+
+void  LCD_IO_Delay(uint32_t c);
 
 //=============================================================================
 
@@ -45,7 +70,7 @@ extern struct TouchStructType T_struct;
 #define GPIOX_PIN_(a, b)      b
 #define GPIOX_PIN(a)          GPIOX_PIN_(a)
 
-#define GPIOX_MODE_(a,b,c)    ((GPIO_TypeDef*)(((c & 8) >> 1) + GPIO ## b ## _BASE))->CRL = (((GPIO_TypeDef*)(((c & 8) >> 1) + GPIO ## b ## _BASE))->CRL & ~((uint32_t)0xF << ((c & 7) << 2))) | ((uint32_t)a << ((c & 7) << 2))
+#define GPIOX_MODE_(a,b,c)    ((GPIO_TypeDef*)(((c & 8) >> 1) + GPIO ## b ## _BASE))->CRL = (((GPIO_TypeDef*)(((c & 8) >> 1) + GPIO ## b ## _BASE))->CRL & ~(0xF << ((c & 7) << 2))) | (a << ((c & 7) << 2))
 #define GPIOX_MODE(a, b)      GPIOX_MODE_(a, b)
 
 #define GPIOX_ODR_(a, b)      BITBAND_ACCESS(GPIO ## a ->ODR, b)
@@ -1139,7 +1164,6 @@ void LCD_IO_WriteCmd8(uint8_t Cmd)
   LCD_CS_ON;
   LcdCmdWrite8(Cmd);
   LCD_CS_OFF;
-	//T_Read_ifIRQ(&T_struct);
 }
 
 //-----------------------------------------------------------------------------

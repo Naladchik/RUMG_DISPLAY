@@ -6,11 +6,24 @@
 #include "lcd_io_spi.h"
 #endif
 
-#if  ILI9488_TOUCH == 1
-#include "ts.h"
-#endif
-
-
+// Lcd
+void     ili9488_Init(void);
+uint16_t ili9488_ReadID(void);
+void     ili9488_DisplayOn(void);
+void     ili9488_DisplayOff(void);
+void     ili9488_SetCursor(uint16_t Xpos, uint16_t Ypos);
+void     ili9488_WritePixel(uint16_t Xpos, uint16_t Ypos, uint16_t RGB_Code);
+uint16_t ili9488_ReadPixel(uint16_t Xpos, uint16_t Ypos);
+void     ili9488_SetDisplayWindow(uint16_t Xpos, uint16_t Ypos, uint16_t Width, uint16_t Height);
+void     ili9488_DrawHLine(uint16_t RGBCode, uint16_t Xpos, uint16_t Ypos, uint16_t Length);
+void     ili9488_DrawVLine(uint16_t RGBCode, uint16_t Xpos, uint16_t Ypos, uint16_t Length);
+uint16_t ili9488_GetLcdPixelWidth(void);
+uint16_t ili9488_GetLcdPixelHeight(void);
+void     ili9488_DrawBitmap(uint16_t Xpos, uint16_t Ypos, uint8_t *pbmp);
+void     ili9488_DrawRGBImage(uint16_t Xpos, uint16_t Ypos, uint16_t Xsize, uint16_t Ysize, uint16_t *pdata);
+void     ili9488_ReadRGBImage(uint16_t Xpos, uint16_t Ypos, uint16_t Xsize, uint16_t Ysize, uint16_t *pdata);
+void     ili9488_FillRect(uint16_t Xpos, uint16_t Ypos, uint16_t Xsize, uint16_t Ysize, uint16_t RGBCode);
+void     ili9488_Scroll(int16_t Scroll, uint16_t TopFix, uint16_t BottonFix); 
 
 // Touchscreen
 void     ili9488_ts_Init(uint16_t DeviceAddr);
@@ -39,6 +52,76 @@ LCD_DrvTypeDef   ili9488_drv =
 };
 
 LCD_DrvTypeDef  *lcd_drv = &ili9488_drv;
+
+#define ILI9488_NOP           0x00
+#define ILI9488_SWRESET       0x01
+#define ILI9488_RDDID         0x04
+#define ILI9488_RDDST         0x09
+
+#define ILI9488_SLPIN         0x10
+#define ILI9488_SLPOUT        0x11
+#define ILI9488_PTLON         0x12
+#define ILI9488_NORON         0x13
+
+#define ILI9488_RDMODE        0x0A
+#define ILI9488_RDMADCTL      0x0B
+#define ILI9488_RDPIXFMT      0x0C
+#define ILI9488_RDIMGFMT      0x0D
+#define ILI9488_RDSELFDIAG    0x0F
+
+#define ILI9488_INVOFF        0x20
+#define ILI9488_INVON         0x21
+#define ILI9488_GAMMASET      0x26
+#define ILI9488_DISPOFF       0x28
+#define ILI9488_DISPON        0x29
+
+#define ILI9488_CASET         0x2A
+#define ILI9488_PASET         0x2B
+#define ILI9488_RAMWR         0x2C
+#define ILI9488_RAMRD         0x2E
+
+#define ILI9488_PTLAR         0x30
+#define ILI9488_VSCRDEF       0x33
+#define ILI9488_MADCTL        0x36
+#define ILI9488_VSCRSADD      0x37
+#define ILI9488_PIXFMT        0x3A
+#define ILI9488_RAMWRCONT     0x3C
+#define ILI9488_RAMRDCONT     0x3E
+
+#define ILI9488_IMCTR         0xB0
+#define ILI9488_FRMCTR1       0xB1
+#define ILI9488_FRMCTR2       0xB2
+#define ILI9488_FRMCTR3       0xB3
+#define ILI9488_INVCTR        0xB4
+#define ILI9488_DFUNCTR       0xB6
+
+#define ILI9488_PWCTR1        0xC0
+#define ILI9488_PWCTR2        0xC1
+#define ILI9488_PWCTR3        0xC2
+#define ILI9488_PWCTR4        0xC3
+#define ILI9488_PWCTR5        0xC4
+#define ILI9488_VMCTR1        0xC5
+#define ILI9488_VMCTR2        0xC7
+
+#define ILI9488_RDID1         0xDA
+#define ILI9488_RDID2         0xDB
+#define ILI9488_RDID3         0xDC
+#define ILI9488_RDID4         0xDD
+
+#define ILI9488_GMCTRP1       0xE0
+#define ILI9488_GMCTRN1       0xE1
+#define ILI9488_IMGFUNCT      0xE9
+
+#define ILI9488_ADJCTR3       0xF7
+
+#define ILI9488_MAD_RGB       0x08
+#define ILI9488_MAD_BGR       0x00
+
+#define ILI9488_MAD_VERTICAL  0x20
+#define ILI9488_MAD_X_LEFT    0x00
+#define ILI9488_MAD_X_RIGHT   0x40
+#define ILI9488_MAD_Y_UP      0x80
+#define ILI9488_MAD_Y_DOWN    0x00
 
 #if ILI9488_COLORMODE == 0
 #define ILI9488_MAD_COLORMODE    ILI9488_MAD_RGB
@@ -119,59 +202,6 @@ static  uint16_t  yStart, yEnd;
 #endif
 
 //-----------------------------------------------------------------------------
-#if ILI9488_TOUCH == 1
-
-/* Touch parameters */
-
-#define TOUCHMINPRESSRC    8192
-#define TOUCHMAXPRESSRC    4096
-#define TOUCHMINPRESTRG       0
-#define TOUCHMAXPRESTRG     255
-#define TOUCH_FILTER         16
-
-/* fixpoints Z indexs (16bit integer, 16bit fraction) */
-#define ZINDEXA  ((65536 * (TOUCHMAXPRESTRG - TOUCHMINPRESTRG)) / (TOUCHMAXPRESSRC - TOUCHMINPRESSRC))
-#define ZINDEXB  (-ZINDEXA * TOUCHMINPRESSRC)
-
-#define ABS(N)   (((N)<0) ? (-(N)) : (N))
-
-TS_DrvTypeDef   ili9488_ts_drv =
-{
-  ili9488_ts_Init,
-  0,
-  0,
-  0,
-  ili9488_ts_DetectTouch,
-  ili9488_ts_GetXY,
-  0,
-  0,
-  0,
-  0,
-};
-
-TS_DrvTypeDef  *ts_drv = &ili9488_ts_drv;
-
-#if (LCD_ORIENTATION == 0)
-int32_t  ts_cindex[] = TS_CINDEX_0;
-#elif (LCD_ORIENTATION == 1)
-int32_t  ts_cindex[] = TS_CINDEX_1;
-#elif (LCD_ORIENTATION == 2)
-int32_t  ts_cindex[] = TS_CINDEX_2;
-#elif (LCD_ORIENTATION == 3)
-int32_t  ts_cindex[] = TS_CINDEX_3;
-#endif
-
-uint16_t tx, ty;
-
-/* Link function for Touchscreen */
-uint8_t   TS_IO_DetectToch(void);
-uint16_t  TS_IO_GetX(void);
-uint16_t  TS_IO_GetY(void);
-uint16_t  TS_IO_GetZ1(void);
-uint16_t  TS_IO_GetZ2(void);
-
-#endif   // #if ILI9488_TOUCH == 1
-
 /* Link function for LCD peripheral */
 void     LCD_Delay (uint32_t delay);
 void     LCD_IO_Init(void);
@@ -196,7 +226,7 @@ void ili9488_Init(void)
   {
     Is_ili9488_Initialized |= ILI9488_LCD_INITIALIZED;
     if((Is_ili9488_Initialized & ILI9488_IO_INITIALIZED) == 0)
-      //LCD_IO_Init();
+      LCD_IO_Init();
     Is_ili9488_Initialized |= ILI9488_IO_INITIALIZED;
   }
 
@@ -231,9 +261,9 @@ void ili9488_Init(void)
   LCD_IO_WriteCmd8(ILI9488_INVCTR); LCD_IO_WriteData8(0x02); // Display Inversion Control (2-dot)
   LCD_IO_WriteCmd8MultipleData8(ILI9488_DFUNCTR, (uint8_t *)"\x02\x02", 2); // Display Function Control RGB/MCU Interface Control
   LCD_IO_WriteCmd8(ILI9488_IMGFUNCT); LCD_IO_WriteData8(0x00); // Set Image Functio (Disable 24 bit data)
-  LCD_IO_WriteCmd8MultipleData8(ILI9488_ADJCTR3, (uint8_t *)"\xA9\x51\x2C\x82", 4); // Adjust Control (D7 stream, loose) 
+  LCD_IO_WriteCmd8MultipleData8(ILI9488_ADJCTR3, (uint8_t *)"\xA9\x51\x2C\x82", 4); // Adjust Control (D7 stream, loose)
   LCD_Delay(5);
-  LCD_IO_WriteCmd8(ILI9488_SLPOUT);      // Exit Sleep 
+  LCD_IO_WriteCmd8(ILI9488_SLPOUT);      // Exit Sleep
   LCD_Delay(120);
   LCD_IO_WriteCmd8(ILI9488_DISPON);      // Display on
   LCD_Delay(5);
@@ -652,6 +682,51 @@ void ili9488_Scroll(int16_t Scroll, uint16_t TopFix, uint16_t BottonFix)
 
 //=============================================================================
 #if ILI9488_TOUCH == 1
+
+#include "ts.h"
+
+#define TS_MULTITASK_MUTEX    ILI9488_MULTITASK_MUTEX
+#define TOUCH_FILTER          16
+#define TOUCH_MAXREPEAT       8
+
+#define ABS(N)   (((N)<0) ? (-(N)) : (N))
+
+TS_DrvTypeDef   ili9488_ts_drv =
+{
+  ili9488_ts_Init,
+  0,
+  0,
+  0,
+  ili9488_ts_DetectTouch,
+  ili9488_ts_GetXY,
+  0,
+  0,
+  0,
+  0,
+};
+
+TS_DrvTypeDef  *ts_drv = &ili9488_ts_drv;
+
+#if (LCD_ORIENTATION == 0)
+int32_t  ts_cindex[] = TS_CINDEX_0;
+#elif (LCD_ORIENTATION == 1)
+int32_t  ts_cindex[] = TS_CINDEX_1;
+#elif (LCD_ORIENTATION == 2)
+int32_t  ts_cindex[] = TS_CINDEX_2;
+#elif (LCD_ORIENTATION == 3)
+int32_t  ts_cindex[] = TS_CINDEX_3;
+#endif
+
+uint16_t tx, ty;
+
+/* Link function for Touchscreen */
+uint8_t   TS_IO_DetectToch(void);
+uint16_t  TS_IO_GetX(void);
+uint16_t  TS_IO_GetY(void);
+uint16_t  TS_IO_GetZ1(void);
+uint16_t  TS_IO_GetZ2(void);
+
+//-----------------------------------------------------------------------------
 void ili9488_ts_Init(uint16_t DeviceAddr)
 {
   if((Is_ili9488_Initialized & ILI9488_IO_INITIALIZED) == 0)
@@ -662,73 +737,54 @@ void ili9488_ts_Init(uint16_t DeviceAddr)
 //-----------------------------------------------------------------------------
 uint8_t ili9488_ts_DetectTouch(uint16_t DeviceAddr)
 {
-  static uint8_t tp = 0;
-  int32_t x1, x2, y1, y2, z11, z12, z21, z22, i, tpr;
+  static uint8_t ret = 0;
+  int32_t x1, x2, y1, y2, i;
 
-  #if  ILI9488_MULTITASK_MUTEX == 1
+  #if TS_MULTITASK_MUTEX == 1
   io_ts_busy = 1;
 
   if(io_lcd_busy)
   {
     io_ts_busy = 0;
-    return tp;
+    return ret;
   }
   #endif
 
+  ret = 0;
   if(TS_IO_DetectToch())
   {
     x1 = TS_IO_GetX();
     y1 = TS_IO_GetY();
-    z11 = TS_IO_GetZ1();
-    z21 = TS_IO_GetZ2();
-    i = 32;
+    i = TOUCH_MAXREPEAT;
     while(i--)
     {
       x2 = TS_IO_GetX();
       y2 = TS_IO_GetY();
-      z12 = TS_IO_GetZ1();
-      z22 = TS_IO_GetZ2();
-
-      if((ABS(x1 - x2) < TOUCH_FILTER) && (ABS(y1 - y2) < TOUCH_FILTER) && (ABS(z11 - z12) < TOUCH_FILTER) && (ABS(z21 - z22) < TOUCH_FILTER))
+      if((ABS(x1 - x2) < TOUCH_FILTER) && (ABS(y1 - y2) < TOUCH_FILTER))
       {
         x1 = (x1 + x2) >> 1;
-        y1 = (x1 + y2) >> 1;
-        z11 = (z11 + z12) >> 1;
-        z21 = (z21 + z22) >> 1;
-
-        tpr = (((4096 - x1) * ((z21 << 10) / z11 - 1024)) >> 10);
-        tpr = (tpr * ZINDEXA + ZINDEXB) >> 16;
-        if(tpr > TOUCHMAXPRESTRG)
-          tpr = TOUCHMAXPRESTRG;
-        if(tpr < TOUCHMINPRESTRG)
-          tpr = TOUCHMINPRESTRG;
-        tx = x1;
-        ty = y1;
-        tp = tpr;
-        #if  ILI9488_MULTITASK_MUTEX == 1
-        io_ts_busy = 0;
-        #endif
-        return tp;
+        y1 = (y1 + y2) >> 1;
+        i = 0;
+        if(TS_IO_DetectToch())
+        {
+          tx = x1;
+          ty = y1;
+          ret = 1;
+        }
       }
       else
       {
         x1 = x2;
         y1 = y2;
-        z11 = z12;
-        z21 = z22;
       }
     }
-    // sokadik probára sem sikerült stabil koordinátát kiolvasni -> nincs lenyomva
-    tp = 0;
   }
-  else
-    tp = 0;
 
-  #if  ILI9488_MULTITASK_MUTEX == 1
+  #if TS_MULTITASK_MUTEX == 1
   io_ts_busy = 0;
   #endif
 
-  return tp;
+  return ret;
 }
 
 //-----------------------------------------------------------------------------
