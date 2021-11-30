@@ -9,12 +9,12 @@
 /* SPI select (0, 1, 2, 3)
    - 0: software SPI driver (the pins assign are full free)
    - 1..3: hardware SPI driver (the TS_SCK, TS_MOSI, TS_MISO pins are lock to hardware) */
-#define TS_SPI            0
+#define TS_SPI            2
 
 /* SPI write and read speed
    - software SPI: 0=none delay, 1=nop, 2=CLK pin double write, 3.. = TS_IO_Delay(TS_SPI_SPD - 3)
    - hardware SPI clock div fPCLK: 0=/2, 1=/4, 2=/8, 3=/16, 4=/32, 5=/64, 6=/128, 7=/256 */
-#define TS_SPI_SPD        4
+#define TS_SPI_SPD        6
 
 /* SPI pins without remap and with remap (only hardvare SPI, SPI3 not on all types)
       TS_SPI_REMAP :   0            1
@@ -31,8 +31,8 @@
 
 /* Lcd control pins assign (A..K, 0..15)
    - if hardware SPI: SCK, MOSI, MISO pins assign is lock to hardware */
-#define TS_CS             X, 0
-#define TS_SCK            X, 0
-#define TS_MOSI           X, 0
-#define TS_MISO           X, 0
-#define TS_IRQ            X, 0  /* If not used leave it that way */
+#define TS_CS             B, 11
+#define TS_SCK            B, 13
+#define TS_MOSI           B, 15
+#define TS_MISO           B, 14
+#define TS_IRQ            B, 12  /* If not used leave it that way */

@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F103xB</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Middlewares/Third_Party/FreeRTOS/Source/include;../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS;../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM3;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;..\SX1278;..\WizneLib\Ethernet\W5500;..\WizneLib\Ethernet;..\tcpip</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Middlewares/Third_Party/FreeRTOS/Source/include;../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS;../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM3;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;..\SX1278;..\WizneLib\Ethernet\W5500;..\WizneLib\Ethernet;..\tcpip;..\stm32_graphics_display_drivers-master\Drivers\lcd\ili9488;..\stm32_graphics_display_drivers-master\Drivers\Fonts;..\stm32_graphics_display_drivers-master\Drivers\stm32f1xx;..\stm32_graphics_display_drivers-master\Drivers;..\GUI</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -657,6 +657,71 @@
               <FileName>modbus.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\tcpip\modbus.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>GUI</GroupName>
+          <Files>
+            <File>
+              <FileName>GUI.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\GUI\GUI.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>stm32_graphics_display_drivers-master</GroupName>
+          <Files>
+            <File>
+              <FileName>stm32_adafruit_lcd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\stm32_graphics_display_drivers-master\Drivers\stm32_adafruit_lcd.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32_adafruit_ts.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\stm32_graphics_display_drivers-master\Drivers\stm32_adafruit_ts.c</FilePath>
+            </File>
+            <File>
+              <FileName>ili9488.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\stm32_graphics_display_drivers-master\Drivers\lcd\ili9488\ili9488.c</FilePath>
+            </File>
+            <File>
+              <FileName>font8.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\stm32_graphics_display_drivers-master\Drivers\Fonts\font8.c</FilePath>
+            </File>
+            <File>
+              <FileName>font12.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\stm32_graphics_display_drivers-master\Drivers\Fonts\font12.c</FilePath>
+            </File>
+            <File>
+              <FileName>font16.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\stm32_graphics_display_drivers-master\Drivers\Fonts\font16.c</FilePath>
+            </File>
+            <File>
+              <FileName>font20.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\stm32_graphics_display_drivers-master\Drivers\Fonts\font20.c</FilePath>
+            </File>
+            <File>
+              <FileName>font24.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\stm32_graphics_display_drivers-master\Drivers\Fonts\font24.c</FilePath>
+            </File>
+            <File>
+              <FileName>lcd_io_spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\stm32_graphics_display_drivers-master\Drivers\stm32f1xx\lcd_io_spi.c</FilePath>
+            </File>
+            <File>
+              <FileName>ts_xpt2046.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\stm32_graphics_display_drivers-master\Drivers\stm32f1xx\ts_xpt2046.c</FilePath>
             </File>
           </Files>
         </Group>

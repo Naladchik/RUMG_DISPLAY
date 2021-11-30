@@ -42,6 +42,8 @@ extern "C" {
 #include "time_lib.h"
 #include "tcp_ip.h"
 #include "modbus.h"
+#include "GUI.h"
+#include "ts.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/

@@ -8,19 +8,19 @@
 /* SPI select (0, 1, 2, 3)
    - 0: software SPI driver (the pins assign are full free)
    - 1..3: hardware SPI driver (the LCD_SCK, LCD_MOSI, LCD_MISO pins are lock to hardware) */
-#define LCD_SPI           0
+#define LCD_SPI           2
 
 /* SPI mode
    - 0: only TX (only to write on the display, LCD_MISO is not used)
    - 1: half duplex (LCD_MOSI is bidirectional pin, LCD_MISO is not used)
    - 2: full duplex (SPI TX: LCD_MOSI, SPI RX: LCD_MISO) */
-#define LCD_SPI_MODE      0
+#define LCD_SPI_MODE      2
 
 /* SPI write and read speed
    - software SPI: 0=none delay, 1=nop, 2=CLK pin double write, 3.. = LCD_IO_Delay(LCD_SPI_SPD - 3)
    - hardware SPI clock div fPCLK: 0=/2, 1=/4, 2=/8, 3=/16, 4=/32, 5=/64, 6=/128, 7=/256 */
 #define LCD_SPI_SPD_WRITE 1
-#define LCD_SPI_SPD_READ  3
+#define LCD_SPI_SPD_READ  1
 
 /* If hardware SPI pins don't are on default pins -> please setting and this macro
    (will be set at LCD_IO_Init, and set the RCC_APB2ENR_AFIOEN) */
@@ -28,13 +28,13 @@
 
 /* Lcd control pins assign (A..K, 0..15)
    - if hardware SPI: SCK, MOSI, MISO pins assign is lock to hardware */
-#define LCD_RST           X, 0  /* If not used leave it that way */
-#define LCD_RS            X, 0
+#define LCD_RST           B, 8  /* If not used leave it that way */
+#define LCD_RS            B, 9
 
-#define LCD_CS            X, 0
-#define LCD_SCK           X, 0
-#define LCD_MOSI          X, 0
-#define LCD_MISO          X, 0  /* If not used leave it that way */
+#define LCD_CS            B, 2
+#define LCD_SCK           B, 13
+#define LCD_MOSI          B, 15
+#define LCD_MISO          B, 14  /* If not used leave it that way */
 
 /* Backlight control
    - BL: A..K, 0..15 (if not used -> X, 0)
