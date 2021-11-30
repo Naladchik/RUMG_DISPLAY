@@ -662,13 +662,6 @@
         </Group>
         <Group>
           <GroupName>GUI</GroupName>
-          <Files>
-            <File>
-              <FileName>GUI.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\GUI\GUI.c</FilePath>
-            </File>
-          </Files>
         </Group>
         <Group>
           <GroupName>stm32_graphics_display_drivers-master</GroupName>
@@ -722,6 +715,11 @@
               <FileName>ts_xpt2046.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\stm32_graphics_display_drivers-master\Drivers\stm32f1xx\ts_xpt2046.c</FilePath>
+            </File>
+            <File>
+              <FileName>appTouchCalib.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\stm32_graphics_display_drivers-master\App\TouchCalib\appTouchCalib.c</FilePath>
             </File>
           </Files>
         </Group>

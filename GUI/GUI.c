@@ -5,7 +5,7 @@
 #include "ili9488.h"
 #include "fonts.h"
 
-TS_DrvTypeDef   *ts_drv;
+//TS_DrvTypeDef   *ts_drv;
 TS_StateTypeDef TS_state;
 int32_t            ts_cindex[7];
 

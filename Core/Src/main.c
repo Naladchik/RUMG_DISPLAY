@@ -105,6 +105,7 @@ void StartTaskDisplay(void const * argument);
 /* USER CODE BEGIN PFP */
 void StartTaskLoRa(void const * argument);
 void StartTaskTCPIP(void const * argument);
+void mainApp(void);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -196,8 +197,9 @@ int main(void)
 	//T_SetWatch();
 	//ili9488_Init();
 	//DrawTheBase();
-	InitGUI();
+	//InitGUI();
 	HAL_Delay(500);
+	mainApp();
   /* USER CODE END 2 */
 
   /* USER CODE BEGIN RTOS_MUTEX */
@@ -645,7 +647,7 @@ void StartTaskDisplay(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-		GUI();
+		//GUI();
     osDelay(1);
   }
   /* USER CODE END StartTaskDisplay */

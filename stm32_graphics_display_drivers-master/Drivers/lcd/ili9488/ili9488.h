@@ -1,7 +1,7 @@
 /* Interface mode
    - 0: SPI mode (the lcd does not work in 16bit/pixel mode in spi, so you have to write 24bit/pixel)
    - 1: paralell mode */
-#define  ILI9488_INTERFACE        0
+#define  ILI9488_INTERFACE        1
 
 /* Orientation:
    - 0: 320x480 micro-sd in the top (portrait)
@@ -21,7 +21,7 @@
    - 0: touchscreen disabled (default)
    - 1: touchscreen enabled
 */
-#define  ILI9488_TOUCH             0
+#define  ILI9488_TOUCH             1
 
 /* Touchscreen calibration data for 4 orientations */
 #define  TS_CINDEX_0        {3385020, 333702, -667424, 1243070964, -458484, -13002, 1806391572}

@@ -126,7 +126,7 @@ void mainApp(void)
   uint16_t x, y;
   int32_t tx0, ty0, tx1, ty1, tx2, ty2;
 
-  printf("\r\nPlease: lcd ORIENTATION setting the 0 for correct result\r\n");
+  //printf("\r\nPlease: lcd ORIENTATION setting the 0 for correct result\r\n");
 
   BSP_LCD_Init();
   BSP_TS_Init(BSP_LCD_GetXSize(), BSP_LCD_GetYSize());
