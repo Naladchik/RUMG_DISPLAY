@@ -647,7 +647,8 @@ void StartTaskDisplay(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-		GUI();
+		//GUI();
+		UI_logic();
     osDelay(1);
   }
   /* USER CODE END StartTaskDisplay */

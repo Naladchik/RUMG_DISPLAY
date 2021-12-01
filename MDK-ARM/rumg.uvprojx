@@ -673,6 +673,36 @@
               <FileType>1</FileType>
               <FilePath>..\GUI\RUMG_main.c</FilePath>
             </File>
+            <File>
+              <FileName>GraphLib.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\GUI\GraphLib.c</FilePath>
+            </File>
+            <File>
+              <FileName>main_window.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\GUI\main_window.c</FilePath>
+            </File>
+            <File>
+              <FileName>UI_log.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\GUI\UI_log.c</FilePath>
+            </File>
+            <File>
+              <FileName>UI_plot.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\GUI\UI_plot.c</FilePath>
+            </File>
+            <File>
+              <FileName>UI_settings.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\GUI\UI_settings.c</FilePath>
+            </File>
+            <File>
+              <FileName>UI_tree.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\GUI\UI_tree.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

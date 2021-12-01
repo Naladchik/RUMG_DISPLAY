@@ -45,6 +45,13 @@ extern "C" {
 #include "GUI.h"
 #include "RUMG_main.h"
 #include "ts.h"
+
+#include "GraphLib.h"
+#include "UI_log.h"
+#include "UI_plot.h"
+#include "UI_settings.h"
+#include "UI_tree.h"
+#include "main_window.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/

@@ -1,6 +1,6 @@
-#ifndef __RUMG_MAIN_H
-#define __RUMG_MAIN_H
-#include "main.h"
+#ifndef MAIN_WINDOW
+#define MAIN_WINDOW
+#include "stm32f1xx_hal.h"
 
 #define MAIN_BGND 	0x0844 // 4 6 51 -> 1 2 4 -> 00001 000010 00100
 #define WHITE_COLOR	0xffff
@@ -44,6 +44,21 @@
 #define HP_DIG_INTERVAL 	14
 #define HP_REF_Y					ROUNDS_Y - 15
 
-void DrawBase(void);
-#endif
+void DrawFlowVal(uint16_t val, uint16_t color);
+void DrawLinePress(float fval, uint16_t color);
+void DrawConcPress(float fval, uint16_t color);
+void DrawTheLine(uint16_t hight, uint16_t width);
+void DrawRoundScale(uint16_t xx, uint16_t yy, uint16_t rr);
+void DrawLeftPress(uint16_t val, uint16_t color);
+void DrawRightPress(uint16_t val, uint16_t color);
+void DrawConsumption(uint8_t A_G);
+void DrawAlarmSmall(uint16_t X, uint16_t Y);
+void EraseAlarmSmall(uint16_t X, uint16_t Y);
+void DrawAlarmBig(uint16_t X, uint16_t Y);
+void EraseAlarmBig(uint16_t X, uint16_t Y);
+void DrawBattery(uint16_t percent, uint16_t xx, uint16_t yy);
+void DrawMenuDots(uint16_t xx, uint16_t yy);
+void DrawTheBase(void);
+void DrawMainWindow(void);
 
+#endif

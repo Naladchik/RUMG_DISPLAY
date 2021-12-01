@@ -5,7 +5,7 @@
 #include "ili9488.h" //just for width and height
 #include "fonts.h"
 
-void DrawTheBase(void){
+void DrawBase(void){
 	//fill the background
 	BSP_LCD_SetTextColor(MAIN_BGND);
 	BSP_LCD_FillRect(0, 0, ILI9488_LCD_PIXEL_HEIGHT,  ILI9488_LCD_PIXEL_WIDTH);
@@ -13,7 +13,6 @@ void DrawTheBase(void){
 	//draw horizontal line
 	BSP_LCD_DrawHLine((ILI9488_LCD_PIXEL_HEIGHT - 460)/2, ILI9488_LCD_PIXEL_WIDTH - 220, 460);
 	BSP_LCD_DrawHLine((ILI9488_LCD_PIXEL_HEIGHT - 460)/2, ILI9488_LCD_PIXEL_WIDTH - 220 + 1, 460);
-	BSP_LCD_DrawBitmap();
 	
 	/*
 	DrawImage(bal_stc, BAL_STC_W, BAL_STC_H, WHITE_COLOR, 5, 5);
