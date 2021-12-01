@@ -43,6 +43,7 @@ extern "C" {
 #include "tcp_ip.h"
 #include "modbus.h"
 #include "GUI.h"
+#include "RUMG_main.h"
 #include "ts.h"
 /* USER CODE END Includes */
 
