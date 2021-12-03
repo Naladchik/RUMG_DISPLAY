@@ -343,6 +343,7 @@ const uint8_t battery[BAT_W * BAT_H / 8] = {// 'Battery', 56x25px
 
 
 void DrawFlowVal(uint16_t val, uint16_t color){
+	DoTouchScreen();
 	#define DIG_INTERVAL 30
 	if(val > 999) DrawDigitB(FLOW_REF_X, FLOW_REF_Y, (val / 1000) % 10, color); else DrawDigitB(FLOW_REF_X, FLOW_REF_Y, 99, color);	
 	if(val > 99) DrawDigitB(FLOW_REF_X + DIG_INTERVAL, FLOW_REF_Y, (val / 100) % 10, color);  else DrawDigitB(FLOW_REF_X + DIG_INTERVAL, FLOW_REF_Y, 99, color);
@@ -351,6 +352,7 @@ void DrawFlowVal(uint16_t val, uint16_t color){
 }
 
 void DrawLinePress(float fval, uint16_t color){
+	DoTouchScreen();
 	#define OP_REF_X 188
 	#define OP_REF_Y 48
 	#define COMMA_INT 10
@@ -362,6 +364,7 @@ void DrawLinePress(float fval, uint16_t color){
 }
 
 void DrawConcPress(float fval, uint16_t color){
+	DoTouchScreen();
 	#define CP_REF_X 388
 	#define CP_REF_Y 72
 	#define SDIG_INTERVAL 15
@@ -374,6 +377,7 @@ void DrawConcPress(float fval, uint16_t color){
 }
 
 void DrawTheLine(uint16_t hight, uint16_t width){
+	DoTouchScreen();
 	ili9488_DrawHLine(WHITE_COLOR, (DISPLAY_WIDTH - width)/2, DISPLAY_HIGHT - hight, width);
 	ili9488_DrawHLine(WHITE_COLOR, (DISPLAY_WIDTH - width)/2, DISPLAY_HIGHT - hight + 1, width);
 }
@@ -385,6 +389,7 @@ void DrawTheLine(uint16_t hight, uint16_t width){
 *
 */
 void DrawRoundScale(uint16_t xx, uint16_t yy, uint16_t rr){
+	DoTouchScreen();
 	double alfa;
 	double alfa_rad = 0;
 	double alfa_step = 0.5;
@@ -424,6 +429,7 @@ void DrawRoundScale(uint16_t xx, uint16_t yy, uint16_t rr){
 *
 */
 void DrawLeftPress(uint16_t val, uint16_t color){
+	DoTouchScreen();
 	#define LP_REF_X 31
 	double alfa;
 	double alfa_rad = 0;
@@ -470,6 +476,7 @@ void DrawLeftPress(uint16_t val, uint16_t color){
 *
 */
 void DrawRightPress(uint16_t val, uint16_t color){
+	DoTouchScreen();
 	#define RP_REF_X 360
 	double alfa;
 	double alfa_rad = 0;
@@ -513,6 +520,7 @@ void DrawRightPress(uint16_t val, uint16_t color){
 *
 */
 void DrawConsumption(uint8_t A_G){
+	DoTouchScreen();
 	uint16_t xx, yy;
 		
 		if (A_G == LEFT){
@@ -591,11 +599,13 @@ void DrawConsumption(uint8_t A_G){
 Pair of functions for triangle alarm drawing-erasing
 */
 void DrawAlarmSmall(uint16_t X, uint16_t Y){
+	DoTouchScreen();
 	DrawImage(alarm_s_t, ALARM_S_W, ALARM_S_H, RED_COLOR, X, Y);
 	DrawImage(alarm_s_b, ALARM_S_W, ALARM_S_H, WHITE_COLOR, X, Y);
 	DrawImage(alarm_s_m, ALARM_S_W, ALARM_S_H, BLACK_COLOR, X, Y);
 }
 void EraseAlarmSmall(uint16_t X, uint16_t Y){
+	DoTouchScreen();
 	DrawImage(alarm_s_t, ALARM_S_W, ALARM_S_H, MAIN_BGND, X, Y);
 	DrawImage(alarm_s_b, ALARM_S_W, ALARM_S_H, MAIN_BGND, X, Y);
 	DrawImage(alarm_s_m, ALARM_S_W, ALARM_S_H, MAIN_BGND, X, Y);
@@ -607,11 +617,13 @@ Pair of functions for triangle alarm drawing-erasing
 
 */
 void DrawAlarmBig(uint16_t X, uint16_t Y){
+	DoTouchScreen();
 	DrawImage(alarm_b_t, ALARM_B_W, ALARM_B_H, RED_COLOR, X, Y);
 	DrawImage(alarm_b_b, ALARM_B_W, ALARM_B_H, WHITE_COLOR, X, Y);
 	DrawImage(alarm_b_m, ALARM_B_W, ALARM_B_H, BLACK_COLOR, X, Y);
 }
 void EraseAlarmBig(uint16_t X, uint16_t Y){
+	DoTouchScreen();
 	DrawImage(alarm_b_t, ALARM_B_W, ALARM_B_H, MAIN_BGND, X, Y);
 	DrawImage(alarm_b_b, ALARM_B_W, ALARM_B_H, MAIN_BGND, X, Y);
 	DrawImage(alarm_b_m, ALARM_B_W, ALARM_B_H, MAIN_BGND, X, Y);

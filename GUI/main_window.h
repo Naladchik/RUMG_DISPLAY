@@ -44,6 +44,19 @@
 #define HP_DIG_INTERVAL 	14
 #define HP_REF_Y					ROUNDS_Y - 15
 
+
+//touch screen 
+typedef struct{
+uint16_t x;
+uint16_t y;
+uint8_t up;
+}TS_TypeDef;
+
+#define TS_X_MIN 147
+#define TS_X_MAX 3915
+#define TS_Y_MIN 179
+#define TS_Y_MAX 3859
+
 void DrawFlowVal(uint16_t val, uint16_t color);
 void DrawLinePress(float fval, uint16_t color);
 void DrawConcPress(float fval, uint16_t color);

@@ -227,10 +227,12 @@ const uint8_t commaS[COMMA_S_W * COMMA_S_H / 8] = {// 'comma', 8x8px
 0x00, 0x70, 0x70, 0x70, 0x30, 0x60, 0x40, 0x00};
 
 void FillBackground(uint16_t color){
+	  DoTouchScreen();
 		ili9488_FillRect(0, 0, DISPLAY_MAX_X + 1, DISPLAY_MAX_Y + 1, color);
 }
 
 void DrawImage(const uint8_t *arr, uint16_t W, uint16_t H, uint16_t color, uint16_t X, uint16_t Y){
+	DoTouchScreen();
 		for(uint16_t x = 0; x < W; x++){
 			for(uint16_t y = 0; y < H; y++){
 				if((arr[(x + y * W) / 8] & (0x80 >> ((x + y * W) % 8))) > 0)
@@ -242,6 +244,7 @@ void DrawImage(const uint8_t *arr, uint16_t W, uint16_t H, uint16_t color, uint1
 }
 
 void DrawDigitB(uint16_t xx, uint16_t yy, uint8_t dig, uint16_t color){
+	DoTouchScreen();
 		if(dig < 10){
 			for(uint16_t x = 0; x < DIGIT_B_W; x++){
 				for(uint16_t y = 0; y < DIGIT_B_H; y++){
@@ -261,6 +264,7 @@ void DrawDigitB(uint16_t xx, uint16_t yy, uint8_t dig, uint16_t color){
 }
 
 void DrawCommaB(uint16_t xx, uint16_t yy, uint16_t color){
+	DoTouchScreen();
 		for(uint16_t x = 0; x < COMMA_B_W; x++){
 			for(uint16_t y = 0; y < COMMA_B_H; y++){
 				if((commaB[(x + y * COMMA_B_W) / 8] & (0x80 >> ((x + y * COMMA_B_W) % 8))) > 0)
@@ -272,6 +276,7 @@ void DrawCommaB(uint16_t xx, uint16_t yy, uint16_t color){
 }
 
 void DrawDigitS(uint16_t xx, uint16_t yy, uint8_t dig, uint16_t color){
+	DoTouchScreen();
 		if(dig < 10){
 			for(uint16_t x = 0; x < DIGIT_S_W; x++){
 				for(uint16_t y = 0; y < DIGIT_S_H; y++){
@@ -291,6 +296,7 @@ void DrawDigitS(uint16_t xx, uint16_t yy, uint8_t dig, uint16_t color){
 }
 
 void DrawDigitS_no_bgn(uint16_t xx, uint16_t yy, uint8_t dig, uint16_t color){
+	DoTouchScreen();
 		if(dig < 10){
 			for(uint16_t x = 0; x < DIGIT_S_W; x++){
 				for(uint16_t y = 0; y < DIGIT_S_H; y++){
@@ -302,6 +308,7 @@ void DrawDigitS_no_bgn(uint16_t xx, uint16_t yy, uint8_t dig, uint16_t color){
 }
 
 void DrawCommaS(uint16_t xx, uint16_t yy, uint16_t color){
+	DoTouchScreen();
 		for(uint16_t x = 0; x < COMMA_S_W; x++){
 			for(uint16_t y = 0; y < COMMA_S_H; y++){
 				if((commaS[(x + y * COMMA_S_W) / 8] & (0x80 >> ((x + y * COMMA_S_W) % 8))) > 0)
@@ -313,6 +320,7 @@ void DrawCommaS(uint16_t xx, uint16_t yy, uint16_t color){
 }
 
 void PrintNum(uint16_t Xpos, uint16_t Ypos, uint16_t num){
+	DoTouchScreen();
 	uint16_t buf_num;
 	buf_num = num;
 	char ch[2];

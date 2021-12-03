@@ -50,6 +50,7 @@ extern uint8_t ButtSw;
 extern uint8_t ButtAl;
 extern uint8_t ButtSwCounter;
 extern uint8_t ButtAlCounter;
+uint8_t ts_bz = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -204,6 +205,12 @@ static uint16_t TIM3_counter = 0;
     HAL_GPIO_WritePin(PORT_INT_BUZZ, INT_BUZZ, GPIO_PIN_RESET);
     buzz_lvl = 1;
   }
+	
+	//touch screen buzzer
+	if(ts_bz){
+		if(ts_bz % 2) HAL_GPIO_WritePin(PORT_INT_BUZZ, INT_BUZZ, GPIO_PIN_SET); else HAL_GPIO_WritePin(PORT_INT_BUZZ, INT_BUZZ, GPIO_PIN_RESET);
+		ts_bz--;
+	}
 
   /* USER CODE END TIM3_IRQn 0 */
   HAL_TIM_IRQHandler(&htim3);

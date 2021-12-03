@@ -9,14 +9,20 @@
 #include "stm32_adafruit_lcd.h"
 
 //struct TouchStructType T_struct; //Last unprocessed touch data
+extern TS_DrvTypeDef  *ts_drv;
+
+TS_TypeDef ts;
+
 uint8_t UI_item = MAIN_WIND;
 
 extern LCD_DrawPropTypeDef DrawProp;
 extern TypeAlarm Alarm;
 extern uint8_t SilentTimer;
 
-//uint8_t SwitchGasRequest = 0;
-//uint8_t ActiveGasRequested = LEFT;
+extern uint8_t SwitchGasRequest;
+extern uint8_t ActiveGasRequested;
+
+extern uint8_t ts_bz;
 
 
 void Print(uint16_t Xpos, uint16_t Ypos, char* str, sFONT *pFonts){
@@ -47,46 +53,48 @@ void UI_logic(void){
 			default: break;
 		}
 		
-		/*if(T_struct.Unprocessed){//touch processing
-		switch(UI_item){		
+		DoTouchScreen();
+		
+		if(ts.up){//touch processing
+		switch(UI_item){
 			case(MAIN_WIND):
 			if((Alarm.ConcentratorMax)||(Alarm.CylindersEmpty)||(Alarm.LineMax)||(Alarm.LineMin))SilentTimer = ALRM_PAUSE;
 			{	
 			//menu
-				if((T_struct.X >= 440) && (T_struct.Y <= 50)){
+				if((ts.x >= 440) && (ts.y <= 50)){
 					DrawService();
 					UI_item = MAIN_MENU_WIND;
 				}
 				//gas left - right switching
-				if((T_struct.Y >= UI_GAS_Y) && (T_struct.Y <= (UI_GAS_Y + UI_GAS_HIGHT))){
-					if((T_struct.X >= UI_LEFT_GAS_X - UI_GAS_HALF_WIDTH) && (T_struct.X <= (UI_LEFT_GAS_X + UI_GAS_HALF_WIDTH))){
+				if((ts.y >= UI_GAS_Y) && (ts.y <= (UI_GAS_Y + UI_GAS_HIGHT))){
+					if((ts.x >= UI_LEFT_GAS_X - UI_GAS_HALF_WIDTH) && (ts.x <= (UI_LEFT_GAS_X + UI_GAS_HALF_WIDTH))){
 						SwitchGasRequest = 1;
 						ActiveGasRequested = LEFT;
 					}
-					if((T_struct.X >= UI_RIGHT_GAS_X - UI_GAS_HALF_WIDTH) && (T_struct.X <= (UI_RIGHT_GAS_X + UI_GAS_HALF_WIDTH))){
+					if((ts.x >= UI_RIGHT_GAS_X - UI_GAS_HALF_WIDTH) && (ts.x <= (UI_RIGHT_GAS_X + UI_GAS_HALF_WIDTH))){
 						SwitchGasRequest = 1;
 						ActiveGasRequested = RIGHT;
 					}
 				}
 				//flow plot
-				if((T_struct.X >= FLOW_REF_X) && (T_struct.X <= FLOW_REF_X + 140)
-					&& (T_struct.Y >= FLOW_REF_Y) && (T_struct.Y <= FLOW_REF_Y + 50)){
+				if((ts.x >= FLOW_REF_X) && (ts.x <= FLOW_REF_X + 140)
+					&& (ts.y >= FLOW_REF_Y) && (ts.y <= FLOW_REF_Y + 50)){
 					UI_item = PLOT_WIND;
 					FillBackground(WHITE_COLOR);
 				}
 			}
 				break;
 			case(MAIN_MENU_WIND):
-				if((T_struct.X >= UI_INDENT) && (T_struct.X <= (UI_INDENT + 200))){
-					if((T_struct.Y >= UI_SPACE) && (T_struct.Y <= (UI_SPACE + UI_INTERVAL))){
+				if((ts.x >= UI_INDENT) && (ts.x <= (UI_INDENT + 200))){
+					if((ts.y >= UI_SPACE) && (ts.y <= (UI_SPACE + UI_INTERVAL))){
 						DrawSettings();
 						UI_item = SETTINGS_WIND;
 					}
-					if((T_struct.Y >= (UI_SPACE + UI_INTERVAL)) && (T_struct.Y <= (UI_SPACE + 2 * UI_INTERVAL))){
+					if((ts.y >= (UI_SPACE + UI_INTERVAL)) && (ts.y <= (UI_SPACE + 2 * UI_INTERVAL))){
 						DrawLog();
 						UI_item = LOG_WIND;
 					}
-					if((T_struct.Y >= (UI_SPACE + 2 * UI_INTERVAL)) && (T_struct.Y <= (UI_SPACE + 3 * UI_INTERVAL))){
+					if((ts.y >= (UI_SPACE + 2 * UI_INTERVAL)) && (ts.y <= (UI_SPACE + 3 * UI_INTERVAL))){
 						DrawTheBase();
 						UI_item = MAIN_WIND;
 					}
@@ -105,7 +113,23 @@ void UI_logic(void){
 						UI_item = MAIN_WIND;
 						break;
 			default: break;}			
-			T_struct.Unprocessed = 0;			
+			if(!(ts_drv->DetectTouch(0)) )ts.up = 0;			
 		}
-		T_Read_ifIRQ(&T_struct);*/
+}
+
+
+void DoTouchScreen(void){
+		SPI2->CR1 |= SPI_CR1_BR_2 | SPI_CR1_BR_1;
+		if(ts.up == 0){
+			if(ts_drv->DetectTouch(0)){
+				ts_drv->GetXY(0, &ts.x, &ts.y);
+				if(ts.x > TS_X_MIN) ts.x -= TS_X_MIN; else ts.x = 0;
+				ts.x = (uint16_t) ( ((float) ts.x) * (((float) DISPLAY_WIDTH) / ((float) (TS_X_MAX - TS_X_MIN))) );
+				if(ts.y > TS_Y_MIN) ts.y -= TS_Y_MIN; else ts.y = 0;
+				ts.y = (uint16_t) ( ((float) ts.y) * (((float) DISPLAY_HIGHT) / ((float) (TS_Y_MAX - TS_Y_MIN))) );
+				ts_bz = 200;
+				ts.up = 1;
+			}
+		}
+		SPI2->CR1 &= ~(SPI_CR1_BR_2 | SPI_CR1_BR_1);
 }

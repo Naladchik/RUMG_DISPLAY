@@ -32,5 +32,6 @@
 void Print(uint16_t Xpos, uint16_t Ypos, char* str, sFONT *pFonts);
 void DrawService(void);
 void UI_logic(void);
+void DoTouchScreen(void);
 
 #endif
