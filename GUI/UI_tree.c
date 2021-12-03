@@ -77,11 +77,13 @@ void UI_logic(void){
 					}
 				}
 				//flow plot
+				if(FLOW_SENSOR){
 				if((ts.x >= FLOW_REF_X) && (ts.x <= FLOW_REF_X + 140)
 					&& (ts.y >= FLOW_REF_Y) && (ts.y <= FLOW_REF_Y + 50)){
 					UI_item = PLOT_WIND;
 					FillBackground(WHITE_COLOR);
 				}
+			}
 			}
 				break;
 			case(MAIN_MENU_WIND):

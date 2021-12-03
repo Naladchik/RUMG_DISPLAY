@@ -12,6 +12,7 @@
 /*INDIVIDUAL PARAMETERS!!!*/
 #define TX_DEV_NUM				   		0x01
 #define RX_DEV_NUM				   		0x02
+#define FLOW_SENSOR					0 // is flow sensor installed
 #define ROLE	 												CONTROLER //CONTROLER or REPEATER
 #define COMM_DEV								NO_COMM //ETHERNET or LORA or NO_COMM
 #define LORA_FREQ   						434500000  //Frequeny in Hz, was 434500000, was 859500000
@@ -38,7 +39,7 @@
 #define Volt_a          (float)0.0088645 //ADC - battery and PSU voltage coefficient a
 #define Volt_b          (float)0.0 //ADC - battery and PSU voltage coefficient b
 
-#define BatteryCharged  (float)12.5 //V
+#define BatteryCharged  (float)12.0 //V
 #define BatteryLow      (float)9.0 //V
 #define BatteryOK       (float)(BatteryLow + 0.5) //V
 #define PSU_LOW         (float)11.0 //V
