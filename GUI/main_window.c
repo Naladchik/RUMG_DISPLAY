@@ -12,6 +12,10 @@ extern uint8_t ActiveGas;
 
 extern TypeVolt PhValues_output;
 
+extern TypeAlarm Alarm;
+
+extern uint8_t UI_item;
+
 extern LCD_DrawPropTypeDef DrawProp;
 
 extern uint16_t PredictedTime;
@@ -20,6 +24,8 @@ extern uint16_t OldPredictedTime;
 extern struct TouchStructType T_struct;
 
 extern TypeParameters DeviceParam;
+
+volatile TypeAlarm OldAlarm;
 
 // Lcd
 void     ili9488_Init(void);
@@ -749,27 +755,29 @@ void DrawMainWindow(void){
 	  static uint8_t OldConcAlarm = 1;
 		static uint8_t OldHPLeftAlarm = 1;
 	  static uint8_t OldHPRightAlarm = 1;
+		//static uint8_t OldUI_item = 255 ; 
+	  extern uint8_t OldUI_item;
 		
 		//flow value
 		if(FLOW_SENSOR) DrawFlowVal(PhValues_output.Flow, WHITE_COLOR);
 		//Line pressure
-		if(Modula(PhValues_output.PressLine, OldLinePress) > 0.01){
+		if((Modula(PhValues_output.PressLine, OldLinePress) > 0.01) || (OldUI_item != UI_item)){
 			if(DisplaySet.LinePressAlarm)DrawLinePress(PhValues_output.PressLine, RED_COLOR); 
 					else DrawLinePress(PhValues_output.PressLine, WHITE_COLOR);
 			OldLinePress = PhValues_output.PressLine;
 		}
 		//Concentrator pressure
-		if(Modula(PhValues_output.PressConc, OldConcPress) > 0.01){
+		if((Modula(PhValues_output.PressConc, OldConcPress) > 0.01) || (OldUI_item != UI_item)){
 			if(DisplaySet.ConcPressAlarm)DrawConcPress(PhValues_output.PressConc, RED_COLOR); 
 				else DrawConcPress(PhValues_output.PressConc, WHITE_COLOR);
 			OldConcPress = PhValues_output.PressConc;
 		}
 		//Triangle alarm signs
-		if(OldLineAlarm != DisplaySet.LinePressAlarm){
+		if((OldLineAlarm != DisplaySet.LinePressAlarm) || (OldUI_item != UI_item)){
 			if(DisplaySet.LinePressAlarm) DrawAlarmBig(140,60); else EraseAlarmBig(140,60);
 			OldLineAlarm = DisplaySet.LinePressAlarm;
 		}
-		if(OldConcAlarm != DisplaySet.ConcPressAlarm){
+		if((OldConcAlarm != DisplaySet.ConcPressAlarm) || (OldUI_item != UI_item)){
 			if(DisplaySet.ConcPressAlarm) DrawAlarmSmall(360,75); else EraseAlarmSmall(360,75);
 			OldConcAlarm = DisplaySet.ConcPressAlarm;
 		}
@@ -809,11 +817,11 @@ void DrawMainWindow(void){
 		DrawConsumption(ActiveGas);
 	
 		//high pressure alarms
-	if(OldHPLeftAlarm != DisplaySet.LeftPressAlarm){
+	if((OldHPLeftAlarm != DisplaySet.LeftPressAlarm) || (OldUI_item != UI_item)){
 		if(DisplaySet.LeftPressAlarm) DrawAlarmSmall(2,260); else EraseAlarmSmall(2,260);
 		OldHPLeftAlarm = DisplaySet.LeftPressAlarm;
 	}
-	if(OldHPRightAlarm != DisplaySet.RightPressAlarm){
+	if((OldHPRightAlarm != DisplaySet.RightPressAlarm) || (OldUI_item != UI_item)){
 		if(DisplaySet.RightPressAlarm) DrawAlarmSmall(325,260); else EraseAlarmSmall(325,260);
 		OldHPRightAlarm = DisplaySet.RightPressAlarm;
 	}
@@ -824,4 +832,75 @@ void DrawMainWindow(void){
 		DrawBattery(b_lev, 395, 3);
 		
 		DrawMenuDots(465, 7);
+	
+	  if((OldAlarm.BatteryOut != Alarm.BatteryOut)
+			||(OldAlarm.ConcentratorMax != Alarm.ConcentratorMax)
+			||(OldAlarm.CylindersEmpty != Alarm.CylindersEmpty)
+			||(OldAlarm.LineMax != Alarm.LineMax)
+			||(OldAlarm.LineMin != Alarm.LineMin)
+			||(OldAlarm.PowerOff != Alarm.PowerOff)
+		  || (OldUI_item != UI_item)){
+				DrawErrorMessage(&Alarm);
+				OldAlarm.BatteryOut = Alarm.BatteryOut;
+				OldAlarm.ConcentratorMax = Alarm.ConcentratorMax;
+				OldAlarm.CylindersEmpty = Alarm.CylindersEmpty;
+				OldAlarm.LineMax = Alarm.LineMax;
+				OldAlarm.LineMin = Alarm.LineMin;
+				OldAlarm.PowerOff = Alarm.PowerOff;
+		}
+			
+		//OldUI_item = UI_item;
 }
+
+//-----------------------------------------------------------------------------
+/**
+  * @brief  Alarm window.
+  * @param  active: if 1 - draw if 0 - erase.
+  * @retval modula value
+  */
+void DrawErrorMessage(TypeAlarm* al){
+	uint16_t x = 125;
+	uint16_t y = 170;
+	uint16_t width = 215;
+	uint16_t hight = 120;
+	uint8_t thickness = 4;
+	uint8_t line_num = 0;
+	const uint8_t step = 16;
+	uint8_t sst0[19] = "Battery out!      ";
+	uint8_t sst1[19] = "Concentrator high!";
+	uint8_t sst2[19] = "Change cylinders! ";
+	uint8_t sst3[19] = "Line high!        ";
+	uint8_t sst4[19] = "Line low!         ";
+	uint8_t sst5[19] = "Power off!        ";
+	
+	 if(al->BatteryOut
+			|| al->ConcentratorMax
+			|| al->CylindersEmpty
+			|| al->LineMax
+			|| al->LineMin
+			|| al->PowerOff){
+		//if any alarm is active
+		BSP_LCD_SetTextColor(RED_COLOR);
+		for(uint8_t i = 0; i < thickness; i++){
+			BSP_LCD_DrawRect(x, y, width, hight);
+			x++; y++; width -= 2; hight -= 2;
+		}
+		BSP_LCD_SetTextColor(GRAY_COLOR);
+		BSP_LCD_FillRect(x, y, width, hight);
+		BSP_LCD_SetTextColor(WHITE_COLOR);
+		BSP_LCD_SetBackColor(GRAY_COLOR);
+		BSP_LCD_SetFont(&Font16);
+		//alarm specific text
+		line_num = 0;
+		if(al->BatteryOut) { BSP_LCD_DisplayStringAt(x + thickness + 2, y + line_num * step + thickness + 2, sst0, LEFT_MODE); line_num++;}
+		if(al->ConcentratorMax) {BSP_LCD_DisplayStringAt(x + thickness + 2, y + line_num * step + thickness + 2, sst1, LEFT_MODE);line_num++;}
+		if(al->CylindersEmpty) {BSP_LCD_DisplayStringAt(x + thickness + 2, y + line_num * step + thickness + 2, sst2, LEFT_MODE);line_num++;}
+		if(al->LineMax) {BSP_LCD_DisplayStringAt(x + thickness + 2, y + line_num * step + thickness + 2, sst3, LEFT_MODE);line_num++;}
+		if(al->LineMin) {BSP_LCD_DisplayStringAt(x + thickness + 2, y + line_num * step + thickness + 2, sst4, LEFT_MODE);line_num++;}
+		if(al->PowerOff) {BSP_LCD_DisplayStringAt(x + thickness + 2, y + line_num * step + thickness + 2, sst5, LEFT_MODE);line_num++;}
+ }else{
+		BSP_LCD_SetTextColor(MAIN_BGND);
+	  BSP_LCD_FillRect(x -  thickness, y -  thickness, width + 2 *  thickness, hight + 2 *  thickness);
+ }
+}
+

@@ -1,6 +1,7 @@
 #ifndef MAIN_WINDOW
 #define MAIN_WINDOW
 #include "stm32f1xx_hal.h"
+#include "logic.h"
 
 #define MAIN_BGND 	0x0844 // 4 6 51 -> 1 2 4 -> 00001 000010 00100
 #define WHITE_COLOR	0xffff
@@ -73,5 +74,6 @@ void DrawBattery(uint16_t percent, uint16_t xx, uint16_t yy);
 void DrawMenuDots(uint16_t xx, uint16_t yy);
 void DrawTheBase(void);
 void DrawMainWindow(void);
+void DrawErrorMessage(TypeAlarm* al);
 
 #endif

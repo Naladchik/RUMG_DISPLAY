@@ -14,6 +14,7 @@ extern TS_DrvTypeDef  *ts_drv;
 TS_TypeDef ts;
 
 uint8_t UI_item = MAIN_WIND;
+volatile uint8_t OldUI_item = 255;
 
 extern LCD_DrawPropTypeDef DrawProp;
 extern TypeAlarm Alarm;
@@ -45,11 +46,14 @@ void DrawService(void){
 
 void UI_logic(void){
 		switch(UI_item){		
-			case(MAIN_WIND): DrawMainWindow(); break;
-			case(MAIN_MENU_WIND): break;
-			case(SETTINGS_WIND):break;
-			case(LOG_WIND):break;
-			case(PLOT_WIND):DrawPlot(); break;
+			case(MAIN_WIND): 
+				DrawMainWindow(); 
+				OldUI_item = UI_item; 
+			break;
+			case(MAIN_MENU_WIND): OldUI_item = UI_item;  break;
+			case(SETTINGS_WIND): OldUI_item = UI_item; break;
+			case(LOG_WIND): OldUI_item = UI_item; break;
+			case(PLOT_WIND):DrawPlot(); OldUI_item = UI_item; break;
 			default: break;
 		}
 		
