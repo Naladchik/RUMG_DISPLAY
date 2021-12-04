@@ -739,12 +739,16 @@ All the values displaed here
 */
 
 void DrawMainWindow(void){
-		static float OldLeftPressure;
-		static float OldRightPressure;
-		static float LeftPressure;
-		static float RightPressure;
-		static float OldLinePress;
-		static float OldConcPress;
+		static float OldLeftPressure = 0;
+		static float OldRightPressure = 0;
+		static float LeftPressure = 0;
+		static float RightPressure = 0;
+		static float OldLinePress = 0;
+		static float OldConcPress = 0;
+	  static uint8_t OldLineAlarm = 1;
+	  static uint8_t OldConcAlarm = 1;
+		static uint8_t OldHPLeftAlarm = 1;
+	  static uint8_t OldHPRightAlarm = 1;
 		
 		//flow value
 		if(FLOW_SENSOR) DrawFlowVal(PhValues_output.Flow, WHITE_COLOR);
@@ -755,11 +759,20 @@ void DrawMainWindow(void){
 			OldLinePress = PhValues_output.PressLine;
 		}
 		//Concentrator pressure
-		if(DisplaySet.ConcPressAlarm)DrawConcPress(PhValues_output.PressConc, RED_COLOR); 
+		if(Modula(PhValues_output.PressConc, OldConcPress) > 0.01){
+			if(DisplaySet.ConcPressAlarm)DrawConcPress(PhValues_output.PressConc, RED_COLOR); 
 				else DrawConcPress(PhValues_output.PressConc, WHITE_COLOR);
+			OldConcPress = PhValues_output.PressConc;
+		}
 		//Triangle alarm signs
-		if(DisplaySet.LinePressAlarm) DrawAlarmBig(140,60); else EraseAlarmBig(140,60);
-		if(DisplaySet.ConcPressAlarm) DrawAlarmSmall(360,75); else EraseAlarmSmall(360,75);
+		if(OldLineAlarm != DisplaySet.LinePressAlarm){
+			if(DisplaySet.LinePressAlarm) DrawAlarmBig(140,60); else EraseAlarmBig(140,60);
+			OldLineAlarm = DisplaySet.LinePressAlarm;
+		}
+		if(OldConcAlarm != DisplaySet.ConcPressAlarm){
+			if(DisplaySet.ConcPressAlarm) DrawAlarmSmall(360,75); else EraseAlarmSmall(360,75);
+			OldConcAlarm = DisplaySet.ConcPressAlarm;
+		}
 	
 	if(FLOW_SENSOR){
 		if(PredictedTime != OldPredictedTime){
@@ -796,8 +809,14 @@ void DrawMainWindow(void){
 		DrawConsumption(ActiveGas);
 	
 		//high pressure alarms
+	if(OldHPLeftAlarm != DisplaySet.LeftPressAlarm){
 		if(DisplaySet.LeftPressAlarm) DrawAlarmSmall(2,260); else EraseAlarmSmall(2,260);
+		OldHPLeftAlarm = DisplaySet.LeftPressAlarm;
+	}
+	if(OldHPRightAlarm != DisplaySet.RightPressAlarm){
 		if(DisplaySet.RightPressAlarm) DrawAlarmSmall(325,260); else EraseAlarmSmall(325,260);
+		OldHPRightAlarm = DisplaySet.RightPressAlarm;
+	}
 	
 		uint16_t b_lev;
 		if(PhValues_output.BatVolt > BatteryLow) b_lev = (uint16_t)(100.0 * (PhValues_output.BatVolt - BatteryLow)/(BatteryCharged - BatteryLow));
