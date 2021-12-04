@@ -743,12 +743,17 @@ void DrawMainWindow(void){
 		static float OldRightPressure;
 		static float LeftPressure;
 		static float RightPressure;
+		static float OldLinePress;
+		static float OldConcPress;
 		
 		//flow value
 		if(FLOW_SENSOR) DrawFlowVal(PhValues_output.Flow, WHITE_COLOR);
 		//Line pressure
-		if(DisplaySet.LinePressAlarm)DrawLinePress(PhValues_output.PressLine, RED_COLOR); 
-				else DrawLinePress(PhValues_output.PressLine, WHITE_COLOR);
+		if(Modula(PhValues_output.PressLine, OldLinePress) > 0.01){
+			if(DisplaySet.LinePressAlarm)DrawLinePress(PhValues_output.PressLine, RED_COLOR); 
+					else DrawLinePress(PhValues_output.PressLine, WHITE_COLOR);
+			OldLinePress = PhValues_output.PressLine;
+		}
 		//Concentrator pressure
 		if(DisplaySet.ConcPressAlarm)DrawConcPress(PhValues_output.PressConc, RED_COLOR); 
 				else DrawConcPress(PhValues_output.PressConc, WHITE_COLOR);

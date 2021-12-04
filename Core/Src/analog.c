@@ -23,6 +23,8 @@ uint16_t PredictedTime = 0;
 uint16_t OldPredictedTime = 0;
 extern TypeParameters DeviceParam;
 
+extern uint8_t ActiveGas;
+
 
 void measure_volt(TypeVolt* Volt){
 		//ADC global variables
@@ -34,7 +36,7 @@ void measure_volt(TypeVolt* Volt){
   static uint32_t ADCConc_acc = 0;
 	static uint32_t ADCFlow_acc = 0;
 	static uint16_t ADC_counter = 0;
-	static float ADC_avg;
+	static double ADC_avg;
 	float PressLeft;
   float PressRight;
   float PSUVolt;
@@ -88,43 +90,43 @@ void measure_volt(TypeVolt* Volt){
 		ADC_counter++;
     if(ADC_counter == ADC_AVG_NUM){
       //Left Pressure calculation
-      ADC_avg = (float)ADCL_acc / ADC_AVG_NUM;
+      ADC_avg = (double)ADCL_acc;
       ADCL_acc = 0;
       PressLeft = ADC_avg * H_P_a + H_P_b;
       if(PressLeft < 0) PressLeft = 0;
 			
       //Right pressure calculation
-      ADC_avg = (float)ADCR_acc / ADC_AVG_NUM;
+      ADC_avg = (double)ADCR_acc;
       ADCR_acc = 0;
       PressRight = ADC_avg * H_P_a + H_P_b;
       if(PressRight < 0) PressRight = 0;
 			
       //PSU voltage calculation
-      ADC_avg = (float)ADCPSU_acc / ADC_AVG_NUM;
+      ADC_avg = (double)ADCPSU_acc;
       ADCPSU_acc = 0;
       PSUVolt = ADC_avg * Volt_a + Volt_b;
 			if(PSUVolt < 0) PSUVolt = 0;
 			
       //Battery voltage calculation
-      ADC_avg = (float)ADCBat_acc / ADC_AVG_NUM;
+      ADC_avg = (double)ADCBat_acc;
       ADCBat_acc = 0;
       BatVolt = ADC_avg * Volt_a + Volt_b;   
 			if(BatVolt < 0) BatVolt = 0;
 			
 			//Concentrator pressure calculation
-      ADC_avg = (float)ADCConc_acc / ADC_AVG_NUM;
+      ADC_avg = (double)ADCConc_acc;
       ADCConc_acc = 0;
 			ConcPress = ADC_avg * P_a + P_b;
 			if(ConcPress < 0) ConcPress = 0;
 			
 			//Line pressure calculation
-			ADC_avg = (float)ADCLine_acc / ADC_AVG_NUM;
+			ADC_avg = (double)ADCLine_acc;
       ADCLine_acc = 0;
 			LinePress = ADC_avg * P_a + P_b;
 			if(LinePress < 0) LinePress = 0;
 			
 			//Flow calculation
-      ADC_avg = (float)ADCFlow_acc / ADC_AVG_NUM;
+      ADC_avg = (double)ADCFlow_acc;
       ADCFlow_acc = 0;
 			FlowV = (int16_t)(ADC_avg * V_a + V_b);
 			if(FlowV < 0) FlowV = 0;			
@@ -168,17 +170,33 @@ void measure_volt(TypeVolt* Volt){
 				PredictedTime = (uint16_t)(TotalVolume / Last30flowAVG);
 			else
 				PredictedTime = 0xffff;
+			if(FAKE_SENSORS) fake_volt(Volt);
     }
+		
 }
 
-void fake_volt(TypeVolt* Volt){
-			vTaskDelay(300);
-			Volt->PressLeft = EpochTime % 150;
-			Volt->PressRight = 150 - EpochTime % 150;
-			Volt->BatVolt = 12.1;
-			Volt->PSUVolt = 13.4;
+
+//faking phisycal values
+void fake_volt(TypeVolt* Volt){	
+	static uint16_t PressLeft = 200;
+	static uint16_t PressRight = 200;
+	    vTaskDelay(300);
+	    //gas consumption
+			if(ActiveGas == LEFT) PressLeft -= 0.05;
+			if(ActiveGas == RIGHT) PressRight -= 0.05;	
+			Volt->PressLeft = PressLeft;
+			Volt->PressRight = PressRight;
+	
+			//cylinders change
+			if((Volt->PressLeft < SWTCH_THRESHOLD)  && (Volt->PressRight < ALRM_THRESHOLD) )PressLeft = 200;
+	    if((Volt->PressRight < SWTCH_THRESHOLD)  && (Volt->PressLeft < ALRM_THRESHOLD)) PressRight = 200;	
+	
+			//Volt->BatVolt = 12.1;
+			//Volt->PSUVolt = 13.4;
 			Volt->PressConc = 0.20;
-			if((EpochTime % 600)  < 2) Volt->PressLine = 0.7; else Volt->PressLine = 4.8;
-			Volt->Flow = 799;
+	
+			if((EpochTime % 900)  <  30) Volt->PressConc = 4.90; else Volt->PressConc = 0.20;
+	    if((EpochTime % 1111)  <  2) Volt->PressLine = 3.5; else Volt->PressLine = 5.34;
+			
 			Volt->new_data = 1;
 }

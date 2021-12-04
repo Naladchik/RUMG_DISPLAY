@@ -88,6 +88,8 @@ extern uint16_t flow_prediction_arr[FLOW_30AVG];
 uint8_t SwitchGasRequest = 0;
 uint8_t ActiveGasRequested = LEFT;
 
+
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -600,8 +602,8 @@ void StartTaskADC(void const * argument)
   for(;;)
   {
     //osDelay(1);
-		if(FAKE_SENSORS) fake_volt(&PhValues_input);	else measure_volt(&PhValues_input);
-	
+		//if(FAKE_SENSORS) fake_volt(&PhValues_input);	else measure_volt(&PhValues_input);
+	 measure_volt(&PhValues_input);
 		if(DeviceParam.Role == CONTROLER){
 			if(PhValues_input.new_data){
 				if(xQueueSend(myQueueADCHandle, &PhValues_input, 0) != pdTRUE){

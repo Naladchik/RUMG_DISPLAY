@@ -342,3 +342,7 @@ void PrintNum(uint16_t Xpos, uint16_t Ypos, uint16_t num){
 	Print(Xpos  + 17 * 3, Ypos,  ch , &Font24);
 }
 
+float Modula(float x1, float x2){
+	if(x1 > x2) return(x1 - x2); else return(x2 - x1);
+}
+

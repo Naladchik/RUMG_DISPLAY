@@ -7,7 +7,7 @@
 #define DEV0
 /* DEVICE CONFIGURATION */
 
-#define FAKE_SENSORS        1  // can be 0 or 1
+#define FAKE_SENSORS        0  // can be 0 or 1
 
 /*INDIVIDUAL PARAMETERS!!!*/
 #define TX_DEV_NUM				   		0x01
@@ -27,17 +27,17 @@
 #define CYL_NUM_LEFT						10
 #define CYL_NUM_RIGHT						20
 
-#define H_P_a           (float)0.083944 //ADC - cylinder pressure (bar) linear coefficient a
-#define H_P_b           (float)-62.5 //ADC - cylinder pressure (bar) linear coefficient b
+#define H_P_a           (double)0.000655651 //ADC - cylinder pressure (bar) linear coefficient a
+#define H_P_b           (double)-62.5 //ADC - cylinder pressure (bar) linear coefficient b
 
-#define P_a							(float)0.0030525
-#define P_b							(float)-2.5
+#define P_a							(double)0.000025918 // 1 - 5 V sensors
+#define P_b							(double)-2.5
 	
-#define V_a							(float)0.61050
-#define V_b							(float)-500.0
+#define V_a							(double)0.61050
+#define V_b							(double)-500.0
 
-#define Volt_a          (float)0.0088645 //ADC - battery and PSU voltage coefficient a
-#define Volt_b          (float)0.0 //ADC - battery and PSU voltage coefficient b
+#define Volt_a          (double)0.000069237 //ADC - battery and PSU voltage coefficient a
+#define Volt_b          (double)0.0 //ADC - battery and PSU voltage coefficient b
 
 #define BatteryCharged  (float)12.0 //V
 #define BatteryLow      (float)9.0 //V
