@@ -733,8 +733,6 @@ void DrawTheBase(void){
 	DrawImage(prav_coll, PRAV_COLL_W, PRAV_COLL_H, WHITE_COLOR, 352, 269);
 	DrawRoundScale(LEFT_ROUND_X, ROUNDS_Y, ROUND_RADIUS);
 	DrawRoundScale(RIGHT_ROUND_X, ROUNDS_Y, ROUND_RADIUS);
-	DrawAlarmSmall(2,260);
-	DrawAlarmSmall(325,260);
 	if(DeviceParam.CommDevice == LORA) DrawImage(lora_signal_pict, LORA_SIGNAL_W, LORA_SIGNAL_H, WHITE_COLOR, 345, 5);
 }
 
@@ -774,14 +772,14 @@ void DrawMainWindow(void){
 			OldConcPress = PhValues_output.PressConc;
 		}
 		//Triangle alarm signs
-		if((OldLineAlarm != DisplaySet.LinePressAlarm) || (OldUI_item != UI_item)){
+		/*if((OldLineAlarm != DisplaySet.LinePressAlarm) || (OldUI_item != UI_item)){
 			if(DisplaySet.LinePressAlarm) DrawAlarmBig(140,60); else EraseAlarmBig(140,60);
 			OldLineAlarm = DisplaySet.LinePressAlarm;
 		}
 		if((OldConcAlarm != DisplaySet.ConcPressAlarm) || (OldUI_item != UI_item)){
 			if(DisplaySet.ConcPressAlarm) DrawAlarmSmall(360,75); else EraseAlarmSmall(360,75);
 			OldConcAlarm = DisplaySet.ConcPressAlarm;
-		}
+		}*/
 	
 	if(FLOW_SENSOR){
 		if(PredictedTime != OldPredictedTime){
@@ -818,14 +816,14 @@ void DrawMainWindow(void){
 		DrawConsumption(ActiveGas);
 	
 		//high pressure alarms
-	if((OldHPLeftAlarm != DisplaySet.LeftPressAlarm) || (OldUI_item != UI_item)){
+	/*if((OldHPLeftAlarm != DisplaySet.LeftPressAlarm) || (OldUI_item != UI_item)){
 		if(DisplaySet.LeftPressAlarm) DrawAlarmSmall(2,260); else EraseAlarmSmall(2,260);
 		OldHPLeftAlarm = DisplaySet.LeftPressAlarm;
 	}
 	if((OldHPRightAlarm != DisplaySet.RightPressAlarm) || (OldUI_item != UI_item)){
 		if(DisplaySet.RightPressAlarm) DrawAlarmSmall(325,260); else EraseAlarmSmall(325,260);
 		OldHPRightAlarm = DisplaySet.RightPressAlarm;
-	}
+	}*/
 	
 		uint16_t b_lev;
 		if(PhValues_output.BatVolt > BatteryLow) b_lev = (uint16_t)(100.0 * (PhValues_output.BatVolt - BatteryLow)/(BatteryCharged - BatteryLow));
