@@ -758,6 +758,11 @@
               <FileType>1</FileType>
               <FilePath>..\stm32_graphics_display_drivers-master\Drivers\stm32f1xx\ts_xpt2046.c</FilePath>
             </File>
+            <File>
+              <FileName>rusfont16.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\stm32_graphics_display_drivers-master\Drivers\Fonts\rusfont16.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

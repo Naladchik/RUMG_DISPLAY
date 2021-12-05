@@ -65,13 +65,6 @@ uint8_t OneSeconTick;
 uint32_t EpochTime = 1638015094;
 
 uint8_t buzz_on;
-//uint8_t ButtSw;
-//uint8_t ButtAl;
-//uint8_t ButtSwCounter;
-//uint8_t ButtAlCounter;
-
-//uint8_t t_irq = 0;
-//uint8_t t_irq_old = 0;
 
 SX1278_hw_t SX1278_hw;
 SX1278_t SX1278;
@@ -121,7 +114,6 @@ void mainApp(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
