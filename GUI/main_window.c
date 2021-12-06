@@ -750,10 +750,10 @@ void DrawMainWindow(void){
 		static float RightPressure = 0;
 		static float OldLinePress = LINE_P_MIN;
 		static float OldConcPress =CONC_P_MIN;
-	  static uint8_t OldLineAlarm = 1;
-	  static uint8_t OldConcAlarm = 1;
-		static uint8_t OldHPLeftAlarm = 1;
-	  static uint8_t OldHPRightAlarm = 1;
+//	  static uint8_t OldLineAlarm = 1;
+//	  static uint8_t OldConcAlarm = 1;
+//		static uint8_t OldHPLeftAlarm = 1;
+//	  static uint8_t OldHPRightAlarm = 1;
 		//static uint8_t OldUI_item = 255 ; 
 	  extern uint8_t OldUI_item;
 		
@@ -761,15 +761,15 @@ void DrawMainWindow(void){
 		if(FLOW_SENSOR) DrawFlowVal(PhValues_output.Flow, WHITE_COLOR);
 		//Line pressure
 		if((Modula(PhValues_output.PressLine, OldLinePress) > 0.1) || (OldUI_item != UI_item)){
-			if(DisplaySet.LinePressAlarm)DrawLinePress(PhValues_output.PressLine/10, RED_COLOR); 
-					else DrawLinePress(PhValues_output.PressLine/10, WHITE_COLOR);
 			OldLinePress = PhValues_output.PressLine;
+			if(DisplaySet.LinePressAlarm)DrawLinePress(PhValues_output.PressLine/10, RED_COLOR); 
+					else DrawLinePress(PhValues_output.PressLine/10, WHITE_COLOR);			
 		}
 		//Concentrator pressure
 		if((Modula(PhValues_output.PressConc, OldConcPress) > 0.1) || (OldUI_item != UI_item)){
-			if(DisplaySet.ConcPressAlarm)DrawConcPress(PhValues_output.PressConc/10, RED_COLOR); 
-				else DrawConcPress(PhValues_output.PressConc/10, WHITE_COLOR);
 			OldConcPress = PhValues_output.PressConc;
+			if(DisplaySet.ConcPressAlarm)DrawConcPress(PhValues_output.PressConc/10, RED_COLOR); 
+				else DrawConcPress(PhValues_output.PressConc/10, WHITE_COLOR);			
 		}
 		//Triangle alarm signs
 		/*if((OldLineAlarm != DisplaySet.LinePressAlarm) || (OldUI_item != UI_item)){

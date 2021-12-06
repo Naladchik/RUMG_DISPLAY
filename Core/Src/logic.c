@@ -4,7 +4,6 @@
 
 uint8_t ActiveGas = LEFT;
 uint8_t OldActiveGas = LEFT;
-uint8_t ConcOldOK = 0;
 uint8_t ActiveCylinder = LEFT;
 extern uint8_t OneSeconTick; //needed for transmitting ticks from timer every second
 extern uint32_t EpochTime;
@@ -105,20 +104,8 @@ void make_action(const TypeVolt* Volt){
 						ActiveGas = RIGHT;
 						ActiveCylinder = RIGHT;
         }
-        if((ConcOldOK == 0)&&(!Alarm.ConcentratorNOT_OK)){
-          ConcNORMCounter = DeviceParam.ConcDelay;
-          ConcOldOK = 1;
-        }
-        if((ConcOldOK)&&(ConcNORMCounter == 0))ActiveGas = CONCENTRATOR;
-        //swap button
-        /*if((ButtSwCounter == BUTT_TRIM)&&(flagOldSwButt == 0)){
-          if((Volt->PressRight > DeviceParam.HPressSwitch) || 
-						((Volt->PressRight <= DeviceParam.HPressSwitch) && (Volt->PressRight <= DeviceParam.HPressSwitch))){
-            ActiveGas = RIGHT;
-            ActiveCylinder = RIGHT;
-          }
-          flagOldSwButt = 1;
-        }*/
+				if(Alarm.ConcentratorNOT_OK) ConcNORMCounter = DeviceParam.ConcDelay; //keeps it loaded. Another routing decrements it every second
+				if(ConcNORMCounter == 0) ActiveGas = CONCENTRATOR;				
         break;
        case(RIGHT):
         /*      actuation    */
@@ -132,20 +119,8 @@ void make_action(const TypeVolt* Volt){
 						ActiveGas = LEFT;
 						ActiveCylinder = LEFT;
         }
-        if((ConcOldOK == 0)&&(!Alarm.ConcentratorNOT_OK)){
-          ConcNORMCounter = DeviceParam.ConcDelay;
-          ConcOldOK = 1;
-        }
-        if((ConcOldOK)&&(ConcNORMCounter == 0))ActiveGas = CONCENTRATOR;
-        //swap button
-        /*if((ButtSwCounter == BUTT_TRIM)&&(flagOldSwButt == 0)){
-          if((Volt->PressLeft > DeviceParam.HPressSwitch) || 
-						((Volt->PressRight <= DeviceParam.HPressSwitch) && (Volt->PressRight <= DeviceParam.HPressSwitch))){
-            ActiveGas = LEFT;
-            ActiveCylinder = LEFT;
-          }
-          flagOldSwButt = 1;
-        }*/
+				if(Alarm.ConcentratorNOT_OK) ConcNORMCounter = DeviceParam.ConcDelay; //keeps it loaded. Another routing decrements it every second
+				if(ConcNORMCounter == 0) ActiveGas = CONCENTRATOR;				
         break;
        case(CONCENTRATOR):
         /*      actuation    */
@@ -156,7 +131,6 @@ void make_action(const TypeVolt* Volt){
         if(Alarm.ConcentratorNOT_OK){
           ConcSIGCounter = CONC_SIG_DUR;
           ActiveGas = ActiveCylinder;
-          ConcOldOK = 0;
         }
         //swap button
         /*if((ButtSwCounter == BUTT_TRIM)&&(flagOldSwButt == 0)){
@@ -171,27 +145,24 @@ void make_action(const TypeVolt* Volt){
 			if((OldActiveGas == CONCENTRATOR) && (ActiveGas != CONCENTRATOR)) ConcSIGCounter = CONC_SIG_DUR;			
 			
 			if(LoraLinkOK){ //there is succesfull radiolink
-			switch(ActiveGas){
-      case(LEFT):
-        if((ConcOldOK == 0)&&(!Alarm.ConcentratorNOT_OK)){
-          ConcNORMCounter = DeviceParam.ConcDelay;
-          ConcOldOK = 1;
-        }
-        break;
-       case(RIGHT):
-        if((ConcOldOK == 0)&&(!Alarm.ConcentratorNOT_OK)){
-          ConcNORMCounter = DeviceParam.ConcDelay;
-          ConcOldOK = 1;
-        }
-        break;
-       case(CONCENTRATOR):
-        if(Alarm.ConcentratorNOT_OK){
-          ConcSIGCounter = CONC_SIG_DUR;
-          ConcOldOK = 0;
-        }
-        break;
-			default: break;
-			}
+//			switch(ActiveGas){
+//      case(LEFT):
+//        if((ConcOldOK == 0)&&(!Alarm.ConcentratorNOT_OK)){
+//          ConcNORMCounter = DeviceParam.ConcDelay;
+//        }
+//        break;
+//       case(RIGHT):
+//        if((ConcOldOK == 0)&&(!Alarm.ConcentratorNOT_OK)){
+//          ConcNORMCounter = DeviceParam.ConcDelay;
+//        }
+//        break;
+//       case(CONCENTRATOR):
+//        if(Alarm.ConcentratorNOT_OK){
+//          ConcSIGCounter = CONC_SIG_DUR;
+//        }
+//        break;
+//			default: break;
+//			}
 		}else{//no successfull radio-link
 		}
 			

@@ -153,17 +153,22 @@
         <Ww>
           <count>0</count>
           <WinNumber>1</WinNumber>
-          <ItemText>OldUI_item</ItemText>
+          <ItemText>ConcSIGCounter,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>1</count>
           <WinNumber>1</WinNumber>
-          <ItemText>UI_item</ItemText>
+          <ItemText>ConcOldOK</ItemText>
         </Ww>
         <Ww>
           <count>2</count>
           <WinNumber>1</WinNumber>
-          <ItemText>PhValues_output</ItemText>
+          <ItemText>Alarm</ItemText>
+        </Ww>
+        <Ww>
+          <count>3</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>ConcNORMCounter,0x0A</ItemText>
         </Ww>
       </WatchWindow1>
       <Tracepoint>
