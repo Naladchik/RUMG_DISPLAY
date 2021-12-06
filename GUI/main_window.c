@@ -848,7 +848,26 @@ void DrawMainWindow(void){
 				DrawErrorMessage(&Alarm);				
 		}
 			
-		//OldUI_item = UI_item;
+		//font try
+		BSP_LCD_SetTextColor(BLACK_COLOR);
+		BSP_LCD_SetBackColor(WHITE_COLOR);
+		for(uint8_t hh = 24; hh < 26; hh++){
+			for(uint8_t ww = 16; ww < 18; ww++){
+				for(uint8_t ind = 1; ind < 100; ind ++){
+					RuFont6.Width = ww;
+					RuFont6.Height = hh;
+					BSP_LCD_SetFont(&RuFont6);		
+					uint8_t my_str[20] = {0x00 + ind, 0x01 + ind, 0x02 + ind, 0x03 + ind, 0x04 + ind, 0x05 + ind, 0x00};
+					BSP_LCD_DisplayStringAt(90, 140, my_str, LEFT_MODE);
+					BSP_LCD_SetFont(&Font16);
+					uint8_t my_w[3] = {0x30 + ww/10, 0x30 + ww%10, 0x00};
+					uint8_t my_h[3] = {0x30 + hh/10, 0x30 + hh%10, 0x00};
+					BSP_LCD_DisplayStringAt(140, 200, my_w, LEFT_MODE);
+					BSP_LCD_DisplayStringAt(140, 240, my_h, LEFT_MODE);
+			}
+		}
+	}
+		
 }
 
 //-----------------------------------------------------------------------------

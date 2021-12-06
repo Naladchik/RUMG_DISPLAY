@@ -188,13 +188,17 @@ void fake_volt(TypeVolt* Volt){
 			Volt->PressRight = PressRight;
 	
 			//cylinders change
-			if((Volt->PressLeft < SWTCH_THRESHOLD)  && (Volt->PressRight < ALRM_THRESHOLD) )PressLeft = 200;
-	    if((Volt->PressRight < SWTCH_THRESHOLD)  && (Volt->PressLeft < ALRM_THRESHOLD)) PressRight = 200;	
+	//		if((Volt->PressLeft < SWTCH_THRESHOLD)  && (Volt->PressRight < ALRM_THRESHOLD) )PressLeft = 200;
+	//    if((Volt->PressRight < SWTCH_THRESHOLD)  && (Volt->PressLeft < ALRM_THRESHOLD)) PressRight = 200;	
+	Volt->PressRight = 120;
+	Volt->PressLeft = 120;
 	
 	//concentrator
-			if((EpochTime % 60)  <  30) Volt->PressConc = 0.01; else Volt->PressConc = 5.26;
+			//if((EpochTime % 60)  <  30) Volt->PressConc = 0.01; else Volt->PressConc = 5.26;
+	Volt->PressConc = 0.1;
 	//line
-	    Volt->PressLine = 4.00 + ((float)(EpochTime % 200))/ 200;
+	    //Volt->PressLine = 4.00 + ((float)(EpochTime % 200))/ 200;
+	    Volt->PressLine = 4.5;
 			
 			Volt->new_data = 1;
 }

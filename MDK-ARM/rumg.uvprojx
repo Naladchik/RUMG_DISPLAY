@@ -763,6 +763,16 @@
               <FileType>1</FileType>
               <FilePath>..\stm32_graphics_display_drivers-master\Drivers\Fonts\rusfont16.c</FilePath>
             </File>
+            <File>
+              <FileName>Cyrillic6x13B.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\stm32_graphics_display_drivers-master\Drivers\Fonts\Cyrillic6x13B.c</FilePath>
+            </File>
+            <File>
+              <FileName>Cyrillic9x18B.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\stm32_graphics_display_drivers-master\Drivers\Fonts\Cyrillic9x18B.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

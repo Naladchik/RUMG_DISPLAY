@@ -618,6 +618,12 @@ void StartTaskADC(void const * argument)
 void StartTaskLogic(void const * argument)
 {
   /* USER CODE BEGIN StartTaskLogic */
+	PhValues_output.BatVolt = 12;
+	PhValues_output.PressConc = 5;
+	PhValues_output.PressLine = 5;
+	PhValues_output.PressLeft = 50;
+	PhValues_output.PressRight = 50;
+	PhValues_output.PSUVolt = 13;
   /* Infinite loop */
   for(;;)
   {

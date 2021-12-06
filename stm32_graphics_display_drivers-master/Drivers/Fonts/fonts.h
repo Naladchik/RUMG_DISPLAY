@@ -79,6 +79,8 @@ extern sFONT Font16;
 extern sFONT Font12;
 extern sFONT Font8;
 extern sFONT RuFont16;
+extern sFONT RuFont6;
+extern sFONT RuFont9;
 /**
   * @}
   */ 

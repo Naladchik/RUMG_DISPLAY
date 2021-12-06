@@ -7,7 +7,7 @@
 #define DEV0
 /* DEVICE CONFIGURATION */
 
-#define FAKE_SENSORS        0  // can be 0 or 1
+#define FAKE_SENSORS        1  // can be 0 or 1
 
 /*INDIVIDUAL PARAMETERS!!!*/
 #define TX_DEV_NUM				   		0x01
