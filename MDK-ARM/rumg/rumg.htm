@@ -3,7 +3,7 @@
 <title>Static Call Graph - [rumg\rumg.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image rumg\rumg.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Mon Dec 06 19:32:54 2021
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Mon Dec 06 19:39:13 2021
 <BR><P>
 <H3>Maximum Stack Usage =        416 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -790,6 +790,7 @@ Global Symbols
 <LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2uiz
 </UL>
 <BR>[Called By]<UL><LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UI_logic
+<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawDigitB
 <LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawCommaS
 <LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawCommaB
 <LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawTheLine
@@ -803,7 +804,6 @@ Global Symbols
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawImage
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawDigitS_no_bgn
 <LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawDigitS
-<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawDigitB
 </UL>
 
 <P><STRONG><a name="[84]"></a>DrawBattery</STRONG> (Thumb, 238 bytes, Stack size 40 bytes, main_window.o(i.DrawBattery))
@@ -935,9 +935,9 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 <LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2uiz
+<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawDigitB
 <LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawCommaB
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DoTouchScreen
-<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawDigitB
 </UL>
 <BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawMainWindow
 </UL>
@@ -2286,7 +2286,8 @@ Global Symbols
 <LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_IO_WriteCmd8
 <LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_write16to24
 </UL>
-<BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawCommaS
+<BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawDigitB
+<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawCommaS
 <LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawCommaB
 <LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawRoundScale
 <LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawRightPress
@@ -2296,7 +2297,6 @@ Global Symbols
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawImage
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawDigitS_no_bgn
 <LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawDigitS
-<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawDigitB
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> ili9488.o(.data)
 </UL>

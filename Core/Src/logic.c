@@ -7,7 +7,7 @@ uint8_t OldActiveGas = LEFT;
 uint8_t ActiveCylinder = LEFT;
 extern uint8_t OneSeconTick; //needed for transmitting ticks from timer every second
 extern uint32_t EpochTime;
-uint8_t flagLEDodd = 0; //flip-flop var. for led on-off
+//uint8_t flagLEDodd = 0; //flip-flop var. for led on-off
 
 extern TypeParameters DeviceParam;
 extern uint8_t SwitchGasRequest;
