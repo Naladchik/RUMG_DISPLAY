@@ -153,22 +153,17 @@
         <Ww>
           <count>0</count>
           <WinNumber>1</WinNumber>
-          <ItemText>ADCLine_acc</ItemText>
+          <ItemText>OldUI_item</ItemText>
         </Ww>
         <Ww>
           <count>1</count>
           <WinNumber>1</WinNumber>
-          <ItemText>ADC_avg</ItemText>
+          <ItemText>UI_item</ItemText>
         </Ww>
         <Ww>
           <count>2</count>
           <WinNumber>1</WinNumber>
-          <ItemText>LinePress</ItemText>
-        </Ww>
-        <Ww>
-          <count>3</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>ADC_counter</ItemText>
+          <ItemText>PhValues_output</ItemText>
         </Ww>
       </WatchWindow1>
       <Tracepoint>

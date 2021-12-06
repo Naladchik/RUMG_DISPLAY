@@ -191,8 +191,8 @@ int main(void)
 	//T_SetWatch();
 	//ili9488_Init();
 	//DrawTheBase();
-	InitGUI();
-	HAL_Delay(500);
+	//InitGUI();
+	HAL_Delay(250);
 	//mainApp();
   /* USER CODE END 2 */
 
@@ -638,6 +638,7 @@ void StartTaskLogic(void const * argument)
 void StartTaskDisplay(void const * argument)
 {
   /* USER CODE BEGIN StartTaskDisplay */
+	InitGUI();
   /* Infinite loop */
   for(;;)
   {

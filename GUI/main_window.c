@@ -839,13 +839,13 @@ void DrawMainWindow(void){
 			||(OldAlarm.LineMin != Alarm.LineMin)
 			||(OldAlarm.PowerOff != Alarm.PowerOff)
 		  || (OldUI_item != UI_item)){
-				DrawErrorMessage(&Alarm);
 				OldAlarm.BatteryOut = Alarm.BatteryOut;
 				OldAlarm.ConcentratorMax = Alarm.ConcentratorMax;
 				OldAlarm.CylindersEmpty = Alarm.CylindersEmpty;
 				OldAlarm.LineMax = Alarm.LineMax;
 				OldAlarm.LineMin = Alarm.LineMin;
 				OldAlarm.PowerOff = Alarm.PowerOff;
+				DrawErrorMessage(&Alarm);				
 		}
 			
 		//OldUI_item = UI_item;
