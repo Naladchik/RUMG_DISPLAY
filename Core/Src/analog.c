@@ -192,9 +192,9 @@ void fake_volt(TypeVolt* Volt){
 	    if((Volt->PressRight < SWTCH_THRESHOLD)  && (Volt->PressLeft < ALRM_THRESHOLD)) PressRight = 200;	
 	
 	//concentrator
-			if((EpochTime % 60)  <  3) Volt->PressConc = 9.20; else Volt->PressConc = 9.00;
+			if((EpochTime % 60)  <  30) Volt->PressConc = 0.01; else Volt->PressConc = 5.26;
 	//line
-	    Volt->PressLine = 5.95 + ((float)(EpochTime % 200))/ 180;
+	    Volt->PressLine = 4.00 + ((float)(EpochTime % 200))/ 200;
 			
 			Volt->new_data = 1;
 }

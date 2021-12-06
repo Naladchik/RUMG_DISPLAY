@@ -13,6 +13,9 @@ extern TS_DrvTypeDef  *ts_drv;
 
 TS_TypeDef ts;
 
+uint8_t my_str[40] = "a.bvgdeyjzixklmnOPRSTUWHCQW$65%789";
+uint8_t my_str2[40] = "ABVG.DEYJZIXKLMNoprstufhcqw&#10234";
+
 uint8_t UI_item = MAIN_WIND;
 volatile uint8_t OldUI_item = 255;
 
@@ -56,6 +59,12 @@ void UI_logic(void){
 			case(PLOT_WIND):DrawPlot(); OldUI_item = UI_item; break;
 			default: break;
 		}
+		
+//		BSP_LCD_SetTextColor(BLACK_COLOR);
+//		BSP_LCD_SetBackColor(WHITE_COLOR);
+//		BSP_LCD_SetFont(&RuFont16);
+//		BSP_LCD_DisplayStringAt(2, 250, my_str, LEFT_MODE);
+//		BSP_LCD_DisplayStringAt(2, 270, my_str2, LEFT_MODE);
 		
 		DoTouchScreen();
 		

@@ -748,8 +748,8 @@ void DrawMainWindow(void){
 		static float OldRightPressure = 0;
 		static float LeftPressure = 0;
 		static float RightPressure = 0;
-		static float OldLinePress = 0;
-		static float OldConcPress = 0;
+		static float OldLinePress = LINE_P_MIN;
+		static float OldConcPress =CONC_P_MIN;
 	  static uint8_t OldLineAlarm = 1;
 	  static uint8_t OldConcAlarm = 1;
 		static uint8_t OldHPLeftAlarm = 1;
@@ -760,15 +760,15 @@ void DrawMainWindow(void){
 		//flow value
 		if(FLOW_SENSOR) DrawFlowVal(PhValues_output.Flow, WHITE_COLOR);
 		//Line pressure
-		if((Modula(PhValues_output.PressLine, OldLinePress) > 0.01) || (OldUI_item != UI_item)){
-			if(DisplaySet.LinePressAlarm)DrawLinePress(PhValues_output.PressLine, RED_COLOR); 
-					else DrawLinePress(PhValues_output.PressLine, WHITE_COLOR);
+		if((Modula(PhValues_output.PressLine, OldLinePress) > 0.1) || (OldUI_item != UI_item)){
+			if(DisplaySet.LinePressAlarm)DrawLinePress(PhValues_output.PressLine/10, RED_COLOR); 
+					else DrawLinePress(PhValues_output.PressLine/10, WHITE_COLOR);
 			OldLinePress = PhValues_output.PressLine;
 		}
 		//Concentrator pressure
-		if((Modula(PhValues_output.PressConc, OldConcPress) > 0.01) || (OldUI_item != UI_item)){
-			if(DisplaySet.ConcPressAlarm)DrawConcPress(PhValues_output.PressConc, RED_COLOR); 
-				else DrawConcPress(PhValues_output.PressConc, WHITE_COLOR);
+		if((Modula(PhValues_output.PressConc, OldConcPress) > 0.1) || (OldUI_item != UI_item)){
+			if(DisplaySet.ConcPressAlarm)DrawConcPress(PhValues_output.PressConc/10, RED_COLOR); 
+				else DrawConcPress(PhValues_output.PressConc/10, WHITE_COLOR);
 			OldConcPress = PhValues_output.PressConc;
 		}
 		//Triangle alarm signs
@@ -865,12 +865,18 @@ void DrawErrorMessage(TypeAlarm* al){
 	uint8_t thickness = 4;
 	uint8_t line_num = 0;
 	const uint8_t step = 16;
-	uint8_t sst0[17] = "Batare4 sela!    ";
-	uint8_t sst1[17] = "Koncentrator!    ";
-	uint8_t sst2[17] = "Ballon0 pust0!   ";
-	uint8_t sst3[17] = "V0sokoe davlenie!";
-	uint8_t sst4[17] = "Nizkoe davlenie! ";
-	uint8_t sst5[17] = "Set1!            ";
+//	uint8_t sst0[17] = "Batare4 sela!    ";
+//	uint8_t sst1[17] = "Koncentrator!    ";
+//	uint8_t sst2[17] = "Ballon0 pust0!   ";
+//	uint8_t sst3[17] = "V0sokoe davlenie!";
+//	uint8_t sst4[17] = "Nizkoe davlenie! ";
+//	uint8_t sst5[17] = "Set1!            ";
+	uint8_t sst0[19] = "Battery out!      ";
+	uint8_t sst1[19] = "Concentrator high!";
+	uint8_t sst2[19] = "Change cylinders! ";
+	uint8_t sst3[19] = "Line high!        ";
+	uint8_t sst4[19] = "Line low!         ";
+	uint8_t sst5[19] = "Power off!        ";
 	
 	 if(al->BatteryOut
 			|| al->ConcentratorMax
@@ -888,7 +894,8 @@ void DrawErrorMessage(TypeAlarm* al){
 		BSP_LCD_FillRect(x, y, width, hight);
 		BSP_LCD_SetTextColor(BLACK_COLOR);
 		BSP_LCD_SetBackColor(WHITE_COLOR);
-		BSP_LCD_SetFont(&RuFont16);
+		//BSP_LCD_SetFont(&RuFont16);
+		BSP_LCD_SetFont(&Font16);
 		//alarm specific text
 		line_num = 0;
 		if(al->BatteryOut) { BSP_LCD_DisplayStringAt(x + thickness + 2, y + line_num * step + thickness + 2, sst0, LEFT_MODE); line_num++;}
