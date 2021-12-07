@@ -30,8 +30,8 @@
 #define H_P_a           (double)0.000655651 //ADC - cylinder pressure (bar) linear coefficient a
 #define H_P_b           (double)-62.5 //ADC - cylinder pressure (bar) linear coefficient b
 
-#define P_a							(double)0.000029003 // 1 - 5 V sensors 
-#define P_b							(double)-2.5
+#define P_a							(double)0.0000302 // 1 - 5 V sensors      (0.000029003)
+#define P_b							(double)-2.5 //-2.5
 	
 #define V_a							(double)0.61050
 #define V_b							(double)-500.0
