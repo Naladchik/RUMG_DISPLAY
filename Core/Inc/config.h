@@ -7,7 +7,7 @@
 #define DEV0
 /* DEVICE CONFIGURATION */
 
-#define FAKE_SENSORS        1  // can be 0 or 1
+#define FAKE_SENSORS        0  // can be 0 or 1
 
 /*INDIVIDUAL PARAMETERS!!!*/
 #define TX_DEV_NUM				   		0x01
@@ -30,7 +30,7 @@
 #define H_P_a           (double)0.000655651 //ADC - cylinder pressure (bar) linear coefficient a
 #define H_P_b           (double)-62.5 //ADC - cylinder pressure (bar) linear coefficient b
 
-#define P_a							(double)0.000025918 // 1 - 5 V sensors
+#define P_a							(double)0.000029003 // 1 - 5 V sensors 
 #define P_b							(double)-2.5
 	
 #define V_a							(double)0.61050

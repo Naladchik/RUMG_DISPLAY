@@ -175,7 +175,5 @@ const uint8_t RuFont9_Table[] = {
   11, /* Width */
   13 /* Height */
 	};
-	
-	
-	
+
 	
