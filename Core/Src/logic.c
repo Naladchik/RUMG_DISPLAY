@@ -85,11 +85,12 @@ void make_action(const TypeVolt* Volt){
 	if(DeviceParam.Role == CONTROLER){
 		//User control section
 		if(SwitchGasRequest){
-			if((Volt->PressRight >= DeviceParam.HPressSwitch) && 
-				(Volt->PressLeft >= DeviceParam.HPressSwitch) &&
-				(ActiveGas != CONCENTRATOR)
-			) ActiveGas = ActiveGasRequested;
-			SwitchGasRequest = 0;
+			if(ActiveGas != CONCENTRATOR){
+				if(((Volt->PressRight >= DeviceParam.HPressSwitch) && (Volt->PressLeft >= DeviceParam.HPressSwitch)) || 
+					((Volt->PressLeft < DeviceParam.HPressSwitch) && (Volt->PressRight < DeviceParam.HPressSwitch)))  
+						ActiveGas = ActiveGasRequested;
+				}
+				SwitchGasRequest = 0;			
 		}
 	switch(ActiveGas){
       case(LEFT):
