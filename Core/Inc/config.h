@@ -10,25 +10,25 @@
 #define FAKE_SENSORS        0  // can be 0 or 1
 
 /*INDIVIDUAL PARAMETERS!!!*/
-#define TX_DEV_NUM				   		0x01
-#define RX_DEV_NUM				   		0x02
-#define FLOW_SENSOR					0 // is flow sensor installed
-#define ROLE	 												CONTROLER //CONTROLER or REPEATER
-#define COMM_DEV								NO_COMM //ETHERNET or LORA or NO_COMM
-#define LORA_FREQ   						434500000  //Frequeny in Hz, was 434500000, was 859500000
-#define BARANKI           					1 // 1 - do not take into account LineMin, 0 - do take into account (baranovichi_style)
-#define CONC_DELAY            	10  //Delay for concentrator again-on
-#define SWTCH_THRESHOLD (float) 10.0 //threshold to switch to the next gas line
-#define ALRM_THRESHOLD    (float) 40.0 //threshold to activate alarm (if second cylinder <= SWTCH_threshold
-#define VALVE_SUSPEND_T		7  //if a valve is suspended (open but no pressure in line) time
-#define EMERGENCY_MODE_T				600 //emergency time (suspended valve) before next try
+#define TX_DEV_NUM				   				0x01
+#define RX_DEV_NUM				   				0x02
+#define FLOW_SENSOR							0 // is flow sensor installed
+#define ROLE	 														CONTROLER //CONTROLER or REPEATER
+#define COMM_DEV										NO_COMM //ETHERNET or LORA or NO_COMM
+#define LORA_FREQ   								434500000  //Frequeny in Hz, was 434500000, was 859500000
+#define BARANKI           							1 // 1 - do not take into account LineMin, 0 - do take into account (baranovichi_style)
+#define CONC_DELAY            			10  //Delay for concentrator again-on
+#define SWTCH_THRESHOLD 			(float) 10.0 //threshold to switch to the next gas line
+#define ALRM_THRESHOLD    		(float) 40.0 //threshold to activate alarm (if second cylinder <= SWTCH_threshold
+#define VALVE_SUSPEND_T				7  //if a valve is suspended (open but no pressure in line) time
+#define EMERGENCY_MODE_T		30 //emergency time (suspended valve) before next try
 
-#define LINE_P_MIN			  				(float) 4.0
-#define LINE_P_MAX			  				(float) 6.0
-#define CONC_P_MIN							(float) 4.0
-#define CONC_P_MAX							(float) 6.0
-#define CYL_NUM_LEFT					10
-#define CYL_NUM_RIGHT				20
+#define LINE_P_MIN			  						(float) 4.0
+#define LINE_P_MAX			  						(float) 6.0
+#define CONC_P_MIN									(float) 4.0
+#define CONC_P_MAX									(float) 6.0
+#define CYL_NUM_LEFT							10
+#define CYL_NUM_RIGHT						20
 
 #define H_P_a           (double)0.000655651 //ADC - cylinder pressure (bar) linear coefficient a
 #define H_P_b           (double)-62.5 //ADC - cylinder pressure (bar) linear coefficient b

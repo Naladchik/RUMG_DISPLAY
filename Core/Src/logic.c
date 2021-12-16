@@ -96,9 +96,9 @@ void make_action(const TypeVolt* Volt){
 						ActiveGas = ActiveGasRequested;
 				}*/			
 				if(ActiveGas != CONCENTRATOR){
-					if(  ! ((Volt->PressRight >= DeviceParam.HPressSwitch) != (Volt->PressLeft >= DeviceParam.HPressSwitch))) {
+					if((Volt->PressRight >= DeviceParam.HPressSwitch) == (Volt->PressLeft >= DeviceParam.HPressSwitch)) {
 						CounterEmergWork = 0;
-						ActiveGas = ActiveGasRequested;
+						if(ActiveGas != BOTH_VALVES) ActiveGas = ActiveGasRequested;
 					}
 				}
 				SwitchGasRequest = 0;			
