@@ -3,6 +3,7 @@
 #include <string.h>
 
 uint8_t ActiveGas = LEFT;
+uint8_t EmergGasWas = LEFT;
 uint8_t OldActiveGas = LEFT;
 uint8_t ActiveCylinder = LEFT;
 extern uint8_t OneSeconTick; //needed for transmitting ticks from timer every second
@@ -17,13 +18,17 @@ extern TypeVolt PhValues_output;
 
 extern TypeTCP_excange tcp_exchange;
 
-uint8_t SilentTimer = 0;
+
 uint8_t ConcNORMCounter = 0; //Counter for delay when conc. was off but now is on
 uint8_t TickForward = 0;
 uint8_t BlinkFlag = 0;
-uint8_t ConcSIGCounter = 0;  //beep duration when concentrator is off
 uint8_t UPS_SoundActive = 0;
+
+uint8_t SilentTimer = 0;
+uint8_t ConcSIGCounter = 0;  //beep duration when concentrator is off
 uint8_t PowerAlarmActivated = 0;
+uint8_t  CounterValveSuspend = 0;
+uint16_t CounterEmergWork = 0;
 
 //Buttons global variables
 uint8_t flagOldSwButt = 0;
@@ -39,7 +44,7 @@ uint8_t logic_q_buff[MESS_LEN];
 uint8_t LEDvalueL;
 uint8_t LEDvalueR;
 
-TypeAlarm Alarm = {0, 0, 1, 0, 0, 0, 0};
+TypeAlarm Alarm = {0, 0, 1, 0, 0, 0, 0, 0};
 TypeDisplay DisplaySet = {0, 0};
 uint32_t ALRM_BYTE;
 
@@ -85,10 +90,16 @@ void make_action(const TypeVolt* Volt){
 	if(DeviceParam.Role == CONTROLER){
 		//User control section
 		if(SwitchGasRequest){
-			if(ActiveGas != CONCENTRATOR){
+			/*if(ActiveGas != CONCENTRATOR){
 				if(((Volt->PressRight >= DeviceParam.HPressSwitch) && (Volt->PressLeft >= DeviceParam.HPressSwitch)) || 
 					((Volt->PressLeft < DeviceParam.HPressSwitch) && (Volt->PressRight < DeviceParam.HPressSwitch)))  
 						ActiveGas = ActiveGasRequested;
+				}*/			
+				if(ActiveGas != CONCENTRATOR){
+					if(  ! ((Volt->PressRight >= DeviceParam.HPressSwitch) != (Volt->PressLeft >= DeviceParam.HPressSwitch))) {
+						CounterEmergWork = 0;
+						ActiveGas = ActiveGasRequested;
+					}
 				}
 				SwitchGasRequest = 0;			
 		}
@@ -138,7 +149,21 @@ void make_action(const TypeVolt* Volt){
           flagOldSwButt = 1;
         }*/
         break;
-    default: break;
+				case(BOTH_VALVES):
+				HAL_GPIO_WritePin(GPIOC, LEFT_VLV, GPIO_PIN_RESET);
+        HAL_GPIO_WritePin(GPIOC, RIGHT_VLV, GPIO_PIN_RESET);
+				//swap button
+        /*if((ButtSwCounter == BUTT_TRIM)&&(flagOldSwButt == 0)){
+					CounterEmergWork = 0; //try to return to normal mode
+          flagOldSwButt = 1;
+        }*/
+				if(CounterEmergWork == 0){//time to try to work normally
+					ActiveGas = EmergGasWas;
+					CounterValveSuspend = VALVE_SUSPEND_T;
+					Alarm.EmergState = 0;
+				}
+				break;
+    default: NVIC_SystemReset(); break;
     }
 		}
 	
@@ -225,6 +250,13 @@ void make_action(const TypeVolt* Volt){
     }
     //Line is low
     if(Volt->PressLine < DeviceParam.PressLineMin){
+			if((CounterValveSuspend == 0) && (Alarm.LineMin == 0)) CounterValveSuspend = VALVE_SUSPEND_T;  //Situation just happened
+			if((CounterValveSuspend == 0) && (Alarm.LineMin == 1) && (ActiveGas != BOTH_VALVES)){ //Time to switch to the emergency state
+				EmergGasWas = ActiveGas; //save the context
+				ActiveGas = BOTH_VALVES;				
+				CounterEmergWork = EMERGENCY_MODE_T;
+				Alarm.EmergState = 1;
+			}
       Alarm.LineMin = 1;
     }else{
       Alarm.LineMin = 0;
@@ -325,6 +357,8 @@ void make_action(const TypeVolt* Volt){
       if(SilentTimer) SilentTimer--;
       if(ConcNORMCounter) ConcNORMCounter--;
       if(ConcSIGCounter) ConcSIGCounter--;
+			if(CounterValveSuspend) CounterValveSuspend--;
+			if(CounterEmergWork) CounterEmergWork--;			
       TickForward = 0;
     }
 		osDelay(3);

@@ -3,7 +3,7 @@
 <title>Static Call Graph - [rumg\rumg.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image rumg\rumg.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Tue Dec 14 15:09:22 2021
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Thu Dec 16 15:27:38 2021
 <BR><P>
 <H3>Maximum Stack Usage =        416 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -790,9 +790,6 @@ Global Symbols
 <LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2uiz
 </UL>
 <BR>[Called By]<UL><LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UI_logic
-<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawDigitB
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawCommaS
-<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawCommaB
 <LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawTheLine
 <LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawRoundScale
 <LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawRightPress
@@ -804,6 +801,9 @@ Global Symbols
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawImage
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawDigitS_no_bgn
 <LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawDigitS
+<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawDigitB
+<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawCommaS
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawCommaB
 </UL>
 
 <P><STRONG><a name="[84]"></a>DrawBattery</STRONG> (Thumb, 238 bytes, Stack size 40 bytes, main_window.o(i.DrawBattery))
@@ -839,14 +839,14 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 <LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2uiz
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawCommaS
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DoTouchScreen
 <LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawDigitS
+<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawCommaS
 </UL>
 <BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawMainWindow
 </UL>
 
-<P><STRONG><a name="[8b]"></a>DrawConsumption</STRONG> (Thumb, 806 bytes, Stack size 32 bytes, main_window.o(i.DrawConsumption))
+<P><STRONG><a name="[8b]"></a>DrawConsumption</STRONG> (Thumb, 1084 bytes, Stack size 32 bytes, main_window.o(i.DrawConsumption))
 <BR><BR>[Stack]<UL><LI>Max Depth = 108<LI>Call Chain = DrawConsumption &rArr; DrawImage &rArr; ili9488_WritePixel &rArr; ili9488_write16to24 &rArr; LCD_IO_WriteData8 &rArr; LcdWrite8
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_WritePixel
@@ -935,9 +935,9 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 <LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2uiz
+<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DoTouchScreen
 <LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawDigitB
 <LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawCommaB
-<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DoTouchScreen
 </UL>
 <BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawMainWindow
 </UL>
@@ -1994,7 +1994,7 @@ Global Symbols
 <LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TS_IO_GetX
 </UL>
 
-<P><STRONG><a name="[10c]"></a>UI_logic</STRONG> (Thumb, 472 bytes, Stack size 8 bytes, ui_tree.o(i.UI_logic))
+<P><STRONG><a name="[10c]"></a>UI_logic</STRONG> (Thumb, 474 bytes, Stack size 8 bytes, ui_tree.o(i.UI_logic))
 <BR><BR>[Stack]<UL><LI>Max Depth = 416<LI>Call Chain = UI_logic &rArr; DrawMainWindow &rArr; DrawRightPress &rArr; sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawTheBase
@@ -2286,10 +2286,7 @@ Global Symbols
 <LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_IO_WriteCmd8
 <LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_write16to24
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawDigitB
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawCommaS
-<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawCommaB
-<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawRoundScale
+<BR>[Called By]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawRoundScale
 <LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawRightPress
 <LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawMenuDots
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawLeftPress
@@ -2297,6 +2294,9 @@ Global Symbols
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawImage
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawDigitS_no_bgn
 <LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawDigitS
+<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawDigitB
+<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawCommaS
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawCommaB
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> ili9488.o(.data)
 </UL>
@@ -2376,7 +2376,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
 </UL>
-<P><STRONG><a name="[10d]"></a>make_action</STRONG> (Thumb, 1706 bytes, Stack size 24 bytes, logic.o(i.make_action))
+<P><STRONG><a name="[10d]"></a>make_action</STRONG> (Thumb, 1960 bytes, Stack size 24 bytes, logic.o(i.make_action))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = make_action &rArr; xQueueGenericSend &rArr; vTaskPlaceOnEventList &rArr; prvAddCurrentTaskToDelayedList &rArr; vListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueReceive

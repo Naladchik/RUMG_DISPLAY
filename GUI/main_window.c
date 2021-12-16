@@ -532,6 +532,7 @@ void DrawConsumption(uint8_t A_G){
 	DoTouchScreen();
 	uint16_t xx, yy;
 		
+	//if left shoulder
 		if (A_G == LEFT){
 			xx = UI_LEFT_GAS_X;
 			yy = 120;
@@ -555,6 +556,8 @@ void DrawConsumption(uint8_t A_G){
 			}
 			DrawImage(potr_conc, PC_W, PC_H, MAIN_BGND, PC_X, PC_Y);
 		}
+		
+		//if right shoulder
 			if (A_G == RIGHT){
 			xx = UI_RIGHT_GAS_X;
 			yy = UI_GAS_Y;
@@ -579,6 +582,7 @@ void DrawConsumption(uint8_t A_G){
 			DrawImage(potr_conc, PC_W, PC_H, MAIN_BGND, PC_X, PC_Y);			
 		}
 			
+		//if concentrator
 			if (A_G == CONCENTRATOR){
 			xx = UI_RIGHT_GAS_X;
 			yy = UI_GAS_Y;
@@ -601,6 +605,31 @@ void DrawConsumption(uint8_t A_G){
 				}
 			}
 			DrawImage(potr_conc, PC_W, PC_H, GREEN_COLOR, PC_X, PC_Y);
+		}
+			
+		//if both shoulder
+		if (A_G == BOTH_VALVES){
+			xx = UI_LEFT_GAS_X;
+			yy = 120;
+			for(uint16_t x = 0; x < ROUND_W; x++){
+				for(uint16_t y = 0; y < ROUND_H; y++){
+					if((round_1[(x + y * ROUND_W) / 8] & (0x80 >> ((x + y * ROUND_W) % 8))) > 0)
+						ili9488_WritePixel(xx + x, yy + y, GREEN_COLOR); 
+					else 
+						ili9488_WritePixel(xx + x, yy + y, MAIN_BGND);
+				}
+			}
+			xx = UI_RIGHT_GAS_X;
+			yy = UI_GAS_Y;
+			for(uint16_t x = 0; x < ROUND_W; x++){
+				for(uint16_t y = 0; y < ROUND_H; y++){
+					if((round_1[(x + y * ROUND_W) / 8] & (0x80 >> ((x + y * ROUND_W) % 8))) > 0)
+						ili9488_WritePixel(xx + x, yy + y, GREEN_COLOR); 
+					else 
+						ili9488_WritePixel(xx + x, yy + y, MAIN_BGND);
+				}
+			}
+			DrawImage(potr_conc, PC_W, PC_H, MAIN_BGND, PC_X, PC_Y);
 		}
 }
 

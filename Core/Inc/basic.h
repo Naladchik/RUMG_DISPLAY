@@ -71,9 +71,10 @@
 
 
 /* Other definitions */
-#define LEFT            1
-#define RIGHT           2
-#define CONCENTRATOR    3
+#define LEFT            						0xf0
+#define RIGHT           					0x0f
+#define CONCENTRATOR    0xff
+#define BOTH_VALVES				0xaa
 
 #define TIM3_PERIOD     9600 // 4800 interrupts per second (for 2.4 kHz sound)
 #define BUTT_TRIM       (uint8_t)100
