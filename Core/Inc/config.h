@@ -21,7 +21,7 @@
 #define SWTCH_THRESHOLD 			(float) 10.0 //threshold to switch to the next gas line
 #define ALRM_THRESHOLD    		(float) 40.0 //threshold to activate alarm (if second cylinder <= SWTCH_threshold
 #define VALVE_SUSPEND_T				7  //if a valve is suspended (open but no pressure in line) time
-#define EMERGENCY_MODE_T		30 //emergency time (suspended valve) before next try
+#define EMERGENCY_MODE_T		600 //emergency time (suspended valve) before next try
 
 #define LINE_P_MIN			  						(float) 4.0
 #define LINE_P_MAX			  						(float) 6.0

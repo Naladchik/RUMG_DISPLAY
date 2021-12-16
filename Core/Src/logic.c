@@ -98,7 +98,7 @@ void make_action(const TypeVolt* Volt){
 				if(ActiveGas != CONCENTRATOR){
 					if((Volt->PressRight >= DeviceParam.HPressSwitch) == (Volt->PressLeft >= DeviceParam.HPressSwitch)) {
 						CounterEmergWork = 0;
-						if(ActiveGas != BOTH_VALVES) ActiveGas = ActiveGasRequested;
+						if(Alarm.LineMin == 0) ActiveGas = ActiveGasRequested;
 					}
 				}
 				SwitchGasRequest = 0;			
@@ -158,7 +158,7 @@ void make_action(const TypeVolt* Volt){
           flagOldSwButt = 1;
         }*/
 				if(CounterEmergWork == 0){//time to try to work normally
-					ActiveGas = EmergGasWas;
+					if(Alarm.LineMin == 0) ActiveGas = EmergGasWas;
 					CounterValveSuspend = VALVE_SUSPEND_T;
 					Alarm.EmergState = 0;
 				}
