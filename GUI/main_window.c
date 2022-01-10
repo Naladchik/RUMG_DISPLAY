@@ -876,7 +876,8 @@ void DrawMainWindow(void){
 				OldAlarm.PowerOff = Alarm.PowerOff;
 				DrawErrorMessage(&Alarm);				
 		}
-		if(FAKE_SENSORS){
+			
+/*if(FAKE_SENSORS){
 		//font try
 		BSP_LCD_SetTextColor(BLACK_COLOR);
 		BSP_LCD_SetBackColor(WHITE_COLOR);
@@ -900,7 +901,7 @@ void DrawMainWindow(void){
 			}
 		}
 	}
-}
+}*/
 		
 }
 
@@ -918,18 +919,24 @@ void DrawErrorMessage(TypeAlarm* al){
 	uint8_t thickness = 4;
 	uint8_t line_num = 0;
 	const uint8_t step = 16;
-//	uint8_t sst0[17] = "Batare4 sela!    ";
-//	uint8_t sst1[17] = "Koncentrator!    ";
-//	uint8_t sst2[17] = "Ballon0 pust0!   ";
-//	uint8_t sst3[17] = "V0sokoe davlenie!";
-//	uint8_t sst4[17] = "Nizkoe davlenie! ";
-//	uint8_t sst5[17] = "Set1!            ";
+	
+#ifdef  RU
+	uint8_t sst0[17] = "Batare4 sela!    ";
+	uint8_t sst1[17] = "Koncentrator!    ";
+	uint8_t sst2[17] = "Ballon0 pust0!   ";
+	uint8_t sst3[17] = "V0sokoe davlenie!";
+  uint8_t sst4[17] = "Nizkoe davlenie! ";
+	uint8_t sst5[17] = "Set1!            ";
+	#endif
+	
+#ifndef RU
 	uint8_t sst0[19] = "Battery out!      ";
 	uint8_t sst1[19] = "Concentrator high!";
 	uint8_t sst2[19] = "Change cylinders! ";
 	uint8_t sst3[19] = "Line high!        ";
 	uint8_t sst4[19] = "Line low!         ";
 	uint8_t sst5[19] = "Power off!        ";
+#endif
 	
 	 if(al->BatteryOut
 			|| al->ConcentratorMax
@@ -947,10 +954,18 @@ void DrawErrorMessage(TypeAlarm* al){
 		BSP_LCD_FillRect(x, y, width, hight);
 		BSP_LCD_SetTextColor(BLACK_COLOR);
 		BSP_LCD_SetBackColor(WHITE_COLOR);
-		//BSP_LCD_SetFont(&RuFont16);
+		
+#ifdef RU
+		BSP_LCD_SetFont(&RuFont16);
+#endif
+		
+#ifndef RU
 		BSP_LCD_SetFont(&Font16);
+#endif
+		
 		//alarm specific text
 		line_num = 0;
+		
 		if(al->BatteryOut) { BSP_LCD_DisplayStringAt(x + thickness + 2, y + line_num * step + thickness + 2, sst0, LEFT_MODE); line_num++;}
 		if(al->ConcentratorMax) {BSP_LCD_DisplayStringAt(x + thickness + 2, y + line_num * step + thickness + 2, sst1, LEFT_MODE);line_num++;}
 		if(al->CylindersEmpty) {BSP_LCD_DisplayStringAt(x + thickness + 2, y + line_num * step + thickness + 2, sst2, LEFT_MODE);line_num++;}

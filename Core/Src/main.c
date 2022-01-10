@@ -191,7 +191,7 @@ int main(void)
 	//T_SetWatch();
 	//ili9488_Init();
 	//DrawTheBase();
-	InitGUI();
+	//InitGUI();
 	HAL_Delay(250);
 	//mainApp();
   /* USER CODE END 2 */

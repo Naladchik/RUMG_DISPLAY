@@ -3,7 +3,7 @@
 <title>Static Call Graph - [rumg\rumg.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image rumg\rumg.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Sat Dec 18 15:26:29 2021
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Mon Jan 10 14:43:31 2022
 <BR><P>
 <H3>Maximum Stack Usage =        416 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -701,8 +701,7 @@ Global Symbols
 <P><STRONG><a name="[7c]"></a>BSP_LCD_DrawPixel</STRONG> (Thumb, 32 bytes, Stack size 16 bytes, stm32_adafruit_lcd.o(i.BSP_LCD_DrawPixel))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = BSP_LCD_DrawPixel
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InitGUI
-<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LCD_DrawHLine
+<BR>[Called By]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LCD_DrawHLine
 <LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LCD_DrawVLine
 </UL>
 
@@ -1071,6 +1070,7 @@ Global Symbols
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawImage
 </UL>
 <BR>[Called By]<UL><LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UI_logic
+<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InitGUI
 </UL>
 
 <P><STRONG><a name="[a9]"></a>DrawTheLine</STRONG> (Thumb, 70 bytes, Stack size 16 bytes, main_window.o(i.DrawTheLine))
@@ -1096,10 +1096,10 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_FillRect
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DoTouchScreen
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawService
+<BR>[Called By]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawTheBase
+<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawService
 <LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawSettings
 <LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawLog
-<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawTheBase
 </UL>
 
 <P><STRONG><a name="[12f]"></a>HAL_ADC_ConfigChannel</STRONG> (Thumb, 338 bytes, Stack size 16 bytes, stm32f1xx_hal_adc.o(i.HAL_ADC_ConfigChannel))
@@ -1430,15 +1430,14 @@ Global Symbols
 <P><STRONG><a name="[16]"></a>HardFault_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f1xx_it.o(i.HardFault_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f103xb.o(RESET)
 </UL>
-<P><STRONG><a name="[d8]"></a>InitGUI</STRONG> (Thumb, 182 bytes, Stack size 0 bytes, gui.o(i.InitGUI))
-<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = InitGUI &rArr; BSP_TS_Init
+<P><STRONG><a name="[d8]"></a>InitGUI</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, gui.o(i.InitGUI))
+<BR><BR>[Stack]<UL><LI>Max Depth = 376<LI>Call Chain = InitGUI &rArr; DrawTheBase &rArr; DrawRoundScale &rArr; sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
-<BR>[Calls]<UL><LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_TS_Init
+<BR>[Calls]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawTheBase
+<LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_TS_Init
 <LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LCD_Init
-<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LCD_DrawPixel
 </UL>
-<BR>[Called By]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartTaskDisplay
+<BR>[Called By]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartTaskDisplay
 </UL>
 
 <P><STRONG><a name="[127]"></a>InitParam</STRONG> (Thumb, 66 bytes, Stack size 0 bytes, parameters.o(i.InitParam))
@@ -1998,11 +1997,11 @@ Global Symbols
 <P><STRONG><a name="[10c]"></a>UI_logic</STRONG> (Thumb, 474 bytes, Stack size 8 bytes, ui_tree.o(i.UI_logic))
 <BR><BR>[Stack]<UL><LI>Max Depth = 416<LI>Call Chain = UI_logic &rArr; DrawMainWindow &rArr; DrawRightPress &rArr; sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawService
+<BR>[Calls]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawTheBase
+<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawService
 <LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawSettings
 <LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawPlot
 <LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawLog
-<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawTheBase
 <LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawMainWindow
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DoTouchScreen
 </UL>
@@ -2352,14 +2351,13 @@ Global Symbols
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawLeftPress
 </UL>
 
-<P><STRONG><a name="[49]"></a>main</STRONG> (Thumb, 438 bytes, Stack size 152 bytes, main.o(i.main))
+<P><STRONG><a name="[49]"></a>main</STRONG> (Thumb, 434 bytes, Stack size 152 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 384<LI>Call Chain = main &rArr; SX1278_init &rArr; SX1278_config &rArr; SX1278_SPIRead &rArr; SX1278_hw_SPIReadByte &rArr; HAL_SPI_TransmitReceive &rArr; SPI_EndRxTxTransaction &rArr; SPI_WaitFlagStateUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericCreate
 <LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osThreadCreate
 <LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageCreate
 <LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osKernelStart
-<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InitGUI
 <LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Start_IT
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Init
 <LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay

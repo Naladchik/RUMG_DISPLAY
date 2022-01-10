@@ -180,22 +180,30 @@ void measure_volt(TypeVolt* Volt){
 void fake_volt(TypeVolt* Volt){	
 	static uint16_t PressLeft = 200;
 	static uint16_t PressRight = 200;
-	    vTaskDelay(300);
+	    vTaskDelay(88);
 	    //gas consumption
-			if(ActiveGas == LEFT) PressLeft -= 0.05;
-			if(ActiveGas == RIGHT) PressRight -= 0.05;	
+			if(ActiveGas == LEFT) 	PressLeft -= 0.45;				
+			if(ActiveGas == RIGHT)  PressRight -= 0.45;
+				
 			Volt->PressLeft = PressLeft;
 			Volt->PressRight = PressRight;
 	
 			//cylinders change
-	//		if((Volt->PressLeft < SWTCH_THRESHOLD)  && (Volt->PressRight < ALRM_THRESHOLD) )PressLeft = 200;
-	//    if((Volt->PressRight < SWTCH_THRESHOLD)  && (Volt->PressLeft < ALRM_THRESHOLD)) PressRight = 200;	
-	Volt->PressRight = 120;
-	Volt->PressLeft = 120;
-	
+			if(Volt->PressRight < ALRM_THRESHOLD) {
+				PressRight = 200;
+				ActiveGas = LEFT;
+			}
+	    if(Volt->PressLeft < ALRM_THRESHOLD){
+				PressLeft = 200;
+				ActiveGas = RIGHT;
+			}
+			
+			Volt->PressLeft = PressLeft;
+			Volt->PressRight = PressRight;
+			
 	//concentrator
 			//if((EpochTime % 60)  <  30) Volt->PressConc = 0.01; else Volt->PressConc = 5.26;
-	Volt->PressConc = 0.1;
+			Volt->PressConc = 0.1;
 	//line
 	    //Volt->PressLine = 4.00 + ((float)(EpochTime % 200))/ 200;
 	    Volt->PressLine = 4.5;
