@@ -1,0 +1,17 @@
+Использование (на примере первого шрифта):
+
+1. Скопируйте код из спойлера
+2. Создайте текстовый файл с именем: rus4x6.h
+3. Вставьте в него код, сохрание файл.
+4. Поместите файл в папку со скетчем.
+5. В скетч добавьте строку #include "rus4x6.h"
+6. Выберите шрифт u8g.setFont(rus4x6.h);
+Так же, на данный момент, из стандартной библиотеки русским позволяют печатать шрифты: unifont_0_8 и unifont_8_9
+Ну и вот еще (если вдруг что):
+rusUnifont.h
+
+u8g_font.c
+
+str 564  int8_t u8g_draw_glyph(u8g_t *u8g, u8g_uint_t x, u8g_uint_t y, uint8_t encoding)
+str 350  u8g_glyph_t u8g_GetGlyph(u8g_t *u8g, uint8_t requested_encoding)
+str 201  static uint8_t *u8g_font_GetGlyphDataStart(const void *font, u8g_glyph_t g)
