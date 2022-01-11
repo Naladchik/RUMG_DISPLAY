@@ -32,8 +32,8 @@
 #define CYL_NUM_LEFT							10
 #define CYL_NUM_RIGHT						20
 
-#define H_P_a           (double)0.000655651 //ADC - cylinder pressure (bar) linear coefficient a
-#define H_P_b           (double)-62.5 //ADC - cylinder pressure (bar) linear coefficient b
+#define H_P_a           (double) 0.000524521 //ADC - cylinder pressure (bar) linear coefficient a
+#define H_P_b           (double) -50.000000 //ADC - cylinder pressure (bar) linear coefficient b
 
 #define P_a							(double)0.0000302 // 1 - 5 V sensors      (0.000029003)
 #define P_b							(double)-2.5 //-2.5
