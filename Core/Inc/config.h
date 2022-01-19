@@ -9,6 +9,8 @@
 
 #define FAKE_SENSORS        0  // can be 0 or 1
 
+#define RUS 														1 //Russian messages
+
 //#define RU												
 
 /*INDIVIDUAL PARAMETERS!!!*/

@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F103xB</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Middlewares/Third_Party/FreeRTOS/Source/include;../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS;../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM3;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;..\SX1278;..\WizneLib\Ethernet\W5500;..\WizneLib\Ethernet;..\tcpip;..\stm32_graphics_display_drivers-master\Drivers\lcd\ili9488;..\stm32_graphics_display_drivers-master\Drivers\Fonts;..\stm32_graphics_display_drivers-master\Drivers\stm32f1xx;..\stm32_graphics_display_drivers-master\Drivers;..\GUI;..\GUI\rus</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Middlewares/Third_Party/FreeRTOS/Source/include;../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS;../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM3;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;..\SX1278;..\WizneLib\Ethernet\W5500;..\WizneLib\Ethernet;..\tcpip;..\stm32_graphics_display_drivers-master\Drivers\lcd\ili9488;..\stm32_graphics_display_drivers-master\Drivers\Fonts;..\stm32_graphics_display_drivers-master\Drivers\stm32f1xx;..\stm32_graphics_display_drivers-master\Drivers;..\GUI;..\GUI\rus;..\GUI\rus\u8g\u8glib-master\csrc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -767,6 +767,31 @@
               <FileName>rusfont16.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\stm32_graphics_display_drivers-master\Drivers\Fonts\rusfont16.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>u8g</GroupName>
+          <Files>
+            <File>
+              <FileName>u8g_font.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\GUI\rus\u8g\u8glib-master\csrc\u8g_font.c</FilePath>
+            </File>
+            <File>
+              <FileName>u8g_ll_api.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\GUI\rus\u8g\u8glib-master\csrc\u8g_ll_api.c</FilePath>
+            </File>
+            <File>
+              <FileName>u8g_state.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\GUI\rus\u8g\u8glib-master\csrc\u8g_state.c</FilePath>
+            </File>
+            <File>
+              <FileName>u8g_clip.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\GUI\rus\u8g\u8glib-master\csrc\u8g_clip.c</FilePath>
             </File>
           </Files>
         </Group>

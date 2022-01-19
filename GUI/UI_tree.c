@@ -24,6 +24,7 @@ extern TypeAlarm Alarm;
 extern uint8_t SilentTimer;
 
 extern uint8_t SwitchGasRequest;
+extern uint8_t ManIsHere;
 extern uint8_t ActiveGasRequested;
 
 extern uint8_t ts_bz;

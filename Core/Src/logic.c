@@ -12,6 +12,7 @@ extern uint32_t EpochTime;
 
 extern TypeParameters DeviceParam;
 extern uint8_t SwitchGasRequest;
+extern uint8_t ManIsHere;
 extern uint8_t ActiveGasRequested;
 
 extern TypeVolt PhValues_output;
