@@ -746,8 +746,14 @@ void DrawMenuDots(uint16_t xx, uint16_t yy){
 Main window lines, constatn writings and so on
 
 */
+void RusFontTry(void);
+
 void DrawTheBase(void){
 	FillBackground(MAIN_BGND);
+	//TEST SECTION START
+RusFontTry();
+for(;;){}
+//TEST SECTION STOP
 	DrawTheLine(220, 460);
 	DrawImage(bal_stc, BAL_STC_W, BAL_STC_H, WHITE_COLOR, 5, 5);
 	DrawImage(concentrator, CONCENTRATOR_W, CONCENTRATOR_H, WHITE_COLOR, 390, 58);

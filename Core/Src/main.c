@@ -102,7 +102,6 @@ void StartTaskDisplay(void const * argument);
 void StartTaskLoRa(void const * argument);
 void StartTaskTCPIP(void const * argument);
 void mainApp(void);
-void RusFontTry(void);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -148,12 +147,6 @@ int main(void)
 	HAL_ADC_Start (&hadc1);
 	
 	InitParam(&DeviceParam);
-	
-	
-//TEST SECTION START
-RusFontTry();
-for(;;){}
-//TEST SECTION STOP
 	
 	ADC_CONF.Channel = ADC_Left_Press;
 	ADC_CONF.Rank = ADC_REGULAR_RANK_1;
