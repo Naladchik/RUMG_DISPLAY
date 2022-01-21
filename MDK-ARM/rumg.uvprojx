@@ -703,11 +703,6 @@
               <FileType>1</FileType>
               <FilePath>..\GUI\UI_tree.c</FilePath>
             </File>
-            <File>
-              <FileName>rus_adaptation.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\GUI\rus\rus_adaptation.c</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>

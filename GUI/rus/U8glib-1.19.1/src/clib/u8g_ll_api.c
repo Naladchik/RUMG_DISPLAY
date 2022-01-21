@@ -421,7 +421,7 @@ void u8g_Draw8Pixel(u8g_t *u8g, uint16_t x, uint16_t y, uint8_t dir, uint8_t pix
   //u8g_Draw8PixelLL(u8g, u8g->dev, x, y, dir, pixel);
 	uint8_t pix_mask = 0x80;
 	for(uint8_t i = 0; i < 8; i++){
-		if(pixel & pix_mask) BSP_LCD_DrawPixel(x + i, y, 0xffff);
+		if(pixel & pix_mask) BSP_LCD_DrawPixel(x + i, y, 0x0000);
 		pix_mask >>= 1;
 	}
 	
