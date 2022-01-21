@@ -9,6 +9,7 @@
   X Font      ascent =13 descent=-4
   Max Font    ascent =16 descent=-4
 */
+#include "u8g.h"
 
 const u8g_fntpgm_uint8_t rus10x20[2863] U8G_FONT_SECTION(".progmem.rus10x20") = {
   0,10,20,0,252,13,2,74,4,153,32,255,252,16,252,13,
