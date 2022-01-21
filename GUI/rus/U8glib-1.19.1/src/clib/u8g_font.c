@@ -561,12 +561,12 @@ int8_t u8g_DrawGlyphDir(u8g_t *u8g, u8g_uint_t x, u8g_uint_t y, uint8_t dir, uin
 }
 #endif
 
-int8_t u8g_draw_glyph(u8g_t *u8g, u8g_uint_t x, u8g_uint_t y, uint8_t encoding)
+int8_t u8g_draw_glyph(u8g_t *u8g, uint16_t x, uint16_t y, uint8_t encoding)
 {
   const u8g_pgm_uint8_t *data;
   uint8_t w, h;
   uint8_t i, j;
-  u8g_uint_t ix, iy;
+  uint16_t ix, iy;
 
   {
     u8g_glyph_t g = u8g_GetGlyph(u8g, encoding);
@@ -790,7 +790,7 @@ int8_t u8g_DrawGlyphFontBBX(u8g_t *u8g, u8g_uint_t x, u8g_uint_t y, uint8_t dir,
 /* string drawing procedures */
 
 
-u8g_uint_t u8g_DrawStr(u8g_t *u8g, u8g_uint_t x, u8g_uint_t y, const char *s)
+u8g_uint_t u8g_DrawStr(u8g_t *u8g, uint16_t x, uint16_t y, const char *s)
 {
   u8g_uint_t t = 0;
   int8_t d;

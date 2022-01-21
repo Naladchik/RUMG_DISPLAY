@@ -1211,7 +1211,7 @@ uint8_t u8g_SetContrast(u8g_t *u8g, uint8_t contrast);
 void u8g_SleepOn(u8g_t *u8g);
 void u8g_SleepOff(u8g_t *u8g);
 void u8g_DrawPixel(u8g_t *u8g, u8g_uint_t x, u8g_uint_t y);
-void u8g_Draw8Pixel(u8g_t *u8g, u8g_uint_t x, u8g_uint_t y, uint8_t dir, uint8_t pixel);
+void u8g_Draw8Pixel(u8g_t *u8g, uint16_t x, uint16_t y, uint8_t dir, uint8_t pixel);
 void u8g_Draw4TPixel(u8g_t *u8g, u8g_uint_t x, u8g_uint_t y, uint8_t dir, uint8_t pixel);
 void u8g_Draw8ColorPixel(u8g_t *u8g, u8g_uint_t x, u8g_uint_t y, uint8_t colpixel);
 
@@ -1299,7 +1299,7 @@ uint8_t u8g_GetFontCapitalAHeight(u8g_t *u8g);
 uint8_t u8g_IsGlyph(u8g_t *u8g, uint8_t requested_encoding);
 int8_t u8g_GetGlyphDeltaX(u8g_t *u8g, uint8_t requested_encoding);
 
-int8_t u8g_draw_glyph(u8g_t *u8g, u8g_uint_t x, u8g_uint_t y, uint8_t encoding); /* used by u8g_cursor.c */
+int8_t u8g_draw_glyph(u8g_t *u8g, uint16_t x, uint16_t y, uint8_t encoding); /* used by u8g_cursor.c */
 
 int8_t u8g_DrawGlyphDir(u8g_t *u8g, u8g_uint_t x, u8g_uint_t y, uint8_t dir, uint8_t encoding);
 int8_t u8g_DrawGlyph(u8g_t *u8g, u8g_uint_t x, u8g_uint_t y, uint8_t encoding);
@@ -1308,7 +1308,7 @@ int8_t u8g_DrawGlyph180(u8g_t *u8g, u8g_uint_t x, u8g_uint_t y, uint8_t encoding
 int8_t u8g_DrawGlyph270(u8g_t *u8g, u8g_uint_t x, u8g_uint_t y, uint8_t encoding);
 int8_t u8g_DrawGlyphFontBBX(u8g_t *u8g, u8g_uint_t x, u8g_uint_t y, uint8_t dir, uint8_t encoding);
 
-u8g_uint_t u8g_DrawStr(u8g_t *u8g, u8g_uint_t x, u8g_uint_t y, const char *s);
+u8g_uint_t u8g_DrawStr(u8g_t *u8g,uint16_t x, uint16_t y, const char *s);
 u8g_uint_t u8g_DrawStr90(u8g_t *u8g, u8g_uint_t x, u8g_uint_t y, const char *s);
 u8g_uint_t u8g_DrawStr180(u8g_t *u8g, u8g_uint_t x, u8g_uint_t y, const char *s);
 u8g_uint_t u8g_DrawStr270(u8g_t *u8g, u8g_uint_t x, u8g_uint_t y, const char *s);

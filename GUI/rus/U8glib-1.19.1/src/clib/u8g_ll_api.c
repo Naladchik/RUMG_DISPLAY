@@ -416,7 +416,7 @@ void u8g_DrawPixel(u8g_t *u8g, u8g_uint_t x, u8g_uint_t y)
   u8g_DrawPixelLL(u8g, u8g->dev, x, y);
 }
 
-void u8g_Draw8Pixel(u8g_t *u8g, u8g_uint_t x, u8g_uint_t y, uint8_t dir, uint8_t pixel)
+void u8g_Draw8Pixel(u8g_t *u8g, uint16_t x, uint16_t y, uint8_t dir, uint8_t pixel)
 {
   //u8g_Draw8PixelLL(u8g, u8g->dev, x, y, dir, pixel);
 	uint8_t pix_mask = 0x80;

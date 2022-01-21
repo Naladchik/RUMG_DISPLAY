@@ -13,6 +13,8 @@ for g in inp:
         ucode = 149
     elif ucode == 1105:
         ucode = 181
+    elif ucode >= 32 and ucode <= 126:
+        pass #do not change ucode
     else:
         ucode = 63
     out_str = out_str + str(ucode) + ', '
