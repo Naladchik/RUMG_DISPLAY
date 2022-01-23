@@ -234,7 +234,7 @@ int main(void)
   myTaskLogicHandle = osThreadCreate(osThread(myTaskLogic), NULL);
 
   /* definition and creation of myTaskDisplay */
-  osThreadDef(myTaskDisplay, StartTaskDisplay, osPriorityIdle, 0, 256);
+  osThreadDef(myTaskDisplay, StartTaskDisplay, osPriorityIdle, 0, 512);
   myTaskDisplayHandle = osThreadCreate(osThread(myTaskDisplay), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
