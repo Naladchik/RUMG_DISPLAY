@@ -6,8 +6,11 @@ extern TypeParameters DeviceParam;
 
 void us_delay(void);
 
-
-
+/**
+  * @brief  
+  * @param  
+  * @retval
+  */
 void us_delay(void){
 	for(uint8_t i; i<144; i++){
     __nop();
@@ -18,12 +21,21 @@ void us_delay(void){
 	}
 }
 
+/**
+  * @brief  
+  * @param  
+  * @retval
+  */
 void Buzzer(uint8_t st){
 	buzz_on = st;
 	if(buzz_on)HAL_GPIO_WritePin(GPIOA, EXT_BUZZ, GPIO_PIN_SET); else HAL_GPIO_WritePin(GPIOA, EXT_BUZZ, GPIO_PIN_RESET);	
 }
 
-//---------------------------------------------------------
+/**
+  * @brief  
+  * @param  
+  * @retval
+  */
 void PackLoRa(TypeAlarm* alrm, uint8_t* out_buf, uint8_t* led_v_left, uint8_t* led_v_right, uint8_t* activ_gas)
 {
 	uint8_t buff = 0x00;	
@@ -51,7 +63,11 @@ void PackLoRa(TypeAlarm* alrm, uint8_t* out_buf, uint8_t* led_v_left, uint8_t* l
 	out_buf[2] = buff;
 }
 
-
+/**
+  * @brief  
+  * @param  
+  * @retval
+  */
 uint8_t UnPackLoRa(TypeAlarm* alrm, uint8_t* in_buf, uint8_t* led_v_left, uint8_t* led_v_right, uint8_t* activ_gas){
   uint8_t tx_num = 0;
 	uint8_t rx_num = 0;
@@ -92,6 +108,11 @@ uint8_t UnPackLoRa(TypeAlarm* alrm, uint8_t* in_buf, uint8_t* led_v_left, uint8_
 	if((tx_num == DeviceParam.tx_device_num) && (rx_num == DeviceParam.rx_device_num))return(1); else return(0);
 }
 
+/**
+  * @brief  
+  * @param  
+  * @retval 
+  */
 uint8_t make_byte(TypeAlarm* alrm){
 	uint8_t buff = 0x00;
 	if(alrm->CylindersEmpty)   		buff |= 0x01;
@@ -104,6 +125,11 @@ uint8_t make_byte(TypeAlarm* alrm){
 	return(buff);
 }
 
+/**
+  * @brief  
+  * @param  
+  * @retval none
+  */
 void inject_rssi(uint32_t* alrm_byte, uint16_t rssi){
 	uint32_t bynary_buff = 0; //10 MSB bits value (0x000ffc00) bits order is reversed
 	unsigned char val;
@@ -117,4 +143,16 @@ void inject_rssi(uint32_t* alrm_byte, uint16_t rssi){
 		if(val > 0) val--;
 	}
   *alrm_byte |= bynary_buff;
+}
+
+/**
+  * @brief  
+  * @param  
+  * @retval
+  */
+void LogStoreNext(){
+	static uint32_t current_address = 0;
+	HAL_FLASH_Unlock();
+	HAL_FLASH_Program(FLASH_TYPEPROGRAM_WORD, LOG_OFFSET + current_address, current_address);
+	HAL_FLASH_Lock();
 }
