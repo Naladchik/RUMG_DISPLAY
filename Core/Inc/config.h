@@ -63,7 +63,7 @@
 
 #define Pquant          (float)((PressMAX - PressMIN)/(LED_NUM - 2))
 	
-#define LOG_OFFSET			 		0x08011800     //71-th page beginning
+#define LOG_OFFSET			 		0x08019000     //71-th page beginning
 #define LOG_AREA_SIZE		27648  //bytes
 #define LOG_ENTRY_SIZE   64 //bytes
 #define PARAM_OFFSET  	0x0801FC00   //127-th (the last) page beginning

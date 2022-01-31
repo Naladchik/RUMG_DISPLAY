@@ -170,8 +170,11 @@ void LogStoreNext(){
 		}
 	}
 		mem_buf = order_num + 1;
+	ErasePage(LOG_OFFSET);
 		HAL_FLASH_Unlock();
-		HAL_FLASH_Program(FLASH_TYPEPROGRAM_WORD, current_address, mem_buf);
+		//HAL_FLASH_Program(FLASH_TYPEPROGRAM_WORD, current_address, mem_buf);
+		
+	  HAL_FLASH_Program(FLASH_TYPEPROGRAM_WORD, LOG_OFFSET, mem_buf);
 		HAL_FLASH_Lock();
 }
 
