@@ -18,4 +18,9 @@ uint8_t make_byte(TypeAlarm* alrm);
 void inject_rssi(uint32_t* alrm_byte, uint16_t rssi);
 void Buzzer(uint8_t st);
 void LogStoreNext(void);
+uint32_t GetPageAddress(uint32_t address);
+uint32_t FindNextEntryAddr(void);
+uint8_t ReadFlash(uint32_t startAddr,uint32_t *pdata, uint32_t len);
+void ErasePage(uint32_t addr);
+void EraseWholeLog(void);
 #endif

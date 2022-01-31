@@ -16,5 +16,5 @@ void DrawLog(void){
 	BSP_LCD_SetFont(&Font24);
 	DrawProp.BackColor = MAIN_BGND;
 	DrawProp.TextColor = WHITE_COLOR;
-	Print(UI_INDENT, UI_SPACE, "Password:", &Font24);
+	//Print(UI_INDENT, UI_SPACE, "Password:", &Font24);
 }
