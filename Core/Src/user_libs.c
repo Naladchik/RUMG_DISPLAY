@@ -4,7 +4,7 @@
 extern uint8_t buzz_on;
 extern TypeParameters DeviceParam;
 
-uint32_t memory_buf [LOG_ENTRY_SIZE / 4];
+uint32_t log_memory_buf [LOG_ENTRY_SIZE];
 
 void us_delay(void);
 
@@ -152,30 +152,7 @@ void inject_rssi(uint32_t* alrm_byte, uint16_t rssi){
   * @param  
   * @retval
   */
-void LogStoreNext(){
-	uint32_t current_address;
-	uint16_t order_num;
-	uint32_t mem_buf; 
-	current_address = FindNextEntryAddr();
-	
-	if(current_address == GetPageAddress(current_address)) ErasePage(current_address);
-	
-	if(current_address == LOG_OFFSET) {
-		if(ReadFlash(current_address + LOG_AREA_SIZE - LOG_ENTRY_SIZE, memory_buf, LOG_ENTRY_SIZE / 4)){
-			if(memory_buf[0] == 0xffffffff) order_num = 0; else order_num = memory_buf[0];
-		}
-	}else{
-		if(ReadFlash(current_address - LOG_ENTRY_SIZE, memory_buf, LOG_ENTRY_SIZE)){
-			order_num = memory_buf[0];
-		}
-	}
-		mem_buf = order_num + 1;
-	ErasePage(LOG_OFFSET);
-		HAL_FLASH_Unlock();
-		//HAL_FLASH_Program(FLASH_TYPEPROGRAM_WORD, current_address, mem_buf);
-		
-	  HAL_FLASH_Program(FLASH_TYPEPROGRAM_WORD, LOG_OFFSET, mem_buf);
-		HAL_FLASH_Lock();
+void LOG_WriteNewEntry(){
 }
 
 /**
@@ -183,34 +160,34 @@ void LogStoreNext(){
   * @param  
   * @retval
   */
-uint32_t GetPageAddress(uint32_t address){
-	return((address / PAGESIZE) * (uint32_t) PAGESIZE);
+void LOG_FindMinMaxNum(uint32_t* min, uint32_t* max){
+	*min = 0xffffffff;
+	*max = 0;
+	for(uint32_t i = 0; i < (LOG_AREA_SIZE * PAGESIZE / LOG_ENTRY_SIZE / 4); i ++){ //count number of logs
+		LOG_ReadFlash(LOG_OFFSET + i * LOG_ENTRY_SIZE * 4, log_memory_buf, LOG_ENTRY_SIZE); 
+		if(log_memory_buf[0] > *max) *max = log_memory_buf[0];
+		if(log_memory_buf[0] < *min) *min = log_memory_buf[0];
+	}
 }
 
 /**
-  * @brief  Checks 1-st words of all entries. It is order numbers. If this number is more than maximum possible - we start from the beginning
+  * @brief  
   * @param  
-  * @retval address of the next entry
+  * @retval
   */
-
-
-
-uint32_t FindNextEntryAddr(){
-	uint32_t current_address = LOG_OFFSET;
-	uint32_t max_num = 0;
-	uint32_t addr_of_max = LOG_OFFSET;
-	for(current_address = LOG_OFFSET; current_address < (LOG_AREA_SIZE + LOG_OFFSET); current_address += LOG_ENTRY_SIZE){
-			if(ReadFlash(current_address, memory_buf, LOG_ENTRY_SIZE / 4)){
-				if((memory_buf[0] != 0xffffffff) && (memory_buf[0] > max_num)){
-					max_num = memory_buf[0];
-					addr_of_max = current_address;
+uint8_t LOG_CheckIfEmpty(){
+	uint8_t log_empty = 1;
+	for(uint32_t i = 0; i < (LOG_AREA_SIZE * PAGESIZE / LOG_ENTRY_SIZE / 4); i ++){ //count number of logs
+		LOG_ReadFlash(LOG_OFFSET + i * LOG_ENTRY_SIZE * 4, log_memory_buf, LOG_ENTRY_SIZE); 
+		for(uint32_t j = 0; j < LOG_ENTRY_SIZE; j ++){
+				if(log_memory_buf[j] != 0xffffffff){
+					log_empty = 0;
+					break;
 				}
 			}
-		}
-	
-		if(max_num == 0)  addr_of_max = LOG_OFFSET; else addr_of_max += LOG_ENTRY_SIZE;
-		if(addr_of_max >= (LOG_OFFSET + LOG_AREA_SIZE)) addr_of_max = LOG_OFFSET;
-		return(addr_of_max);
+			if(log_empty == 0) break;
+		}	
+	return(log_empty);
 }
 
 /**
@@ -218,7 +195,7 @@ uint32_t FindNextEntryAddr(){
   * @param  
   * @retval
   */
-uint8_t ReadFlash(uint32_t startAddr,uint32_t *pdata, uint32_t len){
+uint8_t LOG_ReadFlash(uint32_t startAddr,uint32_t *pdata, uint32_t len){
     if(pdata == NULL) return 0;
     while(len --){
         if(pdata == NULL) break;
@@ -234,7 +211,7 @@ uint8_t ReadFlash(uint32_t startAddr,uint32_t *pdata, uint32_t len){
   * @param  
   * @retval
   */
-void ErasePage(uint32_t addr){
+void LOG_ErasePage(uint32_t addr){
 	HAL_FLASH_Unlock();
 	FLASH_EraseInitTypeDef FLASH_EraseInit;
 	uint32_t xxx;
@@ -250,8 +227,8 @@ void ErasePage(uint32_t addr){
   * @param  
   * @retval
   */
-void EraseWholeLog(){
-		for(uint32_t i = LOG_OFFSET; i < (LOG_OFFSET + LOG_AREA_SIZE); i += LOG_ENTRY_SIZE){
-			ErasePage(i);
+void LOG_EraseWhole(){
+		for(uint32_t i = 0; i < LOG_AREA_SIZE; i ++){			
+			LOG_ErasePage(LOG_OFFSET + i * PAGESIZE);
 		}
 }

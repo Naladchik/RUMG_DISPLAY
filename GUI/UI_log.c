@@ -12,6 +12,8 @@
 extern LCD_DrawPropTypeDef DrawProp;
 
 char str[6];
+uint32_t my_min, my_max;
+extern uint32_t log_memory_buf [LOG_ENTRY_SIZE];
 
 void DrawLog(void){
 	FillBackground(MAIN_BGND);
@@ -20,9 +22,9 @@ void DrawLog(void){
 	DrawProp.TextColor = WHITE_COLOR;
 	//Print(UI_INDENT, UI_SPACE, "Password:", &Font24);
 	Print(10, 10, "Erasing log", &Font24);
-	EraseWholeLog();
+	//EraseWholeLog();
 	Print(10, 10, "Done        ", &Font24);
-	Print(10, 10, "Writing", &Font24);
+	Print(10, 10, "Erasing", &Font24);
 	
 	str[0] = 0x20;
 	str[1] = 0x30;
@@ -30,12 +32,35 @@ void DrawLog(void){
 	str[3] = 0x30;
 	str[4] = 0x30;
 	str[5] = 0x00;
-	for(uint16_t i = 0; i < 5; i++){
-		LogStoreNext();
-		str[4] = 0x30 + i % 10;
-		str[3] = 0x30+ (i / 10) % 10;
-		str[2] = 0x30+ (i / 100) % 10;
-		str[1] = 0x30+ (i / 1000) % 10;
+	
+	
+	LOG_EraseWhole();
+	HAL_FLASH_Unlock();
+	HAL_FLASH_Program(FLASH_TYPEPROGRAM_WORD, LOG_OFFSET + 0, 0x01020304);
+	HAL_FLASH_Program(FLASH_TYPEPROGRAM_WORD, LOG_OFFSET + 4, 0x01020304);
+	HAL_FLASH_Program(FLASH_TYPEPROGRAM_WORD, LOG_OFFSET + 8, 0x01020304);
+	HAL_FLASH_Program(FLASH_TYPEPROGRAM_WORD, LOG_OFFSET + 12, 0x01020304);
+	HAL_FLASH_Program(FLASH_TYPEPROGRAM_WORD, LOG_OFFSET + 16, 0x01020304);
+	HAL_FLASH_Program(FLASH_TYPEPROGRAM_WORD, LOG_OFFSET + 20, 0x01020304);
+	HAL_FLASH_Lock();
+	LOG_ReadFlash(LOG_OFFSET, log_memory_buf, LOG_ENTRY_SIZE); 
+	
+	
+	LOG_FindMinMaxNum(&my_min, &my_max);
+	if(LOG_CheckIfEmpty()) Print(10, 10, "Empty   ", &Font24); else Print(10, 10, "Not empty", &Font24);
+	/*HAL_FLASH_Unlock();
+		for(uint32_t i = 0; i < (LOG_AREA_SIZE * PAGESIZE / 4); i++){
+			HAL_FLASH_Program(FLASH_TYPEPROGRAM_WORD, LOG_OFFSET + 4 * i, 0x01020304);		
+			str[4] = 0x30 + i % 10;
+			str[3] = 0x30+ (i / 10) % 10;
+			str[2] = 0x30+ (i / 100) % 10;
+			str[1] = 0x30+ (i / 1000) % 10;
 		Print(200, 10, str, &Font24);
-	}
+		}
+	HAL_FLASH_Lock();*/
+	LOG_FindMinMaxNum(&my_min, &my_max);
+	if(LOG_CheckIfEmpty()) Print(10, 10, "Empty    ", &Font24); else Print(10, 10, "Not empty", &Font24);
+	LOG_EraseWhole();
+	LOG_FindMinMaxNum(&my_min, &my_max);
+	if(LOG_CheckIfEmpty()) Print(10, 10, "Empty    ", &Font24); else Print(10, 10, "Not empty", &Font24);
 }

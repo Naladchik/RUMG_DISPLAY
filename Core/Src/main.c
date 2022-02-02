@@ -189,19 +189,7 @@ int main(void)
 		}
 	}
 	
-	//T_SetWatch();
-	//ili9488_Init();
-	//DrawTheBase();
-	//InitGUI();
 	HAL_Delay(250);
-  //EraseWholeLog();
-	/*volatile uint32_t my_addr = 0;
-	for(uint16_t i = 0; i < 400; i++){
-		my_addr = FindNextEntryAddr();
-		LogStoreNext();
-	}*/
-	
-	//mainApp();
   /* USER CODE END 2 */
 
   /* USER CODE BEGIN RTOS_MUTEX */

@@ -152,9 +152,9 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>34</LineNumber>
+          <LineNumber>50</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134226014</Address>
+          <Address>134226118</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -163,24 +163,29 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>..\GUI\UI_log.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\rumg\../GUI/UI_log.c\34</Expression>
+          <Expression>\\rumg\../GUI/UI_log.c\50</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
         <Ww>
           <count>0</count>
           <WinNumber>1</WinNumber>
-          <ItemText>memory_buf,0x0A</ItemText>
+          <ItemText>my_min</ItemText>
         </Ww>
         <Ww>
           <count>1</count>
           <WinNumber>1</WinNumber>
-          <ItemText>current_address</ItemText>
+          <ItemText>my_max</ItemText>
         </Ww>
         <Ww>
           <count>2</count>
           <WinNumber>1</WinNumber>
-          <ItemText>mem_buf</ItemText>
+          <ItemText>log_memory_buf</ItemText>
+        </Ww>
+        <Ww>
+          <count>3</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>i,0x0A</ItemText>
         </Ww>
       </WatchWindow1>
       <MemoryWindow1>
