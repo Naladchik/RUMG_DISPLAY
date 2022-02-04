@@ -5,6 +5,7 @@ extern uint8_t buzz_on;
 extern TypeParameters DeviceParam;
 
 uint32_t log_memory_buf [LOG_ENTRY_SIZE];
+uint32_t just_buffer [LOG_ENTRY_SIZE]; //for emty check and so on
 
 void us_delay(void);
 
@@ -152,7 +153,31 @@ void inject_rssi(uint32_t* alrm_byte, uint16_t rssi){
   * @param  
   * @retval
   */
-void LOG_WriteNewEntry(){
+void LOG_WriteNewEntry(uint32_t* array){
+	uint32_t num, addr;
+	uint8_t uniq;
+	if(LOG_CheckIfEmpty()){
+		array[0] = 1;
+		HAL_FLASH_Unlock();
+		for(uint32_t a; a < LOG_ENTRY_SIZE; a ++){
+			HAL_FLASH_Program(FLASH_TYPEPROGRAM_WORD, LOG_OFFSET + a * 4, array[a]);
+		}
+		HAL_FLASH_Lock();	
+	}else{
+		if(LOG_FindMaxUnique(&num, &addr, &uniq)){
+			addr += LOG_ENTRY_SIZE * 4;
+			if(addr >= (LOG_OFFSET + LOG_AREA_SIZE * PAGESIZE)) addr = LOG_OFFSET;
+			num ++;
+			if(num == 0xffffffff) num = 1;
+			if((addr % PAGESIZE) == 0) LOG_ErasePage(addr);
+			array[0] = num;
+			HAL_FLASH_Unlock();
+			for(uint32_t a; a < LOG_ENTRY_SIZE; a ++){
+				HAL_FLASH_Program(FLASH_TYPEPROGRAM_WORD, addr + a * 4, array[a]);
+			}
+			HAL_FLASH_Lock();	
+		}	
+	}
 }
 
 /**
@@ -164,10 +189,33 @@ void LOG_FindMinMaxNum(uint32_t* min, uint32_t* max){
 	*min = 0xffffffff;
 	*max = 0;
 	for(uint32_t i = 0; i < (LOG_AREA_SIZE * PAGESIZE / LOG_ENTRY_SIZE / 4); i ++){ //count number of logs
-		LOG_ReadFlash(LOG_OFFSET + i * LOG_ENTRY_SIZE * 4, log_memory_buf, LOG_ENTRY_SIZE); 
-		if(log_memory_buf[0] > *max) *max = log_memory_buf[0];
-		if(log_memory_buf[0] < *min) *min = log_memory_buf[0];
+		LOG_ReadFlash(LOG_OFFSET + i * LOG_ENTRY_SIZE * 4, just_buffer, LOG_ENTRY_SIZE); 
+		if(just_buffer[0] > *max) *max = just_buffer[0];
+		if(just_buffer[0] < *min) *min = just_buffer[0];
 	}
+}
+
+/**
+  * @brief  Valid numbers from 1 to 0xfffffffe. So 0 is not allowed and 0xffffffff too.
+  * @param  
+  * @retval
+  */
+uint8_t LOG_FindMaxUnique(uint32_t* max, uint32_t* addr, uint8_t* uniq){
+	*max = 0;
+	*uniq = 1;
+	*addr = 0;
+	for(uint32_t i = 0; i < (LOG_AREA_SIZE * PAGESIZE / LOG_ENTRY_SIZE / 4); i ++){ //count number of logs
+		LOG_ReadFlash(LOG_OFFSET + i * LOG_ENTRY_SIZE * 4, just_buffer, LOG_ENTRY_SIZE);
+		if((just_buffer[0] != 0) && (just_buffer[0] == *max)) *uniq = 0;
+		if(just_buffer[0] != 0xffffffff){
+			if(just_buffer[0] > *max){
+				*max = just_buffer[0];
+				*addr = LOG_OFFSET + i * LOG_ENTRY_SIZE * 4;
+			}
+			
+		}
+	}
+	if((*addr != 0) && (*uniq == 1)) return(1);  else return(0);
 }
 
 /**
@@ -178,9 +226,9 @@ void LOG_FindMinMaxNum(uint32_t* min, uint32_t* max){
 uint8_t LOG_CheckIfEmpty(){
 	uint8_t log_empty = 1;
 	for(uint32_t i = 0; i < (LOG_AREA_SIZE * PAGESIZE / LOG_ENTRY_SIZE / 4); i ++){ //count number of logs
-		LOG_ReadFlash(LOG_OFFSET + i * LOG_ENTRY_SIZE * 4, log_memory_buf, LOG_ENTRY_SIZE); 
+		LOG_ReadFlash(LOG_OFFSET + i * LOG_ENTRY_SIZE * 4, just_buffer, LOG_ENTRY_SIZE); 
 		for(uint32_t j = 0; j < LOG_ENTRY_SIZE; j ++){
-				if(log_memory_buf[j] != 0xffffffff){
+				if(just_buffer[j] != 0xffffffff){
 					log_empty = 0;
 					break;
 				}
