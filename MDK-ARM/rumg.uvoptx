@@ -153,27 +153,22 @@
         <Ww>
           <count>0</count>
           <WinNumber>1</WinNumber>
-          <ItemText>my_min</ItemText>
+          <ItemText>log_memory_buf</ItemText>
         </Ww>
         <Ww>
           <count>1</count>
           <WinNumber>1</WinNumber>
-          <ItemText>my_max</ItemText>
+          <ItemText>EpochTime</ItemText>
         </Ww>
         <Ww>
           <count>2</count>
           <WinNumber>1</WinNumber>
-          <ItemText>log_memory_buf</ItemText>
+          <ItemText>Alarm</ItemText>
         </Ww>
         <Ww>
           <count>3</count>
           <WinNumber>1</WinNumber>
-          <ItemText>my_addr</ItemText>
-        </Ww>
-        <Ww>
-          <count>4</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>is_uniq</ItemText>
+          <ItemText>AlarmBuffer</ItemText>
         </Ww>
       </WatchWindow1>
       <MemoryWindow1>
@@ -874,7 +869,7 @@
 
   <Group>
     <GroupName>GUI</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>

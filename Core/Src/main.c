@@ -62,9 +62,11 @@ QueueHandle_t myQueueLORAHandle;
 uint32_t UserTimer;
 uint8_t UserTimerFlag;
 uint8_t OneSeconTick;
-uint32_t EpochTime = 1638015094;
+uint32_t EpochTime = EPOCH_TIME;
 
 uint8_t buzz_on;
+
+uint8_t just_on_flag = 1;
 
 SX1278_hw_t SX1278_hw;
 SX1278_t SX1278;
@@ -189,6 +191,7 @@ int main(void)
 		}
 	}
 	
+	LOG_Log();
 	HAL_Delay(250);
   /* USER CODE END 2 */
 

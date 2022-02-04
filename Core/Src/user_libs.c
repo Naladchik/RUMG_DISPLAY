@@ -3,6 +3,8 @@
 
 extern uint8_t buzz_on;
 extern TypeParameters DeviceParam;
+extern TypeAlarm Alarm;
+extern uint32_t EpochTime;
 
 uint32_t log_memory_buf [LOG_ENTRY_SIZE];
 uint32_t just_buffer [LOG_ENTRY_SIZE]; //for emty check and so on
@@ -153,13 +155,68 @@ void inject_rssi(uint32_t* alrm_byte, uint16_t rssi){
   * @param  
   * @retval
   */
+void LOG_Log(void){
+	if(LOG_ReadLastEntry(log_memory_buf)){
+		LOG_Compile(log_memory_buf);
+	}else{
+		log_memory_buf[1] = EPOCH_TIME;
+	}
+	LOG_WriteNewEntry(log_memory_buf);
+}
+
+/**
+  * @brief  
+  * @param  
+  * @retval
+  */
+uint8_t LOG_ReadLastEntry(uint32_t* array){
+	uint32_t num, addr;
+	uint8_t uniq;
+	if(LOG_FindMaxUnique(&num,&addr, &uniq)){
+			LOG_ReadFlash(addr, array, LOG_ENTRY_SIZE);
+		return(1);
+	}else{
+		return(0);
+	}
+}
+
+/**
+  * @brief  
+  * @param  
+  * @retval
+  */
+extern uint8_t just_on_flag;
+
+void LOG_Compile(uint32_t* array){
+	array[1] = EpochTime;
+	
+	array[2]= 0; //alarm bits
+	if(Alarm.BatteryOut) array[2] |= 0x80000000;
+	if(Alarm.ConcentratorMax) array[2] |= 0x40000000;
+	if(Alarm.ConcentratorNOT_OK) array[2] |= 0x20000000;
+	if(Alarm.CylindersEmpty) array[2] |= 0x10000000;
+	if(Alarm.EmergState) array[2] |= 0x08000000;
+	if(Alarm.LineMax) array[2] |= 0x04000000;
+	if(Alarm.LineMin) array[2] |= 0x02000000;
+	if(Alarm.PowerOff) array[2] |= 0x01000000;
+	if(just_on_flag){
+		array[2] |= 0x00800000;
+		just_on_flag = 0;
+	}	
+}
+
+/**
+  * @brief  Writes new log entry to the memory
+  * @param  
+  * @retval
+  */
 void LOG_WriteNewEntry(uint32_t* array){
 	uint32_t num, addr;
 	uint8_t uniq;
 	if(LOG_CheckIfEmpty()){
 		array[0] = 1;
 		HAL_FLASH_Unlock();
-		for(uint32_t a; a < LOG_ENTRY_SIZE; a ++){
+		for(uint32_t a = 0 ; a < LOG_ENTRY_SIZE; a ++){
 			HAL_FLASH_Program(FLASH_TYPEPROGRAM_WORD, LOG_OFFSET + a * 4, array[a]);
 		}
 		HAL_FLASH_Lock();	
@@ -172,7 +229,7 @@ void LOG_WriteNewEntry(uint32_t* array){
 			if((addr % PAGESIZE) == 0) LOG_ErasePage(addr);
 			array[0] = num;
 			HAL_FLASH_Unlock();
-			for(uint32_t a; a < LOG_ENTRY_SIZE; a ++){
+			for(uint32_t a = 0; a < LOG_ENTRY_SIZE; a ++){
 				HAL_FLASH_Program(FLASH_TYPEPROGRAM_WORD, addr + a * 4, array[a]);
 			}
 			HAL_FLASH_Lock();	

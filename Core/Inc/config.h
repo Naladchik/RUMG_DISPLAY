@@ -64,8 +64,9 @@
 #define Pquant          (float)((PressMAX - PressMIN)/(LED_NUM - 2))
 	
 #define LOG_OFFSET			 		0x08011800     //71-th page beginning
-#define LOG_AREA_SIZE		10  //pages
+#define LOG_AREA_SIZE		10 //pages
 #define LOG_ENTRY_SIZE   16 //words (32-bit)
+#define EPOCH_TIME           1643984216
 
 
 //All MAC addresses list

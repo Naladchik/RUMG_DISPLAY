@@ -46,6 +46,7 @@ uint8_t LEDvalueL;
 uint8_t LEDvalueR;
 
 TypeAlarm Alarm = {0, 0, 1, 0, 0, 0, 0, 0};
+TypeAlarm AlarmBuffer;
 TypeDisplay DisplaySet = {0, 0};
 uint32_t ALRM_BYTE;
 
@@ -233,7 +234,7 @@ void make_action(const TypeVolt* Volt){
 		}
 	}
 		/* ---------------------------------------------------------------------- */
-	  /*           ALARM GENERATION                                             */
+	  /*           ALARM GENERATION                            */
     /* ---------------------------------------------------------------------- */
 		if(DeviceParam.Role == CONTROLER){
     //one cylinder < 10 bar, second cylinder < 40 bar
@@ -293,6 +294,10 @@ void make_action(const TypeVolt* Volt){
     }else{
       if(Volt->BatVolt > BatteryOK) Alarm.BatteryOut = 0;
     }
+		if(CompareAlarms(&Alarm, &AlarmBuffer) == 0){
+				LOG_Log();
+		}
+		CopyAlarms(&Alarm, &AlarmBuffer);
 	}
 		
 		/* ---------------------------------------------------------------------- */
@@ -305,8 +310,8 @@ void make_action(const TypeVolt* Volt){
 		if((Volt->PressLine > DeviceParam.PressLineMax) || (Volt->PressLine < DeviceParam.PressLineMin)) 
 			DisplaySet.LinePressAlarm = 1; else DisplaySet.LinePressAlarm = 0;
 	
-    /* ---------------------------------------------------------------------- */
-    /*           BUTTONS PROCESSING                                           */
+    /* ----------------------------------------------------------------------- */
+    /*           BUTTONS PROCESSING                        */
     /* ---------------------------------------------------------------------- */
 /*    if((ButtAlCounter == BUTT_TRIM)&&(flagOldAlButt == 0)){
       if((Alarm.ConcentratorMax)||(Alarm.CylindersEmpty)||(Alarm.LineMax)||(Alarm.LineMin))SilentTimer = ALRM_PAUSE;
@@ -316,9 +321,9 @@ void make_action(const TypeVolt* Volt){
     if(ButtAlCounter == 0)flagOldAlButt = 0;
     if(ButtSwCounter == 0)flagOldSwButt = 0;*/
 
-    /* ---------------------------------------------------------------------- */
-    /*           ALARM SOUNDS AND LEDs PROCESSING                             */
-    /* ---------------------------------------------------------------------- */
+    /* ------------------------------------------------------------------------------------------ */
+    /*           ALARM SOUNDS AND LEDs PROCESSING                */
+    /* ------------------------------------------------------------------------------------------ */
 		//if(DeviceParam.Role == CONTROLER){
     if(Alarm.BatteryOut){
      //Highest priority alarm. Out of battery. Sound can not be off.
@@ -351,7 +356,7 @@ void make_action(const TypeVolt* Volt){
     }
 		//}else Buzzer(1);
 		/* ---------------------------------------------------------------------- */
-	  /*           SLOW TIMERS                                                  */
+	  /*           SLOW TIMERS                                       */
     /* ---------------------------------------------------------------------- */		
 		if(TickForward){
       if(BlinkFlag) BlinkFlag = 0; else BlinkFlag = 1;
@@ -359,9 +364,36 @@ void make_action(const TypeVolt* Volt){
       if(ConcNORMCounter) ConcNORMCounter--;
       if(ConcSIGCounter) ConcSIGCounter--;
 			if(CounterValveSuspend) CounterValveSuspend--;
-			if(CounterEmergWork) CounterEmergWork--;			
+			if(CounterEmergWork) CounterEmergWork--;
       TickForward = 0;
     }
 		osDelay(3);
 //		IWDG->KR = KR_KEY_RELOAD;
+}
+
+/**
+  * @brief  
+  * @param  alrm copied to alrm_copy
+  * @retval
+  */
+void CopyAlarms(TypeAlarm* alrm, TypeAlarm* alrm_copy){
+	*alrm_copy = *alrm;
+}
+
+/**
+  * @brief  
+  * @param  alrm copied to alrm_copy
+  * @retval
+  */
+uint8_t CompareAlarms(TypeAlarm* alrm1, TypeAlarm* alrm2){
+	uint8_t var = 1;
+	if(alrm1->BatteryOut != alrm2->BatteryOut) var = 0;
+	if(alrm1->ConcentratorMax != alrm2->ConcentratorMax) var = 0;
+	if(alrm1->ConcentratorNOT_OK != alrm2->ConcentratorNOT_OK) var = 0;
+	if(alrm1->CylindersEmpty != alrm2->CylindersEmpty) var = 0;
+	if(alrm1->EmergState != alrm2->EmergState) var = 0;
+	if(alrm1->LineMax != alrm2->LineMax) var = 0;
+	if(alrm1->LineMin != alrm2->LineMin) var = 0;
+	if(alrm1->PowerOff != alrm2->PowerOff) var = 0;
+	return(var);
 }

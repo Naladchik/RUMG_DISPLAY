@@ -28,4 +28,6 @@ typedef struct DisplayStruct{
 } TypeDisplay;
 
 void make_action(const TypeVolt* Volt);
+void CopyAlarms(TypeAlarm* alrm, TypeAlarm* alrm_copy);
+uint8_t CompareAlarms(TypeAlarm* alrm1, TypeAlarm* alrm2);
 #endif
