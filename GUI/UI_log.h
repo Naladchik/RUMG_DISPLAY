@@ -12,4 +12,5 @@
 /* BSP_LCD_... */
 #include "stm32_adafruit_lcd.h"
 void DrawLog(void);
+void LOG_Display(uint32_t addr);
 #endif

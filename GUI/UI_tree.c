@@ -121,8 +121,16 @@ void UI_logic(void){
 						UI_item = MAIN_WIND;
 						break;
 			case(LOG_WIND):
-						DrawTheBase();
-						UI_item = MAIN_WIND;
+						if((ts.y >= 0) && (ts.y <= 100)){
+								DrawLog();
+							}
+						if((ts.y >= 101) && (ts.y <= 219)){								
+								DrawTheBase();
+								UI_item = MAIN_WIND;
+							}
+						if((ts.y >= 220) && (ts.y <= 320)){
+								DrawLog();
+							}
 						break;
 			case(PLOT_WIND):
 						DrawTheBase();

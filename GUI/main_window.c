@@ -28,6 +28,8 @@ extern struct TouchStructType T_struct;
 
 extern TypeParameters DeviceParam;
 
+extern uint16_t rus_font_color;
+
 volatile TypeAlarm OldAlarm;
 
 
@@ -991,6 +993,7 @@ void DrawErrorMessage(TypeAlarm* al){
 		BSP_LCD_SetBackColor(WHITE_COLOR);
 		
 #ifdef RU
+		rus_font_color = BLACK_COLOR;
 		u8g_t ffont;
 		u8g_SetFont(&ffont, rus10x20);
 #endif

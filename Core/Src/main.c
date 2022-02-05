@@ -64,6 +64,8 @@ uint8_t UserTimerFlag;
 uint8_t OneSeconTick;
 uint32_t EpochTime = EPOCH_TIME;
 
+uint16_t rus_font_color = 0x0000;
+
 uint8_t buzz_on;
 
 uint8_t just_on_flag = 1;
