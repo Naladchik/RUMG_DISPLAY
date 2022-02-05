@@ -5,6 +5,7 @@ extern uint8_t buzz_on;
 extern TypeParameters DeviceParam;
 extern TypeAlarm Alarm;
 extern uint32_t EpochTime;
+extern TypeVolt PhValues_output;
 
 uint32_t log_memory_buf [LOG_ENTRY_SIZE];
 uint32_t just_buffer [LOG_ENTRY_SIZE]; //for emty check and so on
@@ -169,6 +170,20 @@ void LOG_Log(void){
   * @param  
   * @retval
   */
+void LOG_LogInit(void){
+	if(LOG_ReadLastEntry(log_memory_buf)){
+		LOG_Compile(log_memory_buf);
+	}else{
+		log_memory_buf[1] = EPOCH_TIME;
+	}
+	LOG_WriteNewEntry(log_memory_buf);
+}
+
+/**
+  * @brief  
+  * @param  
+  * @retval
+  */
 uint8_t LOG_ReadLastEntry(uint32_t* array){
 	uint32_t num, addr;
 	uint8_t uniq;
@@ -202,7 +217,8 @@ void LOG_Compile(uint32_t* array){
 	if(just_on_flag){
 		array[2] |= 0x00800000;
 		just_on_flag = 0;
-	}	
+	}
+	memcpy(&array[3], &PhValues_output, sizeof(PhValues_output));
 }
 
 /**

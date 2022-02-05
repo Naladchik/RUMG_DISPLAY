@@ -3,7 +3,7 @@
 <title>Static Call Graph - [rumg\rumg.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image rumg\rumg.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Fri Feb 04 20:15:23 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Sat Feb 05 08:35:32 2022
 <BR><P>
 <H3>Maximum Stack Usage =        448 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -300,7 +300,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[8f]"></a>__aeabi_memcpy4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<BR><BR>[Called By]<UL><LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_Compile
+<LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawErrorMessage
 </UL>
 
@@ -693,16 +694,16 @@ Global Symbols
 <P><STRONG><a name="[7c]"></a>BSP_LCD_DrawPixel</STRONG> (Thumb, 32 bytes, Stack size 16 bytes, stm32_adafruit_lcd.o(i.BSP_LCD_DrawPixel))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = BSP_LCD_DrawPixel
 </UL>
-<BR>[Called By]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LCD_DrawHLine
-<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LCD_DrawVLine
+<BR>[Called By]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LCD_DrawVLine
+<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LCD_DrawHLine
 <LI><a href="#[16d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_Draw8Pixel
 </UL>
 
 <P><STRONG><a name="[7d]"></a>BSP_LCD_DrawRect</STRONG> (Thumb, 64 bytes, Stack size 24 bytes, stm32_adafruit_lcd.o(i.BSP_LCD_DrawRect))
-<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = BSP_LCD_DrawRect &rArr; BSP_LCD_DrawHLine &rArr; BSP_LCD_DrawPixel
+<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = BSP_LCD_DrawRect &rArr; BSP_LCD_DrawVLine &rArr; BSP_LCD_DrawPixel
 </UL>
-<BR>[Calls]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LCD_DrawHLine
-<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LCD_DrawVLine
+<BR>[Calls]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LCD_DrawVLine
+<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LCD_DrawHLine
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawErrorMessage
 </UL>
@@ -892,13 +893,13 @@ Global Symbols
 <P><STRONG><a name="[8e]"></a>DrawErrorMessage</STRONG> (Thumb, 558 bytes, Stack size 232 bytes, main_window.o(i.DrawErrorMessage))
 <BR><BR>[Stack]<UL><LI>Max Depth = 400<LI>Call Chain = DrawErrorMessage &rArr; u8g_DrawStr &rArr; u8g_draw_glyph &rArr; u8g_GetGlyph &rArr; u8g_CopyGlyphDataToCache &rArr; u8g_font_GetFormat
 </UL>
-<BR>[Calls]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LCD_SetTextColor
-<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LCD_FillRect
-<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_SetFont
+<BR>[Calls]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_SetFont
 <LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_DrawStr
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LCD_SetBackColor
 <LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LCD_DrawRect
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CopyAlarmStruct
+<LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LCD_SetTextColor
+<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LCD_FillRect
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawMainWindow
@@ -1184,12 +1185,12 @@ Global Symbols
 <LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_PageErase
 <LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_WaitForLastOperation
 </UL>
-<BR>[Called By]<UL><LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_ErasePage
+<BR>[Called By]<UL><LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_ErasePage
 </UL>
 
-<P><STRONG><a name="[fc]"></a>HAL_FLASH_Lock</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, stm32f1xx_hal_flash.o(i.HAL_FLASH_Lock))
+<P><STRONG><a name="[fd]"></a>HAL_FLASH_Lock</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, stm32f1xx_hal_flash.o(i.HAL_FLASH_Lock))
 <BR><BR>[Called By]<UL><LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_WriteNewEntry
-<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_ErasePage
+<LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_ErasePage
 </UL>
 
 <P><STRONG><a name="[b9]"></a>HAL_FLASH_Program</STRONG> (Thumb, 168 bytes, Stack size 48 bytes, stm32f1xx_hal_flash.o(i.HAL_FLASH_Program))
@@ -1202,9 +1203,9 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_WriteNewEntry
 </UL>
 
-<P><STRONG><a name="[fb]"></a>HAL_FLASH_Unlock</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, stm32f1xx_hal_flash.o(i.HAL_FLASH_Unlock))
+<P><STRONG><a name="[fc]"></a>HAL_FLASH_Unlock</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, stm32f1xx_hal_flash.o(i.HAL_FLASH_Unlock))
 <BR><BR>[Called By]<UL><LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_WriteNewEntry
-<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_ErasePage
+<LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_ErasePage
 </UL>
 
 <P><STRONG><a name="[b1]"></a>HAL_GPIO_Init</STRONG> (Thumb, 766 bytes, Stack size 36 bytes, stm32f1xx_hal_gpio.o(i.HAL_GPIO_Init))
@@ -1648,35 +1649,39 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_WriteNewEntry
 </UL>
 
-<P><STRONG><a name="[100]"></a>LOG_Compile</STRONG> (Thumb, 174 bytes, Stack size 0 bytes, user_libs.o(i.LOG_Compile))
-<BR><BR>[Called By]<UL><LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_Log
+<P><STRONG><a name="[fa]"></a>LOG_Compile</STRONG> (Thumb, 190 bytes, Stack size 8 bytes, user_libs.o(i.LOG_Compile))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = LOG_Compile
+</UL>
+<BR>[Calls]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
+</UL>
+<BR>[Called By]<UL><LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_Log
 </UL>
 
-<P><STRONG><a name="[fa]"></a>LOG_ErasePage</STRONG> (Thumb, 36 bytes, Stack size 32 bytes, user_libs.o(i.LOG_ErasePage))
+<P><STRONG><a name="[fb]"></a>LOG_ErasePage</STRONG> (Thumb, 36 bytes, Stack size 32 bytes, user_libs.o(i.LOG_ErasePage))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = LOG_ErasePage &rArr; HAL_FLASHEx_Erase &rArr; FLASH_WaitForLastOperation
 </UL>
-<BR>[Calls]<UL><LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_FLASH_Unlock
-<LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_FLASH_Lock
+<BR>[Calls]<UL><LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_FLASH_Unlock
+<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_FLASH_Lock
 <LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_FLASHEx_Erase
 </UL>
 <BR>[Called By]<UL><LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_WriteNewEntry
 </UL>
 
-<P><STRONG><a name="[fd]"></a>LOG_FindMaxUnique</STRONG> (Thumb, 112 bytes, Stack size 20 bytes, user_libs.o(i.LOG_FindMaxUnique))
+<P><STRONG><a name="[fe]"></a>LOG_FindMaxUnique</STRONG> (Thumb, 112 bytes, Stack size 20 bytes, user_libs.o(i.LOG_FindMaxUnique))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = LOG_FindMaxUnique &rArr; LOG_ReadFlash
 </UL>
 <BR>[Calls]<UL><LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_ReadFlash
 </UL>
 <BR>[Called By]<UL><LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_WriteNewEntry
-<LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_ReadLastEntry
+<LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_ReadLastEntry
 </UL>
 
-<P><STRONG><a name="[fe]"></a>LOG_Log</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, user_libs.o(i.LOG_Log))
+<P><STRONG><a name="[ff]"></a>LOG_Log</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, user_libs.o(i.LOG_Log))
 <BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = LOG_Log &rArr; LOG_WriteNewEntry &rArr; LOG_ErasePage &rArr; HAL_FLASHEx_Erase &rArr; FLASH_WaitForLastOperation
 </UL>
 <BR>[Calls]<UL><LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_WriteNewEntry
-<LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_ReadLastEntry
-<LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_Compile
+<LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_ReadLastEntry
+<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_Compile
 </UL>
 <BR>[Called By]<UL><LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;make_action
 <LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -1685,31 +1690,31 @@ Global Symbols
 <P><STRONG><a name="[f9]"></a>LOG_ReadFlash</STRONG> (Thumb, 38 bytes, Stack size 8 bytes, user_libs.o(i.LOG_ReadFlash))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = LOG_ReadFlash
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_ReadLastEntry
-<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_FindMaxUnique
+<BR>[Called By]<UL><LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_ReadLastEntry
+<LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_FindMaxUnique
 <LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_CheckIfEmpty
 </UL>
 
-<P><STRONG><a name="[ff]"></a>LOG_ReadLastEntry</STRONG> (Thumb, 34 bytes, Stack size 20 bytes, user_libs.o(i.LOG_ReadLastEntry))
+<P><STRONG><a name="[100]"></a>LOG_ReadLastEntry</STRONG> (Thumb, 34 bytes, Stack size 20 bytes, user_libs.o(i.LOG_ReadLastEntry))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = LOG_ReadLastEntry &rArr; LOG_FindMaxUnique &rArr; LOG_ReadFlash
 </UL>
 <BR>[Calls]<UL><LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_ReadFlash
-<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_FindMaxUnique
+<LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_FindMaxUnique
 </UL>
-<BR>[Called By]<UL><LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_Log
+<BR>[Called By]<UL><LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_Log
 </UL>
 
 <P><STRONG><a name="[101]"></a>LOG_WriteNewEntry</STRONG> (Thumb, 158 bytes, Stack size 32 bytes, user_libs.o(i.LOG_WriteNewEntry))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = LOG_WriteNewEntry &rArr; LOG_ErasePage &rArr; HAL_FLASHEx_Erase &rArr; FLASH_WaitForLastOperation
 </UL>
-<BR>[Calls]<UL><LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_FLASH_Unlock
+<BR>[Calls]<UL><LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_FLASH_Unlock
 <LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_FLASH_Program
-<LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_FLASH_Lock
-<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_FindMaxUnique
-<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_ErasePage
+<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_FLASH_Lock
+<LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_FindMaxUnique
+<LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_ErasePage
 <LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_CheckIfEmpty
 </UL>
-<BR>[Called By]<UL><LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_Log
+<BR>[Called By]<UL><LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_Log
 </UL>
 
 <P><STRONG><a name="[e8]"></a>LcdCmdWrite8</STRONG> (Thumb, 38 bytes, Stack size 4 bytes, lcd_io_spi.o(i.LcdCmdWrite8))
@@ -2477,7 +2482,7 @@ Global Symbols
 <P><STRONG><a name="[49]"></a>main</STRONG> (Thumb, 438 bytes, Stack size 152 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 384<LI>Call Chain = main &rArr; SX1278_init &rArr; SX1278_config &rArr; SX1278_SPIRead &rArr; SX1278_hw_SPIReadByte &rArr; HAL_SPI_TransmitReceive &rArr; SPI_EndRxTxTransaction &rArr; SPI_WaitFlagStateUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_Log
+<BR>[Calls]<UL><LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_Log
 <LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_Start
 <LI><a href="#[13d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericCreate
 <LI><a href="#[13e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osThreadCreate
@@ -2509,7 +2514,7 @@ Global Symbols
 <LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
 <LI><a href="#[140]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UnPackLoRa
 <LI><a href="#[141]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PackLoRa
-<LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_Log
+<LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_Log
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzzer
 <LI><a href="#[144]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CopyAlarms
@@ -2633,14 +2638,14 @@ Global Symbols
 <P><STRONG><a name="[16f]"></a>u8g_GetGlyph</STRONG> (Thumb, 196 bytes, Stack size 48 bytes, u8g_font.o(i.u8g_GetGlyph))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = u8g_GetGlyph &rArr; u8g_CopyGlyphDataToCache &rArr; u8g_font_GetFormat
 </UL>
-<BR>[Calls]<UL><LI><a href="#[175]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_FillEmptyGlyphCache
-<LI><a href="#[16b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_CopyGlyphDataToCache
-<LI><a href="#[171]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetFontStartEncoding
+<BR>[Calls]<UL><LI><a href="#[171]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetFontStartEncoding
 <LI><a href="#[172]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetFontEndEncoding
 <LI><a href="#[173]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetEncoding97Pos
 <LI><a href="#[174]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetEncoding65Pos
 <LI><a href="#[16c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetFormat
 <LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetFontGlyphStructureSize
+<LI><a href="#[175]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_FillEmptyGlyphCache
+<LI><a href="#[16b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_CopyGlyphDataToCache
 </UL>
 <BR>[Called By]<UL><LI><a href="#[16e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_draw_glyph
 </UL>
@@ -3358,9 +3363,9 @@ Local Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_get_byte
 </UL>
-<BR>[Called By]<UL><LI><a href="#[16b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_CopyGlyphDataToCache
-<LI><a href="#[16f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_GetGlyph
+<BR>[Called By]<UL><LI><a href="#[16f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_GetGlyph
 <LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetFontGlyphStructureSize
+<LI><a href="#[16b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_CopyGlyphDataToCache
 </UL>
 
 <P><STRONG><a name="[17e]"></a>u8g_font_GetGlyphDataStart</STRONG> (Thumb, 16 bytes, Stack size 16 bytes, u8g_font.o(i.u8g_font_GetGlyphDataStart))
