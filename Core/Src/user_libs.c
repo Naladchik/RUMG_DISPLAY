@@ -6,6 +6,7 @@ extern TypeParameters DeviceParam;
 extern TypeAlarm Alarm;
 extern uint32_t EpochTime;
 extern TypeVolt PhValues_output;
+extern uint8_t ActiveGas;
 
 uint32_t log_memory_buf [LOG_ENTRY_SIZE];
 uint32_t just_buffer [LOG_ENTRY_SIZE]; //for emty check and so on
@@ -172,6 +173,7 @@ void LOG_Log(void){
   */
 void LOG_LogInit(void){
 	if(LOG_ReadLastEntry(log_memory_buf)){
+		EpochTime = log_memory_buf[1];
 		LOG_Compile(log_memory_buf);
 	}else{
 		log_memory_buf[1] = EPOCH_TIME;
@@ -216,6 +218,13 @@ void LOG_Compile(uint32_t* array){
 	if(just_on_flag){
 		array[2] |= 0x00800000;
 		just_on_flag = 0;
+	}
+	switch(ActiveGas){
+		case(LEFT): array[2] |= 0x00400000; break;
+		case(RIGHT): array[2] |= 0x00200000;break;
+		case(CONCENTRATOR): array[2] |= 0x00000000;break;
+		case(BOTH_VALVES): array[2] |= 0x00600000;break;
+		default: break;
 	}
 	memcpy(&array[3], &PhValues_output, sizeof(PhValues_output));
 }

@@ -17,4 +17,6 @@ void LOG_ReplaceHeader1(char* st);
 void LOG_ReplaceHeader2(char* st);
 void LOG_ReplaceHeader3(char* st);
 void ConvertInteger32ToStr(char* str, const uint32_t integer);
+void ConvertFloatToStr(char* str, const float value);
+void LOG_Renew(void);
 #endif

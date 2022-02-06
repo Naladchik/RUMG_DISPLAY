@@ -620,17 +620,17 @@ void StartTaskLogic(void const * argument)
 {
   /* USER CODE BEGIN StartTaskLogic */
 	PhValues_output.BatVolt = 12;
-	PhValues_output.PressConc = 5;
-	PhValues_output.PressLine = 5;
+	PhValues_output.PressConc = 0;
+	PhValues_output.PressLine = LINE_P_MIN + 0.5;
 	PhValues_output.PressLeft = 50;
 	PhValues_output.PressRight = 50;
 	PhValues_output.PSUVolt = 13;
   /* Infinite loop */
   for(;;)
   {
-    //osDelay(1);
-		make_action(&PhValues_output);
+    //osDelay(1);		
 		if(xQueueReceive(myQueueADCHandle, &PhValues_output, 0) == pdTRUE){}
+		make_action(&PhValues_output);
   }
   /* USER CODE END StartTaskLogic */
 }

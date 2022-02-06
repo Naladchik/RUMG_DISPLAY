@@ -57,7 +57,10 @@ void UI_logic(void){
 			break;
 			case(MAIN_MENU_WIND): OldUI_item = UI_item;  break;
 			case(SETTINGS_WIND): OldUI_item = UI_item; break;
-			case(LOG_WIND): OldUI_item = UI_item; break;
+			case(LOG_WIND): 
+				LOG_Renew();
+				OldUI_item = UI_item; 
+			break;
 			case(PLOT_WIND):DrawPlot(); OldUI_item = UI_item; break;
 			default: break;
 		}
