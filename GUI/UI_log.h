@@ -13,4 +13,8 @@
 #include "stm32_adafruit_lcd.h"
 void DrawLog(void);
 void LOG_Display(uint32_t addr);
+void LOG_ReplaceHeader1(char* st);
+void LOG_ReplaceHeader2(char* st);
+void LOG_ReplaceHeader3(char* st);
+void ConvertInteger32ToStr(char* str, const uint32_t integer);
 #endif

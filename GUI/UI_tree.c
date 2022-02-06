@@ -29,6 +29,7 @@ extern uint8_t ActiveGasRequested;
 
 extern uint8_t ts_bz;
 
+extern uint32_t LOG_current_num; //current number of log entry
 
 void Print(uint16_t Xpos, uint16_t Ypos, char* str, sFONT *pFonts){
 	uint8_t  indx = 0;
@@ -107,6 +108,8 @@ void UI_logic(void){
 						UI_item = SETTINGS_WIND;
 					}
 					if((ts.y >= (UI_SPACE + UI_INTERVAL)) && (ts.y <= (UI_SPACE + 2 * UI_INTERVAL))){
+						uint32_t buf_addr;
+						if(LOG_FindMaxUnique(&LOG_current_num, &buf_addr)){}else{LOG_current_num = 0;}
 						DrawLog();
 						UI_item = LOG_WIND;
 					}
@@ -121,16 +124,29 @@ void UI_logic(void){
 						UI_item = MAIN_WIND;
 						break;
 			case(LOG_WIND):
-						if((ts.y >= 0) && (ts.y <= 100)){
-								DrawLog();
-							}
-						if((ts.y >= 101) && (ts.y <= 219)){								
-								DrawTheBase();
-								UI_item = MAIN_WIND;
-							}
-						if((ts.y >= 220) && (ts.y <= 320)){
-								DrawLog();
-							}
+						if(ts.x < 420){
+							if(ts.y <= 150){ //up
+									uint32_t addr;
+									uint32_t log_max_num = 1;
+									if(LOG_FindMaxUnique(&log_max_num, &addr)){
+										if(LOG_current_num < log_max_num)LOG_current_num++;
+									}
+									DrawLog();
+								}						
+							if((ts.y >= 170) && (ts.y <= 320)){ //down
+									uint32_t addr;
+									uint32_t log_min_num = 1;
+									if(LOG_FindMinUnique(&log_min_num, &addr)){
+										if(LOG_current_num > log_min_num) LOG_current_num--;
+									}
+									DrawLog();
+								}
+						}else{
+							if(ts.y <= 50){	//exit
+									DrawTheBase();
+									UI_item = MAIN_WIND;
+								}
+						}
 						break;
 			case(PLOT_WIND):
 						DrawTheBase();

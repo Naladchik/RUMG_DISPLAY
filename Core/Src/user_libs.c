@@ -186,8 +186,7 @@ void LOG_LogInit(void){
   */
 uint8_t LOG_ReadLastEntry(uint32_t* array){
 	uint32_t num, addr;
-	uint8_t uniq;
-	if(LOG_FindMaxUnique(&num,&addr, &uniq)){
+	if(LOG_FindMaxUnique(&num,&addr)){
 			LOG_ReadFlash(addr, array, LOG_ENTRY_SIZE);
 		return(1);
 	}else{
@@ -230,7 +229,6 @@ void LOG_Compile(uint32_t* array){
   */
 void LOG_WriteNewEntry(uint32_t* array){
 	uint32_t num, addr;
-	uint8_t uniq;
 	if(LOG_CheckIfEmpty()){
 		array[0] = 1;
 		HAL_FLASH_Unlock();
@@ -239,7 +237,7 @@ void LOG_WriteNewEntry(uint32_t* array){
 		}
 		HAL_FLASH_Lock();	
 	}else{
-		if(LOG_FindMaxUnique(&num, &addr, &uniq)){
+		if(LOG_FindMaxUnique(&num, &addr)){
 			addr += LOG_ENTRY_SIZE * 4;
 			if(addr >= (LOG_OFFSET + LOG_AREA_SIZE * PAGESIZE)) addr = LOG_OFFSET;
 			num ++;
@@ -256,41 +254,50 @@ void LOG_WriteNewEntry(uint32_t* array){
 }
 
 /**
-  * @brief  
+  * @brief  Valid numbers from 1 to 0xfffffffe. So 0 is not allowed and 0xffffffff too.
   * @param  
-  * @retval
+  * @retval 1 means success
   */
-void LOG_FindMinMaxNum(uint32_t* min, uint32_t* max){
-	*min = 0xffffffff;
-	*max = 0;
+uint8_t LOG_FindMaxUnique(uint32_t* max, uint32_t* addr){
+	*max = 0;	
+	*addr = 0;
+	uint8_t uniq = 1;
+	
 	for(uint32_t i = 0; i < (LOG_AREA_SIZE * PAGESIZE / LOG_ENTRY_SIZE / 4); i ++){ //count number of logs
-		LOG_ReadFlash(LOG_OFFSET + i * LOG_ENTRY_SIZE * 4, just_buffer, LOG_ENTRY_SIZE); 
-		if(just_buffer[0] > *max) *max = just_buffer[0];
-		if(just_buffer[0] < *min) *min = just_buffer[0];
+		LOG_ReadFlash(LOG_OFFSET + i * LOG_ENTRY_SIZE * 4, just_buffer, LOG_ENTRY_SIZE);
+		if(just_buffer[0] == *max) uniq = 0; //if met second time
+		if(just_buffer[0] != 0xffffffff){ //take into account modified cells
+			if(just_buffer[0] > *max){
+				*max = just_buffer[0];
+				*addr = LOG_OFFSET + i * LOG_ENTRY_SIZE * 4;
+			}			
+		}
 	}
+	if((*addr != 0) && (uniq == 1)) return(1);  else return(0);
 }
 
 /**
   * @brief  Valid numbers from 1 to 0xfffffffe. So 0 is not allowed and 0xffffffff too.
   * @param  
-  * @retval
+  * @retval 1 means success
   */
-uint8_t LOG_FindMaxUnique(uint32_t* max, uint32_t* addr, uint8_t* uniq){
-	*max = 0;
-	*uniq = 1;
+uint8_t LOG_FindMinUnique(uint32_t* min, uint32_t* addr){
+	*min = 0xffffffff;	
 	*addr = 0;
+	uint8_t uniq = 1;
+	
 	for(uint32_t i = 0; i < (LOG_AREA_SIZE * PAGESIZE / LOG_ENTRY_SIZE / 4); i ++){ //count number of logs
-		LOG_ReadFlash(LOG_OFFSET + i * LOG_ENTRY_SIZE * 4, just_buffer, LOG_ENTRY_SIZE);
-		if((just_buffer[0] != 0) && (just_buffer[0] == *max)) *uniq = 0;
+		LOG_ReadFlash(LOG_OFFSET + i * LOG_ENTRY_SIZE * 4, just_buffer, LOG_ENTRY_SIZE);		
 		if(just_buffer[0] != 0xffffffff){
-			if(just_buffer[0] > *max){
-				*max = just_buffer[0];
+			if(just_buffer[0] == *min) uniq = 0; //so ff ignored at all
+			if(just_buffer[0] < *min){
+				*min = just_buffer[0];
 				*addr = LOG_OFFSET + i * LOG_ENTRY_SIZE * 4;
 			}
 			
 		}
 	}
-	if((*addr != 0) && (*uniq == 1)) return(1);  else return(0);
+	if((*addr != 0) && (uniq == 1)) return(1);  else return(0);
 }
 
 /**
@@ -354,4 +361,18 @@ void LOG_EraseWhole(){
 		for(uint32_t i = 0; i < LOG_AREA_SIZE; i ++){			
 			LOG_ErasePage(LOG_OFFSET + i * PAGESIZE);
 		}
+}
+
+/**
+  * @brief  	entry search by number
+  * @param  number
+  * @retval 	address of the entry
+  */
+uint32_t LOG_FindEntry(uint32_t number){
+	uint32_t addr = 0;
+	for(uint32_t i = 0; i < (LOG_AREA_SIZE * PAGESIZE / LOG_ENTRY_SIZE / 4); i ++){ //count number of logs
+		LOG_ReadFlash(LOG_OFFSET + i * LOG_ENTRY_SIZE * 4, just_buffer, LOG_ENTRY_SIZE);
+		if(just_buffer[0] == number) addr = LOG_OFFSET + i * LOG_ENTRY_SIZE * 4;
+	}
+	return(addr);
 }

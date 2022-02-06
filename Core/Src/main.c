@@ -193,7 +193,7 @@ int main(void)
 		}
 	}
 	
-	LOG_Log();
+	LOG_LogInit();
 	HAL_Delay(250);
   /* USER CODE END 2 */
 
