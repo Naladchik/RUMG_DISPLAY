@@ -81,6 +81,7 @@ extern TypeParameters DeviceParam;
 extern ADC_ChannelConfTypeDef ADC_CONF;
 extern int16_t FlowArray[F_ARR_SIZE];
 extern uint16_t flow_prediction_arr[FLOW_30AVG];
+extern uint8_t UI_item;
 
 uint8_t SwitchGasRequest = 0;
 uint8_t ManIsHere = 0;
@@ -651,7 +652,8 @@ void StartTaskDisplay(void const * argument)
   {
 		//GUI();
 		UI_logic();
-    osDelay(1);
+		if((UI_item == MAIN_WIND) && ((EpochTime % DISPLAY_RESET_T) == 0)) InitGUI();
+    //osDelay(1);
   }
   /* USER CODE END StartTaskDisplay */
 }

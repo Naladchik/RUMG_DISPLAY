@@ -68,6 +68,8 @@
 #define LOG_ENTRY_SIZE   16 //words (32-bit)
 #define EPOCH_TIME           1644166875
 
+#define DISPLAY_RESET_T  60  //reinit display period in seconds
+
 
 //All MAC addresses list
 #ifdef DEV0     //controler (client)

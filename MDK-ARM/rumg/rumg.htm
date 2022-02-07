@@ -3,7 +3,7 @@
 <title>Static Call Graph - [rumg\rumg.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image rumg\rumg.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Sun Feb 06 20:01:57 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Mon Feb 07 15:25:07 2022
 <BR><P>
 <H3>Maximum Stack Usage =        456 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -2092,11 +2092,10 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(.constdata)
 </UL>
-<P><STRONG><a name="[52]"></a>StartTaskDisplay</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, main.o(i.StartTaskDisplay))
+<P><STRONG><a name="[52]"></a>StartTaskDisplay</STRONG> (Thumb, 42 bytes, Stack size 0 bytes, main.o(i.StartTaskDisplay))
 <BR><BR>[Stack]<UL><LI>Max Depth = 456<LI>Call Chain = StartTaskDisplay &rArr; UI_logic &rArr; DrawMainWindow &rArr; DrawErrorMessage &rArr; u8g_DrawStr &rArr; u8g_draw_glyph &rArr; u8g_GetGlyph &rArr; u8g_CopyGlyphDataToCache &rArr; u8g_font_GetFormat
 </UL>
-<BR>[Calls]<UL><LI><a href="#[126]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osDelay
-<LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UI_logic
+<BR>[Calls]<UL><LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UI_logic
 <LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InitGUI
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(.constdata)
@@ -2649,7 +2648,6 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
 </UL>
 <BR>[Called By]<UL><LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;make_action
-<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartTaskDisplay
 <LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartDefaultTask
 </UL>
 
