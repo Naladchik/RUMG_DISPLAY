@@ -68,7 +68,8 @@
 #define LOG_ENTRY_SIZE   16 //words (32-bit)
 #define EPOCH_TIME           1644166875
 
-#define DISPLAY_RESET_T  60  //reinit display period in seconds
+#define DISPLAY_RESET_T  900  //reinit display period in seconds
+#define SETTLE_TIMER        2000 //settle timer to avoid non-stable initial values
 
 
 //All MAC addresses list

@@ -195,7 +195,6 @@ int main(void)
 	}
 	
 	LOG_LogInit();
-	HAL_Delay(250);
   /* USER CODE END 2 */
 
   /* USER CODE BEGIN RTOS_MUTEX */
@@ -620,12 +619,10 @@ void StartTaskADC(void const * argument)
 void StartTaskLogic(void const * argument)
 {
   /* USER CODE BEGIN StartTaskLogic */
-	PhValues_output.BatVolt = 12;
-	PhValues_output.PressConc = 0;
-	PhValues_output.PressLine = LINE_P_MIN + 0.5;
-	PhValues_output.PressLeft = 50;
-	PhValues_output.PressRight = 50;
-	PhValues_output.PSUVolt = 13;
+	for(uint16_t i = 0; i < SETTLE_TIMER; i ++){
+			if(xQueueReceive(myQueueADCHandle, &PhValues_output, 0) == pdTRUE){}
+			osDelay(1);
+	}
   /* Infinite loop */
   for(;;)
   {

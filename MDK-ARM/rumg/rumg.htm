@@ -3,7 +3,7 @@
 <title>Static Call Graph - [rumg\rumg.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image rumg\rumg.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Mon Feb 07 15:25:07 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Mon Feb 07 16:13:51 2022
 <BR><P>
 <H3>Maximum Stack Usage =        456 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1199,8 +1199,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 </UL>
-<BR>[Called By]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SX1278_hw_DelayMs
+<BR>[Called By]<UL><LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SX1278_hw_DelayMs
 <LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Delay
 </UL>
 
@@ -1259,8 +1258,8 @@ Global Symbols
 <LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_OscConfig
 <LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_ClockConfig
 <LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCCEx_PeriphCLKConfig
-<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_WaitForLastOperation
+<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
 <LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SPI_TransmitReceive
 <LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SPI_Transmit
 <LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_WaitFlagStateUntilTimeout
@@ -2092,7 +2091,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(.constdata)
 </UL>
-<P><STRONG><a name="[52]"></a>StartTaskDisplay</STRONG> (Thumb, 42 bytes, Stack size 0 bytes, main.o(i.StartTaskDisplay))
+<P><STRONG><a name="[52]"></a>StartTaskDisplay</STRONG> (Thumb, 44 bytes, Stack size 0 bytes, main.o(i.StartTaskDisplay))
 <BR><BR>[Stack]<UL><LI>Max Depth = 456<LI>Call Chain = StartTaskDisplay &rArr; UI_logic &rArr; DrawMainWindow &rArr; DrawErrorMessage &rArr; u8g_DrawStr &rArr; u8g_draw_glyph &rArr; u8g_GetGlyph &rArr; u8g_CopyGlyphDataToCache &rArr; u8g_font_GetFormat
 </UL>
 <BR>[Calls]<UL><LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UI_logic
@@ -2100,10 +2099,11 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(.constdata)
 </UL>
-<P><STRONG><a name="[51]"></a>StartTaskLogic</STRONG> (Thumb, 46 bytes, Stack size 0 bytes, main.o(i.StartTaskLogic))
+<P><STRONG><a name="[51]"></a>StartTaskLogic</STRONG> (Thumb, 54 bytes, Stack size 0 bytes, main.o(i.StartTaskLogic))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = StartTaskLogic &rArr; make_action &rArr; xQueueGenericSend &rArr; vTaskPlaceOnEventList &rArr; prvAddCurrentTaskToDelayedList &rArr; vListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueReceive
+<LI><a href="#[126]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osDelay
 <LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;make_action
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(.constdata)
@@ -2570,7 +2570,7 @@ Global Symbols
 <LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawLeftPress
 </UL>
 
-<P><STRONG><a name="[49]"></a>main</STRONG> (Thumb, 438 bytes, Stack size 152 bytes, main.o(i.main))
+<P><STRONG><a name="[49]"></a>main</STRONG> (Thumb, 432 bytes, Stack size 152 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 384<LI>Call Chain = main &rArr; SX1278_init &rArr; SX1278_config &rArr; SX1278_SPIRead &rArr; SX1278_hw_SPIReadByte &rArr; HAL_SPI_TransmitReceive &rArr; SPI_EndRxTxTransaction &rArr; SPI_WaitFlagStateUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_LogInit
@@ -2581,7 +2581,6 @@ Global Symbols
 <LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osKernelStart
 <LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Start_IT
 <LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Init
-<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
 <LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
 <LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM3_Init
 <LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_SPI2_Init
@@ -2648,6 +2647,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
 </UL>
 <BR>[Called By]<UL><LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;make_action
+<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartTaskLogic
 <LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartDefaultTask
 </UL>
 
