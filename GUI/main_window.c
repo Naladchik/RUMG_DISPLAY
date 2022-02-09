@@ -30,6 +30,8 @@ extern TypeParameters DeviceParam;
 
 extern uint16_t rus_font_color;
 
+uint8_t redraw_all = 1;
+
 volatile TypeAlarm OldAlarm;
 
 
@@ -796,17 +798,19 @@ void DrawMainWindow(void){
 		//flow value
 		if(FLOW_SENSOR) DrawFlowVal(PhValues_output.Flow, WHITE_COLOR);
 		//Line pressure
-		if((Modula(PhValues_output.PressLine, OldLinePress) > 0.1) || (OldUI_item != UI_item)){
+		if((Modula(PhValues_output.PressLine, OldLinePress) > 0.1) || (OldUI_item != UI_item) || redraw_all){
 			OldLinePress = PhValues_output.PressLine;
 			if(DisplaySet.LinePressAlarm)DrawLinePress(PhValues_output.PressLine/10, RED_COLOR); 
 					else DrawLinePress(PhValues_output.PressLine/10, WHITE_COLOR);			
 		}
 		//Concentrator pressure
-		if((Modula(PhValues_output.PressConc, OldConcPress) > 0.1) || (OldUI_item != UI_item)){
+		if((Modula(PhValues_output.PressConc, OldConcPress) > 0.1) || (OldUI_item != UI_item) || redraw_all){
 			OldConcPress = PhValues_output.PressConc;
 			if(DisplaySet.ConcPressAlarm)DrawConcPress(PhValues_output.PressConc/10, RED_COLOR); 
 				else DrawConcPress(PhValues_output.PressConc/10, WHITE_COLOR);			
 		}
+		
+		redraw_all = 0;
 		//Triangle alarm signs
 		/*if((OldLineAlarm != DisplaySet.LinePressAlarm) || (OldUI_item != UI_item)){
 			if(DisplaySet.LinePressAlarm) DrawAlarmBig(140,60); else EraseAlarmBig(140,60);

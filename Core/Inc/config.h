@@ -63,13 +63,13 @@
 
 #define Pquant          (float)((PressMAX - PressMIN)/(LED_NUM - 2))
 	
-#define LOG_OFFSET			 		0x08011800     //71-th page beginning
-#define LOG_AREA_SIZE		10 //pages
+#define LOG_OFFSET			 		0x08016000     
+#define LOG_AREA_SIZE		39 //pages
 #define LOG_ENTRY_SIZE   16 //words (32-bit)
 #define EPOCH_TIME           1644166875
 
 #define DISPLAY_RESET_T  900  //reinit display period in seconds
-#define SETTLE_TIMER        2000 //settle timer to avoid non-stable initial values
+#define SETTLE_TIMER        100 //settle timer to avoid non-stable initial values
 
 
 //All MAC addresses list

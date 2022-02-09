@@ -15,11 +15,12 @@ void GUI(void){
 }
 
 extern sFONT RuFont6;
-
+extern uint8_t redraw_all;
 
 void InitGUI(void){
 	BSP_LCD_Init();	
 	BSP_TS_Init(ILI9488_LCD_PIXEL_WIDTH,  ILI9488_LCD_PIXEL_HEIGHT);
 	DrawTheBase();
+	redraw_all = 1;
 }
 

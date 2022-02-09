@@ -82,6 +82,7 @@ extern ADC_ChannelConfTypeDef ADC_CONF;
 extern int16_t FlowArray[F_ARR_SIZE];
 extern uint16_t flow_prediction_arr[FLOW_30AVG];
 extern uint8_t UI_item;
+extern uint8_t redraw_all;
 
 uint8_t SwitchGasRequest = 0;
 uint8_t ManIsHere = 0;
@@ -194,7 +195,6 @@ int main(void)
 		}
 	}
 	
-	LOG_LogInit();
   /* USER CODE END 2 */
 
   /* USER CODE BEGIN RTOS_MUTEX */
@@ -599,7 +599,7 @@ void StartTaskADC(void const * argument)
 	 measure_volt(&PhValues_input);
 		if(DeviceParam.Role == CONTROLER){
 			if(PhValues_input.new_data){
-				if(xQueueSend(myQueueADCHandle, &PhValues_input, 0) != pdTRUE){
+				if(xQueueSend(myQueueADCHandle, &PhValues_input, 10) != pdTRUE){
 					while(1){}
 				}
 				PhValues_input.new_data = 0;
@@ -620,14 +620,16 @@ void StartTaskLogic(void const * argument)
 {
   /* USER CODE BEGIN StartTaskLogic */
 	for(uint16_t i = 0; i < SETTLE_TIMER; i ++){
-			if(xQueueReceive(myQueueADCHandle, &PhValues_output, 0) == pdTRUE){}
+			if(xQueueReceive(myQueueADCHandle, &PhValues_output, 10) == pdTRUE){}
 			osDelay(1);
 	}
+	LOG_LogInit();
+	redraw_all = 1;
   /* Infinite loop */
   for(;;)
   {
     //osDelay(1);		
-		if(xQueueReceive(myQueueADCHandle, &PhValues_output, 0) == pdTRUE){}
+		if(xQueueReceive(myQueueADCHandle, &PhValues_output, 10) == pdTRUE){}
 		make_action(&PhValues_output);
   }
   /* USER CODE END StartTaskLogic */

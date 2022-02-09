@@ -3,7 +3,7 @@
 <title>Static Call Graph - [rumg\rumg.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image rumg\rumg.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Mon Feb 07 16:13:51 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Wed Feb 09 13:59:46 2022
 <BR><P>
 <H3>Maximum Stack Usage =        456 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -985,7 +985,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UI_logic
 </UL>
 
-<P><STRONG><a name="[a2]"></a>DrawMainWindow</STRONG> (Thumb, 772 bytes, Stack size 40 bytes, main_window.o(i.DrawMainWindow))
+<P><STRONG><a name="[a2]"></a>DrawMainWindow</STRONG> (Thumb, 790 bytes, Stack size 40 bytes, main_window.o(i.DrawMainWindow))
 <BR><BR>[Stack]<UL><LI>Max Depth = 440<LI>Call Chain = DrawMainWindow &rArr; DrawErrorMessage &rArr; u8g_DrawStr &rArr; u8g_draw_glyph &rArr; u8g_GetGlyph &rArr; u8g_CopyGlyphDataToCache &rArr; u8g_font_GetFormat
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
@@ -1507,7 +1507,7 @@ Global Symbols
 <P><STRONG><a name="[16]"></a>HardFault_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f1xx_it.o(i.HardFault_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f103xb.o(RESET)
 </UL>
-<P><STRONG><a name="[e6]"></a>InitGUI</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, gui.o(i.InitGUI))
+<P><STRONG><a name="[e6]"></a>InitGUI</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, gui.o(i.InitGUI))
 <BR><BR>[Stack]<UL><LI>Max Depth = 376<LI>Call Chain = InitGUI &rArr; DrawTheBase &rArr; DrawRoundScale &rArr; sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawTheBase
@@ -1666,7 +1666,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_IO_WriteCmd8MultipleData8
 </UL>
 
-<P><STRONG><a name="[fc]"></a>LOG_CheckIfEmpty</STRONG> (Thumb, 64 bytes, Stack size 12 bytes, user_libs.o(i.LOG_CheckIfEmpty))
+<P><STRONG><a name="[fc]"></a>LOG_CheckIfEmpty</STRONG> (Thumb, 66 bytes, Stack size 12 bytes, user_libs.o(i.LOG_CheckIfEmpty))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = LOG_CheckIfEmpty &rArr; LOG_ReadFlash
 </UL>
 <BR>[Calls]<UL><LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_ReadFlash
@@ -1707,7 +1707,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_WriteNewEntry
 </UL>
 
-<P><STRONG><a name="[a0]"></a>LOG_FindEntry</STRONG> (Thumb, 48 bytes, Stack size 16 bytes, user_libs.o(i.LOG_FindEntry))
+<P><STRONG><a name="[a0]"></a>LOG_FindEntry</STRONG> (Thumb, 50 bytes, Stack size 16 bytes, user_libs.o(i.LOG_FindEntry))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = LOG_FindEntry &rArr; LOG_ReadFlash
 </UL>
 <BR>[Calls]<UL><LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_ReadFlash
@@ -1715,7 +1715,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawLog
 </UL>
 
-<P><STRONG><a name="[9f]"></a>LOG_FindMaxUnique</STRONG> (Thumb, 98 bytes, Stack size 20 bytes, user_libs.o(i.LOG_FindMaxUnique))
+<P><STRONG><a name="[9f]"></a>LOG_FindMaxUnique</STRONG> (Thumb, 100 bytes, Stack size 20 bytes, user_libs.o(i.LOG_FindMaxUnique))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = LOG_FindMaxUnique &rArr; LOG_ReadFlash
 </UL>
 <BR>[Calls]<UL><LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_ReadFlash
@@ -1726,7 +1726,7 @@ Global Symbols
 <LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawLog
 </UL>
 
-<P><STRONG><a name="[105]"></a>LOG_FindMinUnique</STRONG> (Thumb, 102 bytes, Stack size 20 bytes, user_libs.o(i.LOG_FindMinUnique))
+<P><STRONG><a name="[105]"></a>LOG_FindMinUnique</STRONG> (Thumb, 104 bytes, Stack size 20 bytes, user_libs.o(i.LOG_FindMinUnique))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = LOG_FindMinUnique &rArr; LOG_ReadFlash
 </UL>
 <BR>[Calls]<UL><LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_ReadFlash
@@ -1751,7 +1751,7 @@ Global Symbols
 <LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_ReadLastEntry
 <LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_Compile
 </UL>
-<BR>[Called By]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<BR>[Called By]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartTaskLogic
 </UL>
 
 <P><STRONG><a name="[fd]"></a>LOG_ReadFlash</STRONG> (Thumb, 38 bytes, Stack size 8 bytes, user_libs.o(i.LOG_ReadFlash))
@@ -2099,10 +2099,11 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(.constdata)
 </UL>
-<P><STRONG><a name="[51]"></a>StartTaskLogic</STRONG> (Thumb, 54 bytes, Stack size 0 bytes, main.o(i.StartTaskLogic))
+<P><STRONG><a name="[51]"></a>StartTaskLogic</STRONG> (Thumb, 62 bytes, Stack size 0 bytes, main.o(i.StartTaskLogic))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = StartTaskLogic &rArr; make_action &rArr; xQueueGenericSend &rArr; vTaskPlaceOnEventList &rArr; prvAddCurrentTaskToDelayedList &rArr; vListInsert
 </UL>
-<BR>[Calls]<UL><LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueReceive
+<BR>[Calls]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_LogInit
+<LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueReceive
 <LI><a href="#[126]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osDelay
 <LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;make_action
 </UL>
@@ -2570,11 +2571,10 @@ Global Symbols
 <LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawLeftPress
 </UL>
 
-<P><STRONG><a name="[49]"></a>main</STRONG> (Thumb, 432 bytes, Stack size 152 bytes, main.o(i.main))
+<P><STRONG><a name="[49]"></a>main</STRONG> (Thumb, 428 bytes, Stack size 152 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 384<LI>Call Chain = main &rArr; SX1278_init &rArr; SX1278_config &rArr; SX1278_SPIRead &rArr; SX1278_hw_SPIReadByte &rArr; HAL_SPI_TransmitReceive &rArr; SPI_EndRxTxTransaction &rArr; SPI_WaitFlagStateUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_LogInit
-<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_Start
+<BR>[Calls]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_Start
 <LI><a href="#[146]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericCreate
 <LI><a href="#[147]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osThreadCreate
 <LI><a href="#[145]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageCreate
