@@ -25,10 +25,10 @@
 #define VALVE_SUSPEND_T				7  //if a valve is suspended (open but no pressure in line) time
 #define EMERGENCY_MODE_T		600 //emergency time (suspended valve) before next try
 
-#define LINE_P_MIN			  						(float) 6.0
-#define LINE_P_MAX			  						(float) 8.0
-#define CONC_P_MIN									(float) 6.0
-#define CONC_P_MAX									(float) 8.0
+#define LINE_P_MIN			  						(float) 4.0
+#define LINE_P_MAX			  						(float) 6.0
+#define CONC_P_MIN									(float) 4.0
+#define CONC_P_MAX									(float) 6.0
 #define CYL_NUM_LEFT							10
 #define CYL_NUM_RIGHT						20
 

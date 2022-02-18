@@ -20,6 +20,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "cmsis_os.h"
+#include <math.h>
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -619,6 +620,7 @@ void StartTaskADC(void const * argument)
 void StartTaskLogic(void const * argument)
 {
   /* USER CODE BEGIN StartTaskLogic */
+	//static uint16_t var = 0;
 	for(uint16_t i = 0; i < SETTLE_TIMER; i ++){
 			if(xQueueReceive(myQueueADCHandle, &PhValues_output, 10) == pdTRUE){}
 			osDelay(1);
@@ -631,6 +633,11 @@ void StartTaskLogic(void const * argument)
     //osDelay(1);		
 		if(xQueueReceive(myQueueADCHandle, &PhValues_output, 10) == pdTRUE){}
 		make_action(&PhValues_output);
+			
+			//var++;
+			//if(var < 10) HAL_GPIO_WritePin(PORT_RIGHT_VLV, RIGHT_VLV, GPIO_PIN_SET); else HAL_GPIO_WritePin(PORT_RIGHT_VLV, RIGHT_VLV, GPIO_PIN_RESET);
+			//if(var > 20) var = 0;
+			
   }
   /* USER CODE END StartTaskLogic */
 }
@@ -651,7 +658,7 @@ void StartTaskDisplay(void const * argument)
   {
 		//GUI();
 		UI_logic();
-		if((UI_item == MAIN_WIND) && ((EpochTime % DISPLAY_RESET_T) == 0)) InitGUI();
+		//if((UI_item == MAIN_WIND) && ((EpochTime % DISPLAY_RESET_T) == 0)) InitGUI();
     //osDelay(1);
   }
   /* USER CODE END StartTaskDisplay */

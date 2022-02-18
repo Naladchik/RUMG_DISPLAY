@@ -61,8 +61,8 @@
 
 #define MAX_NOLINK 10000  //10000 corresponds to around 10 seconds
 
-#define ADC_Left_Press  		ADC_CHANNEL_1
-#define ADC_Right_Press 	ADC_CHANNEL_2
+#define ADC_Left_Press  		ADC_CHANNEL_2
+#define ADC_Right_Press 	ADC_CHANNEL_1
 #define ADC_Concentrator 	ADC_CHANNEL_3
 #define ADC_Line 							ADC_CHANNEL_0
 #define ADC_Flow 						ADC_CHANNEL_4

@@ -3,7 +3,7 @@
 <title>Static Call Graph - [rumg\rumg.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image rumg\rumg.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Wed Feb 09 13:59:46 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Fri Feb 18 11:46:05 2022
 <BR><P>
 <H3>Maximum Stack Usage =        456 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -2091,7 +2091,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(.constdata)
 </UL>
-<P><STRONG><a name="[52]"></a>StartTaskDisplay</STRONG> (Thumb, 44 bytes, Stack size 0 bytes, main.o(i.StartTaskDisplay))
+<P><STRONG><a name="[52]"></a>StartTaskDisplay</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, main.o(i.StartTaskDisplay))
 <BR><BR>[Stack]<UL><LI>Max Depth = 456<LI>Call Chain = StartTaskDisplay &rArr; UI_logic &rArr; DrawMainWindow &rArr; DrawErrorMessage &rArr; u8g_DrawStr &rArr; u8g_draw_glyph &rArr; u8g_GetGlyph &rArr; u8g_CopyGlyphDataToCache &rArr; u8g_font_GetFormat
 </UL>
 <BR>[Calls]<UL><LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UI_logic
@@ -2571,7 +2571,7 @@ Global Symbols
 <LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawLeftPress
 </UL>
 
-<P><STRONG><a name="[49]"></a>main</STRONG> (Thumb, 428 bytes, Stack size 152 bytes, main.o(i.main))
+<P><STRONG><a name="[49]"></a>main</STRONG> (Thumb, 430 bytes, Stack size 152 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 384<LI>Call Chain = main &rArr; SX1278_init &rArr; SX1278_config &rArr; SX1278_SPIRead &rArr; SX1278_hw_SPIReadByte &rArr; HAL_SPI_TransmitReceive &rArr; SPI_EndRxTxTransaction &rArr; SPI_WaitFlagStateUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_Start
