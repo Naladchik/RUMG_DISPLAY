@@ -3,7 +3,7 @@
 <title>Static Call Graph - [rumg\rumg.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image rumg\rumg.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Fri Feb 18 11:46:05 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Fri Feb 18 12:48:23 2022
 <BR><P>
 <H3>Maximum Stack Usage =        456 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -918,11 +918,11 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_SetFont
 <LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_DrawStr
+<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LCD_SetTextColor
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LCD_SetBackColor
+<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LCD_FillRect
 <LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LCD_DrawRect
 <LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CopyAlarmStruct
-<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LCD_SetTextColor
-<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LCD_FillRect
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawMainWindow
@@ -934,9 +934,9 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_WritePixel
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DoTouchScreen
 </UL>
-<BR>[Called By]<UL><LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawTheBase
-<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawConsumption
+<BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawConsumption
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawBattery
+<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawTheBase
 </UL>
 
 <P><STRONG><a name="[97]"></a>DrawLeftPress</STRONG> (Thumb, 506 bytes, Stack size 120 bytes, main_window.o(i.DrawLeftPress))
@@ -1143,10 +1143,10 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ili9488_FillRect
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DoTouchScreen
 </UL>
-<BR>[Called By]<UL><LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawTheBase
-<LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawService
+<BR>[Called By]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawService
 <LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawSettings
 <LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawLog
+<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawTheBase
 </UL>
 
 <P><STRONG><a name="[14e]"></a>HAL_ADC_ConfigChannel</STRONG> (Thumb, 338 bytes, Stack size 16 bytes, stm32f1xx_hal_adc.o(i.HAL_ADC_ConfigChannel))
@@ -1507,7 +1507,7 @@ Global Symbols
 <P><STRONG><a name="[16]"></a>HardFault_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f1xx_it.o(i.HardFault_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f103xb.o(RESET)
 </UL>
-<P><STRONG><a name="[e6]"></a>InitGUI</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, gui.o(i.InitGUI))
+<P><STRONG><a name="[e6]"></a>InitGUI</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, graphlib.o(i.InitGUI))
 <BR><BR>[Stack]<UL><LI>Max Depth = 376<LI>Call Chain = InitGUI &rArr; DrawTheBase &rArr; DrawRoundScale &rArr; sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawTheBase
@@ -2216,13 +2216,13 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_FindMinUnique
 <LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_FindMaxUnique
-<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawTheBase
 <LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawService
 <LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawSettings
 <LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawPlot
 <LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOG_Renew
 <LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawLog
 <LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawMainWindow
+<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawTheBase
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DoTouchScreen
 </UL>
 <BR>[Called By]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartTaskDisplay

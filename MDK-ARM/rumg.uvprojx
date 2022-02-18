@@ -664,16 +664,6 @@
           <GroupName>GUI</GroupName>
           <Files>
             <File>
-              <FileName>GUI.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\GUI\GUI.c</FilePath>
-            </File>
-            <File>
-              <FileName>RUMG_main.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\GUI\RUMG_main.c</FilePath>
-            </File>
-            <File>
               <FileName>GraphLib.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\GUI\GraphLib.c</FilePath>

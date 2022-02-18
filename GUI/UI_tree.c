@@ -16,7 +16,7 @@ TS_TypeDef ts;
 uint8_t my_str[40] = "a.bvgdeyjzixklmnOPRSTUWHCQW$65%789";
 uint8_t my_str2[40] = "ABVG.DEYJZIXKLMNoprstufhcqw&#10234";
 
-uint8_t UI_item = MAIN_WIND;
+uint8_t UI_item = WINDOW_MAIN;
 volatile uint8_t OldUI_item = 255;
 
 extern LCD_DrawPropTypeDef DrawProp;
@@ -49,39 +49,47 @@ void DrawService(void){
 	Print(UI_INDENT, UI_SPACE + 2 * UI_INTERVAL, "  Exit", &Font24);
 }
 
+
+/**
+  * @brief  
+  * @param  
+  * @retval
+  */
 void UI_logic(void){
+		/* -------------------------------------------------------------------------
+		//Dynamic drawing processes occur here
+	  ---------------------------------------------------------------------------*/
 		switch(UI_item){		
-			case(MAIN_WIND): 
+			case(WINDOW_MAIN): 
 				DrawMainWindow(); 
 				OldUI_item = UI_item; 
 			break;
-			case(MAIN_MENU_WIND): OldUI_item = UI_item;  break;
-			case(SETTINGS_WIND): OldUI_item = UI_item; break;
-			case(LOG_WIND): 
+			case(WINDOW_MAIN_MENU): OldUI_item = UI_item;  break;
+			case(WINDOW_SETTINGS): OldUI_item = UI_item; break;
+			case(WINDOW_LOG): 
 				LOG_Renew();
 				OldUI_item = UI_item; 
 			break;
-			case(PLOT_WIND):DrawPlot(); OldUI_item = UI_item; break;
+			case(WINDOW_PLOT):DrawPlot(); OldUI_item = UI_item; break;
 			default: break;
 		}
 		
-//		BSP_LCD_SetTextColor(BLACK_COLOR);
-//		BSP_LCD_SetBackColor(WHITE_COLOR);
-//		BSP_LCD_SetFont(&RuFont16);
-//		BSP_LCD_DisplayStringAt(2, 250, my_str, LEFT_MODE);
-//		BSP_LCD_DisplayStringAt(2, 270, my_str2, LEFT_MODE);
 		
+		//Touch screem coordinates (if a touch happened) are here
 		DoTouchScreen();
 		
-		if(ts.up){//touch processing
+		/* -------------------------------------------------------------------------
+		//UI movement happens here. Static graphics are drawed here as well
+		---------------------------------------------------------------------------*/
+		if(ts.up){
 		switch(UI_item){
-			case(MAIN_WIND):
+			case(WINDOW_MAIN):
 			if((Alarm.ConcentratorMax)||(Alarm.CylindersEmpty)||(Alarm.LineMax)||(Alarm.LineMin))SilentTimer = ALRM_PAUSE;
 			{	
 			//menu
 				if((ts.x >= 440) && (ts.y <= 50)){
 					DrawService();
-					UI_item = MAIN_MENU_WIND;
+					UI_item = WINDOW_MAIN_MENU;
 				}
 				//gas left - right switching
 				if((ts.y >= UI_GAS_Y) && (ts.y <= (UI_GAS_Y + UI_GAS_HIGHT))){
@@ -98,35 +106,38 @@ void UI_logic(void){
 				if(FLOW_SENSOR){
 				if((ts.x >= FLOW_REF_X) && (ts.x <= FLOW_REF_X + 140)
 					&& (ts.y >= FLOW_REF_Y) && (ts.y <= FLOW_REF_Y + 50)){
-					UI_item = PLOT_WIND;
+					UI_item = WINDOW_PLOT;
 					FillBackground(WHITE_COLOR);
 				}
 			}
 			}
 				break;
-			case(MAIN_MENU_WIND):
+			
+			case(WINDOW_MAIN_MENU):
 				if((ts.x >= UI_INDENT) && (ts.x <= (UI_INDENT + 200))){
 					if((ts.y >= UI_SPACE) && (ts.y <= (UI_SPACE + UI_INTERVAL))){
 						DrawSettings();
-						UI_item = SETTINGS_WIND;
+						UI_item = WINDOW_SETTINGS;
 					}
 					if((ts.y >= (UI_SPACE + UI_INTERVAL)) && (ts.y <= (UI_SPACE + 2 * UI_INTERVAL))){
 						uint32_t buf_addr;
 						if(LOG_FindMaxUnique(&LOG_current_num, &buf_addr)){}else{LOG_current_num = 0;}
 						DrawLog();
-						UI_item = LOG_WIND;
+						UI_item = WINDOW_LOG;
 					}
 					if((ts.y >= (UI_SPACE + 2 * UI_INTERVAL)) && (ts.y <= (UI_SPACE + 3 * UI_INTERVAL))){
 						DrawTheBase();
-						UI_item = MAIN_WIND;
+						UI_item = WINDOW_MAIN;
 					}
 				}
 				break;
-			case(SETTINGS_WIND):
+				
+			case(WINDOW_SETTINGS):
 						DrawTheBase();
-						UI_item = MAIN_WIND;
+						UI_item = WINDOW_MAIN;
 						break;
-			case(LOG_WIND):
+			
+			case(WINDOW_LOG):
 						if(ts.x < 420){
 							if(ts.y <= 150){ //up
 									uint32_t addr;
@@ -147,13 +158,14 @@ void UI_logic(void){
 						}else{
 							if(ts.y <= 50){	//exit
 									DrawTheBase();
-									UI_item = MAIN_WIND;
+									UI_item = WINDOW_MAIN;
 								}
 						}
 						break;
-			case(PLOT_WIND):
+						
+			case(WINDOW_PLOT):
 						DrawTheBase();
-						UI_item = MAIN_WIND;
+						UI_item = WINDOW_MAIN;
 						break;
 			default: break;}			
 			if(!(ts_drv->DetectTouch(0)) )ts.up = 0;			
@@ -161,6 +173,12 @@ void UI_logic(void){
 }
 
 
+
+/**
+  * @brief   Reads touch coordinates (if a touch occured)
+  * @param  
+  * @retval
+  */
 void DoTouchScreen(void){
 		SPI2->CR1 |= SPI_CR1_BR_2 | SPI_CR1_BR_1;
 		if(ts.up == 0){

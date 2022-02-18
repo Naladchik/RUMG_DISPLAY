@@ -13,6 +13,12 @@
 /* BSP_LCD_... */
 #include "stm32_adafruit_lcd.h"
 
+#define WINDOW_MAIN								0
+#define WINDOW_MAIN_MENU		1
+#define WINDOW_SETTINGS 			2
+#define WINDOW_LOG								3
+#define WINDOW_PLOT    					4
+
 #define UI_INDENT		160	
 #define UI_SPACE		80
 #define UI_INTERVAL 2 * Font24.Height

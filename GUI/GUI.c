@@ -10,9 +10,9 @@ TS_StateTypeDef TS_state;
 /*
 		The main function
 */
-void GUI(void){
+/*void GUI(void){
   BSP_TS_GetState(&TS_state);
-}
+}*/
 
 extern sFONT RuFont6;
 extern uint8_t redraw_all;

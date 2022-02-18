@@ -7,6 +7,8 @@
 //#include "bmp.h"
 /* BSP_LCD_... */
 #include "stm32_adafruit_lcd.h"
+#include "stm32_adafruit_ts.h"
+
 
 // Lcd
 void     ili9488_Init(void);
@@ -225,6 +227,16 @@ const uint8_t commaB[COMMA_B_W * COMMA_B_H / 8] = {// 'comma', 8x16px
 #define COMMA_S_H 8
 const uint8_t commaS[COMMA_S_W * COMMA_S_H / 8] = {// 'comma', 8x8px
 0x00, 0x70, 0x70, 0x70, 0x30, 0x60, 0x40, 0x00};
+
+extern sFONT RuFont6;
+extern uint8_t redraw_all;
+
+void InitGUI(void){
+	BSP_LCD_Init();	
+	BSP_TS_Init(ILI9488_LCD_PIXEL_WIDTH,  ILI9488_LCD_PIXEL_HEIGHT);
+	DrawTheBase();
+	redraw_all = 1;
+}
 
 void FillBackground(uint16_t color){
 	  DoTouchScreen();

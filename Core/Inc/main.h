@@ -42,8 +42,6 @@ extern "C" {
 #include "time_lib.h"
 #include "tcp_ip.h"
 #include "modbus.h"
-#include "GUI.h"
-#include "RUMG_main.h"
 #include "ts.h"
 
 #include "GraphLib.h"

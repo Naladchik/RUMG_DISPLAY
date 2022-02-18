@@ -24,11 +24,11 @@
 #define DISPLAY_WIDTH 480
 #define DISPLAY_HIGHT 320
 
-#define MAIN_WIND					0
+#define WINDOW_MAIN							0
 #define MAIN_MENU_WIND		1
-#define SETTINGS_WIND			2
-#define LOG_WIND					3
-#define PLOT_WIND					4
+#define SETTINGS_WIND				2
+#define LOG_WIND								3
+#define PLOT_WIND							4
 
 #define PRED_TIME_X				145
 #define PRED_TIME_Y				250
