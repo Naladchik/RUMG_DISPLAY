@@ -13,19 +13,19 @@
 /* BSP_LCD_... */
 #include "stm32_adafruit_lcd.h"
 
-#define MAIN_BGND 	0x0844 // 4 6 51 -> 1 2 4 -> 00001 000010 00100
-#define WHITE_COLOR	0xffff
-#define BLACK_COLOR	0x0000
-#define RED_COLOR 	0xf800
-#define GREEN_COLOR 0x07e0
-#define BLUE_COLOR 	0x001f
-#define PG_COLOR		0xd7fa
-#define GRAY_COLOR	0x7bef
+#define MAIN_BGND 				0x0844 // 4 6 51 -> 1 2 4 -> 00001 000010 00100
+#define WHITE_COLOR		0xffff
+#define BLACK_COLOR		0x0000
+#define RED_COLOR 			0xf800
+#define GREEN_COLOR 	0x07e0
+#define BLUE_COLOR 		0x001f
+#define PG_COLOR					0xd7fa
+#define GRAY_COLOR		0x7bef
 
-#define DISPLAY_MAX_X 479
-#define DISPLAY_MAX_Y 319
-#define DISPLAY_WIDTH 480
-#define DISPLAY_HIGHT 320
+#define DISPLAY_MAX_X 	479
+#define DISPLAY_MAX_Y 	319
+#define DISPLAY_WIDTH 	480
+#define DISPLAY_HIGHT 		320
 
 void InitGUI(void);
 void FillBackground(uint16_t color);

@@ -7,6 +7,7 @@
 #include "u8g.h"
 #include "lcd.h"
 #include "string.h"
+#include "stm32_adafruit_lcd.h"
 
 /* BSP_LCD_... */
 #include "stm32_adafruit_lcd.h"
@@ -73,6 +74,15 @@ void DrawLog(void){
 	}else{
 		u8g_DrawStr(&ffont, 5, 15, no_logs);
 	}	
+}
+
+uint8_t DrawLogPassword(void){
+	FillBackground(MAIN_BGND);
+	BSP_LCD_SetFont(&Font24);
+	DrawProp.BackColor = MAIN_BGND;
+	DrawProp.TextColor = WHITE_COLOR;
+	Print(3, 3, "Password:", &Font24);
+	return(0);
 }
 
 void LOG_Display(uint32_t addr){
@@ -239,6 +249,98 @@ void LOG_Renew(void){
 	OldEpochTime = ThisEpochTime;
 }
 
+/**
+  * @brief  
+  * @param  
+  * @retval
+  */
+void DrawKeyPad(void){
+	BSP_LCD_SetTextColor(LCD_COLOR_GRAY);
+	BSP_LCD_FillRect(DISPLAY_WIDTH / 2 - BUTTON_W * 3 / 2, KEYPAD_Y, BUTTON_W * 3, BUTTON_H * 4);
+	BSP_LCD_SetTextColor(MAIN_BGND);
+	BSP_LCD_SetBackColor(LCD_COLOR_GRAY);
+	for(uint16_t i = 1; i <=3; i++){
+		BSP_LCD_DrawHLine(DISPLAY_WIDTH / 2 - BUTTON_W * 3 / 2, KEYPAD_Y + BUTTON_H * i,  BUTTON_W * 3);
+	}
+	for(uint16_t i = 1; i <=4; i++){
+		BSP_LCD_DrawVLine( DISPLAY_WIDTH / 2 - BUTTON_W * 3 / 2 + BUTTON_W * i, KEYPAD_Y,  BUTTON_H * 4);
+	}
+	BSP_LCD_SetFont(&Font24);
+	for(uint16_t j = 0; j < 3; j++){
+		for(uint16_t i = 1; i <=3; i++){
+			BSP_LCD_DisplayChar(DISPLAY_WIDTH / 2 - BUTTON_W * 3 / 2 - BUTTON_W / 2 - Font24.Width / 2 + BUTTON_W * i, KEYPAD_Y + BUTTON_H / 2 - Font24.Height / 2+ BUTTON_H * j, 0x30 + i + j * 3);
+		}
+  }
+	BSP_LCD_DisplayStringAt(DISPLAY_WIDTH / 2 - BUTTON_W * 3 / 2 - BUTTON_W / 2 - Font24.Width - Font24.Width / 2 + BUTTON_W , KEYPAD_Y + BUTTON_H / 2 - Font24.Height / 2+ BUTTON_H * 3, "Del", LEFT_MODE);
+	BSP_LCD_DisplayChar(DISPLAY_WIDTH / 2 - BUTTON_W * 3 / 2 - BUTTON_W / 2 - Font24.Width / 2 + BUTTON_W * 2, KEYPAD_Y + BUTTON_H / 2 - Font24.Height / 2+ BUTTON_H * 3, 0x30);
+	BSP_LCD_DisplayStringAt(DISPLAY_WIDTH / 2 - BUTTON_W * 3 / 2 - BUTTON_W / 2 - Font24.Width - Font24.Width / 2 + BUTTON_W * 3, KEYPAD_Y + BUTTON_H / 2 - Font24.Height / 2+ BUTTON_H * 3, "Ent", LEFT_MODE);
+}
+
+/**
+  * @brief  
+  * @param  
+  * @retval
+  */
+uint8_t PasswordCheck(TS_TypeDef *touch){
+	const uint8_t size = 6;
+	const uint16_t keypad_x0 = DISPLAY_WIDTH / 2 - BUTTON_W * 3 / 2;
+	const uint16_t keypad_y0 = KEYPAD_Y;
+	const static uint8_t password[size + 1] = {'1', '2', '3', '4', '5', '6', 0x00};
+	static uint8_t in_buf[size + 1] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+	uint8_t show_buf[size + 1] = {0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x00};
+	static uint8_t index = 0;
+	uint8_t ret_val = 0;
+	if(index > size) index = size;
+	if((touch->x > keypad_x0) && (touch->x < keypad_x0 + BUTTON_W) && (touch->y > keypad_y0) && (touch->y < keypad_y0 + BUTTON_H)){
+		in_buf[index] = '1';
+		index++;
+  }else if ((touch->x > keypad_x0 + BUTTON_W) && (touch->x < keypad_x0 + 2 * BUTTON_W) && (touch->y > keypad_y0) && (touch->y < keypad_y0 + BUTTON_H)){
+		in_buf[index] = '2';
+		index++;
+  }else if ((touch->x > keypad_x0 + 2 * BUTTON_W) && (touch->x < keypad_x0 + 3 * BUTTON_W) && (touch->y > keypad_y0) && (touch->y < keypad_y0 + BUTTON_H)){
+		in_buf[index] = '3';
+		index++;
+  }else if ((touch->x > keypad_x0) && (touch->x < keypad_x0 + BUTTON_W) && (touch->y > keypad_y0 + BUTTON_H) && (touch->y < keypad_y0 + 2 * BUTTON_H)){
+		in_buf[index] = '4';
+		index++;
+	}else if ((touch->x > keypad_x0 + BUTTON_W) && (touch->x < keypad_x0 + 2 * BUTTON_W) && (touch->y > keypad_y0 + BUTTON_H) && (touch->y < keypad_y0 + 2 * BUTTON_H)){
+		in_buf[index] = '5';
+		index++;
+	}else if ((touch->x > keypad_x0 + 2 * BUTTON_W) && (touch->x < keypad_x0 + 3 * BUTTON_W) && (touch->y > keypad_y0 + BUTTON_H) && (touch->y < keypad_y0 + 2 * BUTTON_H)){
+		in_buf[index] = '6';
+		index++;
+	}else if ((touch->x > keypad_x0) && (touch->x < keypad_x0 + BUTTON_W) && (touch->y > keypad_y0 + 2 * BUTTON_H) && (touch->y < keypad_y0 + 3 * BUTTON_H)){
+		in_buf[index] = '7';
+		index++;
+	}else if ((touch->x > keypad_x0 + BUTTON_W) && (touch->x < keypad_x0 + 2 * BUTTON_W) && (touch->y > keypad_y0 + 2 * BUTTON_H) && (touch->y < keypad_y0 + 3 * BUTTON_H)){
+		in_buf[index] = '8';
+		index++;
+	}else if ((touch->x > keypad_x0 + 2 * BUTTON_W) && (touch->x < keypad_x0 + 3 * BUTTON_W) && (touch->y > keypad_y0 + 2 * BUTTON_H) && (touch->y < keypad_y0 + 3 * BUTTON_H)){
+		in_buf[index] = '9';
+		index++;
+	}else if ((touch->x > keypad_x0 + BUTTON_W) && (touch->x < keypad_x0 + 2 * BUTTON_W) && (touch->y > keypad_y0 + 3 * BUTTON_H) && (touch->y < keypad_y0 + 4 * BUTTON_H)){
+		in_buf[index] = '0';
+		index++;
+	}else if ((touch->x > keypad_x0) && (touch->x < keypad_x0 + BUTTON_W) && (touch->y > keypad_y0 + 3 * BUTTON_H) && (touch->y < keypad_y0 + 4 * BUTTON_H)){
+		index--;
+		in_buf[index] = 0x00;
+	}else if ((touch->x > keypad_x0 + 2 * BUTTON_W) && (touch->x < keypad_x0 + 3 * BUTTON_W) && (touch->y > keypad_y0 + 3 * BUTTON_H) && (touch->y < keypad_y0 + 4 * BUTTON_H)){
+		uint8_t flag = 1;
+		for(uint8_t i = 0; i <= size; i++){
+			if(in_buf[i] != password[i]) flag = 0;
+		}
+		if(flag) ret_val = 1;
+	}
+	BSP_LCD_SetTextColor(WHITE_COLOR);
+	BSP_LCD_SetBackColor(MAIN_BGND);
+	for(uint8_t i = 0; i < 6; i++){
+		if((in_buf[i] >= 0x30) && (in_buf[i] <= 0x39))
+			show_buf[i] = in_buf[i];
+		else
+			show_buf[i] = 0x20;
+	}
+	BSP_LCD_DisplayStringAt( 200, 3, show_buf, LEFT_MODE);
+	return(ret_val);
+}
 
 
-	

@@ -13,11 +13,12 @@
 /* BSP_LCD_... */
 #include "stm32_adafruit_lcd.h"
 
-#define WINDOW_MAIN								0
-#define WINDOW_MAIN_MENU		1
-#define WINDOW_SETTINGS 			2
-#define WINDOW_LOG								3
-#define WINDOW_PLOT    					4
+#define WINDOW_MAIN																		0
+#define WINDOW_MAIN_MENU												1
+#define WINDOW_SETTINGS 													2
+#define WINDOW_LOG																		3
+#define WINDOW_PLOT    														  4
+#define WINDOW_LOG_PASSWORD								5
 
 #define UI_INDENT		160	
 #define UI_SPACE		80
@@ -25,11 +26,11 @@
 #define UI_T_WIDTH	200
 #define UI_T_HEIGHT	40
 
-#define UI_LEFT_GAS_X 			60
-#define UI_RIGHT_GAS_X  		389
-#define UI_GAS_Y						120
-#define UI_GAS_HALF_WIDTH		50
-#define UI_GAS_HIGHT				170
+#define UI_LEFT_GAS_X 							60
+#define UI_RIGHT_GAS_X  					389
+#define UI_GAS_Y												120
+#define UI_GAS_HALF_WIDTH			50
+#define UI_GAS_HIGHT								170
 
 #define FLOW_REF_X 160
 #define FLOW_REF_Y 170
