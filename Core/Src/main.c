@@ -632,14 +632,8 @@ void StartTaskLogic(void const * argument)
   {
     //osDelay(1);		
 		if(xQueueReceive(myQueueADCHandle, &PhValues_output, 10) == pdTRUE){}
-		//make_action(&PhValues_output);
-			HAL_GPIO_WritePin(GPIOC, LEFT_VLV, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(GPIOC, RIGHT_VLV, GPIO_PIN_RESET);
-			osDelay(10000);
-			HAL_GPIO_WritePin(GPIOC, RIGHT_VLV, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(GPIOC, LEFT_VLV, GPIO_PIN_RESET);
-			osDelay(10000);
-			
+		make_action(&PhValues_output);
+						
 			//var++;
 			//if(var < 10) HAL_GPIO_WritePin(PORT_RIGHT_VLV, RIGHT_VLV, GPIO_PIN_SET); else HAL_GPIO_WritePin(PORT_RIGHT_VLV, RIGHT_VLV, GPIO_PIN_RESET);
 			//if(var > 20) var = 0;
