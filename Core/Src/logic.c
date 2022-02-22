@@ -105,68 +105,68 @@ void make_action(const TypeVolt* Volt){
 				}
 				SwitchGasRequest = 0;			
 		}
-	switch(ActiveGas){
-      case(LEFT):
-        /*      actuation    */
-        HAL_GPIO_WritePin(PORT_LEFT_VLV, LEFT_VLV, GPIO_PIN_RESET);
-        HAL_GPIO_WritePin(PORT_RIGHT_VLV, RIGHT_VLV, GPIO_PIN_SET);
-        /*       logic          */
-        //pressure criteria
-        if((Volt->PressLeft <= DeviceParam.HPressSwitch) && 
-					(DeviceParam.Baranki || Alarm.LineMin) &&
-					(Volt->PressRight >= DeviceParam.HPressSwitch)){
-						ActiveGas = RIGHT;
-						ActiveCylinder = RIGHT;
-        }
-				if(Alarm.ConcentratorNOT_OK) ConcNORMCounter = DeviceParam.ConcDelay; //keeps it loaded. Another routing decrements it every second
-				if(ConcNORMCounter == 0) ActiveGas = CONCENTRATOR;				
-        break;
-       case(RIGHT):
-        /*      actuation    */
-        HAL_GPIO_WritePin(PORT_LEFT_VLV, LEFT_VLV, GPIO_PIN_SET);
-        HAL_GPIO_WritePin(PORT_RIGHT_VLV, RIGHT_VLV, GPIO_PIN_RESET);
-        /*       logic          */
-        //pressure criteria
-        if((Volt->PressRight <= DeviceParam.HPressSwitch) &&
-					(DeviceParam.Baranki || Alarm.LineMin) &&
-					(Volt->PressLeft >= DeviceParam.HPressSwitch)){
-						ActiveGas = LEFT;
-						ActiveCylinder = LEFT;
-        }
-				if(Alarm.ConcentratorNOT_OK) ConcNORMCounter = DeviceParam.ConcDelay; //keeps it loaded. Another routing decrements it every second
-				if(ConcNORMCounter == 0) ActiveGas = CONCENTRATOR;				
-        break;
-       case(CONCENTRATOR):
-        /*      actuation    */
-        HAL_GPIO_WritePin(PORT_LEFT_VLV, LEFT_VLV, GPIO_PIN_SET);
-        HAL_GPIO_WritePin(PORT_RIGHT_VLV, RIGHT_VLV, GPIO_PIN_SET);
-        /*       logic          */
-        //pressure criteria
-        if(Alarm.ConcentratorNOT_OK){
-          ConcSIGCounter = CONC_SIG_DUR;
-          ActiveGas = ActiveCylinder;
-        }
-        //swap button
-        /*if((ButtSwCounter == BUTT_TRIM)&&(flagOldSwButt == 0)){
-          flagOldSwButt = 1;
-        }*/
-        break;
-				case(BOTH_VALVES):
-				HAL_GPIO_WritePin(GPIOC, LEFT_VLV, GPIO_PIN_RESET);
-        HAL_GPIO_WritePin(GPIOC, RIGHT_VLV, GPIO_PIN_RESET);
-				//swap button
-        /*if((ButtSwCounter == BUTT_TRIM)&&(flagOldSwButt == 0)){
-					CounterEmergWork = 0; //try to return to normal mode
-          flagOldSwButt = 1;
-        }*/
-				if(CounterEmergWork == 0){//time to try to work normally
-					if(Alarm.LineMin == 0) ActiveGas = EmergGasWas;
-					CounterValveSuspend = VALVE_SUSPEND_T;
-					Alarm.EmergState = 0;
-				}
-				break;
-    default: NVIC_SystemReset(); break;
-    }
+//	switch(ActiveGas){
+//      case(LEFT):
+//        /*      actuation    */
+//        HAL_GPIO_WritePin(PORT_LEFT_VLV, LEFT_VLV, GPIO_PIN_RESET);
+//        HAL_GPIO_WritePin(PORT_RIGHT_VLV, RIGHT_VLV, GPIO_PIN_SET);
+//        /*       logic          */
+//        //pressure criteria
+//        if((Volt->PressLeft <= DeviceParam.HPressSwitch) && 
+//					(DeviceParam.Baranki || Alarm.LineMin) &&
+//					(Volt->PressRight >= DeviceParam.HPressSwitch)){
+//						ActiveGas = RIGHT;
+//						ActiveCylinder = RIGHT;
+//        }
+//				if(Alarm.ConcentratorNOT_OK) ConcNORMCounter = DeviceParam.ConcDelay; //keeps it loaded. Another routing decrements it every second
+//				if(ConcNORMCounter == 0) ActiveGas = CONCENTRATOR;				
+//        break;
+//       case(RIGHT):
+//        /*      actuation    */
+//        HAL_GPIO_WritePin(PORT_LEFT_VLV, LEFT_VLV, GPIO_PIN_SET);
+//        HAL_GPIO_WritePin(PORT_RIGHT_VLV, RIGHT_VLV, GPIO_PIN_RESET);
+//        /*       logic          */
+//        //pressure criteria
+//        if((Volt->PressRight <= DeviceParam.HPressSwitch) &&
+//					(DeviceParam.Baranki || Alarm.LineMin) &&
+//					(Volt->PressLeft >= DeviceParam.HPressSwitch)){
+//						ActiveGas = LEFT;
+//						ActiveCylinder = LEFT;
+//        }
+//				if(Alarm.ConcentratorNOT_OK) ConcNORMCounter = DeviceParam.ConcDelay; //keeps it loaded. Another routing decrements it every second
+//				if(ConcNORMCounter == 0) ActiveGas = CONCENTRATOR;				
+//        break;
+//       case(CONCENTRATOR):
+//        /*      actuation    */
+//        HAL_GPIO_WritePin(PORT_LEFT_VLV, LEFT_VLV, GPIO_PIN_SET);
+//        HAL_GPIO_WritePin(PORT_RIGHT_VLV, RIGHT_VLV, GPIO_PIN_SET);
+//        /*       logic          */
+//        //pressure criteria
+//        if(Alarm.ConcentratorNOT_OK){
+//          ConcSIGCounter = CONC_SIG_DUR;
+//          ActiveGas = ActiveCylinder;
+//        }
+//        //swap button
+//        /*if((ButtSwCounter == BUTT_TRIM)&&(flagOldSwButt == 0)){
+//          flagOldSwButt = 1;
+//        }*/
+//        break;
+//				case(BOTH_VALVES):
+//				HAL_GPIO_WritePin(GPIOC, LEFT_VLV, GPIO_PIN_RESET);
+//        HAL_GPIO_WritePin(GPIOC, RIGHT_VLV, GPIO_PIN_RESET);
+//				//swap button
+//        /*if((ButtSwCounter == BUTT_TRIM)&&(flagOldSwButt == 0)){
+//					CounterEmergWork = 0; //try to return to normal mode
+//          flagOldSwButt = 1;
+//        }*/
+//				if(CounterEmergWork == 0){//time to try to work normally
+//					if(Alarm.LineMin == 0) ActiveGas = EmergGasWas;
+//					CounterValveSuspend = VALVE_SUSPEND_T;
+//					Alarm.EmergState = 0;
+//				}
+//				break;
+//    default: NVIC_SystemReset(); break;
+//    }
 		}
 	
 		if(DeviceParam.Role == REPEATER){
