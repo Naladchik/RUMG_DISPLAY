@@ -274,6 +274,10 @@ void DrawKeyPad(void){
 	BSP_LCD_DisplayStringAt(DISPLAY_WIDTH / 2 - BUTTON_W * 3 / 2 - BUTTON_W / 2 - Font24.Width - Font24.Width / 2 + BUTTON_W , KEYPAD_Y + BUTTON_H / 2 - Font24.Height / 2+ BUTTON_H * 3, "Del", LEFT_MODE);
 	BSP_LCD_DisplayChar(DISPLAY_WIDTH / 2 - BUTTON_W * 3 / 2 - BUTTON_W / 2 - Font24.Width / 2 + BUTTON_W * 2, KEYPAD_Y + BUTTON_H / 2 - Font24.Height / 2+ BUTTON_H * 3, 0x30);
 	BSP_LCD_DisplayStringAt(DISPLAY_WIDTH / 2 - BUTTON_W * 3 / 2 - BUTTON_W / 2 - Font24.Width - Font24.Width / 2 + BUTTON_W * 3, KEYPAD_Y + BUTTON_H / 2 - Font24.Height / 2+ BUTTON_H * 3, "Ent", LEFT_MODE);
+	
+	BSP_LCD_SetTextColor(WHITE_COLOR);
+	BSP_LCD_SetBackColor(MAIN_BGND);
+	BSP_LCD_DisplayStringAt(460, 5, "X", LEFT_MODE);
 }
 
 /**
@@ -286,8 +290,7 @@ uint8_t PasswordCheck(TS_TypeDef *touch){
 	const uint16_t keypad_x0 = DISPLAY_WIDTH / 2 - BUTTON_W * 3 / 2;
 	const uint16_t keypad_y0 = KEYPAD_Y;
 	const static uint8_t password[size + 1] = {'1', '2', '3', '4', '5', '6', 0x00};
-	static uint8_t in_buf[size + 1] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
-	uint8_t show_buf[size + 1] = {0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x00};
+	static uint8_t in_buf[size + 1] = {0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x00};
 	static uint8_t index = 0;
 	uint8_t ret_val = 0;
 	if(index > size) index = size;
@@ -322,24 +325,35 @@ uint8_t PasswordCheck(TS_TypeDef *touch){
 		in_buf[index] = '0';
 		index++;
 	}else if ((touch->x > keypad_x0) && (touch->x < keypad_x0 + BUTTON_W) && (touch->y > keypad_y0 + 3 * BUTTON_H) && (touch->y < keypad_y0 + 4 * BUTTON_H)){
-		index--;
-		in_buf[index] = 0x00;
+		//Delete		
+		in_buf[index] = 0x20;
+		if(index > 0) index--;
 	}else if ((touch->x > keypad_x0 + 2 * BUTTON_W) && (touch->x < keypad_x0 + 3 * BUTTON_W) && (touch->y > keypad_y0 + 3 * BUTTON_H) && (touch->y < keypad_y0 + 4 * BUTTON_H)){
+		//Enter
+		index = 0;
 		uint8_t flag = 1;
 		for(uint8_t i = 0; i <= size; i++){
 			if(in_buf[i] != password[i]) flag = 0;
 		}
 		if(flag) ret_val = 1;
+		//zeroing
+		for(uint8_t i = 0; i <= size; i++){
+			in_buf[i] = 0x20;
+		}
+	}else if((touch->x > 440) && (touch->y < 40)){
+		//Exit
+		//zeroing
+		for(uint8_t i = 0; i <= size; i++){
+			in_buf[i] = 0x20;
+		}
+		ret_val = 2;
 	}
+	
+	if(index >= size) index = 0;
+	
 	BSP_LCD_SetTextColor(WHITE_COLOR);
 	BSP_LCD_SetBackColor(MAIN_BGND);
-	for(uint8_t i = 0; i < 6; i++){
-		if((in_buf[i] >= 0x30) && (in_buf[i] <= 0x39))
-			show_buf[i] = in_buf[i];
-		else
-			show_buf[i] = 0x20;
-	}
-	BSP_LCD_DisplayStringAt( 200, 3, show_buf, LEFT_MODE);
+	BSP_LCD_DisplayStringAt( 200, 3, in_buf, LEFT_MODE);
 	return(ret_val);
 }
 

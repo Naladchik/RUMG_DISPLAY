@@ -59,6 +59,8 @@ void DrawService(void){
   * @retval
   */
 void UI_logic(void){
+		uint8_t pass_state;
+	
 		static uint8_t was_released = 1;
 		/* -------------------------------------------------------------------------
 		//Dynamic drawing processes occur here
@@ -181,9 +183,14 @@ void UI_logic(void){
 						break;
 			
 			case(WINDOW_LOG_PASSWORD):
-				if(PasswordCheck(&ts)) {
+			  pass_state = PasswordCheck(&ts);
+				if(pass_state == 1) {
 					DrawLog();
 					UI_item = WINDOW_LOG;
+				}
+				if(pass_state == 2) {
+					DrawService();
+					UI_item = WINDOW_MAIN_MENU;
 				}
 				osDelay(100);
 				break;

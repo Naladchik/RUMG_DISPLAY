@@ -542,11 +542,11 @@ void DrawConsumption(uint8_t A_G){
 	//if left shoulder
 		if (A_G == LEFT){
 			xx = UI_LEFT_GAS_X;
-			yy = 120;
+			yy = UI_GAS_Y;
 			for(uint16_t x = 0; x < ROUND_W; x++){
 				for(uint16_t y = 0; y < ROUND_H; y++){
 					if((round_1[(x + y * ROUND_W) / 8] & (0x80 >> ((x + y * ROUND_W) % 8))) > 0)
-						ili9488_WritePixel(xx + x, yy + y, GREEN_COLOR); 
+						ili9488_WritePixel(xx + x, yy + y, GREEN_COLOR);
 					else 
 						ili9488_WritePixel(xx + x, yy + y, MAIN_BGND);
 				}
@@ -556,7 +556,7 @@ void DrawConsumption(uint8_t A_G){
 			for(uint16_t x = 0; x < ROUND_W; x++){
 				for(uint16_t y = 0; y < ROUND_H; y++){
 					if((round_2[(x + y * ROUND_W) / 8] & (0x80 >> ((x + y * ROUND_W) % 8))) > 0)
-						ili9488_WritePixel(xx + x, yy + y, PG_COLOR); 
+						ili9488_WritePixel(xx + x, yy + y, PG_COLOR);
 					else 
 						ili9488_WritePixel(xx + x, yy + y, MAIN_BGND);
 				}
