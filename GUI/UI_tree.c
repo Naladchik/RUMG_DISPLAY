@@ -9,7 +9,8 @@
 /* BSP_LCD_... */
 #include "stm32_adafruit_lcd.h"
 
-const static uint8_t password[PWD_SIZE + 1] = {'1', '2', '3', '4', '5', '6', 0x00};
+const static uint8_t password_log[PWD_SIZE + 1] = {'1', '2', '3', '4', '5', '6', 0x00};
+const static uint8_t password_settings[PWD_SIZE + 1] = {'1', '2', '3', '4', '5', '6', 0x00};
 
 //struct TouchStructType T_struct; //Last unprocessed touch data
 extern TS_DrvTypeDef  *ts_drv;
@@ -133,12 +134,13 @@ void UI_logic(void){
 			case(WINDOW_MAIN_MENU):
 				if((ts.x >= UI_INDENT) && (ts.x <= (UI_INDENT + 200))){
 					if((ts.y >= UI_SPACE) && (ts.y <= (UI_SPACE + UI_INTERVAL))){
-						DrawSettings();
-						UI_item = WINDOW_SETTINGS;
+						DrawLogPassword();
+						DrawKeyPad();
+						UI_item = WINDOW_SETTINGS_PASSWORD;
 					}
 					if((ts.y >= (UI_SPACE + UI_INTERVAL)) && (ts.y <= (UI_SPACE + 2 * UI_INTERVAL))){
-						uint32_t buf_addr;
-						if(LOG_FindMaxUnique(&LOG_current_num, &buf_addr)){}else{LOG_current_num = 0;}
+						//uint32_t buf_addr;
+						//if(LOG_FindMaxUnique(&LOG_current_num, &buf_addr)){}else{LOG_current_num = 0;}
 						DrawLogPassword();
 						DrawKeyPad();
 						UI_item = WINDOW_LOG_PASSWORD;
@@ -187,10 +189,22 @@ void UI_logic(void){
 						break;
 			
 			case(WINDOW_LOG_PASSWORD):
-			  pass_state = PasswordCheck(&ts, password);
+			  pass_state = PasswordCheck(&ts, password_log);
 				if(pass_state == 1) {
 					DrawLog();
 					UI_item = WINDOW_LOG;
+				}
+				if(pass_state == 2) {
+					DrawService();
+					UI_item = WINDOW_MAIN_MENU;
+				}
+				osDelay(100);
+				break;
+			case(WINDOW_SETTINGS_PASSWORD):
+				pass_state = PasswordCheck(&ts, password_settings);
+				if(pass_state == 1) {
+					DrawTheBase();
+					UI_item = WINDOW_MAIN;
 				}
 				if(pass_state == 2) {
 					DrawService();
