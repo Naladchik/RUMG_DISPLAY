@@ -9,6 +9,8 @@
 /* BSP_LCD_... */
 #include "stm32_adafruit_lcd.h"
 
+const static uint8_t password[PWD_SIZE + 1] = {'1', '2', '3', '4', '5', '6', 0x00};
+
 //struct TouchStructType T_struct; //Last unprocessed touch data
 extern TS_DrvTypeDef  *ts_drv;
 
@@ -33,6 +35,8 @@ extern uint8_t ActiveGasRequested;
 extern uint8_t ts_bz;
 
 extern uint32_t LOG_current_num; //current number of log entry
+
+
 
 void Print(uint16_t Xpos, uint16_t Ypos, char* str, sFONT *pFonts){
 	uint8_t  indx = 0;
@@ -183,7 +187,7 @@ void UI_logic(void){
 						break;
 			
 			case(WINDOW_LOG_PASSWORD):
-			  pass_state = PasswordCheck(&ts);
+			  pass_state = PasswordCheck(&ts, password);
 				if(pass_state == 1) {
 					DrawLog();
 					UI_item = WINDOW_LOG;

@@ -19,6 +19,7 @@
 #define WINDOW_LOG																		3
 #define WINDOW_PLOT    														  4
 #define WINDOW_LOG_PASSWORD								5
+#define WINDOW_SETTINGS_PASSWORD			6
 
 #define UI_INDENT		160	
 #define UI_SPACE		80

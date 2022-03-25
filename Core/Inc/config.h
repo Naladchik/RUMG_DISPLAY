@@ -71,6 +71,8 @@
 #define DISPLAY_RESET_T  900  //reinit display period in seconds
 #define SETTLE_TIMER        100 //settle timer to avoid non-stable initial values
 
+#define PWD_SIZE   6  //lenth of passwords
+
 
 //All MAC addresses list
 #ifdef DEV0     //controler (client)

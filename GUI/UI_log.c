@@ -285,15 +285,15 @@ void DrawKeyPad(void){
   * @param  
   * @retval
   */
-uint8_t PasswordCheck(TS_TypeDef *touch){
-	const uint8_t size = 6;
+uint8_t PasswordCheck(TS_TypeDef *touch, const uint8_t *pwd){
+	//const uint8_t size = 6;
 	const uint16_t keypad_x0 = DISPLAY_WIDTH / 2 - BUTTON_W * 3 / 2;
 	const uint16_t keypad_y0 = KEYPAD_Y;
-	const static uint8_t password[size + 1] = {'1', '2', '3', '4', '5', '6', 0x00};
-	static uint8_t in_buf[size + 1] = {0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x00};
+	//const static uint8_t password[PWD_SIZE + 1] = {'1', '2', '3', '4', '5', '6', 0x00};
+	static uint8_t in_buf[PWD_SIZE + 2] = {0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x00, 0x00};
 	static uint8_t index = 0;
 	uint8_t ret_val = 0;
-	if(index > size) index = size;
+	if(index > PWD_SIZE) index = PWD_SIZE;
 	if((touch->x > keypad_x0) && (touch->x < keypad_x0 + BUTTON_W) && (touch->y > keypad_y0) && (touch->y < keypad_y0 + BUTTON_H)){
 		in_buf[index] = '1';
 		index++;
@@ -326,33 +326,35 @@ uint8_t PasswordCheck(TS_TypeDef *touch){
 		index++;
 	}else if ((touch->x > keypad_x0) && (touch->x < keypad_x0 + BUTTON_W) && (touch->y > keypad_y0 + 3 * BUTTON_H) && (touch->y < keypad_y0 + 4 * BUTTON_H)){
 		//Delete		
-		in_buf[index] = 0x20;
+		if(index == PWD_SIZE) index = PWD_SIZE - 1; //this is done to make double decrement when all digitas were entered
+	  in_buf[index] = 0x20;
 		if(index > 0) index--;
 	}else if ((touch->x > keypad_x0 + 2 * BUTTON_W) && (touch->x < keypad_x0 + 3 * BUTTON_W) && (touch->y > keypad_y0 + 3 * BUTTON_H) && (touch->y < keypad_y0 + 4 * BUTTON_H)){
 		//Enter
 		index = 0;
 		uint8_t flag = 1;
-		for(uint8_t i = 0; i <= size; i++){
-			if(in_buf[i] != password[i]) flag = 0;
+		for(uint8_t i = 0; i <= PWD_SIZE; i++){
+			if(in_buf[i] != pwd[i]) flag = 0;
 		}
 		if(flag) ret_val = 1;
 		//zeroing
-		for(uint8_t i = 0; i <= size; i++){
+		for(uint8_t i = 0; i <= PWD_SIZE; i++){
 			in_buf[i] = 0x20;
 		}
 	}else if((touch->x > 440) && (touch->y < 40)){
 		//Exit
 		//zeroing
-		for(uint8_t i = 0; i <= size; i++){
+		for(uint8_t i = 0; i <= PWD_SIZE; i++){
 			in_buf[i] = 0x20;
 		}
 		ret_val = 2;
 	}
 	
-	if(index >= size) index = 0;
+	if(index > PWD_SIZE) index = PWD_SIZE;
 	
 	BSP_LCD_SetTextColor(WHITE_COLOR);
 	BSP_LCD_SetBackColor(MAIN_BGND);
+	in_buf[PWD_SIZE] = 0x00;
 	BSP_LCD_DisplayStringAt( 200, 3, in_buf, LEFT_MODE);
 	return(ret_val);
 }

@@ -108,7 +108,7 @@ void make_action(const TypeVolt* Volt){
 				SwitchGasRequest = 0;			
 		}
 		
-		if((EpochTime % 20) < 10)  ActiveGas = LEFT; else ActiveGas = RIGHT;
+		//if((EpochTime % 20) < 10)  ActiveGas = LEFT; else ActiveGas = RIGHT;
 		
 	switch(ActiveGas){
       case(LEFT):

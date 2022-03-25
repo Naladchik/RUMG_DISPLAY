@@ -25,5 +25,5 @@ void ConvertInteger32ToStr(char* str, const uint32_t integer);
 void ConvertFloatToStr(char* str, const float value);
 void LOG_Renew(void);
 void DrawKeyPad(void);
-uint8_t PasswordCheck(TS_TypeDef *touch);
+uint8_t PasswordCheck(TS_TypeDef *touch, const uint8_t *pwd);
 #endif
