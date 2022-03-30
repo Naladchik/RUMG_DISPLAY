@@ -32,17 +32,19 @@
 #define CYL_NUM_LEFT							10
 #define CYL_NUM_RIGHT						20
 
-#define H_P_a           (double) 0.000524521 //ADC - cylinder pressure (bar) linear coefficient a
-#define H_P_b           (double) -50.000000 //ADC - cylinder pressure (bar) linear coefficient b
+//#define H_P_a           (double) 0.000524521 //ADC - cylinder pressure (bar) linear coefficient a
+//#define H_P_b           (double) -50.000000 //ADC - cylinder pressure (bar) linear coefficient b
+#define H_P_a         (double) 0.0000302 // 1 - 5 V sensors      (0.000029003)
+#define H_P_b         (double) -2.5 //-2.5
 
-#define P_a							(double)0.0000302 // 1 - 5 V sensors      (0.000029003)
-#define P_b							(double)-2.5 //-2.5
+#define P_a							(double) 0.0000302 // 1 - 5 V sensors      (0.000029003)
+#define P_b							(double) -2.5 //-2.5
 	
-#define V_a							(double)0.61050
-#define V_b							(double)-500.0
+#define V_a							(double) 0.61050
+#define V_b							(double) -500.0
 
-#define Volt_a          (double)0.000069237 //ADC - battery and PSU voltage coefficient a
-#define Volt_b          (double)0.0 //ADC - battery and PSU voltage coefficient b
+#define Volt_a          (double) 0.000069237 //ADC - battery and PSU voltage coefficient a
+#define Volt_b          (double) 0.0 //ADC - battery and PSU voltage coefficient b
 
 #define BatteryCharged  (float)12.0 //V
 #define BatteryLow      (float)9.0 //V
