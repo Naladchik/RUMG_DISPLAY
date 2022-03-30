@@ -20,15 +20,15 @@
 #define LORA_FREQ   								434500000  //Frequeny in Hz, was 434500000, was 859500000
 #define BARANKI           							1 // 1 - do not take into account LineMin, 0 - do take into account (baranovichi_style)
 #define CONC_DELAY            			10  //Delay for concentrator again-on
-#define SWTCH_THRESHOLD 			(float) 10.0 //threshold to switch to the next gas line
-#define ALRM_THRESHOLD    		(float) 40.0 //threshold to activate alarm (if second cylinder <= SWTCH_threshold
+#define SWTCH_THRESHOLD 			(float) 6.0 //threshold to switch to the next gas line
+#define ALRM_THRESHOLD    		(float) 10.0 //threshold to activate alarm (if second cylinder <= SWTCH_threshold
 #define VALVE_SUSPEND_T				7  //if a valve is suspended (open but no pressure in line) time
 #define EMERGENCY_MODE_T		600 //emergency time (suspended valve) before next try
 
-#define LINE_P_MIN			  						(float) 4.0 // минимум в линии
-	#define LINE_P_MAX			  						(float) 6.0 //максимум в линии
-		#define CONC_P_MIN									(float) 4.0 //минимум в концентраторе
-			#define CONC_P_MAX									(float) 6.0 //максимум в концентраторе
+#define LINE_P_MIN			  						(float) 5.8 // минимум в линии
+	#define LINE_P_MAX			  						(float) 10.0 //максимум в линии
+		#define CONC_P_MIN									(float) 5.8 //минимум в концентраторе
+			#define CONC_P_MAX									(float) 10.0 //максимум в концентраторе
 #define CYL_NUM_LEFT							10
 #define CYL_NUM_RIGHT						20
 
