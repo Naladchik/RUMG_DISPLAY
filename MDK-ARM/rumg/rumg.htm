@@ -3,7 +3,7 @@
 <title>Static Call Graph - [rumg\rumg.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image rumg\rumg.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Wed Mar 30 10:14:52 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Wed Mar 30 10:32:46 2022
 <BR><P>
 <H3>Maximum Stack Usage =        456 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -373,6 +373,7 @@ Global Symbols
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConvertFloatToStr
 <LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawRoundScale
 <LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawLinePress
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawLeftPress
 <LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawConcPress
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DoTouchScreen
 </UL>
@@ -479,6 +480,7 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;measure_volt
 <LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawPlot
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawLeftPress
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DoTouchScreen
 </UL>
 
@@ -513,6 +515,7 @@ Global Symbols
 <LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawRoundScale
 <LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawMainWindow
 <LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawLinePress
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawLeftPress
 <LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawConcPress
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DoTouchScreen
 </UL>
@@ -975,10 +978,13 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[12c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UI_logic
 </UL>
 
-<P><STRONG><a name="[9a]"></a>DrawLeftPress</STRONG> (Thumb, 506 bytes, Stack size 120 bytes, main_window.o(i.DrawLeftPress))
+<P><STRONG><a name="[9a]"></a>DrawLeftPress</STRONG> (Thumb, 532 bytes, Stack size 120 bytes, main_window.o(i.DrawLeftPress))
 <BR><BR>[Stack]<UL><LI>Max Depth = 368<LI>Call Chain = DrawLeftPress &rArr; sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
-<BR>[Calls]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2d
+<BR>[Calls]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2f
+<LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2d
+<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
+<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2uiz
 <LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
 <LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 <LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd

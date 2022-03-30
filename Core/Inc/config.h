@@ -45,6 +45,8 @@
 
 #define Volt_a          (double) 0.000069237 //ADC - battery and PSU voltage coefficient a
 #define Volt_b          (double) 0.0 //ADC - battery and PSU voltage coefficient b
+	
+#define ARROW_COEFF (float) 20.0 //coefficient to stretch round scale for SMC 10 bar
 
 #define BatteryCharged  (float)12.0 //V
 #define BatteryLow      (float)9.0 //V

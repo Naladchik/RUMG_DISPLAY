@@ -451,14 +451,17 @@ void DrawLeftPress(uint16_t val, uint16_t color){
 	double alfa_rad = 0;
 	double sin_val = 0;
 	double cos_val = 0;
+	uint16_t val_for_arrow;
 	uint16_t this_color;
+	
+	val_for_arrow = ARROW_COEFF * val;
 	
 	if(color == MAIN_BGND) this_color = MAIN_BGND; else this_color = RED_COLOR;	
 	
   //non-linearity poperdolenost
 	//val_nl = A_ALFA * log(A_PRESS * val + B_PRESS) + B_ALFA;
 	
-	if(val <= ALFA_MAX) alfa = ALFA_MAX - val; else alfa = ALFA_MIN;
+	if(val_for_arrow <= ALFA_MAX) alfa = ALFA_MAX - val_for_arrow; else alfa = ALFA_MIN;
 	if(alfa <= ALFA_MIN) alfa = ALFA_MIN;
 	
 	alfa = ALFA_MAX - (A_ALFA * log(A_PRESS * (ALFA_MAX - alfa) + B_PRESS) + B_ALFA) + ALFA_MIN;
