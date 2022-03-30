@@ -25,10 +25,13 @@
 #define VALVE_SUSPEND_T				7  //if a valve is suspended (open but no pressure in line) time
 #define EMERGENCY_MODE_T		600 //emergency time (suspended valve) before next try
 
+#define SWTCH_THRESHOLD 			(float) 10.0 //порог переключения на другое плечо по высокому давлению
+#define ALRM_THRESHOLD    		(float) 40.0 //порог активации ошибки по высокому давлению (если давление во втором плече стало меньше SWTCH_THRESHOLD)
 #define LINE_P_MIN			  						(float) 4.0 // минимум в линии
-	#define LINE_P_MAX			  						(float) 6.0 //максимум в линии
-		#define CONC_P_MIN									(float) 4.0 //минимум в концентраторе
-			#define CONC_P_MAX									(float) 6.0 //максимум в концентраторе
+#define LINE_P_MAX			  						(float) 6.0 //максимум в линии
+#define CONC_P_MIN									(float) 4.0 //минимум в концентраторе
+#define CONC_P_MAX									(float) 6.0 //максимум в концентраторе
+	
 #define CYL_NUM_LEFT							10
 #define CYL_NUM_RIGHT						20
 
