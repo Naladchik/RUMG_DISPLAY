@@ -787,11 +787,11 @@ void DrawTheBase(void){
 	FillBackground(MAIN_BGND);
 	DrawTheLine(220, 460);
 	DrawImage(bal_stc, BAL_STC_W, BAL_STC_H, WHITE_COLOR, 5, 5);
-	DrawImage(concentrator, CONCENTRATOR_W, CONCENTRATOR_H, WHITE_COLOR, 390, 58);
+	if(IS_AUX) DrawImage(concentrator, CONCENTRATOR_W, CONCENTRATOR_H, WHITE_COLOR, 390, 58);
 	DrawImage(davlenie, DAVLENIE_W, DAVLENIE_H, WHITE_COLOR, 5, 76);
 	DrawImage(vyhodnoe, VYHODNOE_W, VYHODNOE_H, WHITE_COLOR, 201, 29);
 	DrawImage(mpa3, BAR3_W, BAR3_H, WHITE_COLOR, 288, 79);
-	DrawImage(mpa2, BAR2_W, BAR2_H, WHITE_COLOR, 442, 84);
+	if(IS_AUX) DrawImage(mpa2, BAR2_W, BAR2_H, WHITE_COLOR, 442, 84);
 	DrawImage(mpa1, BAR1_W, VYHODNOE_H, WHITE_COLOR, 58, 253);
 	DrawImage(mpa1, BAR1_W, BAR1_H, WHITE_COLOR, 388, 253);
 	if(FLOW_SENSOR)DrawImage(l_min, L_MIN_W, L_MIN_H, WHITE_COLOR, FLOW_REF_X + 123, FLOW_REF_Y + 33);  
@@ -832,10 +832,12 @@ void DrawMainWindow(void){
 					else DrawLinePress(PhValues_output.PressLine/10, WHITE_COLOR);			
 		}
 		//Concentrator pressure
-		if((Modula(PhValues_output.PressConc, OldConcPress) > 0.1) || (OldUI_item != UI_item) || redraw_all){
-			OldConcPress = PhValues_output.PressConc;
-			if(DisplaySet.ConcPressAlarm)DrawConcPress(PhValues_output.PressConc/10, RED_COLOR); 
-				else DrawConcPress(PhValues_output.PressConc/10, WHITE_COLOR);			
+		if(IS_AUX){
+			if((Modula(PhValues_output.PressConc, OldConcPress) > 0.1) || (OldUI_item != UI_item) || redraw_all){
+				OldConcPress = PhValues_output.PressConc;
+				if(DisplaySet.ConcPressAlarm)DrawConcPress(PhValues_output.PressConc/10, RED_COLOR); 
+					else DrawConcPress(PhValues_output.PressConc/10, WHITE_COLOR);			
+			}
 		}
 		
 		redraw_all = 0;

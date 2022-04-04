@@ -15,6 +15,7 @@
 #define TX_DEV_NUM				   				0x01
 #define RX_DEV_NUM				   				0x02
 #define FLOW_SENSOR							0 // is flow sensor installed
+#define IS_AUX														0 // displays concentrator field or not
 #define ROLE	 														CONTROLER //CONTROLER or REPEATER
 #define COMM_DEV										NO_COMM //ETHERNET or LORA or NO_COMM
 #define LORA_FREQ   								434500000  //Frequeny in Hz, was 434500000, was 859500000
@@ -23,10 +24,10 @@
 #define VALVE_SUSPEND_T				7  //if a valve is suspended (open but no pressure in line) time
 #define EMERGENCY_MODE_T		600 //emergency time (suspended valve) before next try
 
-#define SWTCH_THRESHOLD 			(float) 6.0 //порог переключения на другое плечо по высокому давлению
-#define ALRM_THRESHOLD    		(float) 10.0 //порог активации ошибки по высокому давлению (если давление во втором плече стало меньше SWTCH_THRESHOLD)
+#define SWTCH_THRESHOLD 			(float) 7.0 //порог переключения на другое плечо по высокому давлению
+#define ALRM_THRESHOLD    		(float) 7.5 //порог активации ошибки по высокому давлению (если давление во втором плече стало меньше SWTCH_THRESHOLD)
 #define LINE_P_MIN			  						(float) 5.8 // минимум в линии
-#define LINE_P_MAX			  						(float) 10.0 //максимум в линии
+#define LINE_P_MAX			  						(float) 9.5 //максимум в линии
 #define CONC_P_MIN									(float) 5.8 //минимум в концентраторе
 #define CONC_P_MAX									(float) 10.0 //максимум в концентраторе
 	
