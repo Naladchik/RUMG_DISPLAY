@@ -494,8 +494,7 @@ void DrawLeftPress(uint16_t val, uint16_t color){
 		for(uint8_t j = 0; j < 3; j++){
 			ili9488_WritePixel(comma_x + LP_REF_X + i, comma_y + HP_REF_Y + j, color);
 	 }
-	}
-	
+	}	
 		
 	DrawDigitS_no_bgn(LP_REF_X + 3 * HP_DIG_INTERVAL, HP_REF_Y,  val % 10, color);
 }
@@ -539,11 +538,22 @@ void DrawRightPress(uint16_t val, uint16_t color){
 			}
 		}
 	//Number part
-	if (val > 300) val = 300;	
-	if(val > 99) DrawDigitS_no_bgn(RP_REF_X + HP_DIG_INTERVAL, HP_REF_Y, (val / 100) % 10, color);
-		else DrawDigitS_no_bgn(RP_REF_X + HP_DIG_INTERVAL, HP_REF_Y, 99, color);
-	if(val > 9) DrawDigitS_no_bgn(RP_REF_X + 2 * HP_DIG_INTERVAL, HP_REF_Y, (val / 10) % 10, color);
-		else DrawDigitS_no_bgn(RP_REF_X + 2 * HP_DIG_INTERVAL, HP_REF_Y, 99, color);
+	if (val > 300) val = 300;
+		
+	if(val > 99) DrawDigitS_no_bgn(RP_REF_X + HP_DIG_INTERVAL / 2, HP_REF_Y, (val / 100) % 10, color);  
+		else DrawDigitS_no_bgn(RP_REF_X + HP_DIG_INTERVAL / 2, HP_REF_Y, 99, color);
+		
+	DrawDigitS_no_bgn(RP_REF_X + HP_DIG_INTERVAL + HP_DIG_INTERVAL / 2, HP_REF_Y, (val / 10) % 10, color);
+		
+	//comma
+	#define comma_x 38
+	#define comma_y 20 
+	for(uint8_t i = 0; i < 3; i++){
+		for(uint8_t j = 0; j < 3; j++){
+			ili9488_WritePixel(comma_x + RP_REF_X + i, comma_y + HP_REF_Y + j, color);
+	 }
+	}	
+		
 	DrawDigitS_no_bgn(RP_REF_X + 3 * HP_DIG_INTERVAL, HP_REF_Y,  val % 10, color);
 }
 
