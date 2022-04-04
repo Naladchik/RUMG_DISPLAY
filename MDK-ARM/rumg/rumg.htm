@@ -3,7 +3,7 @@
 <title>Static Call Graph - [rumg\rumg.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image rumg\rumg.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Sun Apr 03 09:28:14 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Mon Apr 04 10:00:25 2022
 <BR><P>
 <H3>Maximum Stack Usage =        456 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -373,6 +373,7 @@ Global Symbols
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConvertFloatToStr
 <LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawRoundScale
 <LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawRightPress
+<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawMainWindow
 <LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawLinePress
 <LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawLeftPress
 <LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawConcPress
@@ -981,8 +982,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[12c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UI_logic
 </UL>
 
-<P><STRONG><a name="[9a]"></a>DrawLeftPress</STRONG> (Thumb, 532 bytes, Stack size 120 bytes, main_window.o(i.DrawLeftPress))
-<BR><BR>[Stack]<UL><LI>Max Depth = 368<LI>Call Chain = DrawLeftPress &rArr; sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
+<P><STRONG><a name="[9a]"></a>DrawLeftPress</STRONG> (Thumb, 564 bytes, Stack size 112 bytes, main_window.o(i.DrawLeftPress))
+<BR><BR>[Stack]<UL><LI>Max Depth = 360<LI>Call Chain = DrawLeftPress &rArr; sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2f
 <LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2d
@@ -1040,10 +1041,11 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[12c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UI_logic
 </UL>
 
-<P><STRONG><a name="[a7]"></a>DrawMainWindow</STRONG> (Thumb, 790 bytes, Stack size 40 bytes, main_window.o(i.DrawMainWindow))
+<P><STRONG><a name="[a7]"></a>DrawMainWindow</STRONG> (Thumb, 802 bytes, Stack size 40 bytes, main_window.o(i.DrawMainWindow))
 <BR><BR>[Stack]<UL><LI>Max Depth = 440<LI>Call Chain = DrawMainWindow &rArr; DrawErrorMessage &rArr; u8g_DrawStr &rArr; u8g_draw_glyph &rArr; u8g_GetGlyph &rArr; u8g_CopyGlyphDataToCache &rArr; u8g_font_GetFormat
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
+<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 <LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2uiz
 <LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
@@ -1086,7 +1088,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[12c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UI_logic
 </UL>
 
-<P><STRONG><a name="[ab]"></a>DrawRightPress</STRONG> (Thumb, 544 bytes, Stack size 120 bytes, main_window.o(i.DrawRightPress))
+<P><STRONG><a name="[ab]"></a>DrawRightPress</STRONG> (Thumb, 546 bytes, Stack size 120 bytes, main_window.o(i.DrawRightPress))
 <BR><BR>[Stack]<UL><LI>Max Depth = 368<LI>Call Chain = DrawRightPress &rArr; sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2f
