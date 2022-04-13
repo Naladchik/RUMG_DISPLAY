@@ -225,7 +225,7 @@ void UI_logic(void){
   * @retval
   */
 void DoTouchScreen(void){
-		SPI2->CR1 |= SPI_CR1_BR_2 | SPI_CR1_BR_1;
+		SPI2->CR1 |= SPI_CR1_BR_2 | SPI_CR1_BR_1; //
 		if(ts.up == 0){
 			if(ts_drv->DetectTouch(0)){
 				ts_drv->GetXY(0, &ts.x, &ts.y);

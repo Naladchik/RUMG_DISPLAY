@@ -16,6 +16,7 @@
 #define RX_DEV_NUM				   				0x02
 #define FLOW_SENSOR							0 // is flow sensor installed
 #define IS_AUX														0 // displays concentrator field or not
+#define TOUCH_TEST									1
 #define ROLE	 														CONTROLER //CONTROLER or REPEATER
 #define COMM_DEV										NO_COMM //ETHERNET or LORA or NO_COMM
 #define LORA_FREQ   								434500000  //Frequeny in Hz, was 434500000, was 859500000

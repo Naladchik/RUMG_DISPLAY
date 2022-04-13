@@ -34,6 +34,8 @@ uint8_t redraw_all = 1;
 
 volatile TypeAlarm OldAlarm;
 
+extern TS_TypeDef ts;
+
 
 // Lcd
 void     ili9488_Init(void);
@@ -823,6 +825,16 @@ void DrawMainWindow(void){
 		//static uint8_t OldUI_item = 255 ; 
 	  extern uint8_t OldUI_item;
 		
+		if(TOUCH_TEST){
+			DrawDigitS(0, 40, (ts.x / 100) % 10, WHITE_COLOR);
+			DrawDigitS(15, 40, (ts.x / 10) % 10, WHITE_COLOR);
+			DrawDigitS(30, 40, ts.x % 10, WHITE_COLOR);
+			
+			DrawDigitS(100, 40, (ts.y / 100) % 10, WHITE_COLOR);
+			DrawDigitS(115, 40, (ts.y / 10) % 10, WHITE_COLOR);
+			DrawDigitS(130, 40, ts.y % 10, WHITE_COLOR);
+		}
+	
 		//flow value
 		if(FLOW_SENSOR) DrawFlowVal(PhValues_output.Flow, WHITE_COLOR);
 		//Line pressure
